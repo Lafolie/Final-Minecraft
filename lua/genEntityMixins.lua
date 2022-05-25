@@ -142,16 +142,46 @@ public ElementConfig %sWeakResist = new ElementConfig();
 local configSource = {}
 
 local mixins = {}
+local lang = {}
 
-function generateSource(mixin, package, name)
-	local lowName = string.lower(name):sub(1,1) .. name:sub(2)
+local elements = 
+{
+	"none",
+	"fire",
+	"ice",
+	"lightning",
+	"wind",
+	"water",
+	"poison",
+	"holy",
+	"dark",
+	"gravity"
+}
+
+local elementsPretty = 
+{
+	"None",
+	"Fire",
+	"Ice",
+	"Lightning",
+	"Wind",
+	"Water",
+	"Poison",
+	"Holy",
+	"Dark",
+	"Gravity"
+}
+
+
+function generateSource(mixin, package, name, lowName)
 	return template:format(mixin, package, name, name, name, name, lowName), configTemplate:format(lowName)
 end
 
 function generateAll(tbl)
 	local path = string.format("src/main/java/%s", tbl.packageDir)
 	for k, ent in ipairs(tbl) do
-		local source, config = generateSource(tbl.mixin, tbl.mcPackage, ent)
+		local lowName = string.lower(ent):sub(1,1) .. ent:sub(2)
+		local source, config = generateSource(tbl.mixin, tbl.mcPackage, ent, lowName)
 		table.insert(configSource, config)
 		local fname = string.format("%s/%sEntityMixin.java", path, ent)
 		print(fname)
@@ -163,6 +193,12 @@ function generateAll(tbl)
 
 		local mixin = string.format("\"%s.%sEntityMixin\",", tbl.mixin, ent)
 		table.insert(mixins, mixin)
+
+		local langStr = string.format("\"text.autoconfig.FinalMinecraftCore.option.%sWeakResist\":\t\"%s\",", lowName, ent)
+		table.insert(lang, langStr)
+		for k, element in ipairs(elements) do
+			table.insert(lang, string.format("\"text.autoconfig.FinalMinecraftCore.option.%sWeakResist.%s\":\t\"%s\",", lowName, element, elementsPretty[k]))
+		end
 	end
 end
 
@@ -180,3 +216,4 @@ generateAll(enderDragon)
 generateAll(passives)
 writeTable(configSource, "lua/output/config.txt")
 writeTable(mixins, "lua/output/mixins.txt")
+writeTable(lang, "lua/output/lang.txt")
