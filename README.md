@@ -1,5 +1,5 @@
 # Final Minecraft Core
-## By Lafolie
+### By Lafolie
 
 ![FMC Logo](asset/fmcLogo.png "FMC Logo")
 
@@ -45,6 +45,8 @@ Mods in the FMC mod set include:
 
 * FMC Core *- add elemental aspects to mobs and equipment. Required by other FMC mods*
 * FMC Crystals *- add crystal items and blocks to your world*
+
+You can join the official discord here: [https://discord.gg/Kv6umW2vzy](https://discord.gg/Kv6umW2vzy)
 
 ## Developers
 
