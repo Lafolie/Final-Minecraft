@@ -1,11 +1,13 @@
 # Final Minecraft Core
 ## By Lafolie
 
-This mod contains basic functionality required by other Final Minecraft (FMC) mods.
+### *Add elemental aspects to mobs and equipment. Required by other FMC mods.*
 
 ## Features
 
-The FMC Core provides a few features by itself:
+This mod contains basic functionality required by other Final Minecraft (FMC) mods.
+
+The FMC Core provides a limited set of features by itself:
 
 * Elemental aspects (configurable)
 * Status effects
@@ -33,13 +35,14 @@ FMC Core requires the following mods:
 FMC Core can utilise, but works without the following mods:
 * ModMenu
 
-## Final Minecfraft
+## Final Minecraft
 
 The Final Minecraft project aims to add Final Fantasy inspired content to Minecraft.
 
-Other mods in the FMC mod set include:
+Mods in the FMC mod set include:
 
-* FMC Crystals
+* FMC Core *- add elemental aspects to mobs and equipment. Required by other FMC mods*
+* FMC Crystals *- add crystal items and blocks to your world*
 
 ## Developers
 
