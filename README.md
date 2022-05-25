@@ -5,6 +5,8 @@
 
 ### *Add elemental aspects to mobs and equipment. Required by other FMC mods.*
 
+### Final Minecraft is a Fabric mod for Minecraft.
+
 ## Features
 
 This mod contains basic functionality required by other Final Minecraft (FMC) mods.
@@ -21,6 +23,14 @@ Status effects exist in the game but require other FMC mods to use.
 ## Installation
 
 *TODO: add links & versions*
+
+### Supported Versions
+
+FMC Core is a a **Fabric Mod**. A forge version will never be created.
+
+FMC Core currently supports **Minecraft 1.18.2**.
+
+Development will always be targeted at the latest stable release of Minecraft. Older versions will not be supported.
 
 ### Client / Server
 
