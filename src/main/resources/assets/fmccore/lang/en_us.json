@@ -1,4 +1,8 @@
 {
+	"text.autoconfig.FinalMinecraftCore.title": "Final Minecraft Core Options",
+	"text.autoconfig.FinalMinecraftCore.category.default": "General",
+	"text.autoconfig.FinalMinecraftCore.category.Elements": "Mob Elements",
+
 	"text.autoconfig.FinalMinecraftCore.option.blazeWeakResist":	"Blaze",
 	"text.autoconfig.FinalMinecraftCore.option.blazeWeakResist.none":	"None",
 	"text.autoconfig.FinalMinecraftCore.option.blazeWeakResist.fire":	"Fire",
