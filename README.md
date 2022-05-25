@@ -1,6 +1,8 @@
 # Final Minecraft Core
 ## By Lafolie
 
+![FMC Logo](asset/fmcLogo.png "FMC Logo")
+
 ### *Add elemental aspects to mobs and equipment. Required by other FMC mods.*
 
 ## Features
