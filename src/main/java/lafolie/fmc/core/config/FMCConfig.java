@@ -11,8 +11,11 @@ import net.minecraft.util.Pair;
 @Config(name = "FinalMinecraftCore")
 public class FMCConfig implements ConfigData
 {
-	boolean test = true;
+	// General
+	public boolean enableElements = true;
+	public float defaultWeakResistAmount = 0.2f;
 
+	// Entity weak/resist
 	@ConfigEntry.Category("Elements")
 	@ConfigEntry.Gui.CollapsibleObject
 	public ElementConfig blazeWeakResist = new ElementConfig();

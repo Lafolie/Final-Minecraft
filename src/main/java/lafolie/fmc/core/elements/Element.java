@@ -3,21 +3,23 @@ package lafolie.fmc.core.elements;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 
+import net.minecraft.nbt.NbtByte;
+
 /**
  * Enum representing Elemental Aspects
  */
 public enum Element
 {
-	NONE,	
-	FIRE,	
-	ICE,		
+	NONE,
+	FIRE,
+	ICE,
 	LIGHTNING,
-	WIND,	
+	WIND,
 	WATER,
-	EARTH,	
-	POISON,	
-	HOLY,	
-	DARK,	
+	EARTH,
+	POISON,
+	HOLY,
+	DARK,
 	GRAVITY;
 
 	public static final ImmutableMap<Element, String> TOOLTIP_TEXT = 

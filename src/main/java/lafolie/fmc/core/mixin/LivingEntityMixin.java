@@ -22,6 +22,7 @@ public abstract class LivingEntityMixin
 {
 	private WeakResistTable weakResist;
 
+	@Override
 	public void InitElementalEntity()
 	{
 		if(weakResist == null)
@@ -30,6 +31,7 @@ public abstract class LivingEntityMixin
 		}
 	}
 
+	@Override
 	public void InitElementalEntity(List<Pair<Element, Float>> baseWeakResist)
 	{
 		if(weakResist == null)
@@ -38,6 +40,7 @@ public abstract class LivingEntityMixin
 		}
 	}
 
+	@Override
 	public WeakResistTable GetWeakResistTable()
 	{
 		return weakResist;
