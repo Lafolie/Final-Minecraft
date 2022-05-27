@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.Mod;
 import lafolie.fmc.core.config.FMCConfig;
-import lafolie.fmc.core.elements.Element;
+import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalEntity;
 
 import net.minecraft.entity.EntityType;
@@ -26,7 +26,7 @@ public abstract class DrownedEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<Element, Float>> baseElements = config.drownedWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.drownedWeakResist.GetPairList();
 
 		self.InitElementalEntity(baseElements);
 	}

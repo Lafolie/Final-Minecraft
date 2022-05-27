@@ -21,6 +21,9 @@
     "main": [
       "lafolie.fmc.core.Mod"
     ],
+    "client": [
+      "lafolie.fmc.core.ModClient"
+    ],
     "modmenu": [
       "lafolie.fmc.core.config.ConfigMenu"
     ]

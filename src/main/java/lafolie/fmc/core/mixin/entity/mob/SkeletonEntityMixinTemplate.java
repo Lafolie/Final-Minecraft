@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.Mod;
 import lafolie.fmc.core.config.FMCConfig;
-import lafolie.fmc.core.elements.Element;
+import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalEntity;
 import lafolie.fmc.core.elements.WeakResistTable;
 import net.minecraft.entity.EntityType;
@@ -26,10 +26,10 @@ public abstract class SkeletonEntityMixinTemplate
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<Element, Float>> baseElements = config.skeletonWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.skeletonWeakResist.GetPairList();
 
 		self.InitElementalEntity(baseElements);
 		WeakResistTable tbl = self.GetWeakResistTable();
-		Mod.log.info(tbl.PrintElement(Element.FIRE));
+		Mod.log.info(tbl.PrintElement(ElementalAspect.FIRE));
 	}
 }

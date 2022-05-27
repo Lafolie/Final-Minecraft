@@ -18,7 +18,7 @@ public interface ElementalEntity
 	 * Initialiser, creates the WeakResisTable etc.
 	 * @param baseWeakResist List of Element/Float pairs to use as base statistics
 	 */
-	public void InitElementalEntity(List<Pair<Element, Float>> baseWeakResist);
+	public void InitElementalEntity(List<Pair<ElementalAspect, Float>> baseWeakResist);
 	
 	
 	public WeakResistTable GetWeakResistTable();

@@ -1,15 +1,12 @@
 package lafolie.fmc.core.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-
-import lafolie.fmc.core.elements.Element;
-import lafolie.fmc.core.elements.ElementalNbtProvider;
+import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
-import net.minecraft.item.ItemConvertible;
+import lafolie.fmc.core.elements.InnateElementalAspect;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
@@ -18,143 +15,52 @@ import net.minecraft.nbt.NbtCompound;
  * Element tags are a byte representing the total element modifiers.
  * Tags are removed when the count is 0.
  * Adding/removing elements stack their strengths together, except for absorbtion.
+ * An item is considered to be 'X Elemental' when the total weak/resist is >0.
  */
 @Mixin(ItemStack.class)
-public abstract class ItemStackMixin implements ElementalNbtProvider
+public abstract class ItemStackMixin implements ElementalObject
 {
-	private static final String ELEMENTAL_WEAKNESS_KEY = "ElementalWeakness";
-	private static final String ELEMENTAL_RESISTANCE_KEY = "ElementalResistance";
-	private static final String ELEMENTAL_ABSORB_KEY = "ElementalAbsorb";
+	// @Inject(at = @At("TAIL"), method = "<init>")
+	// private void Constructor(ItemConvertible item, int count, CallbackInfo info)
+	// {
+		
+	// }
 
-	@Inject(at = @At("TAIL"), method = "<init>")
-	private void Constructor(ItemConvertible item, int count, CallbackInfo info)
-	{
-	
-	}
 	// ------------------------------------------------------------------------
-	// WEAKNESS
+	// ELEMENTALOBJECT INTERFACE
 	// ------------------------------------------------------------------------
 
-	/**
-	 * Add an elemental weakness to the NBT store.
-	 * @param element the element to add
-	 */
 	@Override
-	public void AddElementalWeakness(Element element)
+	public void AddElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		AddElement(ELEMENTAL_WEAKNESS_KEY, element, (byte)1);
+		AddElement(attribute, element, (byte)1);
 	}
 
-	/**
-	 * Remove an elemental weakness to the NBT store.
-	 * @param element the element to remove
-	 */
 	@Override
-	public void RemoveElementalWeakness(Element element)
+	public void RemoveElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		AddElement(ELEMENTAL_WEAKNESS_KEY, element, (byte)-1);
+		AddElement(attribute, element, (byte)-1);
 	}
 
-	/**
-	 * Check whether an elemental weakness is in the NBT store.
-	 * @param element the element to check
-	 * @return true if the element is present
-	 */
 	@Override 
-	public boolean HasElementalWeakness(Element element)
+	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		NbtCompound elements = GetOrCreateElementalNbt(ELEMENTAL_WEAKNESS_KEY);
+		NbtCompound elements = GetOrCreateElementalNbt(attribute);
 		return elements.contains(element.toString());
 	}
 
-	// ------------------------------------------------------------------------
-	// RESISTANCE
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Add an elemental weakness to the NBT store.
-	 * @param element the element to add
-	 */
 	@Override
-	public void AddElementalResistance(Element element)
+	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute)
 	{
-		AddElement(ELEMENTAL_RESISTANCE_KEY, element, (byte)1);
-	}
-
-	/**
-	 * Remove an elemental weakness to the NBT store.
-	 * @param element the element to remove
-	 */
-	@Override
-	public void RemoveElementalResistance(Element element)
-	{
-		AddElement(ELEMENTAL_RESISTANCE_KEY, element, (byte)-1);
-	}
-
-	/**
-	 * Check whether an elemental weakness is in the NBT store.
-	 * @param element the element to check
-	 * @return true if the element is present
-	 */
-	@Override 
-	public boolean HasElementalResistance(Element element)
-	{
-		NbtCompound elements = GetOrCreateElementalNbt(ELEMENTAL_RESISTANCE_KEY);
-		return elements.contains(element.toString());
-	}
-
-	// ------------------------------------------------------------------------
-	// ABSORBTION
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Add an elemental weakness to the NBT store.
-	 * @param element the element to add
-	 */
-	@Override
-	public void AddElementalAbsorbtion(Element element)
-	{
-		AddElement(ELEMENTAL_ABSORB_KEY, element, (byte)1);
-	}
-
-	/**
-	 * Remove an elemental weakness to the NBT store.
-	 * @param element the element to remove
-	 */
-	@Override
-	public void RemoveElementalAbsorbtion(Element element)
-	{
-		AddElement(ELEMENTAL_ABSORB_KEY, element, (byte)-1);
-	}
-
-	/**
-	 * Check whether an elemental weakness is in the NBT store.
-	 * @param element the element to check
-	 * @return true if the element is present
-	 */
-	@Override 
-	public boolean HasElementalAbsorbtion(Element element)
-	{
-		NbtCompound elements = GetOrCreateElementalNbt(ELEMENTAL_ABSORB_KEY);
-		return elements.contains(element.toString());
-	}
-
-	// ------------------------------------------------------------------------
-	// TOTAL
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Gets the total weak/resist amount for the specified element
-	 * @param element the element to calculate
-	 * @return the total weak/resist value
-	 */
-	@Override
-	public int GetTotalWeakResist(Element element)
-	{
-		NbtCompound weak = GetOrCreateElementalNbt(ELEMENTAL_WEAKNESS_KEY);
-		NbtCompound resist = GetOrCreateElementalNbt(ELEMENTAL_RESISTANCE_KEY);
+		NbtCompound weak = GetOrCreateElementalNbt(attribute);
 		String key = element.toString();
-		return (int)(resist.getByte(key) - weak.getByte(key));
+		return (int)weak.getByte(key);
+	}
+
+	@Override
+	public int GetTotalWeakResist(ElementalAspect element)
+	{
+		return GetElementalAttribute(element, ElementalAttribute.RESISTANCE) - GetElementalAttribute(element, ElementalAttribute.WEAKNESS);
 	}
 
 	// ------------------------------------------------------------------------
@@ -167,11 +73,11 @@ public abstract class ItemStackMixin implements ElementalNbtProvider
 	 * @param element
 	 * @param inAmt
 	 */
-	private void AddElement(String nbtKey, Element element, byte inAmt)
+	private void AddElement(ElementalAttribute attribute, ElementalAspect element, byte inAmt)
 	{
 		String key = element.toString();
 
-		NbtCompound elements = GetOrCreateElementalNbt(nbtKey);
+		NbtCompound elements = GetOrCreateElementalNbt(attribute);
 		if(!elements.contains(key))
 		{
 			elements.putByte(key, inAmt);
@@ -191,18 +97,22 @@ public abstract class ItemStackMixin implements ElementalNbtProvider
 		}
 	}
 
-	private NbtCompound GetOrCreateElementalNbt(String nbtKey)
+	private NbtCompound GetOrCreateElementalNbt(ElementalAttribute attribute)
 	{
+		String nbtKey = attribute.toNbtKey();
 		ItemStack stack = ((ItemStack)(Object)this);
 		NbtCompound nbt = stack.getOrCreateNbt();
 
-		if(!nbt.contains(ELEMENTAL_RESISTANCE_KEY, 10))
+		if(!nbt.contains(nbtKey, 10))
 		{
-			NbtCompound elements = (NbtCompound)nbt.put(nbtKey, new NbtCompound());
+			NbtCompound elements = stack.getOrCreateSubNbt(nbtKey);//(NbtCompound)nbt.put(nbtKey, new NbtCompound());
 
 			// ensure that the items innate element is in the list
-			ElementalObject item = (ElementalObject)stack.getItem();
-			elements.putByte(item.GetElement().toString(), (byte)1);
+			if(attribute == ElementalAttribute.RESISTANCE)
+			{
+				InnateElementalAspect item = (InnateElementalAspect)stack.getItem();
+				elements.putByte(item.GetElement().toString(), (byte)1);
+			}
 		}
 
 		return stack.getSubNbt(nbtKey);

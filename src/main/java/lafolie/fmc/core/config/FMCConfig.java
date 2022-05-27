@@ -2,7 +2,7 @@ package lafolie.fmc.core.config;
 
 import java.util.ArrayList;
 
-import lafolie.fmc.core.elements.Element;
+import lafolie.fmc.core.elements.ElementalAspect;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
@@ -315,19 +315,19 @@ public class FMCConfig implements ConfigData
 		public float dark = 0f;
 		public float gravity = 0f;
 
-		public ArrayList<Pair<Element, Float>> GetPairList()
+		public ArrayList<Pair<ElementalAspect, Float>> GetPairList()
 		{
-			ArrayList<Pair<Element, Float>> list = new ArrayList<Pair<Element, Float>>();
-			list.add(new Pair<Element, Float>(Element.NONE, none));
-			list.add(new Pair<Element, Float>(Element.FIRE, fire));
-			list.add(new Pair<Element, Float>(Element.ICE, ice));
-			list.add(new Pair<Element, Float>(Element.LIGHTNING, lightning));
-			list.add(new Pair<Element, Float>(Element.WIND, wind));
-			list.add(new Pair<Element, Float>(Element.WATER, water));
-			list.add(new Pair<Element, Float>(Element.POISON, poison));
-			list.add(new Pair<Element, Float>(Element.HOLY, holy));
-			list.add(new Pair<Element, Float>(Element.DARK, dark));
-			list.add(new Pair<Element, Float>(Element.GRAVITY, gravity));
+			ArrayList<Pair<ElementalAspect, Float>> list = new ArrayList<Pair<ElementalAspect, Float>>();
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.NONE, none));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.FIRE, fire));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.ICE, ice));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.LIGHTNING, lightning));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.WIND, wind));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.WATER, water));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.POISON, poison));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.HOLY, holy));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.DARK, dark));
+			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.GRAVITY, gravity));
 
 			return list;
 		}

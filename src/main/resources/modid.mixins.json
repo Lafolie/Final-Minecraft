@@ -6,6 +6,7 @@
   "mixins": [
     "LivingEntityMixin",
     "ItemMixin",
+    "ItemStackMixin",
     "entity.mob.BlazeEntityMixin",
     "entity.mob.CaveSpiderEntityMixin",
     "entity.mob.CreeperEntityMixin",

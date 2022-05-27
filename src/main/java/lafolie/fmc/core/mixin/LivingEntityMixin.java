@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.Mod;
-import lafolie.fmc.core.elements.Element;
+import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalEntity;
 import lafolie.fmc.core.elements.WeakResistTable;
 import net.minecraft.entity.LivingEntity;
@@ -32,7 +32,7 @@ public abstract class LivingEntityMixin
 	}
 
 	@Override
-	public void InitElementalEntity(List<Pair<Element, Float>> baseWeakResist)
+	public void InitElementalEntity(List<Pair<ElementalAspect, Float>> baseWeakResist)
 	{
 		if(weakResist == null)
 		{
