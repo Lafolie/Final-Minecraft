@@ -74,6 +74,4 @@ If you are a developer and wish to supply official configuration extentions for 
 
 ## License
 
-*TODO: MIT*
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+FMC Core is licensed under the GNU General Public License v3.
