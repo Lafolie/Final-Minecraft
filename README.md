@@ -16,7 +16,7 @@ The FMC Core provides a limited set of features by itself:
 * Elemental aspects (configurable)
 * Status effects
 
-Elemental aspects can be toggled off in the config.
+With elemental aspects, mobs and players can have weaknesess/resistances, and equipment can have elemental attributes. Elemental aspects can be toggled off in the config.
 
 Status effects exist in the game but require other FMC mods to use.
 
@@ -62,6 +62,12 @@ You can join the official discord here: [https://discord.gg/Kv6umW2vzy](https://
 
 FMC Core exposes an API for mod developers to create their own FMC mods.
 
+### External Mod Support
+
+FMC Core's Elemental Aspects feature is fully compatible with items, blocks, and mobs supplied by other mods.
+Compatibility is achieved via configuration extentions. Players may add their own configurations to their personal installs, but the FMC project aims to provide built-in support for as many mods as possible.
+
+If you are a developer and wish to supply official configuration extentions for external mods please make a pull-request that adds your configuration data to <TODO: create config file>. See here <TODO: docs> for documentation.
 *TODO: setup maven on repo*
 
 *TODO: wiki and such*
