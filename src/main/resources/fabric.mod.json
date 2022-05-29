@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "fmccore",
+  "id": "final-minecraft",
   "version": "${version}",
 
   "name": "Final Minecraft Core",
@@ -10,10 +10,11 @@
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/Lafolie/FMC",
+    "issues": "https://github.com/Lafolie/FMC/issues"
   },
 
-  "license": "CC0-1.0",
+  "license": "GPL-3.0-only",
   "icon": "assets/fmccore/icon.png",
 
   "environment": "*",
@@ -42,5 +43,17 @@
   "suggests": {
     "another-mod": "*",
     "modmenu": "*"
+  },
+
+  "custom": {
+    "cardinal-components": [
+      "final-minecraft:elemental_stats"
+    ],
+
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/Kv6umW2vzy"
+      }
+    }
   }
 }

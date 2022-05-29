@@ -7,5 +7,5 @@ public interface ElementalObject
 	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute);
 	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute);
 	
-	public int GetTotalWeakResist(ElementalAspect element);
+	public int GetElementalAffinity(ElementalAspect element);
 }

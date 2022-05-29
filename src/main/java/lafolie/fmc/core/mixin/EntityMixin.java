@@ -1,33 +1,19 @@
 package lafolie.fmc.core.mixin;
 
-import java.util.List;
+import java.util.HashMap;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.Shadow;
 
-import lafolie.fmc.core.Mod;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalEntity;
 import lafolie.fmc.core.elements.ElementalObject;
-import lafolie.fmc.core.elements.WeakResistTable;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Pair;
-import net.minecraft.entity.EntityType;
-import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NbtCompound;
 
-@Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin
-	implements ElementalObject
+@Mixin(Entity.class)
+public class EntityMixin implements ElementalObject
 {
-	
-	@Inject(at = @At("TAIL"), method = "<init>")
-	public void Constructor(EntityType<? extends LivingEntity> entityType, World world, CallbackInfo info)
-	{
-		
-	}
 
 	@Override
 	public void AddElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
@@ -58,4 +44,10 @@ public abstract class LivingEntityMixin
 		// TODO Auto-generated method stub
 		
 	}
+
+	private void AddElement(ElementalAttribute attribute, ElementalAspect element, byte inAmt)
+	{
+
+	}
+
 }

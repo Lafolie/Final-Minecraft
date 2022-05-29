@@ -22,7 +22,7 @@ public class ModClient implements ClientModInitializer
 			
 			for(ElementalAspect element : ElementalAspect.values())
 			{
-				int total = elStack.GetTotalWeakResist(element);
+				int total = elStack.GetElementalAffinity(element);
 				if(total > 0)
 				{
 				lines.add(

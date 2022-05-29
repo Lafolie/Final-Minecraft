@@ -58,7 +58,7 @@ public abstract class ItemStackMixin implements ElementalObject
 	}
 
 	@Override
-	public int GetTotalWeakResist(ElementalAspect element)
+	public int GetElementalAffinity(ElementalAspect element)
 	{
 		return GetElementalAttribute(element, ElementalAttribute.RESISTANCE) - GetElementalAttribute(element, ElementalAttribute.WEAKNESS);
 	}

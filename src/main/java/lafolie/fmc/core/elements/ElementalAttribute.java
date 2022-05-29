@@ -2,9 +2,9 @@ package lafolie.fmc.core.elements;
 
 public enum ElementalAttribute
 {
-	WEAKNESS("ElementalWeakness"),
-	RESISTANCE("ElementalResistance"),
-	ABSORBTION("ElementalAbsorbtion");
+	WEAKNESS("FMC_ElementalWeakness"),
+	RESISTANCE("FMC_ElementalResistance"),
+	ABSORBTION("FMC_ElementalAbsorbtion");
 
 	private String key;
 
