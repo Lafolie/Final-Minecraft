@@ -16,7 +16,6 @@ public class FMCComponents implements
 	EntityComponentInitializer,
 	ItemComponentInitializer
 {
-
 	public static final Identifier ELEMENTAL_STATS_ID = new Identifier("final-minecraft", "elemental_stats");
 
 	public static final ComponentKey<ElementalStats> ELEMENTAL_STATS = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ID, ElementalStats.class);
@@ -24,13 +23,13 @@ public class FMCComponents implements
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry)
 	{
-		registry.registerFor(LivingEntity.class, ELEMENTAL_STATS, entity -> new ElementalStats());		
+		registry.registerFor(LivingEntity.class, ELEMENTAL_STATS, entity -> new ElementalStats(entity));
 	}
 
 	@Override
 	public void registerItemComponentFactories(ItemComponentFactoryRegistry registry)
 	{
-		registry.register(item -> item.getClass().isAssignableFrom(Item.class), ELEMENTAL_STATS, stack -> new ElementalStats());
+		registry.register(Item.class, ELEMENTAL_STATS, ElementalStats::new);
 	}
 	
 }

@@ -1,9 +1,13 @@
 package lafolie.fmc.core.internal.elements;
 
+import org.lwjgl.system.linux.X11;
+
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
 /**
@@ -15,9 +19,16 @@ public class ElementalStats implements ComponentV3, AutoSyncedComponent
 
 	private NbtCompound nbt = new NbtCompound();
 
-	public ElementalStats()
+	private Object provider;
+
+	public ElementalStats(Entity entity)
 	{
-		
+		provider = entity;
+	}
+
+	public ElementalStats(ItemStack stack)
+	{
+		provider = stack;
 	}
 
 	@Override
