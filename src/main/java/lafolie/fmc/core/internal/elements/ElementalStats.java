@@ -1,34 +1,37 @@
 package lafolie.fmc.core.internal.elements;
 
-import org.lwjgl.system.linux.X11;
-
-import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
 /**
  * This class implements ComponentV3 directly since we are going to abstract the component stuff away.
  */
-public class ElementalStats implements ComponentV3, AutoSyncedComponent
+public class ElementalStats implements ElementalStatsComponent, AutoSyncedComponent
 {
-	private static final String KEY = "FMC_ElementalAffinity";
+	private static final String KEY = "FMC_ElementalStats";
 
 	private NbtCompound nbt = new NbtCompound();
 
 	private Object provider;
 
-	public ElementalStats(Entity entity)
+	public ElementalStats(Object object)
 	{
-		provider = entity;
+		provider = object;
 	}
 
-	public ElementalStats(ItemStack stack)
+	@Override
+	public NbtCompound GetElementNbt()
 	{
-		provider = stack;
+		return nbt;
+	}
+
+	@Override
+	public void SetElementNbt(NbtCompound nbt)
+	{
+		this.nbt = nbt;
 	}
 
 	@Override
@@ -46,41 +49,5 @@ public class ElementalStats implements ComponentV3, AutoSyncedComponent
 	private void SyncTag()
 	{
 
-	}
-
-	public void AddElement(ElementalAttribute attribute, ElementalAspect element, byte inAmt)
-	{
-		String key = element.toString();
-
-		NbtCompound elements = GetOrCreateElementalNbt(attribute);
-		if(!elements.contains(key))
-		{
-			elements.putByte(key, inAmt);
-		}
-		else
-		{
-			byte amt = elements.getByte(key);
-			amt += inAmt;
-			if(amt > (byte)0)
-			{
-				elements.putByte(key, amt);
-			}
-			else
-			{
-				elements.remove(key);
-			}
-		}
-	}
-
-	private NbtCompound GetOrCreateElementalNbt(ElementalAttribute attribute)
-	{
-		String nbtKey = attribute.toNbtKey();
-
-		if(!nbt.contains(nbtKey, 10))
-		{
-			nbt.put(nbtKey, new NbtCompound());
-		}
-
-		return nbt.getCompound(nbtKey);
 	}
 }

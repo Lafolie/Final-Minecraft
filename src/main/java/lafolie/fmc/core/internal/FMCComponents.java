@@ -7,6 +7,7 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import lafolie.fmc.core.internal.elements.ElementalStats;
+import lafolie.fmc.core.internal.elements.ElementalStats_Item;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,7 @@ public class FMCComponents implements
 	@Override
 	public void registerItemComponentFactories(ItemComponentFactoryRegistry registry)
 	{
-		registry.register(Item.class, ELEMENTAL_STATS, ElementalStats::new);
+		registry.register(i -> true, ELEMENTAL_STATS, stack -> new ElementalStats_Item(stack));
 	}
 	
 }

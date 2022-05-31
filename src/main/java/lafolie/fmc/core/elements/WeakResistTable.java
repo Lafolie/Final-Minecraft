@@ -3,7 +3,6 @@ package lafolie.fmc.core.elements;
 import java.util.HashMap;
 import java.util.List;
 
-import lafolie.fmc.core.elements.ElementalAspect;
 import net.minecraft.util.Pair;
 
 public class WeakResistTable

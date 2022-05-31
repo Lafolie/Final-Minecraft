@@ -50,4 +50,10 @@ public class EntityMixin implements ElementalObject
 
 	}
 
+	@Override
+	public void AddBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -11,6 +11,6 @@ public class ElementalAffinityMap
 	public ElementalAffinityMap()
 	{
 		affinities = new EnumMap<>(ElementalAspect.class);
-		
+
 	}
 }
