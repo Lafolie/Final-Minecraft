@@ -49,6 +49,9 @@ FMC Core should be installed on both clients and the server.
 FMC Core requires the following mods:
 * Fabric API
 * Cloth-Config
+* Cardinal-Components
+
+*TODO: Add links*
 
 ### Optional Dependencies
 
@@ -65,6 +68,7 @@ Mods in the official FMC mod set include:
 
 * FMC Core *- add elemental aspects to mobs and equipment. Required by other FMC mods*
 * FMC Crystals *- add crystal items and blocks to your world*
+* *More to come...!*
 
 You can join the official discord here: [https://discord.gg/Kv6umW2vzy](https://discord.gg/Kv6umW2vzy)
 
