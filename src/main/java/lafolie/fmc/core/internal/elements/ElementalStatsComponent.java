@@ -11,10 +11,12 @@ import net.minecraft.nbt.NbtCompound;
 
 public interface ElementalStatsComponent extends ComponentV3
 {
+	public final static String KEY = "FMC_ElementalStats";
+
 	public NbtCompound GetElementNbt();
 	public void SetElementNbt(NbtCompound nbt);
 
-	public default void AddElement(ElementalAttribute attribute, ElementalAspect element, byte inAmt)
+	public default void AddElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
 	{
 		String key = element.toString();
 

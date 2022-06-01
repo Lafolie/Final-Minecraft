@@ -8,6 +8,9 @@
   "authors": [
     "Lafolie"
   ],
+  "contributors": [
+    "Linguardium"
+  ]
   "contact": {
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/Lafolie/FMC",
@@ -24,6 +27,9 @@
     ],
     "client": [
       "lafolie.fmc.core.ModClient"
+    ],
+    "cardinal-components": [
+      "lafolie.fmc.core.internal.Components"
     ],
     "modmenu": [
       "lafolie.fmc.core.config.ConfigMenu"

@@ -1,16 +1,16 @@
 package lafolie.fmc.core.elements;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 
 /**
  * Static utility methods for ElementalObjects
  */
-public final class ElementalObjectUtils
+public final class Utils
 {
-	private ElementalObjectUtils() {};
+	private Utils() {};
 
-	public static final HashMap<ElementalAspect, String> ElementLangKeys = new HashMap<ElementalAspect, String>();
-
+	public static final EnumMap<ElementalAspect, String> ElementLangKeys = new EnumMap<ElementalAspect, String>(ElementalAspect.class);
 	static
 	{
 		ElementLangKeys.put(ElementalAspect.NONE, "fmc.core.element.tooltip.none");

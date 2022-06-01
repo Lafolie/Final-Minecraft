@@ -2,9 +2,30 @@ package lafolie.fmc.core.elements;
 
 public enum ElementalAttribute
 {
+	/**
+	 * Increases damage.
+	 */
 	WEAKNESS("FMC_ElementalWeakness"),
+	/**
+	 * Reduces damage.
+	 */
 	RESISTANCE("FMC_ElementalResistance"),
-	ABSORBTION("FMC_ElementalAbsorbtion");
+	/**
+	 * Damage becomes healing.
+	 */
+	ABSORBTION("FMC_ElementalAbsorbtion"),
+	/**
+	 * Damage will be nullified (0).
+	 */
+	IMMUNITY("FMC_ElementalImmunity"),
+	/**
+	 * Damage will instantly kill.
+	 */
+	FATAL("FMC_ElementalFatal"),
+	/**
+	 * Damage will fully heal.
+	 */
+	REVIVE("FMC_ElementalRevive");
 
 	private String key;
 

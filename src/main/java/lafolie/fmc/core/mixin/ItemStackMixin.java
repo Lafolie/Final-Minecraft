@@ -5,8 +5,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
-import lafolie.fmc.core.elements.InnateElementalAspect;
 
+import lafolie.fmc.core.internal.Components;
+import lafolie.fmc.core.internal.elements.ElementalStats_Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
@@ -25,96 +26,90 @@ public abstract class ItemStackMixin implements ElementalObject
 	// {
 		
 	// }
+	private ElementalStats_Item GetComponent()
+	{
+		return Components.ELEMENTAL_STATS_ITEM.get(this);
+	}
 
 	// ------------------------------------------------------------------------
 	// ELEMENTALOBJECT INTERFACE
 	// ------------------------------------------------------------------------
 
+	/**
+	 * Adds a base elemental aspect to the item.
+	 * 
+	 * @param element
+	 * @param attribute
+	 * @param amount the amount to add, must be positive!
+	 */
+	@Override
+	public void AddBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount)
+	{
+		assert amount > 0: "Base ElementalAspects must be >0!"; //TODO: replace this with try/catch
+		GetComponent().AddElement(element, attribute, (byte)amount);
+	}
+
+	/**
+	 * Adds an elememental aspect to the item.
+	 * If the attribute is WEAKNESS or RESISTANCE, the corresponding element's RESISTANCE/WEAKNESS
+	 * will increase as well.
+	 * For example, setting a FIRE RESISTANCE will increase WATER WEAKNESS
+	 */
 	@Override
 	public void AddElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		AddElement(attribute, element, (byte)1);
+		ElementalStats_Item stats = GetComponent();
+		stats.AddElement(element, attribute, (byte)1);
+		if(attribute == ElementalAttribute.WEAKNESS)
+		{
+			stats.AddElement(element.GetStrongTo(), ElementalAttribute.RESISTANCE, (byte)1);
+		}
+		else if(attribute == ElementalAttribute.RESISTANCE)
+		{
+			stats.AddElement(element.GetWeakTo(), ElementalAttribute.WEAKNESS, (byte)1);
+		}
 	}
 
+	/**
+	 * Removes an elememental aspect to the item.
+	 * If the attribute is WEAKNESS or RESISTANCE, the corresponding element's RESISTANCE/WEAKNESS
+	 * will increase as well.
+	 * For example, removing a FIRE RESISTANCE will lower WATER WEAKNESS
+	 * An element's tag will be removed if the value drops to 0.
+	 */
 	@Override
 	public void RemoveElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		AddElement(attribute, element, (byte)-1);
+		ElementalStats_Item stats = GetComponent();
+		stats.AddElement(element, attribute, (byte)-1);
+		if(attribute == ElementalAttribute.WEAKNESS)
+		{
+			stats.AddElement(element.GetStrongTo(), ElementalAttribute.RESISTANCE, (byte)-1);
+		}
+		else if(attribute == ElementalAttribute.RESISTANCE)
+		{
+			stats.AddElement(element.GetWeakTo(), ElementalAttribute.WEAKNESS, (byte)-1);
+		}
 	}
 
 	@Override 
 	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		NbtCompound elements = GetOrCreateElementalNbt(attribute);
+		NbtCompound elements = GetComponent().GetOrCreateElementalNbt(attribute);
 		return elements.contains(element.toString());
 	}
 
 	@Override
 	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute)
 	{
-		NbtCompound weak = GetOrCreateElementalNbt(attribute);
+		NbtCompound nbt = GetComponent().GetOrCreateElementalNbt(attribute);
 		String key = element.toString();
-		return (int)weak.getByte(key);
+		return (int)nbt.getByte(key);
 	}
 
 	@Override
 	public int GetElementalAffinity(ElementalAspect element)
 	{
 		return GetElementalAttribute(element, ElementalAttribute.RESISTANCE) - GetElementalAttribute(element, ElementalAttribute.WEAKNESS);
-	}
-
-	// ------------------------------------------------------------------------
-	// PRIVATE HELPERS
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Generic method to modify element stores
-	 * @param nbtKey
-	 * @param element
-	 * @param inAmt
-	 */
-	private void AddElement(ElementalAttribute attribute, ElementalAspect element, byte inAmt)
-	{
-		String key = element.toString();
-
-		NbtCompound elements = GetOrCreateElementalNbt(attribute);
-		if(!elements.contains(key))
-		{
-			elements.putByte(key, inAmt);
-		}
-		else
-		{
-			byte amt = elements.getByte(key);
-			amt += inAmt;
-			if(amt > (byte)0)
-			{
-				elements.putByte(key, amt);
-			}
-			else
-			{
-				elements.remove(key);
-			}
-		}
-	}
-
-	private NbtCompound GetOrCreateElementalNbt(ElementalAttribute attribute)
-	{
-		String nbtKey = attribute.toNbtKey();
-		ItemStack stack = ((ItemStack)(Object)this);
-		NbtCompound nbt = stack.getOrCreateNbt();
-
-		if(!nbt.contains(nbtKey, 10))
-		{
-			NbtCompound elements = stack.getOrCreateSubNbt(nbtKey);//(NbtCompound)nbt.put(nbtKey, new NbtCompound());
-
-			// ensure that the items innate element is in the list
-			if(attribute == ElementalAttribute.RESISTANCE)
-			{
-				InnateElementalAspect item = (InnateElementalAspect)stack.getItem();
-				elements.putByte(item.GetElement().toString(), (byte)1);
-			}
-		}
-
-		return stack.getSubNbt(nbtKey);
 	}
 }

@@ -7,6 +7,6 @@ public interface ElementalObject
 	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute);
 	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute);
 	public int GetElementalAffinity(ElementalAspect element);
-	public void AddBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute);
+	public void AddBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount);
 
 }
