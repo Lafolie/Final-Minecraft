@@ -26,8 +26,8 @@ public abstract class BlazeEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.blazeWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.blazeWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

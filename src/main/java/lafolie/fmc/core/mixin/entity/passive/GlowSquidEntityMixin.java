@@ -26,8 +26,8 @@ public abstract class GlowSquidEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.glowSquidWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.glowSquidWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

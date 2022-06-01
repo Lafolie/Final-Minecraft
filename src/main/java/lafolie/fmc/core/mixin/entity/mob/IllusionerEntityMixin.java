@@ -26,8 +26,8 @@ public abstract class IllusionerEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.illusionerWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.illusionerWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

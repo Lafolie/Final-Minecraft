@@ -26,8 +26,8 @@ public abstract class MuleEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.muleWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.muleWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

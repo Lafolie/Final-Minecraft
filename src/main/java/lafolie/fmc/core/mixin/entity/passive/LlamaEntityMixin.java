@@ -26,8 +26,8 @@ public abstract class LlamaEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.llamaWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.llamaWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

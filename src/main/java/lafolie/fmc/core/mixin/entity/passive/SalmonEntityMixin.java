@@ -26,8 +26,8 @@ public abstract class SalmonEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.salmonWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.salmonWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

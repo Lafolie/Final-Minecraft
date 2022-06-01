@@ -26,8 +26,8 @@ public abstract class SkeletonEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.skeletonWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.skeletonWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

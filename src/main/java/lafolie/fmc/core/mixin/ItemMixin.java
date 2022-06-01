@@ -13,10 +13,10 @@ import net.minecraft.item.Item.Settings;
 @Mixin(Item.class)
 public abstract class ItemMixin implements InnateElementalAspect
 {
-	private ElementalAspect innateElement = ElementalAspect.RandomElement();
+	private ElementalAspect innateElement = ElementalAspect.randomElement();
 
 	@Override
-	public ElementalAspect GetElement()
+	public ElementalAspect getElement()
 	{
 		return innateElement;
 	}
@@ -32,7 +32,7 @@ public abstract class ItemMixin implements InnateElementalAspect
 	// }
 
 	@Inject(at = @At("TAIL"), method = "<init>")
-	private void Constructor(Settings settings, CallbackInfo info)
+	private void constructor(Settings settings, CallbackInfo info)
 	{
 
 	}

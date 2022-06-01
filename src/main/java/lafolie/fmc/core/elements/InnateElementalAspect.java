@@ -5,5 +5,5 @@ package lafolie.fmc.core.elements;
  */
 public interface InnateElementalAspect
 {
-	public ElementalAspect GetElement();
+	public ElementalAspect getElement();
 }

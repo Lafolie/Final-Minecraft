@@ -26,8 +26,8 @@ public abstract class ChickenEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.chickenWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.chickenWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

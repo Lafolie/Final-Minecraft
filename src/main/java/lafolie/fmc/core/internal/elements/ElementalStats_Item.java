@@ -16,13 +16,13 @@ public class ElementalStats_Item extends ItemComponent implements ElementalStats
 	}
 
 	@Override
-	public NbtCompound GetElementNbt()
+	public NbtCompound getElementNbt()
 	{
 		return stack.getOrCreateSubNbt(KEY);
 	}
 
 	@Override
-	public void SetElementNbt(NbtCompound nbt)
+	public void setElementNbt(NbtCompound nbt)
 	{
 		stack.setSubNbt(KEY, nbt);
 	}

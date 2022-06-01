@@ -26,8 +26,8 @@ public abstract class WanderingTraderEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.wanderingTraderWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.wanderingTraderWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

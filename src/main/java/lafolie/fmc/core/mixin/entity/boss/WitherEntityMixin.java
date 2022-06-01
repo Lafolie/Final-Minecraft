@@ -26,8 +26,8 @@ public abstract class WitherEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.witherWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.witherWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

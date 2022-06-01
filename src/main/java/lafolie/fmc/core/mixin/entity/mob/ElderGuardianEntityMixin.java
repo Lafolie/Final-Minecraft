@@ -26,8 +26,8 @@ public abstract class ElderGuardianEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.elderGuardianWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.elderGuardianWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

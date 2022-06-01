@@ -26,8 +26,8 @@ public abstract class SpellcastingIllagerEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.spellcastingIllagerWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.spellcastingIllagerWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

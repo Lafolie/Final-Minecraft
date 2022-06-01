@@ -26,8 +26,8 @@ public abstract class SlimeEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.slimeWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.slimeWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

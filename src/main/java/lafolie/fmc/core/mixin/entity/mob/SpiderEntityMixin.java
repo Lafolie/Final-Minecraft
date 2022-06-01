@@ -26,8 +26,8 @@ public abstract class SpiderEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.spiderWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.spiderWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

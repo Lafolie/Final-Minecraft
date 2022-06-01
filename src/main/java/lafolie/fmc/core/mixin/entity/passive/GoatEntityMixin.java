@@ -26,8 +26,8 @@ public abstract class GoatEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.goatWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.goatWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

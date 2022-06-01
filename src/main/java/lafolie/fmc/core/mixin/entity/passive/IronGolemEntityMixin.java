@@ -26,8 +26,8 @@ public abstract class IronGolemEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ironGolemWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ironGolemWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

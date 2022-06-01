@@ -26,8 +26,8 @@ public abstract class ZombieVillagerEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.zombieVillagerWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.zombieVillagerWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

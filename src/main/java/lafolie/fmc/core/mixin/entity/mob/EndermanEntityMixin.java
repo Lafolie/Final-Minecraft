@@ -26,8 +26,8 @@ public abstract class EndermanEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.endermanWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.endermanWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

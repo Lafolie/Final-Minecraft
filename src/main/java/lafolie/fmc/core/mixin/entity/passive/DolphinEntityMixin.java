@@ -26,8 +26,8 @@ public abstract class DolphinEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.dolphinWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.dolphinWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

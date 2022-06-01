@@ -26,8 +26,8 @@ public abstract class TurtleEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.turtleWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.turtleWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

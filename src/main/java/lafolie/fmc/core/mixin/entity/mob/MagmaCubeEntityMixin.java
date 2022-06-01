@@ -26,8 +26,8 @@ public abstract class MagmaCubeEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.magmaCubeWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.magmaCubeWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

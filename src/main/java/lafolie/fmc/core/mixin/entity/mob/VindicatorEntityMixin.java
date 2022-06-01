@@ -26,8 +26,8 @@ public abstract class VindicatorEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.vindicatorWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.vindicatorWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

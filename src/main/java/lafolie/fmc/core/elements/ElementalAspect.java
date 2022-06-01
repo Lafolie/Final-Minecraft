@@ -82,7 +82,7 @@ public enum ElementalAspect
 	 * Get a random element (excludes NONE)
 	 * @return a random element
 	 */
-	public static ElementalAspect RandomElement()
+	public static ElementalAspect randomElement()
 	{
 		ArrayList<ElementalAspect> list = new ArrayList<ElementalAspect>();
 		for(ElementalAspect e : EnumSet.range(FIRE, GRAVITY))
@@ -97,7 +97,7 @@ public enum ElementalAspect
 	 * Get a random element from the provided list
 	 * @return random element
 	 */
-	public static ElementalAspect RandomElement(List<ElementalAspect> list)
+	public static ElementalAspect randomElement(List<ElementalAspect> list)
 	{
 		List<ElementalAspect> temp = new ArrayList<ElementalAspect>();
 		Collections.copy(temp, list);
@@ -105,32 +105,32 @@ public enum ElementalAspect
 		return list.get(0);
 	}
 
-	public String GetLangKey()
+	public String getLangKey()
 	{
 		return LANG_KEYS.get(this);
 	}
 
-	public static String GetLangKey(ElementalAspect element)
+	public static String getLangKey(ElementalAspect element)
 	{
 		return LANG_KEYS.get(element);
 	}
 
-	public static ElementalAspect GetStrongTo(ElementalAspect element)
+	public static ElementalAspect getStrongTo(ElementalAspect element)
 	{
 		return STRONG.get(element);
 	}
 
-	public ElementalAspect GetStrongTo()
+	public ElementalAspect getStrongTo()
 	{
 		return STRONG.get(this);
 	}
 
-	public static ElementalAspect GetWeakTo(ElementalAspect element)
+	public static ElementalAspect getWeakTo(ElementalAspect element)
 	{
 		return WEAK.get(element);
 	}
 
-	public ElementalAspect GetWeakTo()
+	public ElementalAspect getWeakTo()
 	{
 		return WEAK.get(this);
 	}

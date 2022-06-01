@@ -315,7 +315,7 @@ public class FMCConfig implements ConfigData
 		public float dark = 0f;
 		public float gravity = 0f;
 
-		public ArrayList<Pair<ElementalAspect, Float>> GetPairList()
+		public ArrayList<Pair<ElementalAspect, Float>> getPairList()
 		{
 			ArrayList<Pair<ElementalAspect, Float>> list = new ArrayList<Pair<ElementalAspect, Float>>();
 			list.add(new Pair<ElementalAspect, Float>(ElementalAspect.NONE, none));

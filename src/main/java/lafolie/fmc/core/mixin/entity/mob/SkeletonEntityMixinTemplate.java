@@ -26,10 +26,10 @@ public abstract class SkeletonEntityMixinTemplate
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.skeletonWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.skeletonWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
-		WeakResistTable tbl = self.GetWeakResistTable();
+		self.initElementalEntity(baseElements);
+		WeakResistTable tbl = self.getWeakResistTable();
 		Mod.log.info(tbl.PrintElement(ElementalAspect.FIRE));
 	}
 }

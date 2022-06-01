@@ -11,8 +11,6 @@ import net.minecraft.nbt.NbtCompound;
  */
 public class ElementalStats implements ElementalStatsComponent, AutoSyncedComponent
 {
-	private static final String KEY = "FMC_ElementalStats";
-
 	private NbtCompound nbt = new NbtCompound();
 
 	private Object provider;
@@ -23,13 +21,13 @@ public class ElementalStats implements ElementalStatsComponent, AutoSyncedCompon
 	}
 
 	@Override
-	public NbtCompound GetElementNbt()
+	public NbtCompound getElementNbt()
 	{
 		return nbt;
 	}
 
 	@Override
-	public void SetElementNbt(NbtCompound nbt)
+	public void setElementNbt(NbtCompound nbt)
 	{
 		this.nbt = nbt;
 	}
@@ -46,7 +44,7 @@ public class ElementalStats implements ElementalStatsComponent, AutoSyncedCompon
 		tag.put(KEY, nbt);
 	}
 
-	private void SyncTag()
+	private void syncTag()
 	{
 
 	}

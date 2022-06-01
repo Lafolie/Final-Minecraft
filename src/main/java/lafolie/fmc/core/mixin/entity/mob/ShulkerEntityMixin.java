@@ -26,8 +26,8 @@ public abstract class ShulkerEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.shulkerWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.shulkerWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

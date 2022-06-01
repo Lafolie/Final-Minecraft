@@ -26,8 +26,8 @@ public abstract class RabbitEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.rabbitWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.rabbitWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

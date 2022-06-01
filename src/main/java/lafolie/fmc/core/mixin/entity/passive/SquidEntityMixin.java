@@ -26,8 +26,8 @@ public abstract class SquidEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.squidWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.squidWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

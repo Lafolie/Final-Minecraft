@@ -30,31 +30,31 @@ public abstract class LivingEntityMixin
 	}
 
 	@Override
-	public void AddElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
+	public void addElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute) {
+	public int getElementalAttribute(ElementalAspect element, ElementalAttribute attribute) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int GetElementalAffinity(ElementalAspect element) {
+	public int getElementalAffinity(ElementalAspect element) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
+	public boolean hasElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void RemoveElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
+	public void removeElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
 		// TODO Auto-generated method stub
 		
 	}

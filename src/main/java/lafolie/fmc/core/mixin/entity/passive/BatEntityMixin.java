@@ -26,8 +26,8 @@ public abstract class BatEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.batWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.batWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

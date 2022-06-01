@@ -26,8 +26,8 @@ public abstract class HuskEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.huskWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.huskWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

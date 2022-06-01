@@ -26,8 +26,8 @@ public abstract class PiglinEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.piglinWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.piglinWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

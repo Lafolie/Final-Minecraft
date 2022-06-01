@@ -26,7 +26,7 @@ public abstract class ItemStackMixin implements ElementalObject
 	// {
 		
 	// }
-	private ElementalStats_Item GetComponent()
+	private ElementalStats_Item getComponent()
 	{
 		return Components.ELEMENTAL_STATS_ITEM.get(this);
 	}
@@ -43,10 +43,9 @@ public abstract class ItemStackMixin implements ElementalObject
 	 * @param amount the amount to add, must be positive!
 	 */
 	@Override
-	public void AddBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount)
+	public void addBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount)
 	{
-		assert amount > 0: "Base ElementalAspects must be >0!"; //TODO: replace this with try/catch
-		GetComponent().AddElement(element, attribute, (byte)amount);
+		getComponent().addElement(element, attribute, (byte)amount);
 	}
 
 	/**
@@ -56,17 +55,17 @@ public abstract class ItemStackMixin implements ElementalObject
 	 * For example, setting a FIRE RESISTANCE will increase WATER WEAKNESS
 	 */
 	@Override
-	public void AddElementalAspect(ElementalAspect element, ElementalAttribute attribute)
+	public void addElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		ElementalStats_Item stats = GetComponent();
-		stats.AddElement(element, attribute, (byte)1);
+		ElementalStats_Item stats = getComponent();
+		stats.addElement(element, attribute, (byte)1);
 		if(attribute == ElementalAttribute.WEAKNESS)
 		{
-			stats.AddElement(element.GetStrongTo(), ElementalAttribute.RESISTANCE, (byte)1);
+			stats.addElement(element.getStrongTo(), ElementalAttribute.RESISTANCE, (byte)1);
 		}
 		else if(attribute == ElementalAttribute.RESISTANCE)
 		{
-			stats.AddElement(element.GetWeakTo(), ElementalAttribute.WEAKNESS, (byte)1);
+			stats.addElement(element.getWeakTo(), ElementalAttribute.WEAKNESS, (byte)1);
 		}
 	}
 
@@ -78,38 +77,38 @@ public abstract class ItemStackMixin implements ElementalObject
 	 * An element's tag will be removed if the value drops to 0.
 	 */
 	@Override
-	public void RemoveElementalAspect(ElementalAspect element, ElementalAttribute attribute)
+	public void removeElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		ElementalStats_Item stats = GetComponent();
-		stats.AddElement(element, attribute, (byte)-1);
+		ElementalStats_Item stats = getComponent();
+		stats.addElement(element, attribute, (byte)-1);
 		if(attribute == ElementalAttribute.WEAKNESS)
 		{
-			stats.AddElement(element.GetStrongTo(), ElementalAttribute.RESISTANCE, (byte)-1);
+			stats.addElement(element.getStrongTo(), ElementalAttribute.RESISTANCE, (byte)-1);
 		}
 		else if(attribute == ElementalAttribute.RESISTANCE)
 		{
-			stats.AddElement(element.GetWeakTo(), ElementalAttribute.WEAKNESS, (byte)-1);
+			stats.addElement(element.getWeakTo(), ElementalAttribute.WEAKNESS, (byte)-1);
 		}
 	}
 
 	@Override 
-	public boolean HasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
+	public boolean hasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		NbtCompound elements = GetComponent().GetOrCreateElementalNbt(attribute);
+		NbtCompound elements = getComponent().getOrCreateElementalNbt(attribute);
 		return elements.contains(element.toString());
 	}
 
 	@Override
-	public int GetElementalAttribute(ElementalAspect element, ElementalAttribute attribute)
+	public int getElementalAttribute(ElementalAspect element, ElementalAttribute attribute)
 	{
-		NbtCompound nbt = GetComponent().GetOrCreateElementalNbt(attribute);
+		NbtCompound nbt = getComponent().getOrCreateElementalNbt(attribute);
 		String key = element.toString();
 		return (int)nbt.getByte(key);
 	}
 
 	@Override
-	public int GetElementalAffinity(ElementalAspect element)
+	public int getElementalAffinity(ElementalAspect element)
 	{
-		return GetElementalAttribute(element, ElementalAttribute.RESISTANCE) - GetElementalAttribute(element, ElementalAttribute.WEAKNESS);
+		return getElementalAttribute(element, ElementalAttribute.RESISTANCE) - getElementalAttribute(element, ElementalAttribute.WEAKNESS);
 	}
 }

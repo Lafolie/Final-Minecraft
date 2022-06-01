@@ -26,8 +26,8 @@ public abstract class GhastEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ghastWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ghastWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

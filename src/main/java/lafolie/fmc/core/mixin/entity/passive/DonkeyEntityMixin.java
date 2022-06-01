@@ -26,8 +26,8 @@ public abstract class DonkeyEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.donkeyWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.donkeyWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

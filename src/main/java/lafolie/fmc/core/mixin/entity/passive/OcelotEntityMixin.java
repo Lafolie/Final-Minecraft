@@ -26,8 +26,8 @@ public abstract class OcelotEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ocelotWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ocelotWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

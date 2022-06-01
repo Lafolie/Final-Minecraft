@@ -26,8 +26,8 @@ public abstract class ParrotEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.parrotWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.parrotWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

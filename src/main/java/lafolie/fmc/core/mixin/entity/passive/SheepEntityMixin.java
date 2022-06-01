@@ -26,8 +26,8 @@ public abstract class SheepEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.sheepWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.sheepWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -26,8 +26,8 @@ public abstract class PiglinBruteEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.piglinBruteWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.piglinBruteWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -2,7 +2,7 @@ package lafolie.fmc.core;
 
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalObject;
-import lafolie.fmc.core.elements.ElementalObjectUtils;
+import lafolie.fmc.core.elements.Utils;
 import lafolie.fmc.core.mixin.ItemStackMixin;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
@@ -22,12 +22,12 @@ public class ModClient implements ClientModInitializer
 			
 			for(ElementalAspect element : ElementalAspect.values())
 			{
-				int total = elStack.GetElementalAffinity(element);
+				int total = elStack.getElementalAffinity(element);
 				if(total > 0)
 				{
 				lines.add(
 					new TranslatableText("fmc.core.element.tooltip.elemental",
-					new TranslatableText(ElementalObjectUtils.ElementLangKeys.get(element))));
+					new TranslatableText(Utils.ElementLangKeys.get(element))));
 				}
 			}
 		});

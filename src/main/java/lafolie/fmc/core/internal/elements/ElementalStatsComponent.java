@@ -13,14 +13,14 @@ public interface ElementalStatsComponent extends ComponentV3
 {
 	public final static String KEY = "FMC_ElementalStats";
 
-	public NbtCompound GetElementNbt();
-	public void SetElementNbt(NbtCompound nbt);
+	public NbtCompound getElementNbt();
+	public void setElementNbt(NbtCompound nbt);
 
-	public default void AddElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
+	public default void addElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
 	{
 		String key = element.toString();
 
-		NbtCompound elements = GetOrCreateElementalNbt(attribute);
+		NbtCompound elements = getOrCreateElementalNbt(attribute);
 		if(!elements.contains(key))
 		{
 			elements.putByte(key, inAmt);
@@ -40,15 +40,15 @@ public interface ElementalStatsComponent extends ComponentV3
 		}
 	}
 
-	public default NbtCompound GetOrCreateElementalNbt(ElementalAttribute attribute)
+	public default NbtCompound getOrCreateElementalNbt(ElementalAttribute attribute)
 	{
-		NbtCompound nbt = GetElementNbt();
+		NbtCompound nbt = getElementNbt();
 		String nbtKey = attribute.toNbtKey();
 
 		if(!nbt.contains(nbtKey, NbtType.COMPOUND))
 		{
 			nbt.put(nbtKey, new NbtCompound());
-			SetElementNbt(nbt);
+			setElementNbt(nbt);
 		}
 
 		return nbt.getCompound(nbtKey);

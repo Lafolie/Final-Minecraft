@@ -26,8 +26,8 @@ public abstract class RavagerEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ravagerWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.ravagerWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

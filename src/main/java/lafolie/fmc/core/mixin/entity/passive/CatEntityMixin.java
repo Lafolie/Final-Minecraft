@@ -26,8 +26,8 @@ public abstract class CatEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.catWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.catWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

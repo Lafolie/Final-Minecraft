@@ -26,8 +26,8 @@ public abstract class PhantomEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.phantomWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.phantomWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

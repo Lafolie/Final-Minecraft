@@ -26,8 +26,8 @@ public abstract class WolfEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.wolfWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.wolfWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -26,8 +26,8 @@ public abstract class AxolotlEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.axolotlWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.axolotlWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

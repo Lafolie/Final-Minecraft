@@ -26,8 +26,8 @@ public abstract class TropicalFishEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.tropicalFishWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.tropicalFishWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

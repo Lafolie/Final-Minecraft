@@ -26,8 +26,8 @@ public abstract class CowEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.cowWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.cowWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

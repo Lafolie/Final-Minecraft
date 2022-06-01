@@ -26,8 +26,8 @@ public abstract class HoglinEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.hoglinWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.hoglinWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -26,8 +26,8 @@ public abstract class BeeEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.beeWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.beeWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -26,8 +26,8 @@ public abstract class CaveSpiderEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.caveSpiderWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.caveSpiderWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

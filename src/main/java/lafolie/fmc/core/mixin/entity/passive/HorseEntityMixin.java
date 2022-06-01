@@ -26,8 +26,8 @@ public abstract class HorseEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.horseWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.horseWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

@@ -26,8 +26,8 @@ public abstract class GuardianEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.guardianWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.guardianWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

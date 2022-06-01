@@ -26,8 +26,8 @@ public abstract class FoxEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.foxWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.foxWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }

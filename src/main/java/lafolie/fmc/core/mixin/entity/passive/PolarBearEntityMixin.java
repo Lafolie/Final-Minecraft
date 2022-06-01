@@ -26,8 +26,8 @@ public abstract class PolarBearEntityMixin
 		ElementalEntity self = (ElementalEntity)this;
 
 		FMCConfig config =  Mod.getConfig();
-		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.polarBearWeakResist.GetPairList();
+		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.polarBearWeakResist.getPairList();
 
-		self.InitElementalEntity(baseElements);
+		self.initElementalEntity(baseElements);
 	}
 }
