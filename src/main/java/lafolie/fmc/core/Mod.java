@@ -1,6 +1,13 @@
 package lafolie.fmc.core;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +15,7 @@ import lafolie.fmc.core.config.FMCConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-public class Mod implements ModInitializer
+public class Mod implements ModInitializer//, RegistryEntryAddedCallback<Item>
 {
 	public static final byte VERSION_MAJOR = 0;
 	public static final byte VERSION_MINOR = 1;
@@ -28,10 +35,11 @@ public class Mod implements ModInitializer
 	public void onInitialize()
 	{
 		log.info("Loaded FMC Core version %s", getVersionString());
-		InitConfig();
+		initConfig();
+		RegistryEntryAddedCallback.event(Registry.ITEM).register((rawId, id, block) -> {log.info(id.toString());});
 	}
 
-	private void InitConfig()
+	private void initConfig()
 	{
 		AutoConfig.register(FMCConfig.class, JanksonConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(FMCConfig.class).getConfig();
@@ -41,4 +49,14 @@ public class Mod implements ModInitializer
 	{
 		return config;
 	}
+
+	
+
+	// @Override
+	// public void onEntryAdded(int rawId, net.minecraft.util.Identifier id, Item object)
+	// {
+	// 	System.out.print(id.toString());
+	// 	log.info(id.toString());
+		
+	// }
 }

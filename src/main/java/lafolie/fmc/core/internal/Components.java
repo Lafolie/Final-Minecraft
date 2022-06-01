@@ -13,7 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class FMCComponents implements
+public class Components implements
 	EntityComponentInitializer,
 	ItemComponentInitializer
 {

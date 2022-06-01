@@ -53,7 +53,9 @@
 
   "custom": {
     "cardinal-components": [
-      "final-minecraft:elemental_stats"
+      "final-minecraft:elemental_stats",
+      "final-minecraft:elemental_stats_item"
+
     ],
 
     "modmenu": {
