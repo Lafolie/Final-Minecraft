@@ -84,6 +84,13 @@ If you are a developer and wish to supply official configuration extensions for 
 
 *TODO: wiki and such*
 
+## Authors
+
+Lafolie - designer and developer.
+
+### Special Thanks
+Linguardium - of the fabric discord, for his tremendous help in learning how to do this stuff!
+
 ## License
 
 FMC Core is licensed under the GNU General Public License v3.
