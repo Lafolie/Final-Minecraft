@@ -81,9 +81,9 @@ FMC Core exposes an API for mod developers to create their own FMC add-ons.
 #### Elemental Aspects
 
 FMC Core's Elemental Aspects feature is fully compatible with items, blocks, and mobs supplied by other mods.
-Compatibility is achieved via configuration extensions. Players may add their own configurations to their personal installs, but the FMC project aims to provide built-in support for as many mods as possible.
+Compatibility is achieved via tags.
 
-If you are a developer and wish to supply official configuration extensions for external mods please make a pull-request that adds your configuration data to <TODO: create config file>. See here <TODO: docs> for documentation and guidelines.
+If you are a developer and wish to make your blocks, items, and entities compatible, all you need to do is add your items to appropriate elemental tag.
 *TODO: setup maven on repo*
 
 *TODO: wiki and such*

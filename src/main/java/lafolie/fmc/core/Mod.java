@@ -4,7 +4,10 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -36,7 +39,7 @@ public class Mod implements ModInitializer//, RegistryEntryAddedCallback<Item>
 	{
 		log.info("Loaded FMC Core version %s", getVersionString());
 		initConfig();
-		RegistryEntryAddedCallback.event(Registry.ITEM).register((rawId, id, block) -> {log.info(id.toString());});
+		RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
 	}
 
 	private void initConfig()
