@@ -9,6 +9,7 @@ local commands = {}
 commands["-help"] = function(path)
 	print[=[
 Usage: genTags [option1 [arg]] [option2 [arg]] ...
+This program transforms CSV data into tag JSON usable by minecraft.
 Available arguments:
 	-h help		Show this help screen
 	-b blocks	Generate block tags from CSV. Takes option path as arg, defaults to 'input/blocks.csv'
