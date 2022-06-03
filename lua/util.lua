@@ -2,10 +2,33 @@ local concat, insert = table.concat, table.insert
 
 local util = {}
 
-function util.writeTable(tbl, path, seperator)
+util.elementalAspects = 
+{
+	none = "none",
+	fire = "fire",
+	ice = "ice",
+	lightning = "lightning",
+	wind = "wind",
+	water = "water",
+	earth = "earth",
+	poison = "poison",
+	holy = "holy",
+	dark = "dark",
+	gravity = "gravity"
+}
+
+function util.writeTable(path, tbl, seperator)
 	local file = io.open(path, "w")
 	io.output(file)
 	io.write(concat(tbl, seperator or "\n"))
+	io.close()
+	print(string.format("Created %s", path))
+end
+
+function util.writeString(path, str, ...)
+	local file = io.open(path, "w")
+	io.output(file)
+	io.write(string.format(str, ...))
 	io.close()
 	print(string.format("Created %s", path))
 end
