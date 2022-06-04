@@ -1,6 +1,10 @@
 {
 	"replace": false,
 	"values": [
-		"minecraft:slime_block"
+		"minecraft:slime_block",
+		"minecraft:poisonous_potato",
+		"minecraft:rotten_flesh",
+		"minecraft:slime_ball",
+		"minecraft:suspicious_stew"
 	]
 }

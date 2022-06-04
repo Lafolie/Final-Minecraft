@@ -163,6 +163,7 @@
 		"minecraft:tall_grass",
 		"minecraft:twisting_vines",
 		"minecraft:vine",
+		"minecraft:weeping_vines",
 		"minecraft:white_tulip",
 		"minecraft:potted_jungle_sapling",
 		"minecraft:jungle_wall_sign",
@@ -183,6 +184,8 @@
 		"minecraft:potted_spruce_sapling",
 		"minecraft:spruce_wall_sign",
 		"minecraft:sweet_berry_bush",
+		"minecraft:twisting_vines_plant",
+		"minecraft:weeping_vines_plant",
 		"minecraft:wheat",
 		"minecraft:potted_white_tulip"
 	]

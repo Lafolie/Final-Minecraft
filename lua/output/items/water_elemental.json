@@ -37,6 +37,23 @@
 		"minecraft:tube_coral_block",
 		"minecraft:tube_coral_fan",
 		"minecraft:wet_sponge",
-		"minecraft:None"
+		"minecraft:axolotl_bucket",
+		"minecraft:cod",
+		"minecraft:dried_kelp",
+		"minecraft:glow_ink_sac",
+		"minecraft:heart_of_the_sea",
+		"minecraft:ink_sac",
+		"minecraft:nautilus_shell",
+		"minecraft:prismarine_crystals",
+		"minecraft:prismarine_shard",
+		"minecraft:pufferfish",
+		"minecraft:pufferfish_bucket",
+		"minecraft:salmon",
+		"minecraft:salmon_bucket",
+		"minecraft:scute",
+		"minecraft:tropical_fish",
+		"minecraft:tropical_fish_bucket",
+		"minecraft:turtle_helmet",
+		"minecraft:water_bucket"
 	]
 }

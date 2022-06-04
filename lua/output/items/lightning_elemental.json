@@ -40,6 +40,10 @@
 		"minecraft:sticky_piston",
 		"minecraft:white_wool",
 		"minecraft:yellow_wool",
-		"minecraft:redstone"
+		"minecraft:redstone",
+		"minecraft:clock",
+		"minecraft:command_block_minecart",
+		"minecraft:compass",
+		"minecraft:hopper_minecart"
 	]
 }

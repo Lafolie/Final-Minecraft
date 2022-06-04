@@ -1,7 +1,6 @@
 {
 	"replace": false,
 	"values": [
-		"minecraft:cauldron",
 		"minecraft:black_candle",
 		"minecraft:blast_furnace",
 		"minecraft:blue_candle",
@@ -47,6 +46,18 @@
 		"minecraft:tnt",
 		"minecraft:torch",
 		"minecraft:white_candle",
-		"minecraft:yellow_candle"
+		"minecraft:yellow_candle",
+		"minecraft:blaze_powder",
+		"minecraft:blaze_rod",
+		"minecraft:fire_charge",
+		"minecraft:firework_rocket",
+		"minecraft:firework_star",
+		"minecraft:flint_and_steel",
+		"minecraft:furnace_minecart",
+		"minecraft:gunpowder",
+		"minecraft:lava_bucket",
+		"minecraft:magma_cream",
+		"minecraft:nether_brick",
+		"minecraft:tnt_minecart"
 	]
 }

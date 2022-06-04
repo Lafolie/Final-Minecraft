@@ -1,0 +1,331 @@
+Name,ID,Element
+Acacia Boat,acacia_boat,w
+Amethyst Shard,amethyst_shard,e
+Apple,apple,e
+Armor Stand,armor_stand,w
+Arrow,arrow,n
+Bucket of Axolotl,axolotl_bucket,u
+Axolotl Spawn Egg,axolotl_spawn_egg,n
+Baked Potato,baked_potato,e
+Bat Spawn Egg,bat_spawn_egg,n
+Bee Spawn Egg,bee_spawn_egg,n
+Raw Beef,beef,n
+Beetroot,beetroot,e
+Beetroot Seeds,beetroot_seeds,n
+Beetroot Soup,beetroot_soup,e
+Birch Boat,birch_boat,w
+Black Dye,black_dye,n
+Blaze Powder,blaze_powder,f
+Blaze Rod,blaze_rod,f
+Blaze Spawn Egg,blaze_spawn_egg,n
+Blue Dye,blue_dye,n
+Bone,bone,n
+Bone Meal,bone_meal,n
+Book,book,n
+Bow,bow,n
+Bowl,bowl,w
+Bread,bread,n
+Brick,brick,e
+Brown Dye,brown_dye,n
+Bucket,bucket,e
+Bundle,bundle,n
+Carrot,carrot,e
+Carrot on a Stick,carrot_on_a_stick,n
+Cat Spawn Egg,cat_spawn_egg,n
+Cave Spider Spawn Egg,cave_spider_spawn_egg,n
+Chainmail Boots,chainmail_boots,n
+Chainmail Chestplate,chainmail_chestplate,n
+Chainmail Helmet,chainmail_helmet,n
+Chainmail Leggings,chainmail_leggings,n
+Charcoal,charcoal,n
+Minecart with Chest,chest_minecart,n
+Raw Chicken,chicken,n
+Chicken Spawn Egg,chicken_spawn_egg,n
+Chorus Fruit,chorus_fruit,n
+Clay Ball,clay_ball,e
+Clock,clock,l
+Coal,coal,e
+Cocoa Beans,cocoa_beans,n
+Raw Cod,cod,u
+Bucket of Cod,cod_bucket,n
+Cod Spawn Egg,cod_spawn_egg,n
+Minecart with Command Block,command_block_minecart,l
+Compass,compass,l
+Steak,cooked_beef,n
+Cooked Chicken,cooked_chicken,n
+Cooked Cod,cooked_cod,n
+Cooked Mutton,cooked_mutton,n
+Cooked Porkchop,cooked_porkchop,n
+Cooked Rabbit,cooked_rabbit,n
+Cooked Salmon,cooked_salmon,n
+Cookie,cookie,n
+Copper Ingot,copper_ingot,e
+Cow Spawn Egg,cow_spawn_egg,n
+Banner Pattern (Creeper Charge),creeper_banner_pattern,n
+Creeper Spawn Egg,creeper_spawn_egg,n
+Crossbow,crossbow,n
+Cyan Dye,cyan_dye,n
+Dark Oak Boat,dark_oak_boat,w
+Debug Stick,debug_stick,h
+Diamond,diamond,n
+Diamond Axe,diamond_axe,n
+Diamond Boots,diamond_boots,n
+Diamond Chestplate,diamond_chestplate,n
+Diamond Helmet,diamond_helmet,n
+Diamond Hoe,diamond_hoe,n
+Diamond Horse Armor,diamond_horse_armor,n
+Diamond Leggings,diamond_leggings,n
+Diamond Pickaxe,diamond_pickaxe,n
+Diamond Shovel,diamond_shovel,n
+Diamond Sword,diamond_sword,n
+Dolphin Spawn Egg,dolphin_spawn_egg,n
+Donkey Spawn Egg,donkey_spawn_egg,n
+Dragon's Breath,dragon_breath,d
+Dried Kelp,dried_kelp,u
+Drowned Spawn Egg,drowned_spawn_egg,n
+Egg,egg,n
+Elder Guardian Spawn Egg,elder_guardian_spawn_egg,n
+Elytra,elytra,w
+Emerald,emerald,n
+Enchanted Book,enchanted_book,n
+Enchanted Golden Apple,enchanted_golden_apple,h
+End Crystal,end_crystal,g
+Eye of Ender,ender_eye,g
+Ender Pearl,ender_pearl,g
+Enderman Spawn Egg,enderman_spawn_egg,n
+Endermite Spawn Egg,endermite_spawn_egg,n
+Evoker Spawn Egg,evoker_spawn_egg,n
+Bottle o' Enchanting,experience_bottle,n
+Feather,feather,n
+Fermented Spider Eye,fermented_spider_eye,n
+Map,filled_map,n
+Fire Charge,fire_charge,f
+Firework Rocket,firework_rocket,f
+Firework Star,firework_star,f
+Fishing Rod,fishing_rod,n
+Flint,flint,e
+Flint and Steel,flint_and_steel,f
+Banner Pattern (Flower Charge),flower_banner_pattern,n
+Fox Spawn Egg,fox_spawn_egg,n
+Minecart with Furnace,furnace_minecart,f
+Ghast Spawn Egg,ghast_spawn_egg,n
+Ghast Tear,ghast_tear,d
+Glass Bottle,glass_bottle,n
+Glistering Melon Slice,glistering_melon_slice,n
+Banner Pattern (Globe),globe_banner_pattern,n
+Glow Berries,glow_berries,w
+Glow Ink Sac,glow_ink_sac,u
+Glow Item Frame,glow_item_frame,n
+Glow Squid Spawn Egg,glow_squid_spawn_egg,n
+Glowstone Dust,glowstone_dust,h
+Goat Spawn Egg,goat_spawn_egg,n
+Gold Ingot,gold_ingot,e
+Gold Nugget,gold_nugget,e
+Golden Apple,golden_apple,e
+Golden Axe,golden_axe,n
+Golden Boots,golden_boots,n
+Golden Carrot,golden_carrot,n
+Golden Chestplate,golden_chestplate,n
+Golden Helmet,golden_helmet,n
+Golden Hoe,golden_hoe,n
+Golden Horse Armor,golden_horse_armor,n
+Golden Leggings,golden_leggings,n
+Golden Pickaxe,golden_pickaxe,n
+Golden Shovel,golden_shovel,n
+Golden Sword,golden_sword,n
+Gray Dye,gray_dye,n
+Green Dye,green_dye,n
+Guardian Spawn Egg,guardian_spawn_egg,n
+Gunpowder,gunpowder,f
+Heart of the Sea,heart_of_the_sea,u
+Hoglin Spawn Egg,hoglin_spawn_egg,n
+Honey Bottle,honey_bottle,n
+Honeycomb,honeycomb,n
+Minecart with Hopper,hopper_minecart,l
+Horse Spawn Egg,horse_spawn_egg,n
+Husk Spawn Egg,husk_spawn_egg,n
+Ink Sac,ink_sac,u
+Iron Axe,iron_axe,n
+Iron Boots,iron_boots,n
+Iron Chestplate,iron_chestplate,n
+Iron Helmet,iron_helmet,n
+Iron Hoe,iron_hoe,n
+Iron Horse Armor,iron_horse_armor,n
+Iron Ingot,iron_ingot,e
+Iron Leggings,iron_leggings,n
+Iron Nugget,iron_nugget,e
+Iron Pickaxe,iron_pickaxe,n
+Iron Shovel,iron_shovel,n
+Iron Sword,iron_sword,n
+Item Frame,item_frame,w
+Jungle Boat,jungle_boat,w
+Knowledge Book,knowledge_book,n
+Lapis Lazuli,lapis_lazuli,e
+Lava Bucket,lava_bucket,f
+Lead,lead,n
+Leather,leather,n
+Leather Boots,leather_boots,n
+Leather Tunic,leather_chestplate,n
+Leather Cap,leather_helmet,n
+Leather Horse Armor,leather_horse_armor,n
+Leather Pants,leather_leggings,n
+Light Blue Dye,light_blue_dye,n
+Light Gray Dye,light_gray_dye,n
+Lime Dye,lime_dye,n
+Lingering Potion,lingering_potion,n
+Llama Spawn Egg,llama_spawn_egg,n
+Magenta Dye,magenta_dye,n
+Magma Cream,magma_cream,f
+Magma Cube Spawn Egg,magma_cube_spawn_egg,n
+Empty Map,map,n
+Melon Seeds,melon_seeds,n
+Melon Slice,melon_slice,e
+Milk Bucket,milk_bucket,n
+Minecart,minecart,n
+Banner Pattern (Thing),mojang_banner_pattern,n
+Mooshroom Spawn Egg,mooshroom_spawn_egg,n
+Mule Spawn Egg,mule_spawn_egg,n
+Mushroom Stew,mushroom_stew,e
+Music Disc (11),music_disc_11,n
+Music Disc (13),music_disc_13,n
+Music Disc (blocks),music_disc_blocks,n
+Music Disc (cat),music_disc_cat,n
+Music Disc (chirp),music_disc_chirp,n
+Music Disc (far),music_disc_far,n
+Music Disc (mall),music_disc_mall,n
+Music Disc (mellohi),music_disc_mellohi,n
+Music Disc (otherside),music_disc_otherside,n
+Music Disc (Pigstep),music_disc_pigstep,n
+Music Disc (stal),music_disc_stal,n
+Music Disc (strad),music_disc_strad,n
+Music Disc (wait),music_disc_wait,n
+Music Disc (ward),music_disc_ward,n
+Raw Mutton,mutton,n
+Name Tag,name_tag,n
+Nautilus Shell,nautilus_shell,u
+Nether Brick,nether_brick,f
+Nether Star,nether_star,h
+Netherite Axe,netherite_axe,n
+Netherite Boots,netherite_boots,n
+Netherite Chestplate,netherite_chestplate,n
+Netherite Helmet,netherite_helmet,n
+Netherite Hoe,netherite_hoe,n
+Netherite Ingot,netherite_ingot,d
+Netherite Leggings,netherite_leggings,n
+Netherite Pickaxe,netherite_pickaxe,n
+Netherite Scrap,netherite_scrap,n
+Netherite Shovel,netherite_shovel,n
+Netherite Sword,netherite_sword,n
+Oak Boat,oak_boat,w
+Ocelot Spawn Egg,ocelot_spawn_egg,n
+Orange Dye,orange_dye,n
+Painting,painting,n
+Panda Spawn Egg,panda_spawn_egg,n
+Paper,paper,n
+Parrot Spawn Egg,parrot_spawn_egg,n
+Phantom Membrane,phantom_membrane,n
+Phantom Spawn Egg,phantom_spawn_egg,n
+Pig Spawn Egg,pig_spawn_egg,n
+Piglin Brute Spawn Egg,piglin_brute_spawn_egg,n
+Piglin Spawn Egg,piglin_spawn_egg,n
+Pillager Spawn Egg,pillager_spawn_egg,n
+Pink Dye,pink_dye,n
+Poisonous Potato,poisonous_potato,p
+Polar Bear Spawn Egg,polar_bear_spawn_egg,n
+Popped Chorus Fruit,popped_chorus_fruit,e
+Raw Porkchop,porkchop,n
+Potato,potato,e
+Potion,potion,n
+Powder Snow Bucket,powder_snow_bucket,i
+Prismarine Crystals,prismarine_crystals,u
+Prismarine Shard,prismarine_shard,u
+Pufferfish,pufferfish,u
+Bucket of Pufferfish,pufferfish_bucket,u
+Pufferfish Spawn Egg,pufferfish_spawn_egg,n
+Pumpkin Pie,pumpkin_pie,n
+Pumpkin Seeds,pumpkin_seeds,n
+Purple Dye,purple_dye,n
+Nether Quartz,quartz,e
+Raw Rabbit,rabbit,n
+Rabbit's Foot,rabbit_foot,n
+Rabbit Hide,rabbit_hide,n
+Rabbit Spawn Egg,rabbit_spawn_egg,n
+Rabbit Stew,rabbit_stew,n
+Ravager Spawn Egg,ravager_spawn_egg,n
+Raw Copper,raw_copper,e
+Raw Gold,raw_gold,e
+Raw Iron,raw_iron,e
+Red Dye,red_dye,n
+Redstone Dust,redstone,l
+Rotten Flesh,rotten_flesh,p
+Saddle,saddle,n
+Raw Salmon,salmon,u
+Bucket of Salmon,salmon_bucket,u
+Salmon Spawn Egg,salmon_spawn_egg,n
+Scute,scute,u
+Shears,shears,n
+Sheep Spawn Egg,sheep_spawn_egg,n
+Shield,shield,n
+Shulker Shell,shulker_shell,g
+Shulker Spawn Egg,shulker_spawn_egg,n
+Silverfish Spawn Egg,silverfish_spawn_egg,n
+Skeleton Horse Spawn Egg,skeleton_horse_spawn_egg,n
+Skeleton Spawn Egg,skeleton_spawn_egg,n
+Banner Pattern (Skull Charge),skull_banner_pattern,n
+Slimeball,slime_ball,p
+Slime Spawn Egg,slime_spawn_egg,n
+Snowball,snowball,i
+Spectral Arrow,spectral_arrow,n
+Spider Eye,spider_eye,n
+Spider Spawn Egg,spider_spawn_egg,n
+Splash Potion,splash_potion,n
+Spruce Boat,spruce_boat,w
+Spyglass,spyglass,n
+Squid Spawn Egg,squid_spawn_egg,n
+Stick,stick,w
+Stone Axe,stone_axe,e
+Stone Hoe,stone_hoe,e
+Stone Pickaxe,stone_pickaxe,e
+Stone Shovel,stone_shovel,e
+Stone Sword,stone_sword,e
+Stray Spawn Egg,stray_spawn_egg,n
+Strider Spawn Egg,strider_spawn_egg,n
+String,string,n
+Sugar,sugar,n
+Suspicious Stew,suspicious_stew,p
+Sweet Berries,sweet_berries,w
+Tipped Arrow,tipped_arrow,n
+Minecart with TNT,tnt_minecart,f
+Totem of Undying,totem_of_undying,h
+Trader Llama Spawn Egg,trader_llama_spawn_egg,n
+Trident,trident,n
+Tropical Fish,tropical_fish,u
+Bucket of Tropical Fish,tropical_fish_bucket,u
+Tropical Fish Spawn Egg,tropical_fish_spawn_egg,n
+Turtle Shell,turtle_helmet,u
+Turtle Spawn Egg,turtle_spawn_egg,n
+Vex Spawn Egg,vex_spawn_egg,n
+Villager Spawn Egg,villager_spawn_egg,n
+Vindicator Spawn Egg,vindicator_spawn_egg,n
+Wandering Trader Spawn Egg,wandering_trader_spawn_egg,n
+Warped Fungus on a Stick,warped_fungus_on_a_stick,n
+Water Bucket,water_bucket,u
+Wheat,wheat,w
+Wheat Seeds,wheat_seeds,n
+White Dye,white_dye,n
+Witch Spawn Egg,witch_spawn_egg,n
+Wither Skeleton Spawn Egg,wither_skeleton_spawn_egg,n
+Wolf Spawn Egg,wolf_spawn_egg,n
+Wooden Axe,wooden_axe,w
+Wooden Hoe,wooden_hoe,w
+Wooden Pickaxe,wooden_pickaxe,w
+Wooden Shovel,wooden_shovel,w
+Wooden Sword,wooden_sword,w
+Book and Quill,writable_book,n
+Written Book,written_book,n
+Yellow Dye,yellow_dye,n
+Zoglin Spawn Egg,zoglin_spawn_egg,n
+Zombie Horse Spawn Egg,zombie_horse_spawn_egg,n
+Zombie Spawn Egg,zombie_spawn_egg,n
+Zombie Villager Spawn Egg,zombie_villager_spawn_egg,n
+Zombified Piglin Spawn Egg,zombified_piglin_spawn_egg,n

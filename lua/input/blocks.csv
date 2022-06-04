@@ -1,899 +1,899 @@
-Block ID,Name,Item ID,Element
-potted_acacia_sapling,Potted Acacia Sapling,acacia_sapling,w
-acacia_wall_sign,Acacia Wall Sign,acacia_sign,w
-potted_allium,Potted Allium,allium,w
-potted_azalea_bush,Potted Azalea,azalea_bush,w
-potted_azure_bluet,Potted Azure Bluet,azure_bluet,w
-bamboo_sapling,Bamboo Shoot,bamboo,w
-potted_bamboo,Potted Bamboo,bamboo,w
-beetroots,Beetroots,beetroot_seeds,n
-big_dripleaf_stem,Big Dripleaf Stem,big_dripleaf,w
-potted_birch_sapling,Potted Birch Sapling,birch_sapling,w
-birch_wall_sign,Birch Wall Sign,birch_sign,w
-black_wall_banner,Black Wall Banner,black_banner,n
-blue_wall_banner,Blue Wall Banner,blue_banner,n
-potted_blue_orchid,Potted Blue Orchid,blue_orchid,w
-brain_coral_wall_fan,Brain Coral Wall Fan,brain_coral_fan,u
-brown_wall_banner,Brown Wall Banner,brown_banner,n
-potted_brown_mushroom,Potted Brown Mushroom,brown_mushroom,e
-bubble_coral_wall_fan,Bubble Coral Wall Fan,bubble_coral_fan,u
-potted_cactus,Potted Cactus,cactus,e
-black_candle_cake,Cake with Black Candle,cake,n
-blue_candle_cake,Cake with Blue Candle,cake,n
-brown_candle_cake,Cake with Brown Candle,cake,n
-candle_cake,Cake with Candle,cake,n
-cyan_candle_cake,Cake with Cyan Candle,cake,n
-gray_candle_cake,Cake with Gray Candle,cake,n
-green_candle_cake,Cake with Green Candle,cake,n
-light_blue_candle_cake,Cake with Light Blue Candle,cake,n
-light_gray_candle_cake,Cake with Light Gray Candle,cake,n
-lime_candle_cake,Cake with Lime Candle,cake,n
-magenta_candle_cake,Cake with Magenta Candle,cake,n
-orange_candle_cake,Cake with Orange Candle,cake,n
-pink_candle_cake,Cake with Pink Candle,cake,n
-purple_candle_cake,Cake with Purple Candle,cake,n
-red_candle_cake,Cake with Red Candle,cake,n
-white_candle_cake,Cake with White Candle,cake,n
-yellow_candle_cake,Cake with Yellow Candle,cake,n
-carrots,Carrots,carrot,e
-lava_cauldron,Lava Cauldron,cauldron,f
-powder_snow_cauldron,Powder Snow Cauldron,cauldron,i
-water_cauldron,Water Cauldron,cauldron,u
-cocoa,Cocoa,cocoa_beans,e
-potted_cornflower,Potted Cornflower,cornflower,w
-creeper_wall_head,Creeper Wall Head,creeper_head,n
-potted_crimson_fungus,Potted Crimson Fungus,crimson_fungus,d
-potted_crimson_roots,Potted Crimson Roots,crimson_roots,d
-crimson_wall_sign,Crimson Wall Sign,crimson_sign,e
-cyan_wall_banner,Cyan Wall Banner,cyan_banner,n
-potted_dandelion,Potted Dandelion,dandelion,w
-potted_dark_oak_sapling,Potted Dark Oak Sapling,dark_oak_sapling,w
-dark_oak_wall_sign,Dark Oak Wall Sign,dark_oak_sign,w
-dead_brain_coral_wall_fan,Dead Brain Coral Wall Fan,dead_brain_coral_fan,n
-dead_bubble_coral_wall_fan,Dead Bubble Coral Wall Fan,dead_bubble_coral_fan,n
-potted_dead_bush,Potted Dead Bush,dead_bush,n
-dead_fire_coral_wall_fan,Dead Fire Coral Wall Fan,dead_fire_coral_fan,n
-dead_horn_coral_wall_fan,Dead Horn Coral Wall Fan,dead_horn_coral_fan,n
-dead_tube_coral_wall_fan,Dead Tube Coral Wall Fan,dead_tube_coral_fan,n
-dragon_wall_head,Dragon Wall Head,dragon_head,n
-potted_fern,Potted Fern,fern,w
-fire_coral_wall_fan,Fire Coral Wall Fan,fire_coral_fan,u
-potted_flowering_azalea_bush,Potted Flowering Azalea,flowering_azalea,w
-cave_vines,Cave Vines,glow_berries,w
-cave_vines_plant,Cave Vines Plant,glow_berries,w
-gray_wall_banner,Gray Wall Banner,gray_banner,n
-green_wall_banner,Green Wall Banner,green_banner,n
-horn_coral_wall_fan,Horn Coral Wall Fan,horn_coral_fan,u
-acacia_button,Acacia Button,Identical,w
-acacia_door,Acacia Door,Identical,w
-acacia_fence,Acacia Fence,Identical,w
-acacia_fence_gate,Acacia Fence Gate,Identical,w
-acacia_leaves,Acacia Leaves,Identical,w
-acacia_log,Acacia Log,Identical,w
-acacia_planks,Acacia Planks,Identical,w
-acacia_pressure_plate,Acacia Pressure Plate,Identical,w
-acacia_sapling,Acacia Sapling,Identical,w
-acacia_sign,Acacia Sign,Identical,w
-acacia_slab,Acacia Slab,Identical,w
-acacia_stairs,Acacia Stairs,Identical,w
-acacia_trapdoor,Acacia Trapdoor,Identical,w
-acacia_wood,Acacia Wood,Identical,w
-activator_rail,Activator Rail,Identical,l
-air,Air,Identical,w
-allium,Allium,Identical,w
-amethyst_block,Block of Amethyst,Identical,h
-amethyst_cluster,Amethyst Cluster,Identical,h
-ancient_debris,Ancient Debris,Identical,d
-andesite,Andesite,Identical,e
-andesite_slab,Andesite Slab,Identical,e
-andesite_stairs,Andesite Stairs,Identical,e
-andesite_wall,Andesite Wall,Identical,e
-anvil,Anvil,Identical,n
-azalea,Azalea,Identical,w
-azalea_leaves,Azalea Leaves,Identical,w
-azure_bluet,Azure Bluet,Identical,w
-bamboo,Bamboo,Identical,w
-barrel,Barrel,Identical,w
-barrier,Barrier,Identical,n
-basalt,Basalt,Identical,e
-beacon,Beacon,Identical,h
-bedrock,Bedrock,Identical,e
-bee_nest,Bee Nest,Identical,n
-beehive,Beehive,Identical,n
-bell,Bell,Identical,e
-big_dripleaf,Big Dripleaf,Identical,w
-birch_button,Birch Button,Identical,w
-birch_door,Birch Door,Identical,w
-birch_fence,Birch Fence,Identical,w
-birch_fence_gate,Birch Fence Gate,Identical,w
-birch_leaves,Birch Leaves,Identical,w
-birch_log,Birch Log,Identical,w
-birch_planks,Birch Planks,Identical,w
-birch_pressure_plate,Birch Pressure Plate,Identical,w
-birch_sapling,Birch Sapling,Identical,w
-birch_sign,Birch Sign,Identical,w
-birch_slab,Birch Slab,Identical,w
-birch_stairs,Birch Stairs,Identical,w
-birch_trapdoor,Birch Trapdoor,Identical,w
-birch_wood,Birch Wood,Identical,w
-black_banner,Black Banner,Identical,n
-black_bed,Black Bed,Identical,n
-black_candle,Black Candle,Identical,f
-black_carpet,Black Carpet,Identical,n
-black_concrete,Black Concrete,Identical,e
-black_concrete_powder,Black Concrete Powder,Identical,e
-black_glazed_terracotta,Black Glazed Terracotta,Identical,e
-black_shulker_box,Black Shulker Box,Identical,g
-black_stained_glass,Black Stained Glass,Identical,n
-black_stained_glass_pane,Black Stained Glass Pane,Identical,n
-black_terracotta,Black Terracotta,Identical,e
-black_wool,Black Wool,Identical,l
-blackstone,Blackstone,Identical,d
-blackstone_slab,Blackstone Slab,Identical,d
-blackstone_stairs,Blackstone Stairs,Identical,d
-blackstone_wall,Blackstone Wall,Identical,d
-blast_furnace,Blast Furnace,Identical,f
-blue_banner,Blue Banner,Identical,n
-blue_bed,Blue Bed,Identical,n
-blue_candle,Blue Candle,Identical,f
-blue_carpet,Blue Carpet,Identical,n
-blue_concrete,Blue Concrete,Identical,e
-blue_concrete_powder,Blue Concrete Powder,Identical,e
-blue_glazed_terracotta,Blue Glazed Terracotta,Identical,e
-blue_ice,Blue Ice,Identical,i
-blue_orchid,Blue Orchid,Identical,w
-blue_shulker_box,Blue Shulker Box,Identical,g
-blue_stained_glass,Blue Stained Glass,Identical,n
-blue_stained_glass_pane,Blue Stained Glass Pane,Identical,n
-blue_terracotta,Blue Terracotta,Identical,e
-blue_wool,Blue Wool,Identical,l
-bone_block,Bone Block,Identical,d
-bookshelf,Bookshelf,Identical,w
-brain_coral,Brain Coral,Identical,u
-brain_coral_block,Brain Coral Block,Identical,u
-brain_coral_fan,Brain Coral Fan,Identical,u
-brewing_stand,Brewing Stand,Identical,n
-brick_slab,Brick Slab,Identical,e
-brick_stairs,Brick Stairs,Identical,e
-brick_wall,Brick Wall,Identical,e
-bricks,Bricks,Identical,e
-brown_banner,Brown Banner,Identical,n
-brown_bed,Brown Bed,Identical,n
-brown_candle,Brown Candle,Identical,f
-brown_carpet,Brown Carpet,Identical,n
-brown_concrete,Brown Concrete,Identical,e
-brown_concrete_powder,Brown Concrete Powder,Identical,e
-brown_glazed_terracotta,Brown Glazed Terracotta,Identical,e
-brown_mushroom,Brown Mushroom,Identical,e
-brown_mushroom_block,Brown Mushroom Block,Identical,e
-brown_shulker_box,Brown Shulker Box,Identical,g
-brown_stained_glass,Brown Stained Glass,Identical,n
-brown_stained_glass_pane,Brown Stained Glass Pane,Identical,n
-brown_terracotta,Brown Terracotta,Identical,e
-brown_wool,Brown Wool,Identical,l
-bubble_coral,Bubble Coral,Identical,u
-bubble_coral_block,Bubble Coral Block,Identical,u
-bubble_coral_fan,Bubble Coral Fan,Identical,u
-budding_amethyst,Budding Amethyst,Identical,h
-cactus,Cactus,Identical,e
-cake,Cake,Identical,n
-calcite,Calcite,Identical,e
-campfire,Campfire,Identical,f
-candle,Candle,Identical,f
-cartography_table,Cartography Table,Identical,w
-carved_pumpkin,Carved Pumpkin,Identical,e
-cauldron,Cauldron,Identical,n
-chain,Chain,Identical,n
-chain_command_block,Chain Command Block,Identical,h
-chest,Chest,Identical,w
-chipped_anvil,Chipped Anvil,Identical,n
-chiseled_deepslate,Chiseled Deepslate,Identical,e
-chiseled_nether_bricks,Chiseled Nether Bricks,Identical,f
-chiseled_polished_blackstone,Chiseled Polished Blackstone,Identical,d
-chiseled_quartz_block,Chiseled Quartz Block,Identical,e
-chiseled_red_sandstone,Chiseled Red Sandstone,Identical,e
-chiseled_sandstone,Chiseled Sandstone,Identical,e
-chiseled_stone_bricks,Chiseled Stone Bricks,Identical,e
-chorus_flower,Chorus Flower,Identical,w
-chorus_plant,Chorus Plant,Identical,w
-clay,Clay,Identical,e
-coal_block,Block of Coal,Identical,u
-coal_ore,Coal Ore,Identical,e
-coarse_dirt,Coarse Dirt,Identical,e
-cobbled_deepslate,Cobbled Deepslate,Identical,e
-cobbled_deepslate_slab,Cobbled Deepslate Slab,Identical,e
-cobbled_deepslate_stairs,Cobbled Deepslate Stairs,Identical,e
-cobbled_deepslate_wall,Cobbled Deepslate Wall,Identical,e
-cobblestone,Cobblestone,Identical,e
-cobblestone_slab,Cobblestone Slab,Identical,e
-cobblestone_stairs,Cobblestone Stairs,Identical,e
-cobblestone_wall,Cobblestone Wall,Identical,e
-cobweb,Cobweb,Identical,n
-command_block,Command Block,Identical,h
-comparator,Redstone Comparator,Identical,l
-composter,Composter,Identical,e
-conduit,Conduit,Identical,u
-copper_block,Block of Copper,Identical,e
-copper_ore,Copper Ore,Identical,e
-cornflower,Cornflower,Identical,w
-cracked_deepslate_bricks,Cracked Deepslate Bricks,Identical,e
-cracked_deepslate_tiles,Cracked Deepslate Tiles,Identical,e
-cracked_nether_bricks,Cracked Nether Bricks,Identical,f
-cracked_polished_blackstone_bricks,Cracked Polished Blackstone Bricks,Identical,d
-cracked_stone_bricks,Cracked Stone Bricks,Identical,e
-crafting_table,Crafting Table,Identical,n
-creeper_head,Creeper Head,Identical,n
-crimson_button,Crimson Button,Identical,e
-crimson_door,Crimson Door,Identical,e
-crimson_fence,Crimson Fence,Identical,e
-crimson_fence_gate,Crimson Fence Gate,Identical,e
-crimson_fungus,Crimson Fungus,Identical,e
-crimson_hyphae,Crimson Hyphae,Identical,e
-crimson_nylium,Crimson Nylium,Identical,e
-crimson_planks,Crimson Planks,Identical,e
-crimson_pressure_plate,Crimson Pressure Plate,Identical,e
-crimson_roots,Crimson Roots,Identical,e
-crimson_sign,Crimson Sign,Identical,e
-crimson_slab,Crimson Slab,Identical,e
-crimson_stairs,Crimson Stairs,Identical,e
-crimson_stem,Crimson Stem,Identical,e
-crimson_trapdoor,Crimson Trapdoor,Identical,e
-crying_obsidian,Crying Obsidian,Identical,d
-cut_copper,Cut Copper,Identical,e
-cut_copper_slab,Cut Copper Slab,Identical,e
-cut_copper_stairs,Cut Copper Stairs,Identical,e
-cut_red_sandstone,Cut Red Sandstone,Identical,e
-cut_red_sandstone_slab,Cut Red Sandstone Slab,Identical,e
-cut_sandstone,Cut Sandstone,Identical,e
-cut_sandstone_slab,Cut Sandstone Slab,Identical,e
-cyan_banner,Cyan Banner,Identical,n
-cyan_bed,Cyan Bed,Identical,n
-cyan_candle,Cyan Candle,Identical,f
-cyan_carpet,Cyan Carpet,Identical,n
-cyan_concrete,Cyan Concrete,Identical,e
-cyan_concrete_powder,Cyan Concrete Powder,Identical,e
-cyan_glazed_terracotta,Cyan Glazed Terracotta,Identical,e
-cyan_shulker_box,Cyan Shulker Box,Identical,g
-cyan_stained_glass,Cyan Stained Glass,Identical,n
-cyan_stained_glass_pane,Cyan Stained Glass Pane,Identical,n
-cyan_terracotta,Cyan Terracotta,Identical,e
-cyan_wool,Cyan Wool,Identical,l
-damaged_anvil,Damaged Anvil,Identical,n
-dandelion,Dandelion,Identical,w
-dark_oak_button,Dark Oak Button,Identical,w
-dark_oak_door,Dark Oak Door,Identical,w
-dark_oak_fence,Dark Oak Fence,Identical,w
-dark_oak_fence_gate,Dark Oak Fence Gate,Identical,w
-dark_oak_leaves,Dark Oak Leaves,Identical,w
-dark_oak_log,Dark Oak Log,Identical,w
-dark_oak_planks,Dark Oak Planks,Identical,w
-dark_oak_pressure_plate,Dark Oak Pressure Plate,Identical,w
-dark_oak_sapling,Dark Oak Sapling,Identical,w
-dark_oak_sign,Dark Oak Sign,Identical,w
-dark_oak_slab,Dark Oak Slab,Identical,w
-dark_oak_stairs,Dark Oak Stairs,Identical,w
-dark_oak_trapdoor,Dark Oak Trapdoor,Identical,w
-dark_oak_wood,Dark Oak Wood,Identical,w
-dark_prismarine,Dark Prismarine,Identical,u
-dark_prismarine_slab,Dark Prismarine Slab,Identical,u
-dark_prismarine_stairs,Dark Prismarine Stairs,Identical,u
-daylight_detector,Daylight Detector,Identical,l
-dead_brain_coral,Dead Brain Coral,Identical,n
-dead_brain_coral_block,Dead Brain Coral Block,Identical,n
-dead_brain_coral_fan,Dead Brain Coral Fan,Identical,n
-dead_bubble_coral,Dead Bubble Coral,Identical,n
-dead_bubble_coral_block,Dead Bubble Coral Block,Identical,n
-dead_bubble_coral_fan,Dead Bubble Coral Fan,Identical,n
-dead_bush,Dead Bush,Identical,n
-dead_fire_coral,Dead Fire Coral,Identical,n
-dead_fire_coral_block,Dead Fire Coral Block,Identical,n
-dead_fire_coral_fan,Dead Fire Coral Fan,Identical,n
-dead_horn_coral,Dead Horn Coral,Identical,n
-dead_horn_coral_block,Dead Horn Coral Block,Identical,n
-dead_horn_coral_fan,Dead Horn Coral Fan,Identical,n
-dead_tube_coral,Dead Tube Coral,Identical,n
-dead_tube_coral_block,Dead Tube Coral Block,Identical,n
-dead_tube_coral_fan,Dead Tube Coral Fan,Identical,n
-deepslate,Deepslate,Identical,e
-deepslate_brick_slab,Deepslate Brick Slab,Identical,e
-deepslate_brick_stairs,Deepslate Brick Stairs,Identical,e
-deepslate_brick_wall,Deepslate Brick Wall,Identical,e
-deepslate_bricks,Deepslate Bricks,Identical,e
-deepslate_coal_ore,Deepslate Coal Ore,Identical,e
-deepslate_copper_ore,Deepslate Copper Ore,Identical,e
-deepslate_diamond_ore,Deepslate Diamond Ore,Identical,e
-deepslate_emerald_ore,Deepslate Emerald Ore,Identical,e
-deepslate_gold_ore,Deepslate Gold Ore,Identical,e
-deepslate_iron_ore,Deepslate Iron Ore,Identical,e
-deepslate_lapis_ore,Deepslate Lapis Lazuli Ore,Identical,e
-deepslate_redstone_ore,Deepslate Redstone Ore,Identical,e
-deepslate_tile_slab,Deepslate Tile Slab,Identical,e
-deepslate_tile_stairs,Deepslate Tile Stairs,Identical,e
-deepslate_tile_wall,Deepslate Tile Wall,Identical,e
-deepslate_tiles,Deepslate Tiles,Identical,e
-detector_rail,Detector Rail,Identical,l
-diamond_block,Block of Diamond,Identical,e
-diamond_ore,Diamond Ore,Identical,e
-diorite,Diorite,Identical,e
-diorite_slab,Diorite Slab,Identical,e
-diorite_stairs,Diorite Stairs,Identical,e
-diorite_wall,Diorite Wall,Identical,e
-dirt,Dirt,Identical,e
-dirt_path,Dirt Path,Identical,e
-dispenser,Dispenser,Identical,l
-dragon_egg,Dragon Egg,Identical,n
-dragon_head,Dragon Head,Identical,n
-dried_kelp_block,Dried Kelp Block,Identical,u
-dripstone_block,Dripstone Block,Identical,u
-dropper,Dropper,Identical,l
-emerald_block,Block of Emerald,Identical,e
-emerald_ore,Emerald Ore,Identical,e
-enchanting_table,Enchanting Table,Identical,d
-end_portal_frame,End Portal Frame,Identical,e
-end_rod,End Rod,Identical,l
-end_stone,End Stone,Identical,e
-end_stone_brick_slab,End Stone Brick Slab,Identical,e
-end_stone_brick_stairs,End Stone Brick Stairs,Identical,e
-end_stone_brick_wall,End Stone Brick Wall,Identical,e
-end_stone_bricks,End Stone Bricks,Identical,e
-ender_chest,Ender Chest,Identical,g
-exposed_copper,Exposed Copper,Identical,e
-exposed_cut_copper,Exposed Cut Copper,Identical,e
-exposed_cut_copper_slab,Exposed Cut Copper Slab,Identical,e
-exposed_cut_copper_stairs,Exposed Cut Copper Stairs,Identical,e
-farmland,Farmland,Identical,e
-fern,Fern,Identical,w
-fire_coral,Fire Coral,Identical,u
-fire_coral_block,Fire Coral Block,Identical,u
-fire_coral_fan,Fire Coral Fan,Identical,u
-fletching_table,Fletching Table,Identical,w
-flower_pot,Flower Pot,Identical,e
-flowering_azalea,Flowering Azalea,Identical,w
-flowering_azalea_leaves,Flowering Azalea Leaves,Identical,w
-furnace,Furnace,Identical,f
-gilded_blackstone,Gilded Blackstone,Identical,d
-glass,Glass,Identical,n
-glass_pane,Glass Pane,Identical,n
-glow_lichen,Glow Lichen,Identical,w
-glowstone,Glowstone,Identical,h
-gold_block,Block of Gold,Identical,e
-gold_ore,Gold Ore,Identical,e
-granite,Granite,Identical,e
-granite_slab,Granite Slab,Identical,e
-granite_stairs,Granite Stairs,Identical,e
-granite_wall,Granite Wall,Identical,e
-grass,Grass,Identical,e
-grass_block,Grass Block,Identical,e
-gravel,Gravel,Identical,e
-gray_banner,Gray Banner,Identical,n
-gray_bed,Gray Bed,Identical,n
-gray_candle,Gray Candle,Identical,f
-gray_carpet,Gray Carpet,Identical,n
-gray_concrete,Gray Concrete,Identical,e
-gray_concrete_powder,Gray Concrete Powder,Identical,e
-gray_glazed_terracotta,Gray Glazed Terracotta,Identical,e
-gray_shulker_box,Gray Shulker Box,Identical,g
-gray_stained_glass,Gray Stained Glass,Identical,n
-gray_stained_glass_pane,Gray Stained Glass Pane,Identical,n
-gray_terracotta,Gray Terracotta,Identical,e
-gray_wool,Gray Wool,Identical,l
-green_banner,Green Banner,Identical,n
-green_bed,Green Bed,Identical,n
-green_candle,Green Candle,Identical,f
-green_carpet,Green Carpet,Identical,n
-green_concrete,Green Concrete,Identical,e
-green_concrete_powder,Green Concrete Powder,Identical,e
-green_glazed_terracotta,Green Glazed Terracotta,Identical,e
-green_shulker_box,Green Shulker Box,Identical,g
-green_stained_glass,Green Stained Glass,Identical,n
-green_stained_glass_pane,Green Stained Glass Pane,Identical,n
-green_terracotta,Green Terracotta,Identical,e
-green_wool,Green Wool,Identical,l
-grindstone,Grindstone,Identical,e
-hanging_roots,Hanging Roots,Identical,w
-hay_block,Hay Bale,Identical,w
-heavy_weighted_pressure_plate,Heavy Weighted Pressure Plate,Identical,e
-honey_block,Honey Block,Identical,n
-honeycomb_block,Honeycomb Block,Identical,n
-hopper,Hopper,Identical,l
-horn_coral,Horn Coral,Identical,u
-horn_coral_block,Horn Coral Block,Identical,u
-horn_coral_fan,Horn Coral Fan,Identical,u
-ice,Ice,Identical,i
-infested_chiseled_stone_bricks,Infested Chiseled Stone Bricks,Identical,e
-infested_cobblestone,Infested Cobblestone,Identical,e
-infested_cracked_stone_bricks,Infested Cracked Stone Bricks,Identical,e
-infested_deepslate,Infested Deepslate,Identical,e
-infested_mossy_stone_bricks,Infested Mossy Stone Bricks,Identical,e
-infested_stone,Infested Stone,Identical,e
-infested_stone_bricks,Infested Stone Bricks,Identical,e
-iron_bars,Iron Bars,Identical,e
-iron_block,Block of Iron,Identical,e
-iron_door,Iron Door,Identical,e
-iron_ore,Iron Ore,Identical,e
-iron_trapdoor,Iron Trapdoor,Identical,e
-jack_o_lantern,Jack o'Lantern,Identical,f
-jigsaw,Jigsaw Block,Identical,n
-jukebox,Jukebox,Identical,l
-jungle_button,Jungle Button,Identical,w
-jungle_door,Jungle Door,Identical,w
-jungle_fence,Jungle Fence,Identical,w
-jungle_fence_gate,Jungle Fence Gate,Identical,w
-jungle_leaves,Jungle Leaves,Identical,w
-jungle_log,Jungle Log,Identical,w
-jungle_planks,Jungle Planks,Identical,w
-jungle_pressure_plate,Jungle Pressure Plate,Identical,w
-jungle_sapling,Jungle Sapling,Identical,w
-jungle_sign,Jungle Sign,Identical,w
-jungle_slab,Jungle Slab,Identical,w
-jungle_stairs,Jungle Stairs,Identical,w
-jungle_trapdoor,Jungle Trapdoor,Identical,w
-jungle_wood,Jungle Wood,Identical,w
-kelp,Kelp,Identical,u
-ladder,Ladder,Identical,w
-lantern,Lantern,Identical,f
-lapis_block,Block of Lapis Lazuli,Identical,e
-lapis_ore,Lapis Lazuli Ore,Identical,e
-large_amethyst_bud,Large Amethyst Bud,Identical,e
-large_fern,Large Fern,Identical,w
-lectern,Lectern,Identical,w
-lever,Lever,Identical,l
-light,Light,Identical,h
-light_blue_banner,Light Blue Banner,Identical,n
-light_blue_bed,Light Blue Bed,Identical,n
-light_blue_candle,Light Blue Candle,Identical,f
-light_blue_carpet,Light Blue Carpet,Identical,n
-light_blue_concrete,Light Blue Concrete,Identical,e
-light_blue_concrete_powder,Light Blue Concrete Powder,Identical,e
-light_blue_glazed_terracotta,Light Blue Glazed Terracotta,Identical,e
-light_blue_shulker_box,Light Blue Shulker Box,Identical,g
-light_blue_stained_glass,Light Blue Stained Glass,Identical,n
-light_blue_stained_glass_pane,Light Blue Stained Glass Pane,Identical,n
-light_blue_terracotta,Light Blue Terracotta,Identical,e
-light_blue_wool,Light Blue Wool,Identical,l
-light_gray_banner,Light Gray Banner,Identical,n
-light_gray_bed,Light Gray Bed,Identical,n
-light_gray_candle,Light Gray Candle,Identical,f
-light_gray_carpet,Light Gray Carpet,Identical,n
-light_gray_concrete,Light Gray Concrete,Identical,e
-light_gray_concrete_powder,Light Gray Concrete Powder,Identical,e
-light_gray_glazed_terracotta,Light Gray Glazed Terracotta,Identical,e
-light_gray_shulker_box,Light Gray Shulker Box,Identical,g
-light_gray_stained_glass,Light Gray Stained Glass,Identical,n
-light_gray_stained_glass_pane,Light Gray Stained Glass Pane,Identical,n
-light_gray_terracotta,Light Gray Terracotta,Identical,e
-light_gray_wool,Light Gray Wool,Identical,l
-light_weighted_pressure_plate,Light Weighted Pressure Plate,Identical,e
-lightning_rod,Lightning Rod,Identical,e
-lilac,Lilac,Identical,w
-lily_of_the_valley,Lily of the Valley,Identical,w
-lily_pad,Lily Pad,Identical,u
-lime_banner,Lime Banner,Identical,n
-lime_bed,Lime Bed,Identical,n
-lime_candle,Lime Candle,Identical,f
-lime_carpet,Lime Carpet,Identical,n
-lime_concrete,Lime Concrete,Identical,e
-lime_concrete_powder,Lime Concrete Powder,Identical,e
-lime_glazed_terracotta,Lime Glazed Terracotta,Identical,e
-lime_shulker_box,Lime Shulker Box,Identical,g
-lime_stained_glass,Lime Stained Glass,Identical,n
-lime_stained_glass_pane,Lime Stained Glass Pane,Identical,n
-lime_terracotta,Lime Terracotta,Identical,e
-lime_wool,Lime Wool,Identical,l
-lodestone,Lodestone,Identical,l
-loom,Loom,Identical,n
-magenta_banner,Magenta Banner,Identical,n
-magenta_bed,Magenta Bed,Identical,n
-magenta_candle,Magenta Candle,Identical,f
-magenta_carpet,Magenta Carpet,Identical,n
-magenta_concrete,Magenta Concrete,Identical,e
-magenta_concrete_powder,Magenta Concrete Powder,Identical,e
-magenta_glazed_terracotta,Magenta Glazed Terracotta,Identical,e
-magenta_shulker_box,Magenta Shulker Box,Identical,g
-magenta_stained_glass,Magenta Stained Glass,Identical,n
-magenta_stained_glass_pane,Magenta Stained Glass Pane,Identical,n
-magenta_terracotta,Magenta Terracotta,Identical,e
-magenta_wool,Magenta Wool,Identical,l
-magma_block,Magma Block,Identical,f
-medium_amethyst_bud,Medium Amethyst Bud,Identical,e
-melon,Melon,Identical,w
-moss_block,Moss Block,Identical,e
-moss_carpet,Moss Carpet,Identical,e
-mossy_cobblestone,Mossy Cobblestone,Identical,e
-mossy_cobblestone_slab,Mossy Cobblestone Slab,Identical,e
-mossy_cobblestone_stairs,Mossy Cobblestone Stairs,Identical,e
-mossy_cobblestone_wall,Mossy Cobblestone Wall,Identical,e
-mossy_stone_brick_slab,Mossy Stone Brick Slab,Identical,e
-mossy_stone_brick_stairs,Mossy Stone Brick Stairs,Identical,e
-mossy_stone_brick_wall,Mossy Stone Brick Wall,Identical,e
-mossy_stone_bricks,Mossy Stone Bricks,Identical,e
-mushroom_stem,Mushroom Stem,Identical,e
-mycelium,Mycelium,Identical,e
-nether_brick_fence,Nether Brick Fence,Identical,f
-nether_brick_slab,Nether Brick Slab,Identical,f
-nether_brick_stairs,Nether Brick Stairs,Identical,f
-nether_brick_wall,Nether Brick Wall,Identical,f
-nether_bricks,Nether Bricks,Identical,f
-nether_gold_ore,Nether Gold Ore,Identical,f
-nether_quartz_ore,Nether Quartz Ore,Identical,f
-nether_sprouts,Nether Sprouts,Identical,f
-nether_wart,Nether Wart,Identical,f
-nether_wart_block,Nether Wart Block,Identical,f
-netherite_block,Block of Netherite,Identical,d
-netherrack,Netherrack,Identical,f
-note_block,Note Block,Identical,l
-oak_button,Oak Button,Identical,w
-oak_door,Oak Door,Identical,w
-oak_fence,Oak Fence,Identical,w
-oak_fence_gate,Oak Fence Gate,Identical,w
-oak_leaves,Oak Leaves,Identical,w
-oak_log,Oak Log,Identical,w
-oak_planks,Oak Planks,Identical,w
-oak_pressure_plate,Oak Pressure Plate,Identical,w
-oak_sapling,Oak Sapling,Identical,w
-oak_sign,Oak Sign,Identical,w
-oak_slab,Oak Slab,Identical,w
-oak_stairs,Oak Stairs,Identical,w
-oak_trapdoor,Oak Trapdoor,Identical,w
-oak_wood,Oak Wood,Identical,w
-observer,Observer,Identical,l
-obsidian,Obsidian,Identical,d
-orange_banner,Orange Banner,Identical,n
-orange_bed,Orange Bed,Identical,n
-orange_candle,Orange Candle,Identical,f
-orange_carpet,Orange Carpet,Identical,n
-orange_concrete,Orange Concrete,Identical,e
-orange_concrete_powder,Orange Concrete Powder,Identical,e
-orange_glazed_terracotta,Orange Glazed Terracotta,Identical,e
-orange_shulker_box,Orange Shulker Box,Identical,g
-orange_stained_glass,Orange Stained Glass,Identical,n
-orange_stained_glass_pane,Orange Stained Glass Pane,Identical,n
-orange_terracotta,Orange Terracotta,Identical,e
-orange_tulip,Orange Tulip,Identical,w
-orange_wool,Orange Wool,Identical,l
-oxeye_daisy,Oxeye Daisy,Identical,w
-oxidized_copper,Oxidized Copper,Identical,e
-oxidized_cut_copper,Oxidized Cut Copper,Identical,e
-oxidized_cut_copper_slab,Oxidized Cut Copper Slab,Identical,e
-oxidized_cut_copper_stairs,Oxidized Cut Copper Stairs,Identical,e
-packed_ice,Packed Ice,Identical,i
-peony,Peony,Identical,w
-petrified_oak_slab,Petrified Oak Slab,Identical,w
-pink_banner,Pink Banner,Identical,n
-pink_bed,Pink Bed,Identical,n
-pink_candle,Pink Candle,Identical,f
-pink_carpet,Pink Carpet,Identical,n
-pink_concrete,Pink Concrete,Identical,e
-pink_concrete_powder,Pink Concrete Powder,Identical,e
-pink_glazed_terracotta,Pink Glazed Terracotta,Identical,e
-pink_shulker_box,Pink Shulker Box,Identical,g
-pink_stained_glass,Pink Stained Glass,Identical,n
-pink_stained_glass_pane,Pink Stained Glass Pane,Identical,n
-pink_terracotta,Pink Terracotta,Identical,e
-pink_tulip,Pink Tulip,Identical,w
-pink_wool,Pink Wool,Identical,l
-piston,Piston,Identical,l
-player_head,Player Head,Identical,n
-podzol,Podzol,Identical,w
-pointed_dripstone,Pointed Dripstone,Identical,u
-polished_andesite,Polished Andesite,Identical,e
-polished_andesite_slab,Polished Andesite Slab,Identical,e
-polished_andesite_stairs,Polished Andesite Stairs,Identical,e
-polished_basalt,Polished Basalt,Identical,e
-polished_blackstone,Polished Blackstone,Identical,d
-polished_blackstone_brick_slab,Polished Blackstone Brick Slab,Identical,d
-polished_blackstone_brick_stairs,Polished Blackstone Brick Stairs,Identical,d
-polished_blackstone_brick_wall,Polished Blackstone Brick Wall,Identical,d
-polished_blackstone_bricks,Polished Blackstone Bricks,Identical,d
-polished_blackstone_button,Polished Blackstone Button,Identical,d
-polished_blackstone_pressure_plate,Polished Blackstone Pressure Plate,Identical,d
-polished_blackstone_slab,Polished Blackstone Slab,Identical,d
-polished_blackstone_stairs,Polished Blackstone Stairs,Identical,d
-polished_blackstone_wall,Polished Blackstone Wall,Identical,d
-polished_deepslate,Polished Deepslate,Identical,e
-polished_deepslate_slab,Polished Deepslate Slab,Identical,e
-polished_deepslate_stairs,Polished Deepslate Stairs,Identical,e
-polished_deepslate_wall,Polished Deepslate Wall,Identical,e
-polished_diorite,Polished Diorite,Identical,e
-polished_diorite_slab,Polished Diorite Slab,Identical,e
-polished_diorite_stairs,Polished Diorite Stairs,Identical,e
-polished_granite,Polished Granite,Identical,e
-polished_granite_slab,Polished Granite Slab,Identical,e
-polished_granite_stairs,Polished Granite Stairs,Identical,e
-poppy,Poppy,Identical,w
-powered_rail,Powered Rail,Identical,l
-prismarine,Prismarine,Identical,u
-prismarine_brick_slab,Prismarine Brick Slab,Identical,u
-prismarine_brick_stairs,Prismarine Brick Stairs,Identical,u
-prismarine_bricks,Prismarine Bricks,Identical,u
-prismarine_slab,Prismarine Slab,Identical,u
-prismarine_stairs,Prismarine Stairs,Identical,u
-prismarine_wall,Prismarine Wall,Identical,u
-pumpkin,Pumpkin,Identical,w
-purple_banner,Purple Banner,Identical,n
-purple_bed,Purple Bed,Identical,n
-purple_candle,Purple Candle,Identical,f
-purple_carpet,Purple Carpet,Identical,e
-purple_concrete,Purple Concrete,Identical,e
-purple_concrete_powder,Purple Concrete Powder,Identical,e
-purple_glazed_terracotta,Purple Glazed Terracotta,Identical,e
-purple_shulker_box,Purple Shulker Box,Identical,g
-purple_stained_glass,Purple Stained Glass,Identical,n
-purple_stained_glass_pane,Purple Stained Glass Pane,Identical,n
-purple_terracotta,Purple Terracotta,Identical,e
-purple_wool,Purple Wool,Identical,l
-purpur_block,Purpur Block,Identical,e
-purpur_pillar,Purpur Pillar,Identical,e
-purpur_slab,Purpur Slab,Identical,e
-purpur_stairs,Purpur Stairs,Identical,e
-quartz_block,Block of Quartz,Identical,e
-quartz_bricks,Quartz Bricks,Identical,e
-quartz_pillar,Quartz Pillar,Identical,e
-quartz_slab,Quartz Slab,Identical,e
-quartz_stairs,Quartz Stairs,Identical,e
-rail,Rail,Identical,n
-raw_copper_block,Block of Raw Copper,Identical,e
-raw_gold_block,Block of Raw Gold,Identical,e
-raw_iron_block,Block of Raw Iron,Identical,e
-red_banner,Red Banner,Identical,n
-red_bed,Red Bed,Identical,n
-red_candle,Red Candle,Identical,f
-red_carpet,Red Carpet,Identical,n
-red_concrete,Red Concrete,Identical,e
-red_concrete_powder,Red Concrete Powder,Identical,e
-red_glazed_terracotta,Red Glazed Terracotta,Identical,e
-red_mushroom,Red Mushroom,Identical,e
-red_mushroom_block,Red Mushroom Block,Identical,e
-red_nether_brick_slab,Red Nether Brick Slab,Identical,f
-red_nether_brick_stairs,Red Nether Brick Stairs,Identical,f
-red_nether_brick_wall,Red Nether Brick Wall,Identical,f
-red_nether_bricks,Red Nether Bricks,Identical,f
-red_sand,Red Sand,Identical,e
-red_sandstone,Red Sandstone,Identical,e
-red_sandstone_slab,Red Sandstone Slab,Identical,e
-red_sandstone_stairs,Red Sandstone Stairs,Identical,e
-red_sandstone_wall,Red Sandstone Wall,Identical,e
-red_shulker_box,Red Shulker Box,Identical,g
-red_stained_glass,Red Stained Glass,Identical,n
-red_stained_glass_pane,Red Stained Glass Pane,Identical,n
-red_terracotta,Red Terracotta,Identical,e
-red_tulip,Red Tulip,Identical,w
-red_wool,Red Wool,Identical,l
-redstone_block,Block of Redstone,Identical,l
-redstone_lamp,Redstone Lamp,Identical,l
-redstone_ore,Redstone Ore,Identical,l
-redstone_torch,Redstone Torch,Identical,l
-repeater,Redstone Repeater,Identical,l
-repeating_command_block,Repeating Command Block,Identical,l
-respawn_anchor,Respawn Anchor,Identical,d
-rooted_dirt,Rooted Dirt,Identical,e
-rose_bush,Rose Bush,Identical,w
-sand,Sand,Identical,e
-sandstone,Sandstone,Identical,e
-sandstone_slab,Sandstone Slab,Identical,e
-sandstone_stairs,Sandstone Stairs,Identical,e
-sandstone_wall,Sandstone Wall,Identical,e
-scaffolding,Scaffolding,Identical,w
-sculk_sensor,Sculk Sensor,Identical,e
-sea_lantern,Sea Lantern,Identical,u
-sea_pickle,Sea Pickle,Identical,u
-seagrass,Seagrass,Identical,u
-shroomlight,Shroomlight,Identical,e
-shulker_box,Shulker Box,Identical,g
-skeleton_skull,Skeleton Skull,Identical,n
-slime_block,Slime Block,Identical,p
-small_amethyst_bud,Small Amethyst Bud,Identical,e
-small_dripleaf,Small Dripleaf,Identical,w
-smithing_table,Smithing Table,Identical,n
-smoker,Smoker,Identical,f
-smooth_basalt,Smooth Basalt,Identical,e
-smooth_quartz,Smooth Quartz Block,Identical,e
-smooth_quartz_slab,Smooth Quartz Slab,Identical,e
-smooth_quartz_stairs,Smooth Quartz Stairs,Identical,e
-smooth_red_sandstone,Smooth Red Sandstone,Identical,e
-smooth_red_sandstone_slab,Smooth Red Sandstone Slab,Identical,e
-smooth_red_sandstone_stairs,Smooth Red Sandstone Stairs,Identical,e
-smooth_sandstone,Smooth Sandstone,Identical,e
-smooth_sandstone_slab,Smooth Sandstone Slab,Identical,e
-smooth_sandstone_stairs,Smooth Sandstone Stairs,Identical,e
-smooth_stone,Smooth Stone,Identical,e
-smooth_stone_slab,Smooth Stone Slab,Identical,e
-snow,Snow,Identical,i
-snow_block,Snow Block,Identical,i
-soul_campfire,Soul Campfire,Identical,f
-soul_lantern,Soul Lantern,Identical,f
-soul_sand,Soul Sand,Identical,d
-soul_soil,Soul Soil,Identical,d
-soul_torch,Soul Torch,Identical,f
-spawner,Spawner,Identical,d
-sponge,Sponge,Identical,l
-spore_blossom,Spore Blossom,Identical,w
-spruce_button,Spruce Button,Identical,w
-spruce_door,Spruce Door,Identical,w
-spruce_fence,Spruce Fence,Identical,w
-spruce_fence_gate,Spruce Fence Gate,Identical,w
-spruce_leaves,Spruce Leaves,Identical,w
-spruce_log,Spruce Log,Identical,w
-spruce_planks,Spruce Planks,Identical,w
-spruce_pressure_plate,Spruce Pressure Plate,Identical,w
-spruce_sapling,Spruce Sapling,Identical,w
-spruce_sign,Spruce Sign,Identical,w
-spruce_slab,Spruce Slab,Identical,w
-spruce_stairs,Spruce Stairs,Identical,w
-spruce_trapdoor,Spruce Trapdoor,Identical,w
-spruce_wood,Spruce Wood,Identical,w
-sticky_piston,Sticky Piston,Identical,l
-stone,Stone,Identical,e
-stone_brick_slab,Stone Brick Slab,Identical,e
-stone_brick_stairs,Stone Brick Stairs,Identical,e
-stone_brick_wall,Stone Brick Wall,Identical,e
-stone_bricks,Stone Bricks,Identical,e
-stone_button,Stone Button,Identical,e
-stone_pressure_plate,Stone Pressure Plate,Identical,e
-stone_slab,Stone Slab,Identical,e
-stone_stairs,Stone Stairs,Identical,e
-stonecutter,Stonecutter,Identical,e
-stripped_acacia_log,Stripped Acacia Log,Identical,w
-stripped_acacia_wood,Stripped Acacia Wood,Identical,w
-stripped_birch_log,Stripped Birch Log,Identical,w
-stripped_birch_wood,Stripped Birch Wood,Identical,w
-stripped_crimson_hyphae,Stripped Crimson Hyphae,Identical,e
-stripped_crimson_stem,Stripped Crimson Stem,Identical,e
-stripped_dark_oak_log,Stripped Dark Oak Log,Identical,w
-stripped_dark_oak_wood,Stripped Dark Oak Wood,Identical,w
-stripped_jungle_log,Stripped Jungle Log,Identical,w
-stripped_jungle_wood,Stripped Jungle Wood,Identical,w
-stripped_oak_log,Stripped Oak Log,Identical,w
-stripped_oak_wood,Stripped Oak Wood,Identical,w
-stripped_spruce_log,Stripped Spruce Log,Identical,w
-stripped_spruce_wood,Stripped Spruce Wood,Identical,w
-stripped_warped_hyphae,Stripped Warped Hyphae,Identical,e
-stripped_warped_stem,Stripped Warped Stem,Identical,e
-structure_block,Structure Block,Identical,n
-structure_void,Structure Void,Identical,n
-sugar_cane,Sugar Cane,Identical,w
-sunflower,Sunflower,Identical,w
-tall_grass,Tall Grass,Identical,w
-target,Target,Identical,n
-terracotta,Terracotta,Identical,e
-tinted_glass,Tinted Glass,Identical,n
-tnt,TNT,Identical,f
-torch,Torch,Identical,f
-trapped_chest,Trapped Chest,Identical,n
-tripwire_hook,Tripwire Hook,Identical,n
-tube_coral,Tube Coral,Identical,u
-tube_coral_block,Tube Coral Block,Identical,u
-tube_coral_fan,Tube Coral Fan,Identical,u
-tuff,Tuff,Identical,e
-turtle_egg,Turtle Egg,Identical,n
-twisting_vines,Twisting Vines,Identical,w
-vine,Vines,Identical,w
-warped_button,Warped Button,Identical,e
-warped_door,Warped Door,Identical,e
-warped_fence,Warped Fence,Identical,e
-warped_fence_gate,Warped Fence Gate,Identical,e
-warped_fungus,Warped Fungus,Identical,e
-warped_hyphae,Warped Hyphae,Identical,e
-warped_nylium,Warped Nylium,Identical,e
-warped_planks,Warped Planks,Identical,e
-warped_pressure_plate,Warped Pressure Plate,Identical,e
-warped_roots,Warped Roots,Identical,e
-warped_sign,Warped Sign,Identical,e
-warped_slab,Warped Slab,Identical,e
-warped_stairs,Warped Stairs,Identical,e
-warped_stem,Warped Stem,Identical,e
-warped_trapdoor,Warped Trapdoor,Identical,e
-warped_wart_block,Warped Wart Block,Identical,e
-waxed_copper_block,Waxed Block of Copper,Identical,e
-waxed_cut_copper,Waxed Cut Copper,Identical,e
-waxed_cut_copper_slab,Waxed Cut Copper Slab,Identical,e
-waxed_cut_copper_stairs,Waxed Cut Copper Stairs,Identical,e
-waxed_exposed_copper,Waxed Exposed Copper,Identical,e
-waxed_exposed_cut_copper,Waxed Exposed Cut Copper,Identical,e
-waxed_exposed_cut_copper_slab,Waxed Exposed Cut Copper Slab,Identical,e
-waxed_exposed_cut_copper_stairs,Waxed Exposed Cut Copper Stairs,Identical,e
-waxed_oxidized_copper,Waxed Oxidized Copper,Identical,e
-waxed_oxidized_cut_copper,Waxed Oxidized Cut Copper,Identical,e
-waxed_oxidized_cut_copper_slab,Waxed Oxidized Cut Copper Slab,Identical,e
-waxed_oxidized_cut_copper_stairs,Waxed Oxidized Cut Copper Stairs,Identical,e
-waxed_weathered_copper,Waxed Weathered Copper,Identical,e
-waxed_weathered_cut_copper,Waxed Weathered Cut Copper,Identical,e
-waxed_weathered_cut_copper_slab,Waxed Weathered Cut Copper Slab,Identical,e
-waxed_weathered_cut_copper_stairs,Waxed Weathered Cut Copper Stairs,Identical,e
-weathered_copper,Weathered Copper,Identical,e
-weathered_cut_copper,Weathered Cut Copper,Identical,e
-weathered_cut_copper_slab,Weathered Cut Copper Slab,Identical,e
-weathered_cut_copper_stairs,Weathered Cut Copper Stairs,Identical,e
-weeping_vines,Weeping Vines,Identical,e
-wet_sponge,Wet Sponge,Identical,u
-white_banner,White Banner,Identical,n
-white_bed,White Bed,Identical,n
-white_candle,White Candle,Identical,f
-white_carpet,White Carpet,Identical,n
-white_concrete,White Concrete,Identical,e
-white_concrete_powder,White Concrete Powder,Identical,e
-white_glazed_terracotta,White Glazed Terracotta,Identical,e
-white_shulker_box,White Shulker Box,Identical,g
-white_stained_glass,White Stained Glass,Identical,n
-white_stained_glass_pane,White Stained Glass Pane,Identical,n
-white_terracotta,White Terracotta,Identical,e
-white_tulip,White Tulip,Identical,w
-white_wool,White Wool,Identical,l
-wither_rose,Wither Rose,Identical,d
-wither_skeleton_skull,Wither Skeleton Skull,Identical,n
-yellow_banner,Yellow Banner,Identical,n
-yellow_bed,Yellow Bed,Identical,n
-yellow_candle,Yellow Candle,Identical,f
-yellow_carpet,Yellow Carpet,Identical,n
-yellow_concrete,Yellow Concrete,Identical,e
-yellow_concrete_powder,Yellow Concrete Powder,Identical,e
-yellow_glazed_terracotta,Yellow Glazed Terracotta,Identical,e
-yellow_shulker_box,Yellow Shulker Box,Identical,g
-yellow_stained_glass,Yellow Stained Glass,Identical,n
-yellow_stained_glass_pane,Yellow Stained Glass Pane,Identical,n
-yellow_terracotta,Yellow Terracotta,Identical,e
-yellow_wool,Yellow Wool,Identical,l
-zombie_head,Zombie Head,Identical,n
-potted_jungle_sapling,Potted Jungle Sapling,jungle_sapling,w
-jungle_wall_sign,Jungle Wall Sign,jungle_sign,w
-kelp_plant,Kelp Plant,kelp,u
-light_blue_wall_banner,Light Blue Wall Banner,light_blue_banner,n
-light_gray_wall_banner,Light Gray Wall Banner,light_gray_banner,n
-potted_lily_of_the_valley,Potted Lily of the Valley,lily_of_the_valley,w
-lime_wall_banner,Lime Wall Banner,lime_banner,n
-magenta_wall_banner,Magenta Wall Banner,magenta_banner,n
-melon_stem,Melon Stem,melon_seeds,w
-bubble_column,Bubble Column,None,u
-cave_air,Cave Air,None,w
-end_gateway,End Gateway,None,g
-end_portal,End Portal,None,g
-fire,Fire,None,f
-frosted_ice,Frosted Ice,None,i
-lava,Lava,None,f
-moving_piston,Moving Piston,None,l
-nether_portal,Nether Portal,None,g
-piston_head,Piston Head,None,l
-soul_fire,Soul Fire,None,f
-void_air,Void Air,None,w
-water,Water,None,u
-potted_oak_sapling,Potted Oak Sapling,oak_sapling,w
-oak_wall_sign,Oak Wall Sign,oak_sign,w
-orange_wall_banner,Orange Wall Banner,orange_banner,n
-potted_orange_tulip,Potted Orange Tulip,orange_tulip,w
-potted_oxeye_daisy,Potted Oxeye Daisy,oxeye_daisy,w
-pink_wall_banner,Pink Wall Banner,pink_banner,n
-potted_pink_tulip,Potted Pink Tulip,pink_tulip,w
-player_wall_head,Player Wall Head,player_head,n
-potted_poppy,Potted Poppy,poppy,w
-potatoes,Potatoes,potato,e
-powder_snow,Powder Snow,powder_snow_bucket,i
-attached_melon_stem,Attached Melon Stem,pumpkin_seeds,w
-attached_pumpkin_stem,Attached Pumpkin Stem,pumpkin_seeds,w
-pumpkin_stem,Pumpkin Stem,pumpkin_seeds,w
-purple_wall_banner,Purple Wall Banner,purple_banner,n
-red_wall_banner,Red Wall Banner,red_banner,n
-potted_red_mushroom,Potted Red Mushroom,red_mushroom,e
-potted_red_tulip,Potted Red Tulip,red_tulip,w
-redstone_wire,Redstone Wire,redstone,l
-redstone_wall_torch,Redstone Wall Torch,redstone_torch,l
-tall_seagrass,Tall Seagrass,seagrass,u
-skeleton_wall_skull,Skeleton Wall Skull,skeleton_skull,n
-soul_wall_torch,Soul Wall Torch,soul_torch,f
-potted_spruce_sapling,Potted Spruce Sapling,spruce_sapling,w
-spruce_wall_sign,Spruce Wall Sign,spruce_sign,w
-tripwire,Tripwire,string,n
-sweet_berry_bush,Sweet Berry Bush,sweet_berries,w
-wall_torch,Wall Torch,torch,f
-tube_coral_wall_fan,Tube Coral Wall Fan,tube_coral_fan,u
-twisting_vines_plant,Twisting Vines Plant,twisting_vines,e
-potted_warped_fungus,Potted Warped Fungus,warped_fungus,e
-potted_warped_roots,Potted Warped Roots,warped_roots,e
-warped_wall_sign,Warped Wall Sign,warped_sign,e
-weeping_vines_plant,Weeping Vines Plant,weeping_vines,e
-wheat,Wheat Crops,wheat_seeds,w
-white_wall_banner,White Wall Banner,white_banner,n
-potted_white_tulip,Potted White Tulip,white_tulip,w
-potted_wither_rose,Potted Wither Rose,wither_rose,d
-wither_skeleton_wall_skull,Wither Skeleton Wall Skull,wither_skeleton_skull,n
-yellow_wall_banner,Yellow Wall Banner,yellow_banner,n
-zombie_wall_head,Zombie Wall Head,zombie_head,n
+Block ID,Name,Item ID,Element,Item Element Override
+potted_acacia_sapling,Potted Acacia Sapling,acacia_sapling,w,
+acacia_wall_sign,Acacia Wall Sign,acacia_sign,w,
+potted_allium,Potted Allium,allium,w,
+potted_azalea_bush,Potted Azalea,azalea_bush,w,
+potted_azure_bluet,Potted Azure Bluet,azure_bluet,w,
+bamboo_sapling,Bamboo Shoot,bamboo,w,
+potted_bamboo,Potted Bamboo,bamboo,w,
+beetroots,Beetroots,beetroot_seeds,n,
+big_dripleaf_stem,Big Dripleaf Stem,big_dripleaf,w,
+potted_birch_sapling,Potted Birch Sapling,birch_sapling,w,
+birch_wall_sign,Birch Wall Sign,birch_sign,w,
+black_wall_banner,Black Wall Banner,black_banner,n,
+blue_wall_banner,Blue Wall Banner,blue_banner,n,
+potted_blue_orchid,Potted Blue Orchid,blue_orchid,w,
+brain_coral_wall_fan,Brain Coral Wall Fan,brain_coral_fan,u,
+brown_wall_banner,Brown Wall Banner,brown_banner,n,
+potted_brown_mushroom,Potted Brown Mushroom,brown_mushroom,e,
+bubble_coral_wall_fan,Bubble Coral Wall Fan,bubble_coral_fan,u,
+potted_cactus,Potted Cactus,cactus,e,
+black_candle_cake,Cake with Black Candle,cake,n,
+blue_candle_cake,Cake with Blue Candle,cake,n,
+brown_candle_cake,Cake with Brown Candle,cake,n,
+candle_cake,Cake with Candle,cake,n,
+cyan_candle_cake,Cake with Cyan Candle,cake,n,
+gray_candle_cake,Cake with Gray Candle,cake,n,
+green_candle_cake,Cake with Green Candle,cake,n,
+light_blue_candle_cake,Cake with Light Blue Candle,cake,n,
+light_gray_candle_cake,Cake with Light Gray Candle,cake,n,
+lime_candle_cake,Cake with Lime Candle,cake,n,
+magenta_candle_cake,Cake with Magenta Candle,cake,n,
+orange_candle_cake,Cake with Orange Candle,cake,n,
+pink_candle_cake,Cake with Pink Candle,cake,n,
+purple_candle_cake,Cake with Purple Candle,cake,n,
+red_candle_cake,Cake with Red Candle,cake,n,
+white_candle_cake,Cake with White Candle,cake,n,
+yellow_candle_cake,Cake with Yellow Candle,cake,n,
+carrots,Carrots,carrot,e,
+lava_cauldron,Lava Cauldron,cauldron,f,n
+powder_snow_cauldron,Powder Snow Cauldron,cauldron,i,n
+water_cauldron,Water Cauldron,cauldron,u,n
+cocoa,Cocoa,cocoa_beans,e,
+potted_cornflower,Potted Cornflower,cornflower,w,
+creeper_wall_head,Creeper Wall Head,creeper_head,n,
+potted_crimson_fungus,Potted Crimson Fungus,crimson_fungus,e,
+potted_crimson_roots,Potted Crimson Roots,crimson_roots,e,
+crimson_wall_sign,Crimson Wall Sign,crimson_sign,e,
+cyan_wall_banner,Cyan Wall Banner,cyan_banner,n,
+potted_dandelion,Potted Dandelion,dandelion,w,
+potted_dark_oak_sapling,Potted Dark Oak Sapling,dark_oak_sapling,w,
+dark_oak_wall_sign,Dark Oak Wall Sign,dark_oak_sign,w,
+dead_brain_coral_wall_fan,Dead Brain Coral Wall Fan,dead_brain_coral_fan,n,
+dead_bubble_coral_wall_fan,Dead Bubble Coral Wall Fan,dead_bubble_coral_fan,n,
+potted_dead_bush,Potted Dead Bush,dead_bush,n,
+dead_fire_coral_wall_fan,Dead Fire Coral Wall Fan,dead_fire_coral_fan,n,
+dead_horn_coral_wall_fan,Dead Horn Coral Wall Fan,dead_horn_coral_fan,n,
+dead_tube_coral_wall_fan,Dead Tube Coral Wall Fan,dead_tube_coral_fan,n,
+dragon_wall_head,Dragon Wall Head,dragon_head,n,
+potted_fern,Potted Fern,fern,w,
+fire_coral_wall_fan,Fire Coral Wall Fan,fire_coral_fan,u,
+potted_flowering_azalea_bush,Potted Flowering Azalea,flowering_azalea,w,
+cave_vines,Cave Vines,glow_berries,w,
+cave_vines_plant,Cave Vines Plant,glow_berries,w,
+gray_wall_banner,Gray Wall Banner,gray_banner,n,
+green_wall_banner,Green Wall Banner,green_banner,n,
+horn_coral_wall_fan,Horn Coral Wall Fan,horn_coral_fan,u,
+acacia_button,Acacia Button,Identical,w,
+acacia_door,Acacia Door,Identical,w,
+acacia_fence,Acacia Fence,Identical,w,
+acacia_fence_gate,Acacia Fence Gate,Identical,w,
+acacia_leaves,Acacia Leaves,Identical,w,
+acacia_log,Acacia Log,Identical,w,
+acacia_planks,Acacia Planks,Identical,w,
+acacia_pressure_plate,Acacia Pressure Plate,Identical,w,
+acacia_sapling,Acacia Sapling,Identical,w,
+acacia_sign,Acacia Sign,Identical,w,
+acacia_slab,Acacia Slab,Identical,w,
+acacia_stairs,Acacia Stairs,Identical,w,
+acacia_trapdoor,Acacia Trapdoor,Identical,w,
+acacia_wood,Acacia Wood,Identical,w,
+activator_rail,Activator Rail,Identical,l,
+air,Air,Identical,w,
+allium,Allium,Identical,w,
+amethyst_block,Block of Amethyst,Identical,h,
+amethyst_cluster,Amethyst Cluster,Identical,h,
+ancient_debris,Ancient Debris,Identical,d,
+andesite,Andesite,Identical,e,
+andesite_slab,Andesite Slab,Identical,e,
+andesite_stairs,Andesite Stairs,Identical,e,
+andesite_wall,Andesite Wall,Identical,e,
+anvil,Anvil,Identical,n,
+azalea,Azalea,Identical,w,
+azalea_leaves,Azalea Leaves,Identical,w,
+azure_bluet,Azure Bluet,Identical,w,
+bamboo,Bamboo,Identical,w,
+barrel,Barrel,Identical,w,
+barrier,Barrier,Identical,n,
+basalt,Basalt,Identical,e,
+beacon,Beacon,Identical,h,
+bedrock,Bedrock,Identical,e,
+bee_nest,Bee Nest,Identical,n,
+beehive,Beehive,Identical,n,
+bell,Bell,Identical,e,
+big_dripleaf,Big Dripleaf,Identical,w,
+birch_button,Birch Button,Identical,w,
+birch_door,Birch Door,Identical,w,
+birch_fence,Birch Fence,Identical,w,
+birch_fence_gate,Birch Fence Gate,Identical,w,
+birch_leaves,Birch Leaves,Identical,w,
+birch_log,Birch Log,Identical,w,
+birch_planks,Birch Planks,Identical,w,
+birch_pressure_plate,Birch Pressure Plate,Identical,w,
+birch_sapling,Birch Sapling,Identical,w,
+birch_sign,Birch Sign,Identical,w,
+birch_slab,Birch Slab,Identical,w,
+birch_stairs,Birch Stairs,Identical,w,
+birch_trapdoor,Birch Trapdoor,Identical,w,
+birch_wood,Birch Wood,Identical,w,
+black_banner,Black Banner,Identical,n,
+black_bed,Black Bed,Identical,n,
+black_candle,Black Candle,Identical,f,
+black_carpet,Black Carpet,Identical,n,
+black_concrete,Black Concrete,Identical,e,
+black_concrete_powder,Black Concrete Powder,Identical,e,
+black_glazed_terracotta,Black Glazed Terracotta,Identical,e,
+black_shulker_box,Black Shulker Box,Identical,g,
+black_stained_glass,Black Stained Glass,Identical,n,
+black_stained_glass_pane,Black Stained Glass Pane,Identical,n,
+black_terracotta,Black Terracotta,Identical,e,
+black_wool,Black Wool,Identical,l,
+blackstone,Blackstone,Identical,d,
+blackstone_slab,Blackstone Slab,Identical,d,
+blackstone_stairs,Blackstone Stairs,Identical,d,
+blackstone_wall,Blackstone Wall,Identical,d,
+blast_furnace,Blast Furnace,Identical,f,
+blue_banner,Blue Banner,Identical,n,
+blue_bed,Blue Bed,Identical,n,
+blue_candle,Blue Candle,Identical,f,
+blue_carpet,Blue Carpet,Identical,n,
+blue_concrete,Blue Concrete,Identical,e,
+blue_concrete_powder,Blue Concrete Powder,Identical,e,
+blue_glazed_terracotta,Blue Glazed Terracotta,Identical,e,
+blue_ice,Blue Ice,Identical,i,
+blue_orchid,Blue Orchid,Identical,w,
+blue_shulker_box,Blue Shulker Box,Identical,g,
+blue_stained_glass,Blue Stained Glass,Identical,n,
+blue_stained_glass_pane,Blue Stained Glass Pane,Identical,n,
+blue_terracotta,Blue Terracotta,Identical,e,
+blue_wool,Blue Wool,Identical,l,
+bone_block,Bone Block,Identical,d,
+bookshelf,Bookshelf,Identical,w,
+brain_coral,Brain Coral,Identical,u,
+brain_coral_block,Brain Coral Block,Identical,u,
+brain_coral_fan,Brain Coral Fan,Identical,u,
+brewing_stand,Brewing Stand,Identical,n,
+brick_slab,Brick Slab,Identical,e,
+brick_stairs,Brick Stairs,Identical,e,
+brick_wall,Brick Wall,Identical,e,
+bricks,Bricks,Identical,e,
+brown_banner,Brown Banner,Identical,n,
+brown_bed,Brown Bed,Identical,n,
+brown_candle,Brown Candle,Identical,f,
+brown_carpet,Brown Carpet,Identical,n,
+brown_concrete,Brown Concrete,Identical,e,
+brown_concrete_powder,Brown Concrete Powder,Identical,e,
+brown_glazed_terracotta,Brown Glazed Terracotta,Identical,e,
+brown_mushroom,Brown Mushroom,Identical,e,
+brown_mushroom_block,Brown Mushroom Block,Identical,e,
+brown_shulker_box,Brown Shulker Box,Identical,g,
+brown_stained_glass,Brown Stained Glass,Identical,n,
+brown_stained_glass_pane,Brown Stained Glass Pane,Identical,n,
+brown_terracotta,Brown Terracotta,Identical,e,
+brown_wool,Brown Wool,Identical,l,
+bubble_coral,Bubble Coral,Identical,u,
+bubble_coral_block,Bubble Coral Block,Identical,u,
+bubble_coral_fan,Bubble Coral Fan,Identical,u,
+budding_amethyst,Budding Amethyst,Identical,h,
+cactus,Cactus,Identical,e,
+cake,Cake,Identical,n,
+calcite,Calcite,Identical,e,
+campfire,Campfire,Identical,f,
+candle,Candle,Identical,f,
+cartography_table,Cartography Table,Identical,w,
+carved_pumpkin,Carved Pumpkin,Identical,e,
+cauldron,Cauldron,Identical,n,
+chain,Chain,Identical,n,
+chain_command_block,Chain Command Block,Identical,h,
+chest,Chest,Identical,w,
+chipped_anvil,Chipped Anvil,Identical,n,
+chiseled_deepslate,Chiseled Deepslate,Identical,e,
+chiseled_nether_bricks,Chiseled Nether Bricks,Identical,f,
+chiseled_polished_blackstone,Chiseled Polished Blackstone,Identical,d,
+chiseled_quartz_block,Chiseled Quartz Block,Identical,e,
+chiseled_red_sandstone,Chiseled Red Sandstone,Identical,e,
+chiseled_sandstone,Chiseled Sandstone,Identical,e,
+chiseled_stone_bricks,Chiseled Stone Bricks,Identical,e,
+chorus_flower,Chorus Flower,Identical,w,
+chorus_plant,Chorus Plant,Identical,w,
+clay,Clay,Identical,e,
+coal_block,Block of Coal,Identical,u,
+coal_ore,Coal Ore,Identical,e,
+coarse_dirt,Coarse Dirt,Identical,e,
+cobbled_deepslate,Cobbled Deepslate,Identical,e,
+cobbled_deepslate_slab,Cobbled Deepslate Slab,Identical,e,
+cobbled_deepslate_stairs,Cobbled Deepslate Stairs,Identical,e,
+cobbled_deepslate_wall,Cobbled Deepslate Wall,Identical,e,
+cobblestone,Cobblestone,Identical,e,
+cobblestone_slab,Cobblestone Slab,Identical,e,
+cobblestone_stairs,Cobblestone Stairs,Identical,e,
+cobblestone_wall,Cobblestone Wall,Identical,e,
+cobweb,Cobweb,Identical,n,
+command_block,Command Block,Identical,h,
+comparator,Redstone Comparator,Identical,l,
+composter,Composter,Identical,e,
+conduit,Conduit,Identical,u,
+copper_block,Block of Copper,Identical,e,
+copper_ore,Copper Ore,Identical,e,
+cornflower,Cornflower,Identical,w,
+cracked_deepslate_bricks,Cracked Deepslate Bricks,Identical,e,
+cracked_deepslate_tiles,Cracked Deepslate Tiles,Identical,e,
+cracked_nether_bricks,Cracked Nether Bricks,Identical,f,
+cracked_polished_blackstone_bricks,Cracked Polished Blackstone Bricks,Identical,d,
+cracked_stone_bricks,Cracked Stone Bricks,Identical,e,
+crafting_table,Crafting Table,Identical,n,
+creeper_head,Creeper Head,Identical,n,
+crimson_button,Crimson Button,Identical,e,
+crimson_door,Crimson Door,Identical,e,
+crimson_fence,Crimson Fence,Identical,e,
+crimson_fence_gate,Crimson Fence Gate,Identical,e,
+crimson_fungus,Crimson Fungus,Identical,e,
+crimson_hyphae,Crimson Hyphae,Identical,e,
+crimson_nylium,Crimson Nylium,Identical,e,
+crimson_planks,Crimson Planks,Identical,e,
+crimson_pressure_plate,Crimson Pressure Plate,Identical,e,
+crimson_roots,Crimson Roots,Identical,e,
+crimson_sign,Crimson Sign,Identical,e,
+crimson_slab,Crimson Slab,Identical,e,
+crimson_stairs,Crimson Stairs,Identical,e,
+crimson_stem,Crimson Stem,Identical,e,
+crimson_trapdoor,Crimson Trapdoor,Identical,e,
+crying_obsidian,Crying Obsidian,Identical,d,
+cut_copper,Cut Copper,Identical,e,
+cut_copper_slab,Cut Copper Slab,Identical,e,
+cut_copper_stairs,Cut Copper Stairs,Identical,e,
+cut_red_sandstone,Cut Red Sandstone,Identical,e,
+cut_red_sandstone_slab,Cut Red Sandstone Slab,Identical,e,
+cut_sandstone,Cut Sandstone,Identical,e,
+cut_sandstone_slab,Cut Sandstone Slab,Identical,e,
+cyan_banner,Cyan Banner,Identical,n,
+cyan_bed,Cyan Bed,Identical,n,
+cyan_candle,Cyan Candle,Identical,f,
+cyan_carpet,Cyan Carpet,Identical,n,
+cyan_concrete,Cyan Concrete,Identical,e,
+cyan_concrete_powder,Cyan Concrete Powder,Identical,e,
+cyan_glazed_terracotta,Cyan Glazed Terracotta,Identical,e,
+cyan_shulker_box,Cyan Shulker Box,Identical,g,
+cyan_stained_glass,Cyan Stained Glass,Identical,n,
+cyan_stained_glass_pane,Cyan Stained Glass Pane,Identical,n,
+cyan_terracotta,Cyan Terracotta,Identical,e,
+cyan_wool,Cyan Wool,Identical,l,
+damaged_anvil,Damaged Anvil,Identical,n,
+dandelion,Dandelion,Identical,w,
+dark_oak_button,Dark Oak Button,Identical,w,
+dark_oak_door,Dark Oak Door,Identical,w,
+dark_oak_fence,Dark Oak Fence,Identical,w,
+dark_oak_fence_gate,Dark Oak Fence Gate,Identical,w,
+dark_oak_leaves,Dark Oak Leaves,Identical,w,
+dark_oak_log,Dark Oak Log,Identical,w,
+dark_oak_planks,Dark Oak Planks,Identical,w,
+dark_oak_pressure_plate,Dark Oak Pressure Plate,Identical,w,
+dark_oak_sapling,Dark Oak Sapling,Identical,w,
+dark_oak_sign,Dark Oak Sign,Identical,w,
+dark_oak_slab,Dark Oak Slab,Identical,w,
+dark_oak_stairs,Dark Oak Stairs,Identical,w,
+dark_oak_trapdoor,Dark Oak Trapdoor,Identical,w,
+dark_oak_wood,Dark Oak Wood,Identical,w,
+dark_prismarine,Dark Prismarine,Identical,u,
+dark_prismarine_slab,Dark Prismarine Slab,Identical,u,
+dark_prismarine_stairs,Dark Prismarine Stairs,Identical,u,
+daylight_detector,Daylight Detector,Identical,l,
+dead_brain_coral,Dead Brain Coral,Identical,n,
+dead_brain_coral_block,Dead Brain Coral Block,Identical,n,
+dead_brain_coral_fan,Dead Brain Coral Fan,Identical,n,
+dead_bubble_coral,Dead Bubble Coral,Identical,n,
+dead_bubble_coral_block,Dead Bubble Coral Block,Identical,n,
+dead_bubble_coral_fan,Dead Bubble Coral Fan,Identical,n,
+dead_bush,Dead Bush,Identical,n,
+dead_fire_coral,Dead Fire Coral,Identical,n,
+dead_fire_coral_block,Dead Fire Coral Block,Identical,n,
+dead_fire_coral_fan,Dead Fire Coral Fan,Identical,n,
+dead_horn_coral,Dead Horn Coral,Identical,n,
+dead_horn_coral_block,Dead Horn Coral Block,Identical,n,
+dead_horn_coral_fan,Dead Horn Coral Fan,Identical,n,
+dead_tube_coral,Dead Tube Coral,Identical,n,
+dead_tube_coral_block,Dead Tube Coral Block,Identical,n,
+dead_tube_coral_fan,Dead Tube Coral Fan,Identical,n,
+deepslate,Deepslate,Identical,e,
+deepslate_brick_slab,Deepslate Brick Slab,Identical,e,
+deepslate_brick_stairs,Deepslate Brick Stairs,Identical,e,
+deepslate_brick_wall,Deepslate Brick Wall,Identical,e,
+deepslate_bricks,Deepslate Bricks,Identical,e,
+deepslate_coal_ore,Deepslate Coal Ore,Identical,e,
+deepslate_copper_ore,Deepslate Copper Ore,Identical,e,
+deepslate_diamond_ore,Deepslate Diamond Ore,Identical,e,
+deepslate_emerald_ore,Deepslate Emerald Ore,Identical,e,
+deepslate_gold_ore,Deepslate Gold Ore,Identical,e,
+deepslate_iron_ore,Deepslate Iron Ore,Identical,e,
+deepslate_lapis_ore,Deepslate Lapis Lazuli Ore,Identical,e,
+deepslate_redstone_ore,Deepslate Redstone Ore,Identical,e,
+deepslate_tile_slab,Deepslate Tile Slab,Identical,e,
+deepslate_tile_stairs,Deepslate Tile Stairs,Identical,e,
+deepslate_tile_wall,Deepslate Tile Wall,Identical,e,
+deepslate_tiles,Deepslate Tiles,Identical,e,
+detector_rail,Detector Rail,Identical,l,
+diamond_block,Block of Diamond,Identical,e,
+diamond_ore,Diamond Ore,Identical,e,
+diorite,Diorite,Identical,e,
+diorite_slab,Diorite Slab,Identical,e,
+diorite_stairs,Diorite Stairs,Identical,e,
+diorite_wall,Diorite Wall,Identical,e,
+dirt,Dirt,Identical,e,
+dirt_path,Dirt Path,Identical,e,
+dispenser,Dispenser,Identical,l,
+dragon_egg,Dragon Egg,Identical,n,
+dragon_head,Dragon Head,Identical,n,
+dried_kelp_block,Dried Kelp Block,Identical,u,
+dripstone_block,Dripstone Block,Identical,u,
+dropper,Dropper,Identical,l,
+emerald_block,Block of Emerald,Identical,e,
+emerald_ore,Emerald Ore,Identical,e,
+enchanting_table,Enchanting Table,Identical,d,
+end_portal_frame,End Portal Frame,Identical,e,
+end_rod,End Rod,Identical,l,
+end_stone,End Stone,Identical,e,
+end_stone_brick_slab,End Stone Brick Slab,Identical,e,
+end_stone_brick_stairs,End Stone Brick Stairs,Identical,e,
+end_stone_brick_wall,End Stone Brick Wall,Identical,e,
+end_stone_bricks,End Stone Bricks,Identical,e,
+ender_chest,Ender Chest,Identical,g,
+exposed_copper,Exposed Copper,Identical,e,
+exposed_cut_copper,Exposed Cut Copper,Identical,e,
+exposed_cut_copper_slab,Exposed Cut Copper Slab,Identical,e,
+exposed_cut_copper_stairs,Exposed Cut Copper Stairs,Identical,e,
+farmland,Farmland,Identical,e,
+fern,Fern,Identical,w,
+fire_coral,Fire Coral,Identical,u,
+fire_coral_block,Fire Coral Block,Identical,u,
+fire_coral_fan,Fire Coral Fan,Identical,u,
+fletching_table,Fletching Table,Identical,w,
+flower_pot,Flower Pot,Identical,e,
+flowering_azalea,Flowering Azalea,Identical,w,
+flowering_azalea_leaves,Flowering Azalea Leaves,Identical,w,
+furnace,Furnace,Identical,f,
+gilded_blackstone,Gilded Blackstone,Identical,d,
+glass,Glass,Identical,n,
+glass_pane,Glass Pane,Identical,n,
+glow_lichen,Glow Lichen,Identical,w,
+glowstone,Glowstone,Identical,h,
+gold_block,Block of Gold,Identical,e,
+gold_ore,Gold Ore,Identical,e,
+granite,Granite,Identical,e,
+granite_slab,Granite Slab,Identical,e,
+granite_stairs,Granite Stairs,Identical,e,
+granite_wall,Granite Wall,Identical,e,
+grass,Grass,Identical,e,
+grass_block,Grass Block,Identical,e,
+gravel,Gravel,Identical,e,
+gray_banner,Gray Banner,Identical,n,
+gray_bed,Gray Bed,Identical,n,
+gray_candle,Gray Candle,Identical,f,
+gray_carpet,Gray Carpet,Identical,n,
+gray_concrete,Gray Concrete,Identical,e,
+gray_concrete_powder,Gray Concrete Powder,Identical,e,
+gray_glazed_terracotta,Gray Glazed Terracotta,Identical,e,
+gray_shulker_box,Gray Shulker Box,Identical,g,
+gray_stained_glass,Gray Stained Glass,Identical,n,
+gray_stained_glass_pane,Gray Stained Glass Pane,Identical,n,
+gray_terracotta,Gray Terracotta,Identical,e,
+gray_wool,Gray Wool,Identical,l,
+green_banner,Green Banner,Identical,n,
+green_bed,Green Bed,Identical,n,
+green_candle,Green Candle,Identical,f,
+green_carpet,Green Carpet,Identical,n,
+green_concrete,Green Concrete,Identical,e,
+green_concrete_powder,Green Concrete Powder,Identical,e,
+green_glazed_terracotta,Green Glazed Terracotta,Identical,e,
+green_shulker_box,Green Shulker Box,Identical,g,
+green_stained_glass,Green Stained Glass,Identical,n,
+green_stained_glass_pane,Green Stained Glass Pane,Identical,n,
+green_terracotta,Green Terracotta,Identical,e,
+green_wool,Green Wool,Identical,l,
+grindstone,Grindstone,Identical,e,
+hanging_roots,Hanging Roots,Identical,w,
+hay_block,Hay Bale,Identical,w,
+heavy_weighted_pressure_plate,Heavy Weighted Pressure Plate,Identical,e,
+honey_block,Honey Block,Identical,n,
+honeycomb_block,Honeycomb Block,Identical,n,
+hopper,Hopper,Identical,l,
+horn_coral,Horn Coral,Identical,u,
+horn_coral_block,Horn Coral Block,Identical,u,
+horn_coral_fan,Horn Coral Fan,Identical,u,
+ice,Ice,Identical,i,
+infested_chiseled_stone_bricks,Infested Chiseled Stone Bricks,Identical,e,
+infested_cobblestone,Infested Cobblestone,Identical,e,
+infested_cracked_stone_bricks,Infested Cracked Stone Bricks,Identical,e,
+infested_deepslate,Infested Deepslate,Identical,e,
+infested_mossy_stone_bricks,Infested Mossy Stone Bricks,Identical,e,
+infested_stone,Infested Stone,Identical,e,
+infested_stone_bricks,Infested Stone Bricks,Identical,e,
+iron_bars,Iron Bars,Identical,e,
+iron_block,Block of Iron,Identical,e,
+iron_door,Iron Door,Identical,e,
+iron_ore,Iron Ore,Identical,e,
+iron_trapdoor,Iron Trapdoor,Identical,e,
+jack_o_lantern,Jack o'Lantern,Identical,f,
+jigsaw,Jigsaw Block,Identical,n,
+jukebox,Jukebox,Identical,l,
+jungle_button,Jungle Button,Identical,w,
+jungle_door,Jungle Door,Identical,w,
+jungle_fence,Jungle Fence,Identical,w,
+jungle_fence_gate,Jungle Fence Gate,Identical,w,
+jungle_leaves,Jungle Leaves,Identical,w,
+jungle_log,Jungle Log,Identical,w,
+jungle_planks,Jungle Planks,Identical,w,
+jungle_pressure_plate,Jungle Pressure Plate,Identical,w,
+jungle_sapling,Jungle Sapling,Identical,w,
+jungle_sign,Jungle Sign,Identical,w,
+jungle_slab,Jungle Slab,Identical,w,
+jungle_stairs,Jungle Stairs,Identical,w,
+jungle_trapdoor,Jungle Trapdoor,Identical,w,
+jungle_wood,Jungle Wood,Identical,w,
+kelp,Kelp,Identical,u,
+ladder,Ladder,Identical,w,
+lantern,Lantern,Identical,f,
+lapis_block,Block of Lapis Lazuli,Identical,e,
+lapis_ore,Lapis Lazuli Ore,Identical,e,
+large_amethyst_bud,Large Amethyst Bud,Identical,e,
+large_fern,Large Fern,Identical,w,
+lectern,Lectern,Identical,w,
+lever,Lever,Identical,l,
+light,Light,Identical,h,
+light_blue_banner,Light Blue Banner,Identical,n,
+light_blue_bed,Light Blue Bed,Identical,n,
+light_blue_candle,Light Blue Candle,Identical,f,
+light_blue_carpet,Light Blue Carpet,Identical,n,
+light_blue_concrete,Light Blue Concrete,Identical,e,
+light_blue_concrete_powder,Light Blue Concrete Powder,Identical,e,
+light_blue_glazed_terracotta,Light Blue Glazed Terracotta,Identical,e,
+light_blue_shulker_box,Light Blue Shulker Box,Identical,g,
+light_blue_stained_glass,Light Blue Stained Glass,Identical,n,
+light_blue_stained_glass_pane,Light Blue Stained Glass Pane,Identical,n,
+light_blue_terracotta,Light Blue Terracotta,Identical,e,
+light_blue_wool,Light Blue Wool,Identical,l,
+light_gray_banner,Light Gray Banner,Identical,n,
+light_gray_bed,Light Gray Bed,Identical,n,
+light_gray_candle,Light Gray Candle,Identical,f,
+light_gray_carpet,Light Gray Carpet,Identical,n,
+light_gray_concrete,Light Gray Concrete,Identical,e,
+light_gray_concrete_powder,Light Gray Concrete Powder,Identical,e,
+light_gray_glazed_terracotta,Light Gray Glazed Terracotta,Identical,e,
+light_gray_shulker_box,Light Gray Shulker Box,Identical,g,
+light_gray_stained_glass,Light Gray Stained Glass,Identical,n,
+light_gray_stained_glass_pane,Light Gray Stained Glass Pane,Identical,n,
+light_gray_terracotta,Light Gray Terracotta,Identical,e,
+light_gray_wool,Light Gray Wool,Identical,l,
+light_weighted_pressure_plate,Light Weighted Pressure Plate,Identical,e,
+lightning_rod,Lightning Rod,Identical,e,
+lilac,Lilac,Identical,w,
+lily_of_the_valley,Lily of the Valley,Identical,w,
+lily_pad,Lily Pad,Identical,u,
+lime_banner,Lime Banner,Identical,n,
+lime_bed,Lime Bed,Identical,n,
+lime_candle,Lime Candle,Identical,f,
+lime_carpet,Lime Carpet,Identical,n,
+lime_concrete,Lime Concrete,Identical,e,
+lime_concrete_powder,Lime Concrete Powder,Identical,e,
+lime_glazed_terracotta,Lime Glazed Terracotta,Identical,e,
+lime_shulker_box,Lime Shulker Box,Identical,g,
+lime_stained_glass,Lime Stained Glass,Identical,n,
+lime_stained_glass_pane,Lime Stained Glass Pane,Identical,n,
+lime_terracotta,Lime Terracotta,Identical,e,
+lime_wool,Lime Wool,Identical,l,
+lodestone,Lodestone,Identical,l,
+loom,Loom,Identical,n,
+magenta_banner,Magenta Banner,Identical,n,
+magenta_bed,Magenta Bed,Identical,n,
+magenta_candle,Magenta Candle,Identical,f,
+magenta_carpet,Magenta Carpet,Identical,n,
+magenta_concrete,Magenta Concrete,Identical,e,
+magenta_concrete_powder,Magenta Concrete Powder,Identical,e,
+magenta_glazed_terracotta,Magenta Glazed Terracotta,Identical,e,
+magenta_shulker_box,Magenta Shulker Box,Identical,g,
+magenta_stained_glass,Magenta Stained Glass,Identical,n,
+magenta_stained_glass_pane,Magenta Stained Glass Pane,Identical,n,
+magenta_terracotta,Magenta Terracotta,Identical,e,
+magenta_wool,Magenta Wool,Identical,l,
+magma_block,Magma Block,Identical,f,
+medium_amethyst_bud,Medium Amethyst Bud,Identical,e,
+melon,Melon,Identical,w,
+moss_block,Moss Block,Identical,e,
+moss_carpet,Moss Carpet,Identical,e,
+mossy_cobblestone,Mossy Cobblestone,Identical,e,
+mossy_cobblestone_slab,Mossy Cobblestone Slab,Identical,e,
+mossy_cobblestone_stairs,Mossy Cobblestone Stairs,Identical,e,
+mossy_cobblestone_wall,Mossy Cobblestone Wall,Identical,e,
+mossy_stone_brick_slab,Mossy Stone Brick Slab,Identical,e,
+mossy_stone_brick_stairs,Mossy Stone Brick Stairs,Identical,e,
+mossy_stone_brick_wall,Mossy Stone Brick Wall,Identical,e,
+mossy_stone_bricks,Mossy Stone Bricks,Identical,e,
+mushroom_stem,Mushroom Stem,Identical,e,
+mycelium,Mycelium,Identical,e,
+nether_brick_fence,Nether Brick Fence,Identical,f,
+nether_brick_slab,Nether Brick Slab,Identical,f,
+nether_brick_stairs,Nether Brick Stairs,Identical,f,
+nether_brick_wall,Nether Brick Wall,Identical,f,
+nether_bricks,Nether Bricks,Identical,f,
+nether_gold_ore,Nether Gold Ore,Identical,f,
+nether_quartz_ore,Nether Quartz Ore,Identical,f,
+nether_sprouts,Nether Sprouts,Identical,f,
+nether_wart,Nether Wart,Identical,f,
+nether_wart_block,Nether Wart Block,Identical,f,
+netherite_block,Block of Netherite,Identical,d,
+netherrack,Netherrack,Identical,f,
+note_block,Note Block,Identical,l,
+oak_button,Oak Button,Identical,w,
+oak_door,Oak Door,Identical,w,
+oak_fence,Oak Fence,Identical,w,
+oak_fence_gate,Oak Fence Gate,Identical,w,
+oak_leaves,Oak Leaves,Identical,w,
+oak_log,Oak Log,Identical,w,
+oak_planks,Oak Planks,Identical,w,
+oak_pressure_plate,Oak Pressure Plate,Identical,w,
+oak_sapling,Oak Sapling,Identical,w,
+oak_sign,Oak Sign,Identical,w,
+oak_slab,Oak Slab,Identical,w,
+oak_stairs,Oak Stairs,Identical,w,
+oak_trapdoor,Oak Trapdoor,Identical,w,
+oak_wood,Oak Wood,Identical,w,
+observer,Observer,Identical,l,
+obsidian,Obsidian,Identical,d,
+orange_banner,Orange Banner,Identical,n,
+orange_bed,Orange Bed,Identical,n,
+orange_candle,Orange Candle,Identical,f,
+orange_carpet,Orange Carpet,Identical,n,
+orange_concrete,Orange Concrete,Identical,e,
+orange_concrete_powder,Orange Concrete Powder,Identical,e,
+orange_glazed_terracotta,Orange Glazed Terracotta,Identical,e,
+orange_shulker_box,Orange Shulker Box,Identical,g,
+orange_stained_glass,Orange Stained Glass,Identical,n,
+orange_stained_glass_pane,Orange Stained Glass Pane,Identical,n,
+orange_terracotta,Orange Terracotta,Identical,e,
+orange_tulip,Orange Tulip,Identical,w,
+orange_wool,Orange Wool,Identical,l,
+oxeye_daisy,Oxeye Daisy,Identical,w,
+oxidized_copper,Oxidized Copper,Identical,e,
+oxidized_cut_copper,Oxidized Cut Copper,Identical,e,
+oxidized_cut_copper_slab,Oxidized Cut Copper Slab,Identical,e,
+oxidized_cut_copper_stairs,Oxidized Cut Copper Stairs,Identical,e,
+packed_ice,Packed Ice,Identical,i,
+peony,Peony,Identical,w,
+petrified_oak_slab,Petrified Oak Slab,Identical,w,
+pink_banner,Pink Banner,Identical,n,
+pink_bed,Pink Bed,Identical,n,
+pink_candle,Pink Candle,Identical,f,
+pink_carpet,Pink Carpet,Identical,n,
+pink_concrete,Pink Concrete,Identical,e,
+pink_concrete_powder,Pink Concrete Powder,Identical,e,
+pink_glazed_terracotta,Pink Glazed Terracotta,Identical,e,
+pink_shulker_box,Pink Shulker Box,Identical,g,
+pink_stained_glass,Pink Stained Glass,Identical,n,
+pink_stained_glass_pane,Pink Stained Glass Pane,Identical,n,
+pink_terracotta,Pink Terracotta,Identical,e,
+pink_tulip,Pink Tulip,Identical,w,
+pink_wool,Pink Wool,Identical,l,
+piston,Piston,Identical,l,
+player_head,Player Head,Identical,n,
+podzol,Podzol,Identical,w,
+pointed_dripstone,Pointed Dripstone,Identical,u,
+polished_andesite,Polished Andesite,Identical,e,
+polished_andesite_slab,Polished Andesite Slab,Identical,e,
+polished_andesite_stairs,Polished Andesite Stairs,Identical,e,
+polished_basalt,Polished Basalt,Identical,e,
+polished_blackstone,Polished Blackstone,Identical,d,
+polished_blackstone_brick_slab,Polished Blackstone Brick Slab,Identical,d,
+polished_blackstone_brick_stairs,Polished Blackstone Brick Stairs,Identical,d,
+polished_blackstone_brick_wall,Polished Blackstone Brick Wall,Identical,d,
+polished_blackstone_bricks,Polished Blackstone Bricks,Identical,d,
+polished_blackstone_button,Polished Blackstone Button,Identical,d,
+polished_blackstone_pressure_plate,Polished Blackstone Pressure Plate,Identical,d,
+polished_blackstone_slab,Polished Blackstone Slab,Identical,d,
+polished_blackstone_stairs,Polished Blackstone Stairs,Identical,d,
+polished_blackstone_wall,Polished Blackstone Wall,Identical,d,
+polished_deepslate,Polished Deepslate,Identical,e,
+polished_deepslate_slab,Polished Deepslate Slab,Identical,e,
+polished_deepslate_stairs,Polished Deepslate Stairs,Identical,e,
+polished_deepslate_wall,Polished Deepslate Wall,Identical,e,
+polished_diorite,Polished Diorite,Identical,e,
+polished_diorite_slab,Polished Diorite Slab,Identical,e,
+polished_diorite_stairs,Polished Diorite Stairs,Identical,e,
+polished_granite,Polished Granite,Identical,e,
+polished_granite_slab,Polished Granite Slab,Identical,e,
+polished_granite_stairs,Polished Granite Stairs,Identical,e,
+poppy,Poppy,Identical,w,
+powered_rail,Powered Rail,Identical,l,
+prismarine,Prismarine,Identical,u,
+prismarine_brick_slab,Prismarine Brick Slab,Identical,u,
+prismarine_brick_stairs,Prismarine Brick Stairs,Identical,u,
+prismarine_bricks,Prismarine Bricks,Identical,u,
+prismarine_slab,Prismarine Slab,Identical,u,
+prismarine_stairs,Prismarine Stairs,Identical,u,
+prismarine_wall,Prismarine Wall,Identical,u,
+pumpkin,Pumpkin,Identical,w,
+purple_banner,Purple Banner,Identical,n,
+purple_bed,Purple Bed,Identical,n,
+purple_candle,Purple Candle,Identical,f,
+purple_carpet,Purple Carpet,Identical,e,
+purple_concrete,Purple Concrete,Identical,e,
+purple_concrete_powder,Purple Concrete Powder,Identical,e,
+purple_glazed_terracotta,Purple Glazed Terracotta,Identical,e,
+purple_shulker_box,Purple Shulker Box,Identical,g,
+purple_stained_glass,Purple Stained Glass,Identical,n,
+purple_stained_glass_pane,Purple Stained Glass Pane,Identical,n,
+purple_terracotta,Purple Terracotta,Identical,e,
+purple_wool,Purple Wool,Identical,l,
+purpur_block,Purpur Block,Identical,e,
+purpur_pillar,Purpur Pillar,Identical,e,
+purpur_slab,Purpur Slab,Identical,e,
+purpur_stairs,Purpur Stairs,Identical,e,
+quartz_block,Block of Quartz,Identical,e,
+quartz_bricks,Quartz Bricks,Identical,e,
+quartz_pillar,Quartz Pillar,Identical,e,
+quartz_slab,Quartz Slab,Identical,e,
+quartz_stairs,Quartz Stairs,Identical,e,
+rail,Rail,Identical,n,
+raw_copper_block,Block of Raw Copper,Identical,e,
+raw_gold_block,Block of Raw Gold,Identical,e,
+raw_iron_block,Block of Raw Iron,Identical,e,
+red_banner,Red Banner,Identical,n,
+red_bed,Red Bed,Identical,n,
+red_candle,Red Candle,Identical,f,
+red_carpet,Red Carpet,Identical,n,
+red_concrete,Red Concrete,Identical,e,
+red_concrete_powder,Red Concrete Powder,Identical,e,
+red_glazed_terracotta,Red Glazed Terracotta,Identical,e,
+red_mushroom,Red Mushroom,Identical,e,
+red_mushroom_block,Red Mushroom Block,Identical,e,
+red_nether_brick_slab,Red Nether Brick Slab,Identical,f,
+red_nether_brick_stairs,Red Nether Brick Stairs,Identical,f,
+red_nether_brick_wall,Red Nether Brick Wall,Identical,f,
+red_nether_bricks,Red Nether Bricks,Identical,f,
+red_sand,Red Sand,Identical,e,
+red_sandstone,Red Sandstone,Identical,e,
+red_sandstone_slab,Red Sandstone Slab,Identical,e,
+red_sandstone_stairs,Red Sandstone Stairs,Identical,e,
+red_sandstone_wall,Red Sandstone Wall,Identical,e,
+red_shulker_box,Red Shulker Box,Identical,g,
+red_stained_glass,Red Stained Glass,Identical,n,
+red_stained_glass_pane,Red Stained Glass Pane,Identical,n,
+red_terracotta,Red Terracotta,Identical,e,
+red_tulip,Red Tulip,Identical,w,
+red_wool,Red Wool,Identical,l,
+redstone_block,Block of Redstone,Identical,l,
+redstone_lamp,Redstone Lamp,Identical,l,
+redstone_ore,Redstone Ore,Identical,l,
+redstone_torch,Redstone Torch,Identical,l,
+repeater,Redstone Repeater,Identical,l,
+repeating_command_block,Repeating Command Block,Identical,l,
+respawn_anchor,Respawn Anchor,Identical,d,
+rooted_dirt,Rooted Dirt,Identical,e,
+rose_bush,Rose Bush,Identical,w,
+sand,Sand,Identical,e,
+sandstone,Sandstone,Identical,e,
+sandstone_slab,Sandstone Slab,Identical,e,
+sandstone_stairs,Sandstone Stairs,Identical,e,
+sandstone_wall,Sandstone Wall,Identical,e,
+scaffolding,Scaffolding,Identical,w,
+sculk_sensor,Sculk Sensor,Identical,e,
+sea_lantern,Sea Lantern,Identical,u,
+sea_pickle,Sea Pickle,Identical,u,
+seagrass,Seagrass,Identical,u,
+shroomlight,Shroomlight,Identical,e,
+shulker_box,Shulker Box,Identical,g,
+skeleton_skull,Skeleton Skull,Identical,n,
+slime_block,Slime Block,Identical,p,
+small_amethyst_bud,Small Amethyst Bud,Identical,e,
+small_dripleaf,Small Dripleaf,Identical,w,
+smithing_table,Smithing Table,Identical,n,
+smoker,Smoker,Identical,f,
+smooth_basalt,Smooth Basalt,Identical,e,
+smooth_quartz,Smooth Quartz Block,Identical,e,
+smooth_quartz_slab,Smooth Quartz Slab,Identical,e,
+smooth_quartz_stairs,Smooth Quartz Stairs,Identical,e,
+smooth_red_sandstone,Smooth Red Sandstone,Identical,e,
+smooth_red_sandstone_slab,Smooth Red Sandstone Slab,Identical,e,
+smooth_red_sandstone_stairs,Smooth Red Sandstone Stairs,Identical,e,
+smooth_sandstone,Smooth Sandstone,Identical,e,
+smooth_sandstone_slab,Smooth Sandstone Slab,Identical,e,
+smooth_sandstone_stairs,Smooth Sandstone Stairs,Identical,e,
+smooth_stone,Smooth Stone,Identical,e,
+smooth_stone_slab,Smooth Stone Slab,Identical,e,
+snow,Snow,Identical,i,
+snow_block,Snow Block,Identical,i,
+soul_campfire,Soul Campfire,Identical,f,
+soul_lantern,Soul Lantern,Identical,f,
+soul_sand,Soul Sand,Identical,d,
+soul_soil,Soul Soil,Identical,d,
+soul_torch,Soul Torch,Identical,f,
+spawner,Spawner,Identical,d,
+sponge,Sponge,Identical,l,
+spore_blossom,Spore Blossom,Identical,w,
+spruce_button,Spruce Button,Identical,w,
+spruce_door,Spruce Door,Identical,w,
+spruce_fence,Spruce Fence,Identical,w,
+spruce_fence_gate,Spruce Fence Gate,Identical,w,
+spruce_leaves,Spruce Leaves,Identical,w,
+spruce_log,Spruce Log,Identical,w,
+spruce_planks,Spruce Planks,Identical,w,
+spruce_pressure_plate,Spruce Pressure Plate,Identical,w,
+spruce_sapling,Spruce Sapling,Identical,w,
+spruce_sign,Spruce Sign,Identical,w,
+spruce_slab,Spruce Slab,Identical,w,
+spruce_stairs,Spruce Stairs,Identical,w,
+spruce_trapdoor,Spruce Trapdoor,Identical,w,
+spruce_wood,Spruce Wood,Identical,w,
+sticky_piston,Sticky Piston,Identical,l,
+stone,Stone,Identical,e,
+stone_brick_slab,Stone Brick Slab,Identical,e,
+stone_brick_stairs,Stone Brick Stairs,Identical,e,
+stone_brick_wall,Stone Brick Wall,Identical,e,
+stone_bricks,Stone Bricks,Identical,e,
+stone_button,Stone Button,Identical,e,
+stone_pressure_plate,Stone Pressure Plate,Identical,e,
+stone_slab,Stone Slab,Identical,e,
+stone_stairs,Stone Stairs,Identical,e,
+stonecutter,Stonecutter,Identical,e,
+stripped_acacia_log,Stripped Acacia Log,Identical,w,
+stripped_acacia_wood,Stripped Acacia Wood,Identical,w,
+stripped_birch_log,Stripped Birch Log,Identical,w,
+stripped_birch_wood,Stripped Birch Wood,Identical,w,
+stripped_crimson_hyphae,Stripped Crimson Hyphae,Identical,e,
+stripped_crimson_stem,Stripped Crimson Stem,Identical,e,
+stripped_dark_oak_log,Stripped Dark Oak Log,Identical,w,
+stripped_dark_oak_wood,Stripped Dark Oak Wood,Identical,w,
+stripped_jungle_log,Stripped Jungle Log,Identical,w,
+stripped_jungle_wood,Stripped Jungle Wood,Identical,w,
+stripped_oak_log,Stripped Oak Log,Identical,w,
+stripped_oak_wood,Stripped Oak Wood,Identical,w,
+stripped_spruce_log,Stripped Spruce Log,Identical,w,
+stripped_spruce_wood,Stripped Spruce Wood,Identical,w,
+stripped_warped_hyphae,Stripped Warped Hyphae,Identical,e,
+stripped_warped_stem,Stripped Warped Stem,Identical,e,
+structure_block,Structure Block,Identical,n,
+structure_void,Structure Void,Identical,n,
+sugar_cane,Sugar Cane,Identical,w,
+sunflower,Sunflower,Identical,w,
+tall_grass,Tall Grass,Identical,w,
+target,Target,Identical,n,
+terracotta,Terracotta,Identical,e,
+tinted_glass,Tinted Glass,Identical,n,
+tnt,TNT,Identical,f,
+torch,Torch,Identical,f,
+trapped_chest,Trapped Chest,Identical,n,
+tripwire_hook,Tripwire Hook,Identical,n,
+tube_coral,Tube Coral,Identical,u,
+tube_coral_block,Tube Coral Block,Identical,u,
+tube_coral_fan,Tube Coral Fan,Identical,u,
+tuff,Tuff,Identical,e,
+turtle_egg,Turtle Egg,Identical,n,
+twisting_vines,Twisting Vines,Identical,w,
+vine,Vines,Identical,w,
+warped_button,Warped Button,Identical,e,
+warped_door,Warped Door,Identical,e,
+warped_fence,Warped Fence,Identical,e,
+warped_fence_gate,Warped Fence Gate,Identical,e,
+warped_fungus,Warped Fungus,Identical,e,
+warped_hyphae,Warped Hyphae,Identical,e,
+warped_nylium,Warped Nylium,Identical,e,
+warped_planks,Warped Planks,Identical,e,
+warped_pressure_plate,Warped Pressure Plate,Identical,e,
+warped_roots,Warped Roots,Identical,e,
+warped_sign,Warped Sign,Identical,e,
+warped_slab,Warped Slab,Identical,e,
+warped_stairs,Warped Stairs,Identical,e,
+warped_stem,Warped Stem,Identical,e,
+warped_trapdoor,Warped Trapdoor,Identical,e,
+warped_wart_block,Warped Wart Block,Identical,e,
+waxed_copper_block,Waxed Block of Copper,Identical,e,
+waxed_cut_copper,Waxed Cut Copper,Identical,e,
+waxed_cut_copper_slab,Waxed Cut Copper Slab,Identical,e,
+waxed_cut_copper_stairs,Waxed Cut Copper Stairs,Identical,e,
+waxed_exposed_copper,Waxed Exposed Copper,Identical,e,
+waxed_exposed_cut_copper,Waxed Exposed Cut Copper,Identical,e,
+waxed_exposed_cut_copper_slab,Waxed Exposed Cut Copper Slab,Identical,e,
+waxed_exposed_cut_copper_stairs,Waxed Exposed Cut Copper Stairs,Identical,e,
+waxed_oxidized_copper,Waxed Oxidized Copper,Identical,e,
+waxed_oxidized_cut_copper,Waxed Oxidized Cut Copper,Identical,e,
+waxed_oxidized_cut_copper_slab,Waxed Oxidized Cut Copper Slab,Identical,e,
+waxed_oxidized_cut_copper_stairs,Waxed Oxidized Cut Copper Stairs,Identical,e,
+waxed_weathered_copper,Waxed Weathered Copper,Identical,e,
+waxed_weathered_cut_copper,Waxed Weathered Cut Copper,Identical,e,
+waxed_weathered_cut_copper_slab,Waxed Weathered Cut Copper Slab,Identical,e,
+waxed_weathered_cut_copper_stairs,Waxed Weathered Cut Copper Stairs,Identical,e,
+weathered_copper,Weathered Copper,Identical,e,
+weathered_cut_copper,Weathered Cut Copper,Identical,e,
+weathered_cut_copper_slab,Weathered Cut Copper Slab,Identical,e,
+weathered_cut_copper_stairs,Weathered Cut Copper Stairs,Identical,e,
+weeping_vines,Weeping Vines,Identical,w,
+wet_sponge,Wet Sponge,Identical,u,
+white_banner,White Banner,Identical,n,
+white_bed,White Bed,Identical,n,
+white_candle,White Candle,Identical,f,
+white_carpet,White Carpet,Identical,n,
+white_concrete,White Concrete,Identical,e,
+white_concrete_powder,White Concrete Powder,Identical,e,
+white_glazed_terracotta,White Glazed Terracotta,Identical,e,
+white_shulker_box,White Shulker Box,Identical,g,
+white_stained_glass,White Stained Glass,Identical,n,
+white_stained_glass_pane,White Stained Glass Pane,Identical,n,
+white_terracotta,White Terracotta,Identical,e,
+white_tulip,White Tulip,Identical,w,
+white_wool,White Wool,Identical,l,
+wither_rose,Wither Rose,Identical,d,
+wither_skeleton_skull,Wither Skeleton Skull,Identical,n,
+yellow_banner,Yellow Banner,Identical,n,
+yellow_bed,Yellow Bed,Identical,n,
+yellow_candle,Yellow Candle,Identical,f,
+yellow_carpet,Yellow Carpet,Identical,n,
+yellow_concrete,Yellow Concrete,Identical,e,
+yellow_concrete_powder,Yellow Concrete Powder,Identical,e,
+yellow_glazed_terracotta,Yellow Glazed Terracotta,Identical,e,
+yellow_shulker_box,Yellow Shulker Box,Identical,g,
+yellow_stained_glass,Yellow Stained Glass,Identical,n,
+yellow_stained_glass_pane,Yellow Stained Glass Pane,Identical,n,
+yellow_terracotta,Yellow Terracotta,Identical,e,
+yellow_wool,Yellow Wool,Identical,l,
+zombie_head,Zombie Head,Identical,n,
+potted_jungle_sapling,Potted Jungle Sapling,jungle_sapling,w,
+jungle_wall_sign,Jungle Wall Sign,jungle_sign,w,
+kelp_plant,Kelp Plant,kelp,u,
+light_blue_wall_banner,Light Blue Wall Banner,light_blue_banner,n,
+light_gray_wall_banner,Light Gray Wall Banner,light_gray_banner,n,
+potted_lily_of_the_valley,Potted Lily of the Valley,lily_of_the_valley,w,
+lime_wall_banner,Lime Wall Banner,lime_banner,n,
+magenta_wall_banner,Magenta Wall Banner,magenta_banner,n,
+melon_stem,Melon Stem,melon_seeds,w,
+bubble_column,Bubble Column,None,u,
+cave_air,Cave Air,None,w,
+end_gateway,End Gateway,None,g,
+end_portal,End Portal,None,g,
+fire,Fire,None,f,
+frosted_ice,Frosted Ice,None,i,
+lava,Lava,None,f,
+moving_piston,Moving Piston,None,l,
+nether_portal,Nether Portal,None,g,
+piston_head,Piston Head,None,l,
+soul_fire,Soul Fire,None,f,
+void_air,Void Air,None,w,
+water,Water,None,u,
+potted_oak_sapling,Potted Oak Sapling,oak_sapling,w,
+oak_wall_sign,Oak Wall Sign,oak_sign,w,
+orange_wall_banner,Orange Wall Banner,orange_banner,n,
+potted_orange_tulip,Potted Orange Tulip,orange_tulip,w,
+potted_oxeye_daisy,Potted Oxeye Daisy,oxeye_daisy,w,
+pink_wall_banner,Pink Wall Banner,pink_banner,n,
+potted_pink_tulip,Potted Pink Tulip,pink_tulip,w,
+player_wall_head,Player Wall Head,player_head,n,
+potted_poppy,Potted Poppy,poppy,w,
+potatoes,Potatoes,potato,e,
+powder_snow,Powder Snow,powder_snow_bucket,i,
+attached_melon_stem,Attached Melon Stem,pumpkin_seeds,w,
+attached_pumpkin_stem,Attached Pumpkin Stem,pumpkin_seeds,w,
+pumpkin_stem,Pumpkin Stem,pumpkin_seeds,w,
+purple_wall_banner,Purple Wall Banner,purple_banner,n,
+red_wall_banner,Red Wall Banner,red_banner,n,
+potted_red_mushroom,Potted Red Mushroom,red_mushroom,e,
+potted_red_tulip,Potted Red Tulip,red_tulip,w,
+redstone_wire,Redstone Wire,redstone,l,
+redstone_wall_torch,Redstone Wall Torch,redstone_torch,l,
+tall_seagrass,Tall Seagrass,seagrass,u,
+skeleton_wall_skull,Skeleton Wall Skull,skeleton_skull,n,
+soul_wall_torch,Soul Wall Torch,soul_torch,f,
+potted_spruce_sapling,Potted Spruce Sapling,spruce_sapling,w,
+spruce_wall_sign,Spruce Wall Sign,spruce_sign,w,
+tripwire,Tripwire,string,n,
+sweet_berry_bush,Sweet Berry Bush,sweet_berries,w,
+wall_torch,Wall Torch,torch,f,
+tube_coral_wall_fan,Tube Coral Wall Fan,tube_coral_fan,u,
+twisting_vines_plant,Twisting Vines Plant,twisting_vines,w,
+potted_warped_fungus,Potted Warped Fungus,warped_fungus,e,
+potted_warped_roots,Potted Warped Roots,warped_roots,e,
+warped_wall_sign,Warped Wall Sign,warped_sign,e,
+weeping_vines_plant,Weeping Vines Plant,weeping_vines,w,
+wheat,Wheat Crops,wheat_seeds,w,
+white_wall_banner,White Wall Banner,white_banner,n,
+potted_white_tulip,Potted White Tulip,white_tulip,w,
+potted_wither_rose,Potted Wither Rose,wither_rose,d,
+wither_skeleton_wall_skull,Wither Skeleton Wall Skull,wither_skeleton_skull,n,
+yellow_wall_banner,Yellow Wall Banner,yellow_banner,n,
+zombie_wall_head,Zombie Wall Head,zombie_head,n,

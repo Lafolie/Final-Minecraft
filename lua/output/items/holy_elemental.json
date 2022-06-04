@@ -8,6 +8,11 @@
 		"minecraft:chain_command_block",
 		"minecraft:command_block",
 		"minecraft:glowstone",
-		"minecraft:light"
+		"minecraft:light",
+		"minecraft:debug_stick",
+		"minecraft:enchanted_golden_apple",
+		"minecraft:glowstone_dust",
+		"minecraft:nether_star",
+		"minecraft:totem_of_undying"
 	]
 }

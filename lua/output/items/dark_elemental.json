@@ -1,8 +1,6 @@
 {
 	"replace": false,
 	"values": [
-		"minecraft:crimson_fungus",
-		"minecraft:crimson_roots",
 		"minecraft:ancient_debris",
 		"minecraft:blackstone",
 		"minecraft:blackstone_slab",
@@ -30,6 +28,9 @@
 		"minecraft:soul_sand",
 		"minecraft:soul_soil",
 		"minecraft:spawner",
-		"minecraft:wither_rose"
+		"minecraft:wither_rose",
+		"minecraft:dragon_breath",
+		"minecraft:ghast_tear",
+		"minecraft:netherite_ingot"
 	]
 }

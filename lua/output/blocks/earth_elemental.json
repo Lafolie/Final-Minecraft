@@ -5,6 +5,8 @@
 		"minecraft:potted_cactus",
 		"minecraft:carrots",
 		"minecraft:cocoa",
+		"minecraft:potted_crimson_fungus",
+		"minecraft:potted_crimson_roots",
 		"minecraft:crimson_wall_sign",
 		"minecraft:andesite",
 		"minecraft:andesite_slab",
@@ -313,7 +315,6 @@
 		"minecraft:weathered_cut_copper",
 		"minecraft:weathered_cut_copper_slab",
 		"minecraft:weathered_cut_copper_stairs",
-		"minecraft:weeping_vines",
 		"minecraft:white_concrete",
 		"minecraft:white_concrete_powder",
 		"minecraft:white_glazed_terracotta",
@@ -324,10 +325,8 @@
 		"minecraft:yellow_terracotta",
 		"minecraft:potatoes",
 		"minecraft:potted_red_mushroom",
-		"minecraft:twisting_vines_plant",
 		"minecraft:potted_warped_fungus",
 		"minecraft:potted_warped_roots",
-		"minecraft:warped_wall_sign",
-		"minecraft:weeping_vines_plant"
+		"minecraft:warped_wall_sign"
 	]
 }

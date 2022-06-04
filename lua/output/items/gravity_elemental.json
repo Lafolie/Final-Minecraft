@@ -18,6 +18,10 @@
 		"minecraft:red_shulker_box",
 		"minecraft:shulker_box",
 		"minecraft:white_shulker_box",
-		"minecraft:yellow_shulker_box"
+		"minecraft:yellow_shulker_box",
+		"minecraft:end_crystal",
+		"minecraft:ender_eye",
+		"minecraft:ender_pearl",
+		"minecraft:shulker_shell"
 	]
 }
