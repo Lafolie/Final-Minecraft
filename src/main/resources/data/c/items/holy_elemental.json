@@ -1,0 +1,18 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:amethyst_block",
+		"minecraft:amethyst_cluster",
+		"minecraft:beacon",
+		"minecraft:budding_amethyst",
+		"minecraft:chain_command_block",
+		"minecraft:command_block",
+		"minecraft:glowstone",
+		"minecraft:light",
+		"minecraft:debug_stick",
+		"minecraft:enchanted_golden_apple",
+		"minecraft:glowstone_dust",
+		"minecraft:nether_star",
+		"minecraft:totem_of_undying"
+	]
+}

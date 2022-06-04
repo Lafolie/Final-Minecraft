@@ -6,7 +6,6 @@ local insert = table.insert
 -- Vars -----------------------------------------------------------------------
 local args = {...}
 local genList = {}
-local justHelp
 local outputFiles = {}
 local uniqueTags = {}
 local tagCollisions = 0
@@ -86,6 +85,7 @@ end
 
 local function exportAspectTables(tables, dir)
 	local path = string.format("output/%s/%%s_elemental.json", dir)
+
 	for element, tbl in pairs(tables) do
 		if #tbl.values >0 then
 			local p = string.format(path, element)
@@ -101,17 +101,17 @@ local commands = {}
 commands["-help"] = function(path)
 	print [=[
 Usage: genTags [option1 [arg]] [option2 [arg]] ...
-This program transforms CSV data into tag JSON usable by minecraft. 
+This program transforms elemental CSV data into tag JSON usable by minecraft.
 Outputs to 'output/[type] where type matches the argument types (blocks, items, etc).
 Output dirs must already exist!
 
 Available arguments:
-	-h help		Show this help screen
-	-a all		Generate all tags from CSVs. Takes an optional arg path (dir), using the default filenames. Defaults to 'input/'
-	-b blocks	Generate block tags from CSV. Takes optional arg path, defaults to 'input/blocks.csv'
-	-i items	Generate item tags from CSV. Takes optional arg path, defaults to 'input/items.csv'
-	-e entities	Generate entity tags from CSV. Takes optional arg path, defaults to 'input/entities.csv'
-	-f fluids   Generate fluid tags from CSV. Takes optional arg path, defaults to 'input/fluids.csv'
+	-h -help		Show this help screen
+	-a -all         Generate all tags from CSVs. Takes an optional arg path (dir), using the default filenames. Defaults to 'input/'
+	-b -blocks      Generate block tags from CSV. Takes optional arg path, defaults to 'input/blocks.csv'
+	-i -items       Generate item tags from CSV. Takes optional arg path, defaults to 'input/items.csv'
+	-e -entities    Generate entity tags from CSV. Takes optional arg path, defaults to 'input/entities.csv'
+	-f -fluids      Generate fluid tags from CSV. Takes optional arg path, defaults to 'input/fluids.csv'
 	
 	Examples:
 		Generate everything:
@@ -207,7 +207,6 @@ commands["-fluids"] = function(path)
 	end
 end
 
-
 commands["-all"] = function()
 	commands["-blocks"]()
 	commands["-items"]()
@@ -259,6 +258,7 @@ for k, cmd in pairs(genList) do
 	cmd.f(cmd.arg)
 end
 print "-- Generation successful ------------------------------------------------------"
+
 
 for name, file in pairs(outputFiles) do
 	exportAspectTables(file, name)
