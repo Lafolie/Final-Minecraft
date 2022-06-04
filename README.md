@@ -106,7 +106,7 @@ FMC code uses the following object categories for elemental tags:
 * Entity-Types
 * ~~Enchantments~~
 
-This repository also contains a tool written in Lua that helps to generate tag json from a CSV file (such as that exported from a spreasheet), run `lua genTags.lua -h` for a list of options. See the [/lua/genTags.lua]() file for more information.
+This repository also contains a tool written in Lua that helps to generate tag json from a CSV file (such as that exported from a spreasheet), run `lua genTags.lua -h` for a list of options. See the [lua/genTags.lua](lua/genTags.lua) file for more information.
 
 *TODO: setup maven on repo*
 
