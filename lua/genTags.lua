@@ -1,5 +1,5 @@
 local util = require "util"
-local json = require "lib.json"
+local json = require "lib.json.json-beautify"
 
 local insert = table.insert
 
@@ -23,6 +23,8 @@ local elementShorthands =
 
 }
 
+local jsonConfig = {indent = "\t"}
+
 -- Common Funcs ---------------------------------------------------------------
 local function mkAspectTables(includeNone)
 	local tables = {}
@@ -43,7 +45,7 @@ local function exportAspectTables(tables, dir)
 	local path = string.format("output/%s/%%s_elemental.json", dir)
 	for element, tbl in pairs(tables) do
 		local p = string.format(path, element)
-		local str = json.encode(tbl)
+		local str = json.beautify(tbl, jsonConfig)
 		util.writeString(p, str)
 	end
 end

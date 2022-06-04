@@ -1,2 +1,6 @@
-{"values":["minecraft:slime_block"]
-,"replace":false}
+{
+	"replace": false,
+	"values": [
+		"minecraft:slime_block"
+	]
+}

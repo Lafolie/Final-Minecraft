@@ -1,2 +1,13 @@
-{"values":["minecraft:amethyst_block","minecraft:amethyst_cluster","minecraft:beacon","minecraft:budding_amethyst","minecraft:chain_command_block","minecraft:command_block","minecraft:glowstone","minecraft:light"]
-,"replace":false}
+{
+	"replace": false,
+	"values": [
+		"minecraft:amethyst_block",
+		"minecraft:amethyst_cluster",
+		"minecraft:beacon",
+		"minecraft:budding_amethyst",
+		"minecraft:chain_command_block",
+		"minecraft:command_block",
+		"minecraft:glowstone",
+		"minecraft:light"
+	]
+}

@@ -56,7 +56,9 @@ local function encode_nil(val)
 end
 
 
-local function encode_table(val, stack)
+local function encode_table(val, stack, depth)
+  depth = depth and depth + 1 or 0
+  local tabs = string.rep("\t", depth)
   local res = {}
   stack = stack or {}
 
@@ -82,7 +84,7 @@ local function encode_table(val, stack)
       table.insert(res, encode(v, stack))
     end
     stack[val] = nil
-    return "[" .. table.concat(res, ",") .. "]\n"
+    return tabs .. "[\n" .. tabs .. "\t".. table.concat(res, ",\n" .. tabs .. "\t") .. "]\n"
 
   else
     -- Treat as an object
@@ -93,17 +95,17 @@ local function encode_table(val, stack)
       table.insert(res, encode(k, stack) .. ":" .. encode(v, stack))
     end
     stack[val] = nil
-    return "{" .. table.concat(res, ",") .. "}"
+    return tabs .. "{\n" .. table.concat(res, ",\n" .. tabs .. "\t") .. "}"
   end
 end
 
 
-local function encode_string(val)
-  return '"' .. val:gsub('[%z\1-\31\\"]', escape_char) .. '"'
+local function encode_string(val, _, depth)
+  return string.rep("\t", depth) .. '"' .. val:gsub('[%z\1-\31\\"]', escape_char) .. '"'
 end
 
 
-local function encode_number(val)
+local function encode_number(val, _, depth)
   -- Check for NaN, -inf and inf
   if val ~= val or val <= -math.huge or val >= math.huge then
     error("unexpected number value '" .. tostring(val) .. "'")
@@ -121,11 +123,12 @@ local type_func_map = {
 }
 
 
-encode = function(val, stack)
+encode = function(val, stack, depth)
+  depth = depth or 0
   local t = type(val)
   local f = type_func_map[t]
   if f then
-    return f(val, stack)
+    return f(val, stack, depth)
   end
   error("unexpected type '" .. t .. "'")
 end
