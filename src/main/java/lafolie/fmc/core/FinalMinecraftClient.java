@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.TranslatableText;
 
-public class ModClient implements ClientModInitializer
+public class FinalMinecraftClient implements ClientModInitializer
 {
 
 	@Override

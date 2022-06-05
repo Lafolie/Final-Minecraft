@@ -23,10 +23,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "lafolie.fmc.core.Mod"
+      "lafolie.fmc.core.FinalMinecraft"
     ],
     "client": [
-      "lafolie.fmc.core.ModClient"
+      "lafolie.fmc.core.FinalMinecraftClient"
     ],
     "cardinal-components": [
       "lafolie.fmc.core.internal.Components"

@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import lafolie.fmc.core.Mod;
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalEntity;
@@ -25,7 +25,7 @@ public abstract class DonkeyEntityMixin
 	{
 		ElementalEntity self = (ElementalEntity)this;
 
-		FMCConfig config =  Mod.getConfig();
+		FMCConfig config =  FinalMinecraft.getConfig();
 		ArrayList<Pair<ElementalAspect, Float>> baseElements = config.donkeyWeakResist.getPairList();
 
 		self.initElementalEntity(baseElements);

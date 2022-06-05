@@ -1,26 +1,27 @@
 package lafolie.fmc.core.mixin;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.InnateElementalAspect;
+import lafolie.fmc.core.elements.ElementalItemTags;
+import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Settings;
+import net.minecraft.tag.TagKey;
+import net.minecraft.util.registry.RegistryEntry;
 
 @Mixin(Item.class)
-public abstract class ItemMixin implements InnateElementalAspect
+public abstract class ItemMixin implements InnateElemental
 {
-	private ElementalAspect innateElement = ElementalAspect.randomElement();
-
-	@Override
-	public ElementalAspect getElement()
-	{
-		return innateElement;
-	}
-
+	private EnumMap<ElementalAspect, Integer> innateElements;
 
 	// @Inject(at = @At("HEAD"), method = "appendTooltip")
 	// private void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context, CallbackInfo info)
@@ -31,9 +32,35 @@ public abstract class ItemMixin implements InnateElementalAspect
 	// 	}
 	// }
 
+	@Shadow
+	private RegistryEntry.Reference<Item> registryEntry;
+
 	@Inject(at = @At("TAIL"), method = "<init>")
 	private void constructor(Settings settings, CallbackInfo info)
 	{
 
+	}
+
+	private void setInnateElements()
+	{
+		innateElements = new EnumMap<>(ElementalAspect.class);
+		for(Map.Entry<ElementalAspect, TagKey<Item>> entry : ElementalItemTags.TAGS.entrySet())
+		{
+			if(registryEntry.isIn(entry.getValue()))
+			{
+				FinalMinecraft.log.debug("Registered {} as {}", registryEntry.toString(), entry.toString());
+				innateElements.put(entry.getKey(), 1);
+			}
+		}
+	}
+
+	@Override
+	public EnumMap<ElementalAspect, Integer> getInnateElements()
+	{
+		if(innateElements == null)
+		{
+			setInnateElements();
+		}
+		return innateElements.clone();
 	}
 }

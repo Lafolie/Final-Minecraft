@@ -1,6 +1,7 @@
 package lafolie.fmc.core;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.FabricTagBuilder;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Block;
@@ -18,7 +19,7 @@ import lafolie.fmc.core.config.FMCConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-public class Mod implements ModInitializer//, RegistryEntryAddedCallback<Item>
+public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallback<Item>
 {
 	public static final byte VERSION_MAJOR = 0;
 	public static final byte VERSION_MINOR = 1;
@@ -37,7 +38,7 @@ public class Mod implements ModInitializer//, RegistryEntryAddedCallback<Item>
 	@Override
 	public void onInitialize()
 	{
-		log.info("Loaded FMC Core version %s", getVersionString());
+		log.info("Loaded FMC Core version {}", getVersionString());
 		initConfig();
 		RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
 	}
