@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.FabricTagBu
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Block;
+import net.minecraft.block.IceBlock;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
@@ -16,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lafolie.fmc.core.config.FMCConfig;
+import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.elements.ElementalItemTags;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
@@ -41,6 +44,8 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 		log.info("Loaded FMC Core version {}", getVersionString());
 		initConfig();
 		RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
+
+		// for(ElementalItemTags.TAGS.get(ElementalAspect.ICE).isOf))
 	}
 
 	private void initConfig()

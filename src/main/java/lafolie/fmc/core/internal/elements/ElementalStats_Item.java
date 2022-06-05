@@ -1,6 +1,5 @@
 package lafolie.fmc.core.internal.elements;
 
-import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;

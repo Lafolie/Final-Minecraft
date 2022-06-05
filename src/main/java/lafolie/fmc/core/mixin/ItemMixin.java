@@ -15,7 +15,9 @@ import lafolie.fmc.core.elements.ElementalItemTags;
 import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Settings;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.TagKey;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 
 @Mixin(Item.class)
@@ -43,13 +45,15 @@ public abstract class ItemMixin implements InnateElemental
 
 	private void setInnateElements()
 	{
+		FinalMinecraft.log.info("setInnateElements! {}", registryEntry.toString());
 		innateElements = new EnumMap<>(ElementalAspect.class);
 		for(Map.Entry<ElementalAspect, TagKey<Item>> entry : ElementalItemTags.TAGS.entrySet())
 		{
-			if(registryEntry.isIn(entry.getValue()))
+			FinalMinecraft.log.info("	checking for element {}", entry.getValue().toString());
+			if(registryEntry.isIn(ItemTags.BEDS))
 			{
 				FinalMinecraft.log.debug("Registered {} as {}", registryEntry.toString(), entry.toString());
-				innateElements.put(entry.getKey(), 1);
+				// innateElements.put(entry.getKey(), 1);
 			}
 		}
 	}
@@ -57,6 +61,7 @@ public abstract class ItemMixin implements InnateElemental
 	@Override
 	public EnumMap<ElementalAspect, Integer> getInnateElements()
 	{
+		FinalMinecraft.log.info("getInnateElements! {}", registryEntry.toString());
 		if(innateElements == null)
 		{
 			setInnateElements();
