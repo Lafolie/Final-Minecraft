@@ -12,6 +12,7 @@ import net.minecraft.nbt.NbtCompound;
 public class ElementalStats implements ElementalStatsComponent, AutoSyncedComponent
 {
 	private NbtCompound nbt = new NbtCompound();
+	private boolean initInnate = false;
 
 	private Object provider;
 
@@ -42,10 +43,5 @@ public class ElementalStats implements ElementalStatsComponent, AutoSyncedCompon
 	public void writeToNbt(NbtCompound tag)
 	{
 		tag.put(KEY, nbt);
-	}
-
-	private void syncTag()
-	{
-
 	}
 }

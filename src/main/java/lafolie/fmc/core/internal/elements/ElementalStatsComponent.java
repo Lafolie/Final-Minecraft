@@ -12,9 +12,20 @@ import net.minecraft.nbt.NbtCompound;
 public interface ElementalStatsComponent extends ComponentV3
 {
 	public final static String KEY = "FMC_ElementalStats";
+	public final static String INIT_KEY = "FMC_ElementalStatsInit";
 
 	public NbtCompound getElementNbt();
 	public void setElementNbt(NbtCompound nbt);
+
+	public default boolean hasInitInnate()
+	{
+		return getElementNbt().contains(INIT_KEY);
+	}
+
+	public default void setHasInitInnate()
+	{
+		getElementNbt().putBoolean(INIT_KEY, true);
+	}
 
 	public default void addElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
 	{

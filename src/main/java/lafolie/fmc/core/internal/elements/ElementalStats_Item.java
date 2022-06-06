@@ -1,6 +1,12 @@
 package lafolie.fmc.core.internal.elements;
 
+import java.util.Map;
+
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
+import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.elements.ElementalAttribute;
+import lafolie.fmc.core.elements.ElementalObject;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
@@ -24,5 +30,17 @@ public class ElementalStats_Item extends ItemComponent implements ElementalStats
 	public void setElementNbt(NbtCompound nbt)
 	{
 		stack.setSubNbt(KEY, nbt);
+	}
+
+	@Override
+	public boolean hasInitInnate()
+	{
+		return stack.getSubNbt(KEY).contains(INIT_KEY);
+	}
+
+	@Override
+	public void setHasInitInnate()
+	{
+		stack.getOrCreateSubNbt(KEY).putBoolean(INIT_KEY, true);
 	}
 }

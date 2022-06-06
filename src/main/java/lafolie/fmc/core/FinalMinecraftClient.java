@@ -7,6 +7,8 @@ import lafolie.fmc.core.mixin.ItemStackMixin;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 public class FinalMinecraftClient implements ClientModInitializer
@@ -28,7 +30,9 @@ public class FinalMinecraftClient implements ClientModInitializer
 				lines.add(
 					new TranslatableText("fmc.core.element.tooltip.elemental",
 					new TranslatableText(Utils.ElementLangKeys.get(element))));
+					lines.add(new LiteralText(String.format("Total: %s", total)));
 				}
+
 			}
 		});
 	}

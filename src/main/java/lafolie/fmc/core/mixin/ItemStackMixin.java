@@ -1,6 +1,5 @@
 package lafolie.fmc.core.mixin;
 
-import java.util.EnumMap;
 import java.util.Map;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,23 +31,23 @@ public abstract class ItemStackMixin implements ElementalObject
 		// addBaseElementalAspect(ElementalAspect.randomElement(), ElementalAttribute.RESISTANCE, 1);
 	}
 
-	private boolean hasInitComponent = false;
-
 	@Override
 	public ElementalStatsComponent getComponent()
 	{	
-		if(!hasInitComponent)
+		ElementalStatsComponent component = Components.ELEMENTAL_STATS_ITEM.get(this);
+		
+		if(!component.hasInitInnate())
 		{
-			hasInitComponent = true;
-			Item item = this.getItem();
+			component.setHasInitInnate();
+			Item item = getItem();
 			InnateElemental innate = (InnateElemental)item;
 			for(Map.Entry<ElementalAspect, Integer> entry : innate.getInnateElements().entrySet())
 			{
 				addBaseElementalAspect(entry.getKey(), ElementalAttribute.RESISTANCE, entry.getValue());
 			}
+		}
 			// addBaseElementalAspect(ElementalAspect.randomElement(), ElementalAttribute.RESISTANCE, 1);
 
-		}
-		return Components.ELEMENTAL_STATS_ITEM.get(this);
+		return component;
 	}
 }
