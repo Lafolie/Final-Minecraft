@@ -2,7 +2,7 @@ Block ID,Name,Item ID,Element,Item Element Override
 potted_acacia_sapling,Potted Acacia Sapling,acacia_sapling,w,
 acacia_wall_sign,Acacia Wall Sign,acacia_sign,w,
 potted_allium,Potted Allium,allium,w,
-potted_azalea_bush,Potted Azalea,azalea_bush,w,
+potted_azalea_bush,Potted Azalea,azalea_bush,w,n
 potted_azure_bluet,Potted Azure Bluet,azure_bluet,w,
 bamboo_sapling,Bamboo Shoot,bamboo,w,
 potted_bamboo,Potted Bamboo,bamboo,w,

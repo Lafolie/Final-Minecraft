@@ -1,0 +1,111 @@
+Name,ID,Elements,Immunity,Absorb,Fatal,Revive
+Axolotl,axolotl,u,n,n,n,n
+Bat,bat,w,n,n,n,n
+Bee,bee,w,n,n,n,n
+Blaze,blaze,f,f,f,n,n
+Cat,cat,n,n,n,n,n
+Cave Spider,cave_spider,p,p,p,n,n
+Chicken,chicken,n,n,n,n,n
+Cod,cod,u,n,n,l,n
+Cow,cow,n,n,n,n,n
+Creeper,creeper,l,l,l,n,n
+Dolphin,dolphin,u,n,n,n,n
+Donkey,donkey,n,n,n,n,n
+Drowned,drowned,ud,n,n,n,n
+Elder Guardian,elder_guardian,uh,n,n,n,n
+Ender Dragon,ender_dragon,n,n,n,n,n
+Enderman,enderman,d,g,n,n,n
+Endermite,endermite,d,g,n,n,n
+Evoker,evoker,n,n,n,n,n
+Fox,fox,n,n,n,n,n
+Ghast,ghast,d,n,n,n,n
+Giant,giant,n,n,n,n,n
+Glow Squid,glow_squid,u,n,n,l,n
+Goat,goat,n,n,n,n,n
+Guardian,guardian,u,n,n,n,n
+Hoglin,hoglin,n,n,n,n,n
+Horse,horse,n,n,n,n,n
+Husk,husk,ed,f,n,n,n
+Illusioner,illusioner,n,n,n,n,n
+Iron Golem,iron_golem,e,n,n,n,n
+Llama,llama,n,n,n,n,n
+Magma Cube,magma_cube,f,f,f,n,f
+Mooshroom,mooshroom,e,e,e,n,n
+Mule,mule,n,n,n,n,n
+Ocelot,ocelot,n,n,n,n,n
+Panda,panda,n,n,n,n,n
+Parrot,parrot,w,n,n,n,n
+Phantom,phantom,wd,d,n,n,n
+Pig,pig,n,n,n,n,n
+Piglin,piglin,n,n,n,n,n
+Piglin Brute,piglin_brute,n,n,n,n,n
+Pillager,pillager,n,n,n,n,n
+Polar Bear,polar_bear,i,n,n,n,n
+Pufferfish,pufferfish,u,n,n,l,n
+Rabbit,rabbit,n,n,n,n,n
+Ravager,ravager,n,n,n,n,n
+Salmon,salmon,u,n,n,l,n
+Sheep,sheep,n,n,n,n,n
+Shulker,shulker,g,g,g,n,g
+Silverfish,silverfish,n,n,n,n,n
+Skeleton,skeleton,d,n,n,n,n
+Skeleton Horse,skeleton_horse,d,n,n,n,n
+Slime,slime,p,p,p,n,n
+Snow Golem,snow_golem,i,i,n,n,n
+Spider,spider,n,n,n,n,n
+Squid,squid,u,n,n,l,n
+Stray,stray,id,n,n,n,n
+Strider,strider,f,f,n,n,n
+Trader Llama,trader_llama,n,n,n,n,n
+Tropical Fish,tropical_fish,u,n,n,l,n
+Turtle,turtle,u,n,n,n,n
+Vex,vex,wg,d,n,n,n
+Villager,villager,n,n,n,n,n
+Vindicator,vindicator,n,n,n,n,n
+Wandering Trader,wandering_trader,n,n,n,n,n
+Witch,witch,n,n,n,n,n
+Wither,wither,d,d,d,n,n
+Wither Skeleton,wither_skeleton,d,d,d,n,n
+Wolf,wolf,n,n,n,n,n
+Zoglin,zoglin,d,n,n,n,n
+Zombie,zombie,id,n,n,n,n
+Zombie Horse,zombie_horse,id,n,n,n,n
+Zombie Villager,zombie_villager,d,n,n,n,n
+Zombified Piglin,zombified_piglin,d,n,n,n,n
+Area Effect Cloud,area_effect_cloud,n,n,n,n,n
+Armor Stand,armor_stand,n,n,n,n,n
+End Crystal,end_crystal,g,g,g,n,g
+Evoker Fangs,evoker_fangs,n,n,n,n,n
+Fishing Bobber,fishing_bobber,n,n,n,n,n
+Item Frame,item_frame,n,n,n,n,n
+Leash Knot,leash_knot,n,n,n,n,n
+Lightning Bolt,lightning_bolt,l,n,n,n,n
+Painting,painting,n,n,n,n,n
+Arrow and Tipped Arrow,arrow,n,n,n,n,n
+Dragon Fireball,dragon_fireball,n,n,n,n,n
+Thrown Egg,egg,n,n,n,n,n
+Thrown Ender Pearl,ender_pearl,g,n,n,n,n
+Thrown Bottle o' Enchanting,experience_bottle,n,n,n,n,n
+Eye of Ender,eye_of_ender,n,n,n,n,n
+Fireball,fireball,f,n,n,n,n
+Firework Rocket,firework_rocket,n,n,n,n,n
+Llama Spit,llama_spit,n,n,n,n,n
+Potion,potion,n,n,n,n,n
+Shulker Bullet,shulker_bullet,g,n,n,n,n
+Small Fireball,small_fireball,f,n,n,n,n
+Snowball,snowball,i,n,n,n,n
+Spectral Arrow,spectral_arrow,n,n,n,n,n
+Trident,trident,n,n,n,n,n
+Wither Skull,wither_skull,d,n,n,n,n
+Boat,boat,n,n,n,n,n
+Minecart with Chest,chest_minecart,n,n,n,n,n
+Minecart with Command Block,command_block_minecart,n,n,n,n,n
+Minecart with Furnace,furnace_minecart,n,n,n,n,n
+Minecart with Hopper,hopper_minecart,n,n,n,n,n
+Minecart,minecart,n,n,n,n,n
+Minecart with Spawner,spawner_minecart,n,n,n,n,n
+Minecart with TNT,tnt_minecart,n,n,n,n,n
+Falling Block,falling_block,n,n,n,n,n
+Primed TNT,tnt,n,n,n,n,n
+Experience Orb,experience_orb,n,n,n,n,n
+Item,item,n,n,n,n,n

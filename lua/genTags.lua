@@ -3,6 +3,9 @@ local json = require "lib.json.json-beautify"
 
 local insert = table.insert
 
+--TODO: support multiple namespaces, e.g. "minecraft:", "final-minecraft:", "modid:"
+--maybe use a subdir?
+
 -- Vars -----------------------------------------------------------------------
 local args = {...}
 local genList = {}
@@ -27,6 +30,14 @@ local elementShorthands =
 
 }
 
+local elementAttributes = 
+{
+	immunity = "immunity",
+	absorb = "absorb",
+	fatal = "fatal",
+	revive = "revive"
+}
+
 local jsonConfig = {indent = "\t"}
 
 -- Common Funcs ---------------------------------------------------------------
@@ -45,7 +56,7 @@ local function mkAspectTables(includeNone)
 	return tables
 end
 
-local function getOutputFile(name, includeNone)
+local function getOutputFiles(name, includeNone)
 	local file = outputFiles[name]
 	if not file then
 		file = mkAspectTables(includeNone)
@@ -83,8 +94,36 @@ WARNING: Duplicate tag elements do not match!
 	return true
 end
 
+local function exportEntityTypes(tables, dir)
+	for name, tbl in pairs(tables) do
+		if elementAttributes[name] then
+			--tbl is a sub-table for attributes
+			local path = string.format("output/entity_types/%s_%%s_elemental.json", name)
+			for element, subTbl in pairs(tbl) do
+				if #subTbl.values > 0 then 
+					local p = path:format(element)
+					local str = json.beautify(subTbl, jsonConfig)
+					util.writeString(p, str)
+				end
+			end
+		else
+			--tbl is a regular table of elements
+			if #tbl.values > 0 then
+				local path = string.format("output/entity_types/%s_elemental.json", name)
+				local str = json.beautify(tbl, jsonConfig)
+				util.writeString(path, str)
+			end
+		end
+	end
+end
+
 local function exportAspectTables(tables, dir)
-	local path = string.format("output/%s/%%s_elemental.json", dir)
+	if dir == "entity_types" then
+		exportEntityTypes(tables, dir)
+		return
+	end
+
+	local path = string.format("output/%s/%%s_elemental_%s.json", dir, dir)
 
 	for element, tbl in pairs(tables) do
 		if #tbl.values >0 then
@@ -130,8 +169,8 @@ commands["-blocks"] = function(path)
 	path = path or "input/blocks.csv"
 	--blocks.csv contains both block IDs and block item IDs, so we
 	--need to use 2 table sets
-	local blocks = getOutputFile "blocks"
-	local items = getOutputFile "items"
+	local blocks = getOutputFiles "blocks"
+	local items = getOutputFiles "items"
 	local data = util.readCSV(path, true)
 
 	for _, line in ipairs(data) do
@@ -170,7 +209,7 @@ end
 
 commands["-items"] = function(path)
 	path = path or "input/items.csv"
-	local items = getOutputFile "items"
+	local items = getOutputFiles "items"
 	local data = util.readCSV(path, true)
 
 	for _, line in ipairs(data) do
@@ -186,13 +225,46 @@ commands["-items"] = function(path)
 
 end
 
+local	function resolveEntityElements(shorthandStr, table, id)
+	if shorthandStr ~= "n" then
+		for char in shorthandStr:gmatch "." do
+			local fullElement = elementShorthands[char]
+			insert(table[fullElement].values, "minecraft:" .. id)
+		end
+	end
+end
+
 commands["-entities"] = function(path)
-	print(path or "entities")
+	path = path or "input/entities.csv"
+	local entities = getOutputFiles "entity_types"
+	--for entity types we want to create a bunch of subtables for Attributes
+	for _, attribute in pairs(elementAttributes) do
+		entities[attribute] = mkAspectTables()
+	end
+	
+	local data = util.readCSV(path, true)
+
+	for _, line in ipairs(data) do
+		local id = line["ID"]
+		if ensureUnique("entities", id, "none", path) then
+			local elements = line["Elements"]
+			local immunity = line["Immunity"]
+			local absorb = line["Absorb"]
+			local fatal = line["Fatal"]
+			local revive = line["Revive"]
+			
+			resolveEntityElements(elements, entities, id)
+			resolveEntityElements(immunity, entities.immunity, id)
+			resolveEntityElements(absorb, entities.absorb, id)
+			resolveEntityElements(fatal, entities.fatal, id)
+			resolveEntityElements(revive, entities.revive, id)
+		end
+	end
 end
 
 commands["-fluids"] = function(path)
 	path = path or "input/fluids.csv"
-	local fluids = getOutputFile "fluids"
+	local fluids = getOutputFiles "fluids"
 	local data = util.readCSV(path, true)
 
 	for _, line in ipairs(data) do
