@@ -98,7 +98,7 @@ local function exportEntityTypes(tables, dir)
 	for name, tbl in pairs(tables) do
 		if elementAttributes[name] then
 			--tbl is a sub-table for attributes
-			local path = string.format("output/entity_types/%s_%%s_elemental.json", name)
+			local path = string.format("output/entity_types/%s_%%s_elemental_entities.json", name)
 			for element, subTbl in pairs(tbl) do
 				if #subTbl.values > 0 then 
 					local p = path:format(element)
@@ -109,7 +109,7 @@ local function exportEntityTypes(tables, dir)
 		else
 			--tbl is a regular table of elements
 			if #tbl.values > 0 then
-				local path = string.format("output/entity_types/%s_elemental.json", name)
+				local path = string.format("output/entity_types/%s_elemental_entities.json", name)
 				local str = json.beautify(tbl, jsonConfig)
 				util.writeString(path, str)
 			end
