@@ -25,7 +25,11 @@ public interface ElementalStatsComponent extends ComponentV3
 	public default void setHasInitInnate()
 	{
 		getElementNbt().putBoolean(INIT_KEY, true);
+		trySync();
 	}
+
+	// Method is empty because it is unused by Items
+	public default void trySync() {}
 
 	public default void addElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
 	{
@@ -49,6 +53,8 @@ public interface ElementalStatsComponent extends ComponentV3
 				elements.remove(key);
 			}
 		}
+
+		trySync();
 	}
 
 	public default NbtCompound getOrCreateElementalNbt(ElementalAttribute attribute)
@@ -62,6 +68,7 @@ public interface ElementalStatsComponent extends ComponentV3
 			setElementNbt(nbt);
 		}
 
+		trySync();
 		return nbt.getCompound(nbtKey);
 	}
 }

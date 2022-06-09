@@ -3,6 +3,8 @@ package lafolie.fmc.core.internal.elements;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
+import lafolie.fmc.core.elements.ElementalObject;
+import lafolie.fmc.core.internal.Components;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
 
@@ -21,6 +23,8 @@ public class ElementalStats implements ElementalStatsComponent, AutoSyncedCompon
 		provider = object;
 	}
 
+	// ElementalStatsComponent methods
+
 	@Override
 	public NbtCompound getElementNbt()
 	{
@@ -32,6 +36,14 @@ public class ElementalStats implements ElementalStatsComponent, AutoSyncedCompon
 	{
 		this.nbt = nbt;
 	}
+
+	@Override
+	public void trySync()
+	{
+		Components.ELEMENTAL_STATS.sync(provider);
+	}
+
+	// Component methods (disk I/O)
 
 	@Override
 	public void readFromNbt(NbtCompound tag)

@@ -7,6 +7,10 @@ import java.util.Map;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
@@ -18,6 +22,7 @@ import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
 import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 
@@ -26,6 +31,13 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 {
 	@Shadow
     public abstract EntityType<?> getType();
+
+	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
+	private void damage(DamageSource source, float amount, CallbackInfoReturnable info)
+	{
+		FinalMinecraft.log.info("I was damaged");
+		getComponent();
+	}
 
 	@Override
 	public Map<ElementalAspect, Integer> getInnateElements(ElementalAttribute attribute)
@@ -47,13 +59,15 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 	public ElementalStatsComponent getComponent()
 	{
 		ElementalStatsComponent component = Components.ELEMENTAL_STATS.get(this);
-
+		FinalMinecraft.log.info("getComponent for {}", toString());
+		
 		if(!component.hasInitInnate())
 		{
 			component.setHasInitInnate();
 			InnateElemental innate = (InnateElemental)this;
 			for(ElementalAttribute attribute : ElementalAttribute.values())
 			{
+				FinalMinecraft.log.info("\t found element {}", attribute.toString());
 				// weakness and resistance are a single concept until added to the component
 				if(attribute == ElementalAttribute.WEAKNESS)
 				{

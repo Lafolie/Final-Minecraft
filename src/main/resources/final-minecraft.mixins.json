@@ -6,7 +6,8 @@
   "mixins": [
     "EntityMixin",
     "ItemMixin",
-    "ItemStackMixin"
+    "ItemStackMixin",
+    "LivingEntityMixin"
   ],
   "client": [
   ],
