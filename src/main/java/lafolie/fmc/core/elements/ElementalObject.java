@@ -20,11 +20,21 @@ public interface ElementalObject
 	 * 
 	 * @param element
 	 * @param attribute
-	 * @param amount the amount to add, must be positive!
+	 * @param amount the amount to add, should be positive
 	 */
 	public default void addBaseElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount)
 	{
-		getComponent().addElement(element, attribute, (byte)amount);
+		byte amt = (byte)amount;
+		ElementalStatsComponent stats = getComponent();
+		stats.addElement(element, attribute, amt);
+		if(attribute == ElementalAttribute.WEAKNESS)
+		{
+			stats.addElement(element.getStrongTo(), ElementalAttribute.RESISTANCE, amt);
+		}
+		else if(attribute == ElementalAttribute.RESISTANCE)
+		{
+			stats.addElement(element.getWeakTo(), ElementalAttribute.WEAKNESS, amt);
+		}
 	}
 
 	/**

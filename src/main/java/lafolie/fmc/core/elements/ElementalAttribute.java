@@ -1,5 +1,8 @@
 package lafolie.fmc.core.elements;
 
+/**
+ * Attributes define how ElementalAspects modify incoming damage.
+ */
 public enum ElementalAttribute
 {
 	/**

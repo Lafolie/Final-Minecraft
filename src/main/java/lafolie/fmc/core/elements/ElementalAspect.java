@@ -7,7 +7,22 @@ import java.util.EnumSet;
 import java.util.List;
 
 /**
- * Enum representing Elemental Aspects
+ * ElementalAspects affect damage according to the sources' aspect(s) and
+ * the target ElementalObject's stats.
+ * <p><pre>&nbsp;None should generally not be used.
+ * Poison and Gravity have no opposing aspects.</pre></p>
+ * <p><ul>
+ * <li><pre>Fire melts Ice</pre></li>
+ * <li><pre>Ice blocks Wind</pre></li>
+ * <li><pre>Wind erodes Earth</pre></li>
+ * <li><pre>Earth grounds Thunder</pre></li>
+ * <li><pre>Thunder shocks Water</pre></li>
+ * <li><pre>Water douses Fire</pre></li>
+ * <li><pre>Holy illuminates Dark</pre></li>
+ * <li><pre>Dark eclipses Holy</pre></li>
+ * </ul>
+ * </p>
+ * 
  */
 public enum ElementalAspect
 {

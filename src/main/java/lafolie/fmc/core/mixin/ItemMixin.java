@@ -11,7 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalItemTags;
+import lafolie.fmc.core.elements.ElementalAttribute;
+import lafolie.fmc.core.internal.elements.ElementalItemTags;
 import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Settings;
@@ -42,9 +43,16 @@ public abstract class ItemMixin implements InnateElemental
 	}
 
 	@Override
-	public EnumMap<ElementalAspect, Integer> getInnateElements()
+	public EnumMap<ElementalAspect, Integer> getInnateElements(ElementalAttribute attribute)
 	{
 		EnumMap<ElementalAspect, Integer> result = new EnumMap<>(ElementalAspect.class);
+
+		// Items always use resistance for innate elements
+		if(attribute != ElementalAttribute.RESISTANCE)
+		{
+			return result;
+		}
+
 		ElementalAspect element = ElementalItemTags.getItemElementalTag(registryEntry);
 		if(element != ElementalAspect.NONE)
 		{

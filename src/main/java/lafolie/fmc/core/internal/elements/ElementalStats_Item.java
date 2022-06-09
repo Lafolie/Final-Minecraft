@@ -32,15 +32,5 @@ public class ElementalStats_Item extends ItemComponent implements ElementalStats
 		stack.setSubNbt(KEY, nbt);
 	}
 
-	@Override
-	public boolean hasInitInnate()
-	{
-		return stack.getSubNbt(KEY).contains(INIT_KEY);
-	}
 
-	@Override
-	public void setHasInitInnate()
-	{
-		stack.getOrCreateSubNbt(KEY).putBoolean(INIT_KEY, true);
-	}
 }

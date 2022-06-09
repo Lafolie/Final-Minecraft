@@ -21,7 +21,8 @@ import org.slf4j.LoggerFactory;
 
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalItemTags;
+import lafolie.fmc.core.internal.elements.ElementalEntityTags;
+import lafolie.fmc.core.internal.elements.ElementalItemTags;
 import lafolie.fmc.core.util.ServerStatus;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
@@ -72,6 +73,7 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 	{
 		serverStatus = ServerStatus.STARTED;
 		ElementalItemTags.clearCache();
+		ElementalEntityTags.clearCache();
 	}
 
 	private void onServerStopping(MinecraftServer server)
@@ -83,12 +85,13 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 	{
 		serverStatus = ServerStatus.STOPPED;
 		ElementalItemTags.clearCache();
-
+		ElementalEntityTags.clearCache();
 	}
 
 	private void onEndDataPackReload(MinecraftServer server, ResourceManager resourceManager, boolean success)
 	{
 		ElementalItemTags.clearCache();
+		ElementalEntityTags.clearCache();
 	}
 
 	// ------------------------------------------------------------------------
