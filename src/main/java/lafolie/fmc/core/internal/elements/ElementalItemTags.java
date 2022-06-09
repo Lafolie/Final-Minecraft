@@ -26,7 +26,6 @@ public class ElementalItemTags
 		{
 			String id = element.toString().toLowerCase().concat("_elemental_items");
 			TAGS.put(element, TagKey.of(Registry.ITEM_KEY, new Identifier("c", id)));
-			FinalMinecraft.log.info("Registered element tag {}", id);
 		}
 	}
 

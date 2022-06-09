@@ -85,10 +85,8 @@ public class ElementalEntityTags
 
 		for(ElementTagEntry entry : list)
 		{
-			FinalMinecraft.log.info("Checking {} for {}", entityEntry.toString(), entry.element.toString());
 			if(entityEntry.isIn(entry.tag))
 			{
-				FinalMinecraft.log.info("\tSuccess!");
 				result.add(entry.element);
 			}
 		}

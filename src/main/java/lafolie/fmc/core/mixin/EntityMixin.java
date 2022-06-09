@@ -32,12 +32,12 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 	@Shadow
     public abstract EntityType<?> getType();
 
-	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
-	private void damage(DamageSource source, float amount, CallbackInfoReturnable info)
-	{
-		FinalMinecraft.log.info("I was damaged");
-		getComponent();
-	}
+	// @Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
+	// private void damage(DamageSource source, float amount, CallbackInfoReturnable info)
+	// {
+	// 	FinalMinecraft.log.info("I was damaged");
+	// 	getComponent();
+	// }
 
 	@Override
 	public Map<ElementalAspect, Integer> getInnateElements(ElementalAttribute attribute)
@@ -59,7 +59,6 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 	public ElementalStatsComponent getComponent()
 	{
 		ElementalStatsComponent component = Components.ELEMENTAL_STATS.get(this);
-		FinalMinecraft.log.info("getComponent for {}", toString());
 		
 		if(!component.hasInitInnate())
 		{
@@ -67,7 +66,6 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 			InnateElemental innate = (InnateElemental)this;
 			for(ElementalAttribute attribute : ElementalAttribute.values())
 			{
-				FinalMinecraft.log.info("\t found element {}", attribute.toString());
 				// weakness and resistance are a single concept until added to the component
 				if(attribute == ElementalAttribute.WEAKNESS)
 				{
@@ -77,7 +75,6 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 				for(Map.Entry<ElementalAspect, Integer> entry : innate.getInnateElements(attribute).entrySet())
 				{
 					addBaseElementalAspect(entry.getKey(), attribute, entry.getValue());
-					FinalMinecraft.log.info("{} has the base element {} ({})", this.toString(), entry.getKey().toString(), attribute.toString());
 				}
 			}
 		}

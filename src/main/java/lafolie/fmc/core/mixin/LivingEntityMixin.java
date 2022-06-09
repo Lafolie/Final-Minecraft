@@ -3,6 +3,7 @@ package lafolie.fmc.core.mixin;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -24,7 +25,8 @@ import net.minecraft.world.World;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin
 {
-	
+	@Shadow
+	public World world;
 	// @Inject(at = @At("TAIL"), method = "<init>")
 	// public void Constructor(EntityType<? extends LivingEntity> entityType, World world, CallbackInfo info)
 	// {
@@ -33,6 +35,11 @@ public abstract class LivingEntityMixin
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
 	private void damage(DamageSource source, float amount, CallbackInfoReturnable info)
 	{
+		if(this.world.isClient)
+		{
+			return;
+		}
+		
 		FinalMinecraft.log.info("I was damaged");
 		((ElementalObject)this).getComponent();
 	}
