@@ -1,5 +1,9 @@
 package lafolie.fmc.core.elements;
 
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
 /**
  * Attributes define how ElementalAspects modify incoming damage.
  */
@@ -29,6 +33,14 @@ public enum ElementalAttribute
 	 * Damage will fully heal.
 	 */
 	REVIVE("FMC_ElementalRevive");
+
+	public static final List<ElementalAttribute> PRIORITY_LIST = ImmutableList.of(
+		REVIVE,
+		FATAL,
+		ABSORBTION,
+		IMMUNITY,
+		WEAKNESS,
+		RESISTANCE);
 
 	private String key;
 

@@ -1,6 +1,7 @@
 package lafolie.fmc.core.mixin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -49,45 +50,42 @@ public abstract class LivingEntityMixin
 	@ModifyVariable(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
 	private float modifyDamage(float amount)
 	{
-		if(source.getAttacker() instanceof PlayerEntity)
+		if(FinalMinecraft.getConfig().enableElements)
 		{
-			return amount *= 999;
+			adjustDamageElemental(source, amount);
 		}
+		adjustDamageAttackType(source, amount);
 		source = null; // should probably do this so that it can be GC'd
 		return amount;
 	}
 
+	private float adjustDamageElemental(DamageSource source, float amount)
+	{
+		Entity attacker = (Entity)source.getAttacker();
+		ElementalObject self = (ElementalObject)this;
+		self.getComponent();
 
-	// (Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/damage/DamageSource;F)Z
-	// (Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/damage/DamageSource;Lnet/minecraft/entity/damage/DamageSource;F)Z
-
-	// @Override
-	// public void addElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
-	// 	// TODO Auto-generated method stub
+		if(attacker instanceof LivingEntity)
+		{
+			FinalMinecraft.log.info("ATTACK");
+			// EW!
+			ElementalObject attackedWith = (ElementalObject)(Object)(((LivingEntity)attacker).getMainHandStack());
+			// we use resistance to determine whether an item is elemental
+			Map<ElementalAspect, Integer> elements = attackedWith.getElementalAffinities(ElementalAttribute.RESISTANCE);
+			for(Map.Entry<ElementalAspect, Integer> entry : elements.entrySet())
+			{
+				
+			}
+		}
+		// Map<ElementalAspect, Integer> attackerElements
 		
-	// }
+		return amount;
+	}
 
-	// @Override
-	// public int getElementalAttribute(ElementalAspect element, ElementalAttribute attribute) {
-	// 	// TODO Auto-generated method stub
-	// 	return 0;
-	// }
 
-	// @Override
-	// public int getElementalAffinity(ElementalAspect element) {
-	// 	// TODO Auto-generated method stub
-	// 	return 0;
-	// }
-
-	// @Override
-	// public boolean hasElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
-	// 	// TODO Auto-generated method stub
-	// 	return false;
-	// }
-
-	// @Override
-	// public void removeElementalAspect(ElementalAspect element, ElementalAttribute attribute) {
-	// 	// TODO Auto-generated method stub
-		
-	// }
+	// unused as of yet
+	private float adjustDamageAttackType(DamageSource source, float amount)
+	{
+		return amount;
+	}
 }

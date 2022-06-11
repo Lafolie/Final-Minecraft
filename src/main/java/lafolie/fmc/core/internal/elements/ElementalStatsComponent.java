@@ -54,7 +54,7 @@ public interface ElementalStatsComponent extends ComponentV3
 			}
 		}
 
-		trySync();
+		// trySync();
 	}
 
 	public default NbtCompound getOrCreateElementalNbt(ElementalAttribute attribute)
@@ -68,7 +68,7 @@ public interface ElementalStatsComponent extends ComponentV3
 			setElementNbt(nbt);
 		}
 
-		trySync();
+		// trySync();
 		return nbt.getCompound(nbtKey);
 	}
 }

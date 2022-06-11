@@ -1,6 +1,7 @@
 package lafolie.fmc.core;
 
 import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.Utils;
 import lafolie.fmc.core.mixin.ItemStackMixin;
@@ -24,13 +25,13 @@ public class FinalMinecraftClient implements ClientModInitializer
 			
 			for(ElementalAspect element : ElementalAspect.values())
 			{
-				int total = elStack.getElementalAffinity(element);
+				int total = elStack.getWeakResistAffinity(element);
 				if(total > 0)
 				{
-				lines.add(
-					new TranslatableText("fmc.core.element.tooltip.elemental",
-					new TranslatableText(Utils.ElementLangKeys.get(element))));
-					lines.add(new LiteralText(String.format("Total: %s", total)));
+					lines.add(
+						new TranslatableText("fmc.core.element.tooltip.elemental",
+						new TranslatableText(Utils.ElementLangKeys.get(element))));
+						lines.add(new LiteralText(String.format("Total: %s", total))); //ALSO REMOVE LATER
 				}
 
 			}

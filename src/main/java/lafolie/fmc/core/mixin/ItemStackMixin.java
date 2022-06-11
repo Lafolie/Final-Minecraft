@@ -44,11 +44,11 @@ public abstract class ItemStackMixin implements ElementalObject
 			InnateElemental innate = (InnateElemental)item;
 			for(Map.Entry<ElementalAspect, Integer> entry : innate.getInnateElements(ElementalAttribute.RESISTANCE).entrySet())
 			{
-				addElementalAspect(entry.getKey(), ElementalAttribute.RESISTANCE);
+				addInnateElementalAspect(entry.getKey(), ElementalAttribute.RESISTANCE, 2);
 			}
+			// addInnate* requires manual sync
+			component.trySync();
 		}
-			// addBaseElementalAspect(ElementalAspect.randomElement(), ElementalAttribute.RESISTANCE, 1);
-
 		return component;
 	}
 }

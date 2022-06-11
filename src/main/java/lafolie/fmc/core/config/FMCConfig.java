@@ -13,6 +13,6 @@ public class FMCConfig implements ConfigData
 {
 	// General
 	public boolean enableElements = true;
-	public float defaultWeakResistAmount = 0.2f;
-	public int defaultEnemyWeakResist = 3;
+	public float defaultWeakResistAmount = 0.1f;
+	public int defaultEnemyWeakResist = 6;
 }
