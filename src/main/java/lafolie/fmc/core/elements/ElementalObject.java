@@ -220,6 +220,7 @@ public interface ElementalObject
 	 */
 	public default boolean hasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
+		//TODO: make this not create the tag unnecessarily
 		NbtCompound elements = getComponent().getOrCreateElementalNbt(attribute);
 		return elements.contains(element.toString());
 	}
@@ -271,8 +272,30 @@ public interface ElementalObject
 		return result;
 	}
 
-	public default ElementalAttribute getSomeAttribute(ElementalAspect element)
+	public default ElementalAttribute getAttributeForDamage(ElementalAspect element)
 	{
-		return ElementalAttribute.RESISTANCE;
+		ElementalAttribute attribute;
+
+		if(hasElementalAspect(element, ElementalAttribute.REVIVE))
+		{
+			attribute = ElementalAttribute.REVIVE;
+		}
+		else if(hasElementalAspect(element, ElementalAttribute.FATAL))
+		{
+			attribute = ElementalAttribute.FATAL;
+		}
+		else if(hasElementalAspect(element, ElementalAttribute.ABSORBTION))
+		{
+			attribute = ElementalAttribute.ABSORBTION;
+		}
+		else if(hasElementalAspect(element, ElementalAttribute.IMMUNITY))
+		{
+			attribute = ElementalAttribute.IMMUNITY;
+		}
+		else
+		{
+			attribute = getWeakResistAffinity(element) >= 0 ? ElementalAttribute.RESISTANCE : ElementalAttribute.WEAKNESS;
+		}
+		return attribute;
 	}
 }

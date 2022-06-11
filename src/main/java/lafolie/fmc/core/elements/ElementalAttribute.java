@@ -18,13 +18,13 @@ public enum ElementalAttribute
 	 */
 	RESISTANCE("FMC_ElementalResistance"),
 	/**
-	 * Damage becomes healing.
-	 */
-	ABSORBTION("FMC_ElementalAbsorbtion"),
-	/**
 	 * Damage will be nullified (0).
 	 */
 	IMMUNITY("FMC_ElementalImmunity"),
+	/**
+	 * Damage becomes healing.
+	 */
+	ABSORBTION("FMC_ElementalAbsorbtion"),
 	/**
 	 * Damage will instantly kill.
 	 */
@@ -33,14 +33,6 @@ public enum ElementalAttribute
 	 * Damage will fully heal.
 	 */
 	REVIVE("FMC_ElementalRevive");
-
-	public static final List<ElementalAttribute> PRIORITY_LIST = ImmutableList.of(
-		REVIVE,
-		FATAL,
-		ABSORBTION,
-		IMMUNITY,
-		WEAKNESS,
-		RESISTANCE);
 
 	private String key;
 

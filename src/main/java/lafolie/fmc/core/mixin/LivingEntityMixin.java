@@ -3,6 +3,7 @@ package lafolie.fmc.core.mixin;
 import java.util.List;
 import java.util.Map;
 
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,6 +31,13 @@ import net.minecraft.world.World;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin
 {
+	@Shadow
+	@Final
+	public abstract float getMaxHealth();
+
+	@Shadow
+	public World world;
+
 	// @Shadow
 	// public World world;
 	// @Inject(at = @At("TAIL"), method = "<init>")
@@ -50,6 +58,12 @@ public abstract class LivingEntityMixin
 	@ModifyVariable(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
 	private float modifyDamage(float amount)
 	{
+		if (this.world.isClient)
+		{
+			source = null;
+            return amount;
+        }
+
 		if(FinalMinecraft.getConfig().enableElements)
 		{
 			adjustDamageElemental(source, amount);
@@ -64,6 +78,9 @@ public abstract class LivingEntityMixin
 		Entity attacker = (Entity)source.getAttacker();
 		ElementalObject self = (ElementalObject)this;
 		self.getComponent();
+		ElementalAttribute modifierAttribute = ElementalAttribute.WEAKNESS;
+		ElementalAspect modifierElement = ElementalAspect.NONE;
+		int modifierAmount = 0;
 
 		if(attacker instanceof LivingEntity)
 		{
@@ -72,8 +89,45 @@ public abstract class LivingEntityMixin
 			ElementalObject attackedWith = (ElementalObject)(Object)(((LivingEntity)attacker).getMainHandStack());
 			// we use resistance to determine whether an item is elemental
 			Map<ElementalAspect, Integer> elements = attackedWith.getElementalAffinities(ElementalAttribute.RESISTANCE);
+
+			// find the most appropriate Element/Attribute combination to use
 			for(Map.Entry<ElementalAspect, Integer> entry : elements.entrySet())
 			{
+				ElementalAttribute potentialAttribute = self.getAttributeForDamage(entry.getKey());
+				if(potentialAttribute.ordinal() > modifierAttribute.ordinal())
+				{
+					modifierAttribute = potentialAttribute;
+					modifierElement = entry.getKey();
+				}
+			}
+
+			// NEED TO INJECT A WAY TO RETURN IF AMOUNT IS 0?
+			switch(modifierAttribute)
+			{
+				case WEAKNESS:
+				case RESISTANCE:
+					modifierAmount = self.getWeakResistAffinity(modifierElement);
+					float modifier = FinalMinecraft.getConfig().defaultWeakResistAmount * modifierAmount;
+					amount *= modifier > 0 ? modifier : 1 - Math.abs(modifier);
+					break;
+
+				case IMMUNITY:
+					amount = 0;
+					break;
+
+				case ABSORBTION:
+					amount = 0;
+					break;
+
+				case FATAL:
+					amount = getMaxHealth();
+					break;
+
+				case REVIVE:
+					// amount = -getMaxHealth();
+					//heal
+					break;
+
 				
 			}
 		}
