@@ -56,7 +56,6 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 		ServerLifecycleEvents.SERVER_STOPPING.register(server -> onServerStopping(server));
 		ServerLifecycleEvents.SERVER_STOPPED.register(server -> onServerStopped(server));
 		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, res, succ) -> onEndDataPackReload(server, res, succ));
-
 		// for(ElementalItemTags.TAGS.get(ElementalAspect.ICE).isOf))
 	}
 
