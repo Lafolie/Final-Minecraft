@@ -5,6 +5,7 @@ import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.Utils;
 import lafolie.fmc.core.mixin.ItemStackMixin;
+import lafolie.fmc.core.particles.Particles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,8 @@ public class FinalMinecraftClient implements ClientModInitializer
 	@Override
 	public void onInitializeClient()
 	{
+		InitContent();
+
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
 		{
 			//read NBT and stuff
@@ -38,4 +41,8 @@ public class FinalMinecraftClient implements ClientModInitializer
 		});
 	}
 	
+	private void InitContent()
+	{
+		Particles.initClient();
+	}
 }

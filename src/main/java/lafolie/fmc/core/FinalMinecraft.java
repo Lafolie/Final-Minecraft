@@ -23,6 +23,7 @@ import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
+import lafolie.fmc.core.particles.Particles;
 import lafolie.fmc.core.util.ServerStatus;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
@@ -50,7 +51,9 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 	{
 		log.info("Loaded FMC Core version {}", getVersionString());
 		initConfig();
-		RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
+		initContent();
+		
+		// RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
 		ServerLifecycleEvents.SERVER_STARTING.register(server -> onServerStarting(server));
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> onServerStarted(server));
 		ServerLifecycleEvents.SERVER_STOPPING.register(server -> onServerStopping(server));
@@ -59,8 +62,13 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 		// for(ElementalItemTags.TAGS.get(ElementalAspect.ICE).isOf))
 	}
 
+	private void initContent()
+	{
+		Particles.init();
+	}
+
 	// ------------------------------------------------------------------------
-	// SERVER CALLBACKS
+	// Server Callbacks
 	// ------------------------------------------------------------------------
 
 	private void onServerStarting(MinecraftServer server)
