@@ -29,14 +29,24 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.world.World;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin
+public abstract class LivingEntityMixin extends Entity
 {
+	public LivingEntityMixin(EntityType<?> type, World world) {
+		super(type, world);
+		//TODO Auto-generated constructor stub
+	}
+
+
 	@Shadow
 	@Final
 	public abstract float getMaxHealth();
 
 	@Shadow
-	public World world;
+    public abstract void heal(float amount);
+
+
+	// @Shadow
+	// public World world;
 
 	// @Shadow
 	// public World world;
@@ -47,10 +57,12 @@ public abstract class LivingEntityMixin
 	// }
 
 	private DamageSource source;
+	private float modifiedDamage = 1;
 
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
-	private void damageMixin(DamageSource source, float amount, CallbackInfoReturnable info)
+	private void captureDamageSource(DamageSource source, float amount, CallbackInfoReturnable info)
 	{
+		// FinalMinecraft.log.info("First inject");
 		this.source = source;
 	}
 
@@ -75,6 +87,7 @@ public abstract class LivingEntityMixin
 
 	private float adjustDamageElemental(DamageSource source, float amount)
 	{
+		// FinalMinecraft.log.info("Second inject");
 		Entity attacker = (Entity)source.getAttacker();
 		ElementalObject self = (ElementalObject)this;
 		self.getComponent();
@@ -84,7 +97,8 @@ public abstract class LivingEntityMixin
 
 		if(attacker instanceof LivingEntity)
 		{
-			FinalMinecraft.log.info("ATTACK");
+			// FinalMinecraft.log.info("ATTACK");
+			// FinalMinecraft.log.info("Original amount {}", amount);
 			// EW!
 			ElementalObject attackedWith = (ElementalObject)(Object)(((LivingEntity)attacker).getMainHandStack());
 			// we use resistance to determine whether an item is elemental
@@ -94,21 +108,29 @@ public abstract class LivingEntityMixin
 			for(Map.Entry<ElementalAspect, Integer> entry : elements.entrySet())
 			{
 				ElementalAttribute potentialAttribute = self.getAttributeForDamage(entry.getKey());
-				if(potentialAttribute.ordinal() > modifierAttribute.ordinal())
+				// FinalMinecraft.log.info("\tPotential attribute {}", potentialAttribute.toString());
+				// FinalMinecraft.log.info("\tPotential element {}", entry.getKey().toString());
+
+				if(potentialAttribute.ordinal() >= modifierAttribute.ordinal())
 				{
+					// FinalMinecraft.log.info("\tPOTENTIAL SET");
+
 					modifierAttribute = potentialAttribute;
 					modifierElement = entry.getKey();
 				}
 			}
 
-			// NEED TO INJECT A WAY TO RETURN IF AMOUNT IS 0?
 			switch(modifierAttribute)
 			{
 				case WEAKNESS:
 				case RESISTANCE:
 					modifierAmount = self.getWeakResistAffinity(modifierElement);
+					// FinalMinecraft.log.info("WeakResist amount {}", modifierAmount);
+
 					float modifier = FinalMinecraft.getConfig().defaultWeakResistAmount * modifierAmount;
-					amount *= modifier > 0 ? modifier : 1 - Math.abs(modifier);
+					// FinalMinecraft.log.info("Modifier amount {}", modifier);
+
+					amount *= modifier > 0 ? 1 - modifier : 1 + Math.abs(modifier);
 					break;
 
 				case IMMUNITY:
@@ -116,6 +138,7 @@ public abstract class LivingEntityMixin
 					break;
 
 				case ABSORBTION:
+					heal(amount);
 					amount = 0;
 					break;
 
@@ -124,17 +147,36 @@ public abstract class LivingEntityMixin
 					break;
 
 				case REVIVE:
-					// amount = -getMaxHealth();
+					amount = 0;
+					heal(getMaxHealth());
 					//heal
 					break;
 
 				
 			}
+			// FinalMinecraft.log.info("Using element {}", modifierElement.toString());
+			// FinalMinecraft.log.info("Using attribute {}", modifierAttribute.toString());
+			// FinalMinecraft.log.info("Modified amount {}", amount);
+
 		}
 		// Map<ElementalAspect, Integer> attackerElements
-		
+		modifiedDamage = amount;
 		return amount;
 	}
+
+
+	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
+	private void cancelDamage(DamageSource source, float amount, CallbackInfoReturnable info)
+	{
+		// FinalMinecraft.log.info("Third inject");
+		if(modifiedDamage <= 0)
+		{
+			// FinalMinecraft.log.info("Damage was zero, cancelling");
+			info.setReturnValue(false);
+		}
+		modifiedDamage = 1;
+	}
+	// @Inject(at = @())
 
 
 	// unused as of yet
