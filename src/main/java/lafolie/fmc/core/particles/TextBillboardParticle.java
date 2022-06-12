@@ -114,12 +114,13 @@ public class TextBillboardParticle extends BillboardParticle
 
 		VertexConsumerProvider vertConProv = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
 
-		renderer.drawWithOutline(text, x, y, color, outlineColor, matStack.peek().getPositionMatrix(), vertConProv, Integer.MAX_VALUE);
+		renderer.draw(matStack, text, x, y, color);
+		// renderer.drawWithOutline(text, x, y, color, outlineColor, matStack.peek().getPositionMatrix(), vertConProv, Integer.MAX_VALUE);
 
-		vertexConsumer.vertex(0, 0, 0);
-		vertexConsumer.vertex(0, 0, 0);
-		vertexConsumer.vertex(0, 0, 0);
-		vertexConsumer.vertex(0, 0, 0);
+		// vertexConsumer.vertex(0, 0, 0);
+		// vertexConsumer.vertex(0, 0, 0);
+		// vertexConsumer.vertex(0, 0, 0);
+		// vertexConsumer.vertex(0, 0, 0);
 // public void vertex(float x, float y, float z, float red, float green, float blue, float alpha, float u, float v, int overlay, int light, float normalX, float normalY, float normalZ)
 
 		
