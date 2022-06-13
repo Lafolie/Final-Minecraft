@@ -73,8 +73,8 @@ public abstract class LivingEntityMixin extends Entity
 		if (this.world.isClient)
 		{
 			source = null;
-            return amount;
-        }
+			return amount;
+		}
 
 		if(FinalMinecraft.getConfig().enableElements)
 		{

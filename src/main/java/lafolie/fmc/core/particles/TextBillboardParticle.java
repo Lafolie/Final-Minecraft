@@ -108,12 +108,13 @@ public class TextBillboardParticle extends BillboardParticle
 		matStack.push();
 		matStack.translate(x, y, z);
 		matStack.multiply(camera.getRotation());
+		matStack.scale(1, -1, 1);
 
 		// vertConProv = VertexConsumerProvider.immediate(layerBuffers, fallbackBuffer)
 		// renderer.drawWithShadow(matStack, text, x, y, color);
 
         VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
-		renderer.drawWithOutline(text, x, y, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+		renderer.drawWithOutline(text, 0, 0, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
 		immediate.draw();
 		
 		matStack.pop();
