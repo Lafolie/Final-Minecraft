@@ -20,10 +20,17 @@ import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalEntity;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.WeakResistTable;
+import lafolie.fmc.core.internal.network.HealthModifiedPacket;
+import lafolie.fmc.core.internal.network.HealthModifiedPacket.EventType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Pair;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.World;
@@ -58,6 +65,7 @@ public abstract class LivingEntityMixin extends Entity
 
 	private DamageSource source;
 	private float modifiedDamage = 1;
+	private ElementalAttribute lastAttributeused;
 
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
 	private void captureDamageSource(DamageSource source, float amount, CallbackInfoReturnable info)
@@ -87,15 +95,16 @@ public abstract class LivingEntityMixin extends Entity
 
 	private float adjustDamageElemental(DamageSource source, float amount)
 	{
+
 		// FinalMinecraft.log.info("Second inject");
-		Entity attacker = (Entity)source.getAttacker();
+		Entity attacker = source.getAttacker();
 		ElementalObject self = (ElementalObject)this;
 		self.getComponent();
 		ElementalAttribute modifierAttribute = ElementalAttribute.WEAKNESS;
 		ElementalAspect modifierElement = ElementalAspect.NONE;
 		int modifierAmount = 0;
 
-		if(attacker instanceof LivingEntity)
+		if(attacker != null && attacker instanceof LivingEntity)
 		{
 			// FinalMinecraft.log.info("ATTACK");
 			// FinalMinecraft.log.info("Original amount {}", amount);
@@ -120,6 +129,7 @@ public abstract class LivingEntityMixin extends Entity
 				}
 			}
 
+			lastAttributeused = modifierAttribute;
 			switch(modifierAttribute)
 			{
 				case WEAKNESS:
@@ -131,6 +141,16 @@ public abstract class LivingEntityMixin extends Entity
 					// FinalMinecraft.log.info("Modifier amount {}", modifier);
 
 					amount *= modifier > 0 ? 1 - modifier : 1 + Math.abs(modifier);
+
+					// needs to be set since the attribute being used may have changed just now
+					if(modifier == 0)
+					{
+						lastAttributeused = null;
+					}
+					else
+					{
+						lastAttributeused = modifier > 0 ? ElementalAttribute.RESISTANCE : ElementalAttribute.WEAKNESS;
+					}
 					break;
 
 				case IMMUNITY:
@@ -176,12 +196,51 @@ public abstract class LivingEntityMixin extends Entity
 		}
 		modifiedDamage = 1;
 	}
-	// @Inject(at = @())
-
+	
+	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
+	private void applyDamage(DamageSource source, float amount, CallbackInfo info)
+	{
+		sendHealthModifiedPacket(amount, lastAttributeused);
+		// lastAttributeused = null;
+	}
 
 	// unused as of yet
 	private float adjustDamageAttackType(DamageSource source, float amount)
 	{
 		return amount;
+	}
+
+	private void sendHealthModifiedPacket(float amount, ElementalAttribute attribute)
+	{
+		HealthModifiedPacket.EventType type = EventType.NORMAL;
+		if(attribute != null)
+		{
+			switch (attribute) 
+			{
+				case RESISTANCE:
+				case IMMUNITY:
+					type = EventType.RESIST;
+					break;
+
+				case ABSORBTION:
+				case REVIVE:
+					type = EventType.HEAL;
+					break;
+
+				case WEAKNESS:
+				case FATAL:
+					type = EventType.EFFECTIVE;
+					break;
+			
+				default:
+					break;
+			}
+		}
+		HealthModifiedPacket packet = new HealthModifiedPacket(this.getId(), type, amount);
+		PacketByteBuf buf = PacketByteBufs.create();
+		for(ServerPlayerEntity player : PlayerLookup.tracking(this))
+		{
+			ServerPlayNetworking.send(player, HealthModifiedPacket.ID, packet.write(buf));
+		}
 	}
 }
