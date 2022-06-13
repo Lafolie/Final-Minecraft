@@ -12,6 +12,7 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStats_Item;
+import lafolie.fmc.core.util.FMCIdentifier;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,8 +24,8 @@ public class Components implements
 	EntityComponentInitializer,
 	ItemComponentInitializer
 {
-	public static final Identifier ELEMENTAL_STATS_ID = new Identifier("final-minecraft", "elemental_stats");
-	public static final Identifier ELEMENTAL_STATS_ITEM_ID = new Identifier("final-minecraft", "elemental_stats_item");
+	public static final Identifier ELEMENTAL_STATS_ID = FMCIdentifier.contentID("elemental_stats");//new Identifier("final-minecraft", "elemental_stats");
+	public static final Identifier ELEMENTAL_STATS_ITEM_ID = FMCIdentifier.contentID("elemental_stats_item");//new Identifier("final-minecraft", "elemental_stats_item");
 
 	public static final ComponentKey<ElementalStats> ELEMENTAL_STATS = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ID, ElementalStats.class);
 	public static final ComponentKey<ElementalStats_Item> ELEMENTAL_STATS_ITEM = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ITEM_ID, ElementalStats_Item.class);
