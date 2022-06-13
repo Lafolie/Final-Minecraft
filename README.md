@@ -1,124 +1,108 @@
-# Final Minecraft Core
-### By Lafolie
-
 ![FMC Logo](asset/fmcLogo.png "FMC Logo")
+<h1 align=right> By Lafolie </h1>
 
-### *Add Elemental Aspects to mobs and equipment. Required by other FMC mods.*
+## Final Minecraft is a [Fabric mod](https://www.fabricmc.net/) for [Minecraft](https://www.minecraft.net/en-us) 1.18.2
 
-### Final Minecraft is a [Fabric mod](https://www.fabricmc.net/) for [Minecraft](https://www.minecraft.net/en-us) 1.18.2
 
-### Current version: 0.1.0 (Biggs)
 
-## Features
+# Features
 
-This mod contains basic functionality required by other Final Minecraft (FMC) mods.
+Final Minecraft adds a variety of Final Fantasy inspired content to Minecraft.
 
-The FMC Core provides a limited set of features by itself:
+**Current features:**
+* [Elemental Aspects](https://github.com/Lafolie/Final-Minecraft/wiki/Elemental-Aspects)
+* [Damage Numbers](https://github.com/Lafolie/Final-Minecraft/wiki/Damage-Numbers)
+* [Crystals](https://github.com/Lafolie/Final-Minecraft/wiki/Crystals)
+* ~~Status effects~~
 
-* Elemental Aspects (configurable)
-* Status effects
+For detailed information about the mod, [visit the wiki](https://github.com/Lafolie/Final-Minecraft/wiki).
 
-With Elemental Aspects, mobs and players can have weaknesess/resistances, and equipment can have elemental attributes. Elemental aspects can be toggled off in the config.
-
-~~Status effects exist in the mod but require other FMC mods to use.~~
-
-### Why do I need FMC Core?
-
-Other mods in the Final Minecraft mod set require FMC Core to work. If you wish to use any Final Minecraft mods, you must install this mod.
-
-If you wish to play with other FMC mods but don't like any of the features provided by FMC Core, you can disable them!
-
-## Installation
-
-*TODO: add links & versions*
-
+You can also [join the official Final Minecraft Discord](https://discord.gg/Kv6umW2vzy).
 ### Supported Versions
 
-FMC Core is a **Fabric Mod**. A forge version will never be created.
+As the mod is still in alpha, there is no release.
 
-FMC Core currently supports **Minecraft 1.18.2**.
+**Version Info**
+* Release date: `00/00/2022`
+* Final Minecraft: `0.0.1 "Biggs"`
+* For Minecraft Java: `1.18.2 "Caves & Cliffs Update Part 2`
+* [Changelist](wiki/Version-History)
+
+Final Minecraft is a **Fabric Mod**. A forge version will never be created.
 
 Development will always be targeted at the latest stable release of Minecraft. Older versions will not be supported.
 
-### Client / Server
+# Client / Server
 
 FMC Core should be installed on both clients and the server.
 
-### Dependencies
+# Dependencies
 
-FMC Core requires the following mods:
-* Fabric API v.???
-* Cloth-Config v.???
-* Cardinal-Components v.???
+|                    Name | Version | CurseForge Page   | GitHub Repository | Client/Server |
+|------------------------:|:-------:|:-----------------:|:-----------------:|:-------------:|
+|              Fabric API | 0.55.3+ | [link][fabric_CF] | [link][fabric_GH] | **Both**      |
+| Cardinal Components API | 5.0.0   | [link][cca_CF]    | [link][cca_GH]    | **Both**      |
 
-*TODO: Add links*
+# Optional Integrations
+Final Minecraft features built-in integration for these mods, but they are not required:
 
-### Optional Dependencies
-
-FMC Core can utilise, but works without the following mods:
-* ModMenu v.???
+|                    Name | Version | CurseForge Page   | GitHub Repository | Client/Server |
+|------------------------:|:-------:|:-----------------:|:-----------------:|:-------------:|
+|                Mod Menu | 4.0.0   | [link][mm_CF]     | [link][mm_GH]     | **Client**    |
+|        Cloth Config API | 7.0.72  | [link][ccfg_CF]   | [link][ccfg_GH]   | **Client**    |
 
 ## Final Minecraft
 
 The Final Minecraft project aims to add Final Fantasy inspired content to Minecraft.
 
-The FMC project exists as a set of mods, allowing players to pick and choose features in a modular fashion. All FMC mods are compatible together, and most integrate with each other. However, with the exception of FMC Core, all mods in the set are optional and may be used in any combination.
-
-Mods in the official FMC mod set include:
-
-* FMC Core *- add elemental aspects to mobs and equipment. Required by other FMC mods*
-* FMC Crystals *- add crystal items and blocks to your world*
-* *More to come...!*
-
 You can join the official discord here: [https://discord.gg/Kv6umW2vzy](https://discord.gg/Kv6umW2vzy)
 
-## For Developers
+# For Developers
 
+
+
+## Build Instructions
+
+Clone the repo and run:
+
+```bash
+./gradlew build
+```
+
+You'll find the compiled jar in `bin/blahblah/blah.jar`
+
+## Creating Add-ons
 FMC Core exposes an API for mod developers to create their own FMC add-ons.
 
-### External Mod Support
-
-#### Elemental Aspects
-
-FMC Core's Elemental Aspects feature is fully compatible with items, blocks, and mobs supplied by other mods.
-Compatibility is achieved via tags.
-
-If you are a developer and wish to make your blocks, items, and entities compatible, all you need to do is add your items to appropriate elemental tag. There is an elemental tag for each Elemental Aspect, and they use the [Fabric common tags scheme](https://www.fabricmc.net/wiki/tutorial:tags#common_tags_vs_mod_tags):
-
-| Element	| Tag					|
-|----------:|-----------------------|
-|Fire		|c:fire_elemental		|
-|Ice		|c:ice_elemental		|
-|Lightning	|c:lightning_elemental	|
-|Wind		|c:wind_elemental		|
-|Water		|c:water_elemental		|
-|Earth		|c:earth_elemental		|
-|Poison		|c:poison_elemental		|
-|Holy		|c:holy_elemental		|
-|Dark		|c:dark_elemental		|
-|Gravity	|c:gravity_elemental 	|
-
-FMC code uses the following object categories for elemental tags:
-
-* Blocks
-* Items
-* Fluids
-* Entity-Types
-* ~~Enchantments~~
-
-This repository also contains a tool written in Lua that helps to generate tag json from a CSV file (such as that exported from a spreasheet), run `lua genTags.lua -h` for a list of options. See the [lua/genTags.lua](lua/genTags.lua) file for more information.
-
+*TODO: modImplementation instructions*
 *TODO: setup maven on repo*
 
-*TODO: wiki and such*
 
-## Authors
+## External Mod Support
+Final Minecraft utilises the Tag system in Minecraft. Where possible, every feature uses the tags registry, meaning that the mod is fully compatible with other mods!
+
+See the [wiki Datapacks page](https://github.com/Lafolie/Final-Minecraft/wiki/Datapacks) for details on how use Tags used by Final Minecraft.
+
+This repository also contains a tool written in Lua that helps to generate tag json from a CSV file (such as that exported from a spreasheet), run `genTags.lua -h` for a list of options. See the [lua/genTags.lua](lua/genTags.lua) file for more information.
+
+# Authors
 
 Lafolie - designer and developer.
 
-### Special Thanks
-Linguardium - of the fabric discord, for his tremendous help in learning how to do this stuff!
+## Special Thanks
+* To Linguardium of the Fabric discord, for his tremendous help in learning how to do this stuff!
+* To Papierkorb2292 for the guidance in Minecraft's rendering system
+* To the creators of Cardinal Components for saving me a tonne of time replicating data
 
-## License
+# License
 
 FMC Core is licensed under the GNU General Public License v3.
+
+[fabric_CF]: https://www.curseforge.com/minecraft/mc-mods/fabric-api
+[fabric_GH]: https://github.com/FabricMC/fabric
+[cca_CF]: https://www.curseforge.com/minecraft/mc-mods/cardinal-components
+[cca_GH]: https://github.com/OnyxStudios/Cardinal-Components-API
+[ccfg_CF]: https://www.curseforge.com/minecraft/mc-mods/cloth-config
+[ccfg_GH]: https://github.com/shedaniel/cloth-config
+[mm_CF]: https://www.curseforge.com/minecraft/mc-mods/modmenu
+[mm_GH]: https://github.com/TerraformersMC/ModMenu
