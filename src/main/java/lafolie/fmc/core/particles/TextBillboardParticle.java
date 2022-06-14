@@ -1,7 +1,9 @@
 package lafolie.fmc.core.particles;
 
 
-import lafolie.fmc.core.FinalMinecraft;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -21,29 +23,35 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.text.TextColor;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 
 public class TextBillboardParticle extends BillboardParticle
 {
 
-	private OrderedText text;// = OrderedText.styledForwardsVisitedString("999", Style.EMPTY);
+	private final List<OrderedText> characters = new ArrayList<>();
+	private final float textWidth;
+	private final float fadeAge;
 
     protected TextBillboardParticle(ClientWorld clientWorld, double x, double y, double z, double number, double color)
 	{
 		super(clientWorld, x, y, z);
-		// init();
+
 		collidesWithWorld = false;
-		gravityStrength = 1f;
-		velocityY = 0.25;
-		maxAge = 30;
-		FinalMinecraft.log.info("Number: {}", number);
-		text = OrderedText.styledBackwardsVisitedString(String.format("%1.0f", number), Style.EMPTY);
+		gravityStrength = 0f;
+		velocityY = 0d;
+		maxAge = 50;
+		fadeAge = maxAge - 25;
+		
+		String text = String.format("%.0f", number);
+		textWidth =  MinecraftClient.getInstance().textRenderer.getWidth(text);
+		int n = 0;
+		while(n < text.length())
+		{
+			characters.add(OrderedText.styledForwardsVisitedString(text.substring(n, n+1), Style.EMPTY));
+			n++;
+		}
+
 	}
 
 
@@ -78,25 +86,37 @@ public class TextBillboardParticle extends BillboardParticle
 	}
 
 	@Override
+	public void tick()
+	{
+		super.tick();
+		if(!dead && age >= maxAge - fadeAge)
+		{
+			float ageDiff = Math.max(maxAge - age, 0f);
+			alpha = ageDiff / fadeAge;
+		}
+	}
+
+	@Override
 	public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta)
 	{
-
 		TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
-
+		
 		Vec3d vec3d = camera.getPos();
 		float x = (float)(MathHelper.lerp((double)tickDelta, this.prevPosX, this.x) - vec3d.getX());
 		float y = (float)(MathHelper.lerp((double)tickDelta, this.prevPosY, this.y) - vec3d.getY());
 		float z = (float)(MathHelper.lerp((double)tickDelta, this.prevPosZ, this.z) - vec3d.getZ());
+		float life = MathHelper.lerp(tickDelta, (float)age - 1f, (float)age);
 
-		if(alpha == 0 || scale == 0)
+		if(characters.size() < 0 || alpha <= 0f || scale <= 0f)
 		{
 			return;
 		}
 
-		float offset = renderer.getWidth(text) / 2;
+		float xOffset = textWidth / -2f;
+		int intAlpha = MathHelper.floor(255f * alpha) << 24;
+		int color = 0x00FFFFFF | intAlpha;
+		int outlineColor = intAlpha;
 
-		int color = 0xFFFFFFFF;
-		int outlineColor = 0x00000000;
 
 		MatrixStack matStack = new MatrixStack();
 		matStack.push();
@@ -104,11 +124,26 @@ public class TextBillboardParticle extends BillboardParticle
 		matStack.multiply(camera.getRotation());
 		matStack.scale(-0.05f, -0.05f, -1f);
 
-		// vertConProv = VertexConsumerProvider.immediate(layerBuffers, fallbackBuffer)
-		// renderer.drawWithShadow(matStack, text, x, y, color);
+		VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
+		float n = 0;
+		for(OrderedText txt : characters)
+		{
+			float i = (life - n) / 5f;
+			if(i < 0f)
+			{
+				continue;
+			}
 
-        VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
-		renderer.drawWithOutline(text, -offset, 0, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+			if(i > 0.5f)
+			{
+				i = 1f - i;
+			}
+
+			float yOffset = Math.max(0, MathHelper.lerp(i, 0f, 24f));
+			renderer.drawWithOutline(txt, xOffset, -yOffset, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+			xOffset += renderer.getWidth(txt);
+			n += 1f;
+		}
 		immediate.draw();
 		
 		matStack.pop();

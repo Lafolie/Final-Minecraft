@@ -60,7 +60,6 @@ public class FinalMinecraftClient implements ClientModInitializer
 			// FinalMinecraft.log.info("Receiving packet");
 
 			HealthModifiedPacket packet = new HealthModifiedPacket(buf);
-			FinalMinecraft.log.info("In amount: {}", packet.amount);
 			client.execute(() ->
 			{
 				Entity ent = client.world.getEntityById(packet.entityID);

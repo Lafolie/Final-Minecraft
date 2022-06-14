@@ -25,6 +25,8 @@ import lafolie.fmc.core.internal.network.HealthModifiedPacket.EventType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Pair;
@@ -108,8 +110,17 @@ public abstract class LivingEntityMixin extends Entity
 		{
 			// FinalMinecraft.log.info("ATTACK");
 			// FinalMinecraft.log.info("Original amount {}", amount);
-			// EW!
-			ElementalObject attackedWith = (ElementalObject)(Object)(((LivingEntity)attacker).getMainHandStack());
+
+			// Apparently CardinalComponents won't attack anything to Air
+			ItemStack attackedWithStack = (((LivingEntity)attacker).getMainHandStack());
+			if(attackedWithStack.getItem() == Items.AIR)
+			{
+				lastAttributeused = null;
+				return amount;
+			}
+
+			ElementalObject attackedWith = (ElementalObject)(Object)attackedWithStack;
+
 			// we use resistance to determine whether an item is elemental
 			Map<ElementalAspect, Integer> elements = attackedWith.getElementalAffinities(ElementalAttribute.RESISTANCE);
 
@@ -213,7 +224,6 @@ public abstract class LivingEntityMixin extends Entity
 	private void sendHealthModifiedPacket(float amount, ElementalAttribute attribute)
 	{
 		// FinalMinecraft.log.info("Sending packet");
-		FinalMinecraft.log.info("Out amount: {}", amount);
 
 		HealthModifiedPacket.EventType type = EventType.NORMAL;
 		if(attribute != null)
