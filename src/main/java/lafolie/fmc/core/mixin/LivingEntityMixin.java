@@ -212,6 +212,9 @@ public abstract class LivingEntityMixin extends Entity
 
 	private void sendHealthModifiedPacket(float amount, ElementalAttribute attribute)
 	{
+		// FinalMinecraft.log.info("Sending packet");
+		FinalMinecraft.log.info("Out amount: {}", amount);
+
 		HealthModifiedPacket.EventType type = EventType.NORMAL;
 		if(attribute != null)
 		{

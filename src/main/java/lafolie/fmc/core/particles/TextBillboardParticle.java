@@ -1,6 +1,7 @@
 package lafolie.fmc.core.particles;
 
 
+import lafolie.fmc.core.FinalMinecraft;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -31,27 +32,18 @@ import net.minecraft.util.math.Vec3f;
 public class TextBillboardParticle extends BillboardParticle
 {
 
-	private OrderedText text = OrderedText.styledForwardsVisitedString("999", Style.EMPTY);
+	private OrderedText text;// = OrderedText.styledForwardsVisitedString("999", Style.EMPTY);
 
-	protected TextBillboardParticle(ClientWorld clientWorld, double d, double e, double f)
+    protected TextBillboardParticle(ClientWorld clientWorld, double x, double y, double z, double number, double color)
 	{
-		super(clientWorld, d, e, f);
-		init();
-	}
-
-    protected TextBillboardParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i)
-	{
-		super(clientWorld, d, e, f, g, h, i);
-		init();
-	}
-
-	private void init()
-	{
+		super(clientWorld, x, y, z);
+		// init();
 		collidesWithWorld = false;
-		gravityStrength = 1;
-		velocityY = 5;
-		maxAge = 99;
-		// this.
+		gravityStrength = 1f;
+		velocityY = 0.25;
+		maxAge = 30;
+		FinalMinecraft.log.info("Number: {}", number);
+		text = OrderedText.styledBackwardsVisitedString(String.format("%1.0f", number), Style.EMPTY);
 	}
 
 
@@ -101,6 +93,8 @@ public class TextBillboardParticle extends BillboardParticle
 			return;
 		}
 
+		float offset = renderer.getWidth(text) / 2;
+
 		int color = 0xFFFFFFFF;
 		int outlineColor = 0x00000000;
 
@@ -108,13 +102,13 @@ public class TextBillboardParticle extends BillboardParticle
 		matStack.push();
 		matStack.translate(x, y, z);
 		matStack.multiply(camera.getRotation());
-		matStack.scale(1, -1, 1);
+		matStack.scale(-0.05f, -0.05f, -1f);
 
 		// vertConProv = VertexConsumerProvider.immediate(layerBuffers, fallbackBuffer)
 		// renderer.drawWithShadow(matStack, text, x, y, color);
 
         VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
-		renderer.drawWithOutline(text, 0, 0, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+		renderer.drawWithOutline(text, -offset, 0, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
 		immediate.draw();
 		
 		matStack.pop();
@@ -134,7 +128,7 @@ public class TextBillboardParticle extends BillboardParticle
 		@Override
 		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i)
 		{
-			return new TextBillboardParticle(clientWorld, d, e, f);
+			return new TextBillboardParticle(clientWorld, d, e, f, g, h);
 		}
 	}
 }

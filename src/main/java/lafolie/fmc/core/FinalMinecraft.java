@@ -21,9 +21,9 @@ import org.slf4j.LoggerFactory;
 
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
-import lafolie.fmc.core.particles.Particles;
 import lafolie.fmc.core.util.ServerStatus;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;

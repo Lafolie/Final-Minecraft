@@ -4,14 +4,19 @@ import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.Utils;
+import lafolie.fmc.core.internal.Particles;
+import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import lafolie.fmc.core.mixin.ItemStackMixin;
-import lafolie.fmc.core.particles.Particles;
+import lafolie.fmc.core.particles.TextBillboardParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.registry.Registry;
 
 public class FinalMinecraftClient implements ClientModInitializer
 {
@@ -20,6 +25,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 	public void onInitializeClient()
 	{
 		InitContent();
+		registerNetworkReceivers();
 
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
 		{
@@ -44,5 +50,24 @@ public class FinalMinecraftClient implements ClientModInitializer
 	private void InitContent()
 	{
 		Particles.initClient();
+	}
+
+	private void registerNetworkReceivers()
+	{
+		// HealthModifiedPacket
+		ClientPlayNetworking.registerGlobalReceiver(HealthModifiedPacket.ID, (client, handler, buf, responseSender) ->
+		{
+			// FinalMinecraft.log.info("Receiving packet");
+
+			HealthModifiedPacket packet = new HealthModifiedPacket(buf);
+			FinalMinecraft.log.info("In amount: {}", packet.amount);
+			client.execute(() ->
+			{
+				Entity ent = client.world.getEntityById(packet.entityID);
+				
+
+				client.world.addParticle(Particles.TEXT, true, ent.getX(), ent.getBodyY(1), ent.getZ(), packet.amount, 0, 0);
+			});
+		});
 	}
 }

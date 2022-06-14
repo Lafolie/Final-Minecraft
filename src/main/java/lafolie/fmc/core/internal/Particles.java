@@ -1,5 +1,7 @@
-package lafolie.fmc.core.particles;
+package lafolie.fmc.core.internal;
 
+import lafolie.fmc.core.particles.TextBillboardParticle;
+import lafolie.fmc.core.particles.TextBillboardParticle.Factory;
 import lafolie.fmc.core.util.FMCIdentifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
