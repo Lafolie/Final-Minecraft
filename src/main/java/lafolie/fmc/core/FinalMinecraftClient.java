@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.registry.Registry;
 
 public class FinalMinecraftClient implements ClientModInitializer
@@ -63,9 +64,35 @@ public class FinalMinecraftClient implements ClientModInitializer
 			client.execute(() ->
 			{
 				Entity ent = client.world.getEntityById(packet.entityID);
-				
+				double color;
+				switch (packet.type) 
+				{
+					case NORMAL:
+						color = ColorHelper.Argb.getArgb(0, 255, 255, 255);
+						break;
 
-				client.world.addParticle(Particles.TEXT, true, ent.getX(), ent.getBodyY(1), ent.getZ(), packet.amount, 0, 0);
+					case HEAL:
+						color = ColorHelper.Argb.getArgb(0, 143, 206, 59);
+						break;
+	
+					case RESIST:
+						color = ColorHelper.Argb.getArgb(0, 64, 64, 72);
+						break;
+
+					case EFFECTIVE:
+						color = ColorHelper.Argb.getArgb(0, 219, 171, 28);
+						break;
+	
+					case POISON:
+						color = ColorHelper.Argb.getArgb(0, 162, 28, 219);
+						break;
+				
+					default:
+						color = ColorHelper.Argb.getArgb(0, 255, 255, 255);
+						break;
+				}
+
+				client.world.addParticle(Particles.TEXT, true, ent.getX(), ent.getBodyY(1), ent.getZ(), packet.amount, color, 0);
 			});
 		});
 	}

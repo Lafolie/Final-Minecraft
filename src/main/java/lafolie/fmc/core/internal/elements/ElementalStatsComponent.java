@@ -33,6 +33,11 @@ public interface ElementalStatsComponent extends ComponentV3
 
 	public default void addElement(ElementalAspect element, ElementalAttribute attribute, byte inAmt)
 	{
+		if(element == ElementalAspect.NONE)
+		{
+			return;
+		}
+		
 		String key = element.toString();
 
 		NbtCompound elements = getOrCreateElementalNbt(attribute);

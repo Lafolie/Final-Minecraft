@@ -23,6 +23,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -32,8 +33,9 @@ public class TextBillboardParticle extends BillboardParticle
 	private final List<OrderedText> characters = new ArrayList<>();
 	private final float textWidth;
 	private final float fadeAge;
+	private final int color;
 
-    protected TextBillboardParticle(ClientWorld clientWorld, double x, double y, double z, double number, double color)
+	protected TextBillboardParticle(ClientWorld clientWorld, double x, double y, double z, double number, double color)
 	{
 		super(clientWorld, x, y, z);
 
@@ -42,7 +44,7 @@ public class TextBillboardParticle extends BillboardParticle
 		velocityY = 0d;
 		maxAge = 50;
 		fadeAge = maxAge - 25;
-		
+		this.color = MathHelper.floor(color);
 		String text = String.format("%.0f", number);
 		textWidth =  MinecraftClient.getInstance().textRenderer.getWidth(text);
 		int n = 0;
@@ -114,7 +116,7 @@ public class TextBillboardParticle extends BillboardParticle
 
 		float xOffset = textWidth / -2f;
 		int intAlpha = MathHelper.floor(255f * alpha) << 24;
-		int color = 0x00FFFFFF | intAlpha;
+		int intColor = color | intAlpha;
 		int outlineColor = intAlpha;
 
 
@@ -140,7 +142,7 @@ public class TextBillboardParticle extends BillboardParticle
 			}
 
 			float yOffset = Math.max(0, MathHelper.lerp(i, 0f, 24f));
-			renderer.drawWithOutline(txt, xOffset, -yOffset, color, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
+			renderer.drawWithOutline(txt, xOffset, -yOffset, intColor, outlineColor, matStack.peek().getPositionMatrix(), immediate, LightmapTextureManager.MAX_LIGHT_COORDINATE);
 			xOffset += renderer.getWidth(txt);
 			n += 1f;
 		}
