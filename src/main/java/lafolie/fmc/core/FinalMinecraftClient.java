@@ -1,23 +1,20 @@
 package lafolie.fmc.core;
 
+import java.util.Vector;
+
 import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.Utils;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
-import lafolie.fmc.core.mixin.ItemStackMixin;
-import lafolie.fmc.core.particles.TextBillboardParticle;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.ColorHelper;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.math.Vec3d;
 
 public class FinalMinecraftClient implements ClientModInitializer
 {
@@ -92,7 +89,11 @@ public class FinalMinecraftClient implements ClientModInitializer
 						break;
 				}
 
-				client.world.addParticle(Particles.TEXT, true, ent.getX(), ent.getBodyY(1), ent.getZ(), packet.amount, color, 0);
+				Vec3d position = new Vec3d(ent.getX(), ent.getBodyY(1d), ent.getZ());
+				Entity cam = client.getCameraEntity();
+				Vec3d adjustedPos = Vec3d.fromPolar(cam.getPitch(), cam.getYaw()).negate().multiply(ent.getBoundingBox().getAverageSideLength() * 0.5d);
+				adjustedPos = position.add(adjustedPos);
+				client.world.addParticle(Particles.TEXT, true, adjustedPos.x, adjustedPos.y, adjustedPos.z, packet.amount, color, 0);
 			});
 		});
 	}
