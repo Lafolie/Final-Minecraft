@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
+import lafolie.fmc.core.elements.ElementalEquipment;
 import lafolie.fmc.core.elements.ElementalObject;
 
 import lafolie.fmc.core.internal.Components;
@@ -20,7 +21,8 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 
 @Mixin(ItemStack.class)
-public abstract class ItemStackMixin implements ElementalObject
+public abstract class ItemStackMixin 
+	implements ElementalObject, ElementalEquipment
 {
 	@Shadow
 	public abstract Item getItem();
@@ -44,7 +46,7 @@ public abstract class ItemStackMixin implements ElementalObject
 			InnateElemental innate = (InnateElemental)item;
 			for(Map.Entry<ElementalAspect, Integer> entry : innate.getInnateElements(ElementalAttribute.RESISTANCE).entrySet())
 			{
-				addInnateElementalAspect(entry.getKey(), ElementalAttribute.RESISTANCE, 2);
+				addElementalAspectRaw(entry.getKey(), ElementalAttribute.RESISTANCE, 2);
 			}
 			// addInnate* requires manual sync
 			component.trySync();

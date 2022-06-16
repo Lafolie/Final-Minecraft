@@ -38,7 +38,7 @@ public interface ElementalStatsComponent extends ComponentV3
 			return;
 		}
 		
-		String key = element.toString();
+		String key = element.toNbtKey();
 
 		NbtCompound elements = getOrCreateElementalNbt(attribute);
 		if(!elements.contains(key))
@@ -60,6 +60,23 @@ public interface ElementalStatsComponent extends ComponentV3
 		}
 
 		// trySync();
+	}
+
+	/**
+	 * MAY RETURN NULL!
+	 * @param attribute
+	 * @return
+	 */
+	public default NbtCompound getElementalNbt(ElementalAttribute attribute)
+	{
+		NbtCompound nbt = getElementNbt();
+		String nbtKey = attribute.toNbtKey();
+		if(nbt.contains(nbtKey, NbtType.COMPOUND))
+		{
+			return nbt.getCompound(nbtKey);
+		}
+
+		return null;
 	}
 
 	public default NbtCompound getOrCreateElementalNbt(ElementalAttribute attribute)

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ElementalAspects affect damage according to the sources' aspect(s) and
@@ -40,6 +42,7 @@ public enum ElementalAspect
 
 	private static EnumMap<ElementalAspect, ElementalAspect> WEAK = new EnumMap<ElementalAspect, ElementalAspect>(ElementalAspect.class);
 	private static EnumMap<ElementalAspect, ElementalAspect> STRONG = new EnumMap<ElementalAspect, ElementalAspect>(ElementalAspect.class);
+	private static Map<String, ElementalAspect> NBT_KEYS = new HashMap<>();
 	public static final EnumMap<ElementalAspect, String> LANG_KEYS = new EnumMap<ElementalAspect, String>(ElementalAspect.class);
 	
 	static
@@ -91,6 +94,11 @@ public enum ElementalAspect
 		LANG_KEYS.put(ElementalAspect.HOLY, "fmc.core.element.tooltip.holy");
 		LANG_KEYS.put(ElementalAspect.DARK, "fmc.core.element.tooltip.dark");
 		LANG_KEYS.put(ElementalAspect.GRAVITY, "fmc.core.element.tooltip.gravity");
+
+		for(ElementalAspect element : ElementalAspect.values())
+		{
+			NBT_KEYS.put(element.toNbtKey(), element);
+		}
 	}
 
 	/**
@@ -149,4 +157,20 @@ public enum ElementalAspect
 	{
 		return WEAK.get(this);
 	}
+
+	public String toNbtKey()
+	{
+		return this.toString();
+	}
+
+	public static String toNbtKey(ElementalAspect aspect)
+	{
+		return aspect.toString();
+	}
+
+	public static ElementalAspect fromNbtKey(String key)
+	{
+		return NBT_KEYS.containsKey(key) ? NBT_KEYS.get(key) : NONE;
+	}
+
 }

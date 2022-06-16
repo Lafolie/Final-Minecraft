@@ -11,6 +11,7 @@ import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NbtByte;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 
@@ -187,7 +188,7 @@ public interface ElementalObject
 	 * @param attribute
 	 * @param amount
 	 */
-	public default void addInnateElementalAspect(ElementalAspect element, ElementalAttribute attribute, int amount)
+	public default void addElementalAspectRaw(ElementalAspect element, ElementalAttribute attribute, int amount)
 	{
 		ElementalStatsComponent stats = getComponent();
 		stats.addElement(element, attribute, (byte)amount);
@@ -213,6 +214,43 @@ public interface ElementalObject
 	}
 
 	/**
+	 * Applies all of the Affinities of this object to the target
+	 * @param obj the target object
+	 */
+	public default void applyToObject(ElementalObject obj)
+	{
+		apply(obj, 1);
+	}
+
+	/**
+	 * Removes all of the Affinities of this object from the target
+	 * @param obj the target object
+	 */
+	public default void removeFromObject(ElementalObject obj)
+	{
+		apply(obj, -1);
+	}
+
+	private void apply(ElementalObject obj, int addOrRemove)
+	{
+		ElementalStatsComponent stats = getComponent();
+		ElementalStatsComponent targetStats = obj.getComponent();
+
+		for(ElementalAttribute attribute : ElementalAttribute.values())
+		{
+			NbtCompound elements = stats.getElementalNbt(attribute);
+			if(elements != null)
+			{
+				for(String key : elements.getKeys())
+				{
+					targetStats.addElement(ElementalAspect.fromNbtKey(key), attribute, (byte)(elements.getByte(key) * addOrRemove));
+				}
+			}
+		}
+		targetStats.trySync();
+	}
+
+	/**
 	 * Checks whether an elemental attribute exists in the NBT.
 	 * @param element
 	 * @param attribute
@@ -220,9 +258,12 @@ public interface ElementalObject
 	 */
 	public default boolean hasElementalAspect(ElementalAspect element, ElementalAttribute attribute)
 	{
-		//TODO: make this not create the tag unnecessarily
-		NbtCompound elements = getComponent().getOrCreateElementalNbt(attribute);
-		return elements.contains(element.toString());
+		NbtCompound elements = getComponent().getElementalNbt(attribute);
+		if(elements != null)
+		{
+			return elements.contains(element.toString());
+		}
+		return false;
 	}
 
 	/**
@@ -235,9 +276,13 @@ public interface ElementalObject
 	public default int getElementalAffinity(ElementalAspect element, ElementalAttribute attribute)
 	{
 		ElementalStatsComponent stats = getComponent();
-		NbtCompound nbt = stats.getOrCreateElementalNbt(attribute);
-		String key = element.toString();
-		return nbt.contains(key) ? (int)nbt.getByte(key) : 0;
+		NbtCompound nbt = stats.getElementalNbt(attribute);
+		if(nbt != null)
+		{
+			String key = element.toString();
+			return nbt.contains(key) ? (int)nbt.getByte(key) : 0;
+		}
+		return 0;
 	}
 
 	/**

@@ -30,7 +30,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 {
 	public LivingEntityMixin(EntityType<?> type, World world) {
 		super(type, world);
-		//TODO Auto-generated constructor stub
+		//Auto-generated constructor stub
 	}
 
 	@Shadow
@@ -54,6 +54,18 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	private DamageSource source;
 	private float modifiedDamage = 1;
 	private ElementalAttribute lastAttributeused;
+
+	// ------------------------------------------------------------------------
+	// Equipment
+	// ------------------------------------------------------------------------
+	
+	@Inject(at = @At("HEAD"), method = "onEquipStack(Lnet/minecraft/item/ItemStack;)V")
+	private void euipmentChanged(ItemStack stack, CallbackInfo info)
+	{
+		FinalMinecraft.log.info("Itemstack {}", stack.toString());
+	}
+	
+
 
 	// ------------------------------------------------------------------------
 	// Damage Algorithm & Related

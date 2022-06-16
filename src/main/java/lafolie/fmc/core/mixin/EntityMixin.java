@@ -82,7 +82,7 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 				{
 					for(Map.Entry<ElementalAspect, Integer> entry : innate.getInnateElements(attribute).entrySet())
 					{
-						addInnateElementalAspect(entry.getKey(), attribute, entry.getValue());
+						addElementalAspectRaw(entry.getKey(), attribute, entry.getValue());
 					}
 				}
 			}

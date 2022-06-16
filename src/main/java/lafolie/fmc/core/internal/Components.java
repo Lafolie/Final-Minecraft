@@ -1,7 +1,5 @@
 package lafolie.fmc.core.internal;
 
-import java.util.function.Predicate;
-
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -9,15 +7,12 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
-import lafolie.fmc.core.elements.ElementalObject;
+
 import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStats_Item;
 import lafolie.fmc.core.util.FMCIdentifier;
-import net.minecraft.entity.Entity;
+
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class Components implements
@@ -37,7 +32,7 @@ public class Components implements
 
 		// registry.registerFor(isNonPlayer, ELEMENTAL_STATS, ElementalStats::new);
 		registry.registerFor(LivingEntity.class, ELEMENTAL_STATS, ElementalStats::new);
-		registry.registerForPlayers(ELEMENTAL_STATS, ElementalStats::new, RespawnCopyStrategy.INVENTORY);
+		registry.registerForPlayers(ELEMENTAL_STATS, ElementalStats::new, RespawnCopyStrategy.NEVER_COPY);
 
 		
 	}
