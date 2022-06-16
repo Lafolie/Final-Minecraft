@@ -16,7 +16,7 @@ import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
-
+import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
@@ -54,6 +54,10 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	private DamageSource source;
 	private float modifiedDamage = 1;
 	private ElementalAttribute lastAttributeused;
+
+	// ------------------------------------------------------------------------
+	// Damage Algorithm & Related
+	// ------------------------------------------------------------------------
 
 	@Override
 	public ElementalAttribute getLastAttributeUsed()
@@ -187,7 +191,6 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 		return amount;
 	}
 
-
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
 	private void cancelDamage(DamageSource source, float amount, CallbackInfoReturnable info)
 	{
@@ -200,15 +203,25 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 		modifiedDamage = 1;
 	}
 	
-	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
-	private void applyDamage(DamageSource source, float amount, CallbackInfo info)
-	{
-		sendHealthModifiedPacket(amount, getLastAttributeUsed());
-	}
-
 	// unused as of yet
 	private float adjustDamageAttackType(DamageSource source, float amount)
 	{
 		return amount;
 	}
+
+	// ------------------------------------------------------------------------
+	// Damage Numbers
+	// ------------------------------------------------------------------------
+	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
+	private void applyDamageNumbers(DamageSource source, float amount, CallbackInfo info)
+	{
+		sendHealthModifiedPacket(amount, getLastAttributeUsed());
+	}
+
+	@Inject(at = @At("TAIL"), method="heal(F)V")
+	private void healNumbers(float amount, CallbackInfo info)
+	{
+		sendHealthModifiedPacket(amount, ElementalAttribute.ABSORBTION);
+	}
+
 }
