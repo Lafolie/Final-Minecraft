@@ -1,6 +1,5 @@
 package lafolie.fmc.core.particles;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +22,11 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
-import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class TextBillboardParticle extends BillboardParticle
 {
-
 	private final List<OrderedText> characters = new ArrayList<>();
 	private final float textWidth;
 	private final float fadeAge;
@@ -42,7 +39,7 @@ public class TextBillboardParticle extends BillboardParticle
 		collidesWithWorld = false;
 		gravityStrength = 0f;
 		velocityY = 0d;
-		maxAge = 50;
+		maxAge = 40;
 		fadeAge = maxAge - 25;
 		this.color = MathHelper.floor(color);
 		String text = String.format("%.0f", number);
@@ -55,7 +52,6 @@ public class TextBillboardParticle extends BillboardParticle
 		}
 
 	}
-
 
 	@Override
 	protected float getMinU()
@@ -119,12 +115,11 @@ public class TextBillboardParticle extends BillboardParticle
 		int intColor = color | intAlpha;
 		int outlineColor = intAlpha;
 
-
 		MatrixStack matStack = new MatrixStack();
 		matStack.push();
 		matStack.translate(x, y, z);
 		matStack.multiply(camera.getRotation());
-		matStack.scale(-0.05f, -0.05f, -1f);
+		matStack.scale(-0.04f, -0.04f, -1f);
 
 		VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
 		float n = 0;
@@ -155,12 +150,7 @@ public class TextBillboardParticle extends BillboardParticle
 	public static class Factory
 	implements ParticleFactory<DefaultParticleType>
 	{
-		// private final SpriteProvider spriteProvider;
-
-		public Factory(SpriteProvider sp)
-		{
-			// spriteProvider = sp;
-		}
+		public Factory(SpriteProvider sp) { }
 
 		@Override
 		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i)

@@ -3,9 +3,7 @@ package lafolie.fmc.core.internal.network;
 import java.util.HashMap;
 import java.util.Map;
 
-import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.util.FMCIdentifier;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 

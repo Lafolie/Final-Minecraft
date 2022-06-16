@@ -52,7 +52,7 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 		log.info("Loaded FMC Core version {}", getVersionString());
 		initConfig();
 		initContent();
-		
+
 		// RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
 		ServerLifecycleEvents.SERVER_STARTING.register(server -> onServerStarting(server));
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> onServerStarted(server));

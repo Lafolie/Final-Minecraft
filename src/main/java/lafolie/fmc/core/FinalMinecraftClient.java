@@ -5,6 +5,7 @@ import java.util.Vector;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.elements.Utils;
+import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.fabricmc.api.ClientModInitializer;
@@ -38,7 +39,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 					lines.add(
 						new TranslatableText("fmc.core.element.tooltip.elemental",
 						new TranslatableText(Utils.ElementLangKeys.get(element))));
-						lines.add(new LiteralText(String.format("Total: %s", total))); //ALSO REMOVE LATER
+						lines.add(new LiteralText(String.format("Total: %s", total))); // REMOVE LATER
 				}
 
 			}
@@ -60,40 +61,8 @@ public class FinalMinecraftClient implements ClientModInitializer
 			HealthModifiedPacket packet = new HealthModifiedPacket(buf);
 			client.execute(() ->
 			{
-				Entity ent = client.world.getEntityById(packet.entityID);
-				double color;
-				switch (packet.type) 
-				{
-					case NORMAL:
-						color = ColorHelper.Argb.getArgb(0, 255, 255, 255);
-						break;
-
-					case HEAL:
-						color = ColorHelper.Argb.getArgb(0, 143, 206, 59);
-						break;
-	
-					case RESIST:
-						color = ColorHelper.Argb.getArgb(0, 64, 64, 72);
-						break;
-
-					case EFFECTIVE:
-						color = ColorHelper.Argb.getArgb(0, 219, 171, 28);
-						break;
-	
-					case POISON:
-						color = ColorHelper.Argb.getArgb(0, 162, 28, 219);
-						break;
-				
-					default:
-						color = ColorHelper.Argb.getArgb(0, 255, 255, 255);
-						break;
-				}
-
-				Vec3d position = new Vec3d(ent.getX(), ent.getBodyY(1d), ent.getZ());
-				Entity cam = client.getCameraEntity();
-				Vec3d adjustedPos = Vec3d.fromPolar(cam.getPitch(), cam.getYaw()).negate().multiply(ent.getBoundingBox().getAverageSideLength() * 0.5d);
-				adjustedPos = position.add(adjustedPos);
-				client.world.addParticle(Particles.TEXT, true, adjustedPos.x, adjustedPos.y, adjustedPos.z, packet.amount, color, 0);
+				DamageNumbers dmgEntity = (DamageNumbers)client.world.getEntityById(packet.entityID);
+				dmgEntity.spawnDamageNumbers(client, packet.amount, packet.type);
 			});
 		});
 	}
