@@ -62,7 +62,14 @@ public class FinalMinecraftClient implements ClientModInitializer
 			client.execute(() ->
 			{
 				DamageNumbers dmgEntity = (DamageNumbers)client.world.getEntityById(packet.entityID);
-				dmgEntity.spawnDamageNumbers(client, packet.amount, packet.type);
+				if(dmgEntity != null)
+				{
+					dmgEntity.spawnDamageNumbers(client, packet.amount, packet.type);
+				}
+				else
+				{
+					FinalMinecraft.log.info("dmgEntity was null");
+				}
 			});
 		});
 	}

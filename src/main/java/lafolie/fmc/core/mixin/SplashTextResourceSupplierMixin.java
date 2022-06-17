@@ -10,9 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.util.AlBhed;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
 import net.minecraft.client.util.Session;
@@ -36,7 +34,6 @@ public abstract class SplashTextResourceSupplierMixin
 	private void get(CallbackInfoReturnable<String> info)
 	{
 		Calendar calendar = Calendar.getInstance();
-		FinalMinecraft.log.info("Minute: {} == 10 : {}", calendar.get(Calendar.MINUTE), calendar.get(Calendar.MINUTE) == 10);
 		if(session != null && (calendar.get(Calendar.MINUTE) == 10 || RANDOM.nextInt(splashTexts.size()) == 10))
 		{
 			info.setReturnValue(AlBhed.toAlBhed((String)info.getReturnValue()));

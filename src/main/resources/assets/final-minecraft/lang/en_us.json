@@ -1,4 +1,5 @@
 {
+	"#elements": "",
 	"fmc.core.element.tooltip.none": "None",
 	"fmc.core.element.tooltip.fire": "Fire",
 	"fmc.core.element.tooltip.ice": "Ice",
@@ -19,7 +20,11 @@
 	"fmc.core.attributes.tooltip.absorb": "Absorb",
 	"fmc.core.attributes.tooltip.fatal": "Fatal",
 	"fmc.core.attributes.tooltip.revive": "Revive",
-	
+
+	"#blocks": "",
+
+	"#items": "",
+
 	"text.autoconfig.FinalMinecraftCore.title": "Final Minecraft Core Options",
 	"text.autoconfig.FinalMinecraftCore.category.default": "General",
 	"text.autoconfig.FinalMinecraftCore.category.Elements": "Mob Elements"

@@ -7,11 +7,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalEquipment;
+import lafolie.fmc.core.elements.ElementalObject;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -51,10 +54,37 @@ public abstract class PlayerInventoryMixin
 		}
 	}
 
-	// public void removeOne(ItemStack stack)
-	// {
-	// 	stackRemoved(slot);
-	// }
+	/*
+	damage(Lnet/minecraft/entity/damage/DamageSource;F[I)V
+	*/
+	@Inject
+		(
+			at = @At
+			(
+				value = "INVOKE",
+				target = "Lnet/minecraft/item/ItemStack;damage(ILnet/minecraft/entity/LivingEntity;Ljava/util/function/Consumer;)V",
+				shift = At.Shift.AFTER
+			),
+			method = "damageArmor(Lnet/minecraft/entity/damage/DamageSource;F[I)V",
+			locals = LocalCapture.CAPTURE_FAILHARD
+		)
+	private void damageArmorInject(DamageSource damageSource, float amount, int[] slots, CallbackInfo info, int var4[], int var5, int var6, int i, ItemStack stack)
+	{
+		if(!player.world.isClient && stack.isEmpty())
+		{
+			FinalMinecraft.log.info("DESTROYED ARMOR {}", stack);
+			/*
+			 * The stack currently has a count of 0 as it was destroyed. This
+			 * means that when the ElementalObject called getItem, it will
+			 * return AIR, which has no ElementalStatsComponent.
+			 * Thus, we temporarily increase the count, then reset when we
+			 * are done using it.
+			 */
+			stack.increment(1);
+			((ElementalObject)(Object)stack).removeFromObject((ElementalObject)player);
+			stack.decrement(1);
+		}
+	}
 
 	@Inject(at = @At("HEAD"), method = "removeStack(II)Lnet/minecraft/item/ItemStack;")
 	private void onStackRemoved(int slot, int amount, CallbackInfoReturnable info)
