@@ -10,7 +10,8 @@
     "EntityMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",
-    "InventoryScreenMixin"
+    "InventoryScreenMixin",
+    "SplashTextResourceSupplierMixin"
   ],
   "client": [
   ],

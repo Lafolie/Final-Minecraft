@@ -24,6 +24,7 @@ import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
+import lafolie.fmc.core.util.AlBhed;
 import lafolie.fmc.core.util.ServerStatus;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
@@ -50,6 +51,7 @@ public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallb
 	public void onInitialize()
 	{
 		log.info("Loaded FMC Core version {}", getVersionString());
+		log.info(AlBhed.toAlBhed("Welcome to Final Minecraft!"));
 		initConfig();
 		initContent();
 
