@@ -44,7 +44,12 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
+	// Cardinal Components
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${project.cardinal_components_version}"
+
+	// Dev Login (DISABLE FOR RELEASES!)
+	modImplementation "com.ptsmods:devlogin:2.1"
+
 }
 
 processResources {

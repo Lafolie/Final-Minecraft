@@ -3,8 +3,8 @@
   "id": "final-minecraft",
   "version": "${version}",
 
-  "name": "Final Minecraft Core",
-  "description": "Core API for the Final Minecraft mod set.",
+  "name": "Final Minecraft",
+  "description": "Final Fantasy inspired content for Minecraft.",
   "authors": [
     "Lafolie"
   ],
@@ -12,9 +12,9 @@
     "Linguardium"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/Lafolie/FMC",
-    "issues": "https://github.com/Lafolie/FMC/issues"
+    "homepage": "https://github.com/Lafolie/Final-Minecraft/wiki",
+    "sources": "https://github.com/Lafolie/Final-Minecraft",
+    "issues": "https://github.com/Lafolie/Final-Minecraft/issues"
   },
 
   "license": "GPL-3.0-only",

@@ -31,3 +31,6 @@ bin/
 # fabric
 
 run/
+
+# FMC Dev
+latest.log
