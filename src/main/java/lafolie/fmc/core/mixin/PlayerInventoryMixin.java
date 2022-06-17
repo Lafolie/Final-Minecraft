@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalEquipment;
@@ -34,10 +35,11 @@ public abstract class PlayerInventoryMixin
 			FinalMinecraft.log.info("SLOT: {}", slot);
 			FinalMinecraft.log.info("\tequip stack {} {}", slot, stack.toString());
 			ItemStack currentEquip = ((PlayerInventory)(Object)this).getStack(slot);
+			FinalMinecraft.log.info("\tReplacing: {}", currentEquip.toString());
 			
 			if(!currentEquip.isEmpty())
 			{
-				((ElementalEquipment)(Object)currentEquip).removeEffects(player, stack);
+				((ElementalEquipment)(Object)currentEquip).removeEffects(player, currentEquip);
 			}
 			
 			if(!stack.isEmpty())
@@ -46,6 +48,37 @@ public abstract class PlayerInventoryMixin
 			}
 			FinalMinecraft.log.info("-----------------------------------------------------------");
 
+		}
+	}
+
+	// public void removeOne(ItemStack stack)
+	// {
+	// 	stackRemoved(slot);
+	// }
+
+	@Inject(at = @At("HEAD"), method = "removeStack(II)Lnet/minecraft/item/ItemStack;")
+	private void onStackRemoved(int slot, int amount, CallbackInfoReturnable info)
+	{
+		stackRemoved(slot);
+	}
+
+
+	@Inject(at = @At("HEAD"), method = "removeStack(I)Lnet/minecraft/item/ItemStack;")
+	private void onStackRemoved(int slot, CallbackInfoReturnable info)
+	{
+		stackRemoved(slot);
+	}
+
+	private void stackRemoved(int slot)
+	{
+		if(!player.world.isClient && isEquipmentSlot(slot))
+		{
+			ItemStack currentEquip = ((PlayerInventory)(Object)this).getStack(slot);
+			FinalMinecraft.log.info("REMOVING {}", currentEquip.toString());
+			if(!currentEquip.isEmpty())
+			{
+				((ElementalEquipment)(Object)currentEquip).removeEffects(player, currentEquip);
+			}
 		}
 	}
 

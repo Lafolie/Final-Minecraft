@@ -243,7 +243,8 @@ public interface ElementalObject
 			{
 				for(String key : elements.getKeys())
 				{
-					targetStats.addElement(ElementalAspect.fromNbtKey(key), attribute, (byte)(elements.getByte(key) * addOrRemove));
+					FinalMinecraft.log.info("\t\tAdjusting by {}", (byte)((elements.getByte(key) * addOrRemove)));
+					targetStats.addElement(ElementalAspect.fromNbtKey(key), attribute, (byte)((elements.getByte(key) * addOrRemove)));
 				}
 			}
 		}

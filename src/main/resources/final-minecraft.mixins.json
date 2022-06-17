@@ -9,7 +9,8 @@
     "PlayerInventoryMixin",
     "EntityMixin",
     "LivingEntityMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "InventoryScreenMixin"
   ],
   "client": [
   ],
