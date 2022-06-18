@@ -12,23 +12,18 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalEquipment;
 import lafolie.fmc.core.elements.ElementalObject;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 @Mixin(PlayerInventory.class)
 public abstract class PlayerInventoryMixin
 {
 	@Final
 	@Shadow
-    public PlayerEntity player;
-	// @Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setHealth(F)V", shift = At.Shift.AFTER))
-
-	// @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/collection/DefaultedList;set(ILjava/lang/Object;)Ljava/lang/Object;"), method = "setStack")
+	public PlayerEntity player;
+	
 	@Inject(at = @At("HEAD"), method = "setStack(ILnet/minecraft/item/ItemStack;)V")
 	private void onStackSet(int slot, ItemStack stack, CallbackInfo info)
 	{
@@ -54,9 +49,6 @@ public abstract class PlayerInventoryMixin
 		}
 	}
 
-	/*
-	damage(Lnet/minecraft/entity/damage/DamageSource;F[I)V
-	*/
 	@Inject
 		(
 			at = @At
@@ -87,14 +79,14 @@ public abstract class PlayerInventoryMixin
 	}
 
 	@Inject(at = @At("HEAD"), method = "removeStack(II)Lnet/minecraft/item/ItemStack;")
-	private void onStackRemoved(int slot, int amount, CallbackInfoReturnable info)
+	private void onStackRemoved(int slot, int amount, CallbackInfoReturnable<ItemStack> info)
 	{
 		stackRemoved(slot);
 	}
 
 
 	@Inject(at = @At("HEAD"), method = "removeStack(I)Lnet/minecraft/item/ItemStack;")
-	private void onStackRemoved(int slot, CallbackInfoReturnable info)
+	private void onStackRemoved(int slot, CallbackInfoReturnable<ItemStack> info)
 	{
 		stackRemoved(slot);
 	}

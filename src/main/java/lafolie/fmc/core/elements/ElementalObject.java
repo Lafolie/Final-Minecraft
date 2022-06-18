@@ -1,17 +1,10 @@
 package lafolie.fmc.core.elements;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
-import com.google.errorprone.annotations.DoNotCall;
-
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
-import net.minecraft.entity.Entity;
-import net.minecraft.nbt.NbtByte;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 

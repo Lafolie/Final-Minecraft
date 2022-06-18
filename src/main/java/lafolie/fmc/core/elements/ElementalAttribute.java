@@ -1,9 +1,5 @@
 package lafolie.fmc.core.elements;
 
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-
 /**
  * Attributes define how ElementalAspects modify incoming damage.
  */

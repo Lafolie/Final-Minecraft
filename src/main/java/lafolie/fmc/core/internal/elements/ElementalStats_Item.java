@@ -1,12 +1,7 @@
 package lafolie.fmc.core.internal.elements;
 
-import java.util.Map;
-
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalObject;
-import net.minecraft.item.Item;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 

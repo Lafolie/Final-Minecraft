@@ -1,21 +1,15 @@
 package lafolie.fmc.core;
 
-import java.util.Vector;
-
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalObject;
-import lafolie.fmc.core.elements.Utils;
 import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.entity.Entity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.math.ColorHelper;
-import net.minecraft.util.math.Vec3d;
 
 public class FinalMinecraftClient implements ClientModInitializer
 {
@@ -38,8 +32,8 @@ public class FinalMinecraftClient implements ClientModInitializer
 				{
 					lines.add(
 						new TranslatableText("fmc.core.element.tooltip.elemental",
-						new TranslatableText(Utils.ElementLangKeys.get(element))));
-						lines.add(new LiteralText(String.format("Total: %s", total))); // REMOVE LATER
+						new TranslatableText(element.getLangKey())));
+						lines.add(new LiteralText(String.format("Total: %s", total))); //TODO REMOVE LATER
 				}
 
 			}

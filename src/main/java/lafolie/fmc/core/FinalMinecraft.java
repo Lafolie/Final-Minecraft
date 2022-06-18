@@ -1,26 +1,14 @@
 package lafolie.fmc.core;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.FabricTagBuilder;
-import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.minecraft.block.Block;
-import net.minecraft.block.IceBlock;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lafolie.fmc.core.config.FMCConfig;
-import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
@@ -29,7 +17,7 @@ import lafolie.fmc.core.util.ServerStatus;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-public class FinalMinecraft implements ModInitializer//, RegistryEntryAddedCallback<Item>
+public class FinalMinecraft implements ModInitializer
 {
 	public static final byte VERSION_MAJOR = 0;
 	public static final byte VERSION_MINOR = 1;

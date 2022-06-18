@@ -1,7 +1,6 @@
 package lafolie.fmc.core.mixin;
 
 import java.util.EnumMap;
-import java.util.Map;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -9,16 +8,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
 import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Settings;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 
 @Mixin(Item.class)

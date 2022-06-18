@@ -4,13 +4,8 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
@@ -22,9 +17,6 @@ import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
 import lafolie.fmc.core.internal.elements.InnateElemental;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin implements ElementalObject, InnateElemental
@@ -86,7 +78,7 @@ public abstract class EntityMixin implements ElementalObject, InnateElemental
 					}
 				}
 			}
-			// addInnate* requires manual sync
+			// above loop requires manual resync
 			component.trySync();
 		}
 		return component;

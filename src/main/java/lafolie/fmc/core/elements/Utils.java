@@ -1,7 +1,6 @@
 package lafolie.fmc.core.elements;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 
 /**
  * Static utility methods for ElementalObjects

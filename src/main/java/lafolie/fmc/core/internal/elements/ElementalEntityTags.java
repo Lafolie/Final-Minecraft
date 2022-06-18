@@ -10,8 +10,6 @@ import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.ToolItem;
-import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

@@ -16,7 +16,6 @@ import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
-import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
@@ -40,11 +39,6 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	@Shadow
     public abstract void heal(float amount);
 
-	// @Shadow
-	// public World world;
-
-	// @Shadow
-	// public World world;
 	// @Inject(at = @At("TAIL"), method = "<init>")
 	// public void Constructor(EntityType<? extends LivingEntity> entityType, World world, CallbackInfo info)
 	// {
@@ -78,7 +72,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	}
 
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z")
-	private void captureDamageSource(DamageSource source, float amount, CallbackInfoReturnable info)
+	private void captureDamageSource(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info)
 	{
 		// FinalMinecraft.log.info("First inject");
 		this.source = source;
@@ -119,7 +113,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			// FinalMinecraft.log.info("ATTACK");
 			// FinalMinecraft.log.info("Original amount {}", amount);
 
-			// Apparently CardinalComponents won't attack anything to Air
+			// Apparently CardinalComponents won't attach anything to AIR
 			ItemStack attackedWithStack = (((LivingEntity)attacker).getMainHandStack());
 			if(attackedWithStack.getItem() == Items.AIR)
 			{
@@ -139,6 +133,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 				// FinalMinecraft.log.info("\tPotential attribute {}", potentialAttribute.toString());
 				// FinalMinecraft.log.info("\tPotential element {}", entry.getKey().toString());
 
+				// when elemental boosts are implemented this will need to change
 				if(potentialAttribute.ordinal() >= modifierAttribute.ordinal())
 				{
 					// FinalMinecraft.log.info("\tPOTENTIAL SET");
@@ -198,13 +193,12 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			// FinalMinecraft.log.info("Modified amount {}", amount);
 
 		}
-		// Map<ElementalAspect, Integer> attackerElements
 		modifiedDamage = amount;
 		return amount;
 	}
 
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
-	private void cancelDamage(DamageSource source, float amount, CallbackInfoReturnable info)
+	private void cancelDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info)
 	{
 		// FinalMinecraft.log.info("Third inject");
 		if(modifiedDamage <= 0)

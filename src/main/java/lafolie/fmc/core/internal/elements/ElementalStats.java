@@ -1,11 +1,7 @@
 package lafolie.fmc.core.internal.elements;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.internal.Components;
-import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
 
 /**
@@ -14,7 +10,6 @@ import net.minecraft.nbt.NbtCompound;
 public class ElementalStats implements ElementalStatsComponent, AutoSyncedComponent
 {
 	private NbtCompound nbt = new NbtCompound();
-	private boolean initInnate = false;
 
 	private Object provider;
 
