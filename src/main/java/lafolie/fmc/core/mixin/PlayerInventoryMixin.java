@@ -37,12 +37,12 @@ public abstract class PlayerInventoryMixin
 			
 			if(!currentEquip.isEmpty())
 			{
-				((ElementalEquipment)(Object)currentEquip).removeEffects(player, currentEquip);
+				ElementalEquipment.removeEffects(player, currentEquip);
 			}
 			
 			if(!stack.isEmpty())
 			{
-				((ElementalEquipment)(Object)stack).addEffects(player, stack);
+				ElementalEquipment.addEffects(player, stack);
 			}
 			FinalMinecraft.log.info("-----------------------------------------------------------");
 
@@ -73,7 +73,7 @@ public abstract class PlayerInventoryMixin
 			 * are done using it.
 			 */
 			stack.increment(1);
-			((ElementalObject)(Object)stack).removeFromObject((ElementalObject)player);
+			ElementalEquipment.removeEffects(player, stack);
 			stack.decrement(1);
 		}
 	}
@@ -99,7 +99,7 @@ public abstract class PlayerInventoryMixin
 			FinalMinecraft.log.info("REMOVING {}", currentEquip.toString());
 			if(!currentEquip.isEmpty())
 			{
-				((ElementalEquipment)(Object)currentEquip).removeEffects(player, currentEquip);
+				ElementalEquipment.removeEffects(player, currentEquip);
 			}
 		}
 	}
