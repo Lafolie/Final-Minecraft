@@ -37,7 +37,7 @@ public abstract class MobEntityMixin extends LivingEntity
 		if(world.isClient)
 		{
 			return;
-		}
+		}	
 
 		ItemStack currentEquip = armorItems.get(slot.getEntitySlotId());
 		if(!currentEquip.isEmpty())

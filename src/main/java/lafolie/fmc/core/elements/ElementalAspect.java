@@ -40,10 +40,10 @@ public enum ElementalAspect
 	DARK,
 	GRAVITY;
 
-	private static EnumMap<ElementalAspect, ElementalAspect> WEAK = new EnumMap<ElementalAspect, ElementalAspect>(ElementalAspect.class);
-	private static EnumMap<ElementalAspect, ElementalAspect> STRONG = new EnumMap<ElementalAspect, ElementalAspect>(ElementalAspect.class);
+	private static Map<ElementalAspect, ElementalAspect> WEAK = new EnumMap<>(ElementalAspect.class);
+	private static Map<ElementalAspect, ElementalAspect> STRONG = new EnumMap<>(ElementalAspect.class);
 	private static Map<String, ElementalAspect> NBT_KEYS = new HashMap<>();
-	public static final EnumMap<ElementalAspect, String> LANG_KEYS = new EnumMap<ElementalAspect, String>(ElementalAspect.class);
+	public static final Map<ElementalAspect, String> LANG_KEYS = new EnumMap<>(ElementalAspect.class);
 	
 	static
 	{
