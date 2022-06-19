@@ -1,9 +1,12 @@
 package lafolie.fmc.core;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.minecraft.entity.Entity;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.world.ServerWorld;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +17,7 @@ import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
 import lafolie.fmc.core.util.AlBhed;
 import lafolie.fmc.core.util.ServerStatus;
+import lafolie.fmc.core.zodiac.BirthsignEntity;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
@@ -49,12 +53,20 @@ public class FinalMinecraft implements ModInitializer
 		ServerLifecycleEvents.SERVER_STOPPING.register(server -> onServerStopping(server));
 		ServerLifecycleEvents.SERVER_STOPPED.register(server -> onServerStopped(server));
 		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, res, succ) -> onEndDataPackReload(server, res, succ));
-		// for(ElementalItemTags.TAGS.get(ElementalAspect.ICE).isOf))
+
+		ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> onEntitySpawned(entity, world));
 	}
 
-	private void initContent()
+	// ------------------------------------------------------------------------
+	// Entity Callbacks
+	// ------------------------------------------------------------------------
+
+	private void onEntitySpawned(Entity entity, ServerWorld world)
 	{
-		Particles.init();
+		if(entity instanceof BirthsignEntity)
+		{
+			((BirthsignEntity)entity).init();
+		}
 	}
 
 	// ------------------------------------------------------------------------
@@ -106,7 +118,10 @@ public class FinalMinecraft implements ModInitializer
 		return config;
 	}
 
-	
+	private void initContent()
+	{
+		Particles.init();
+	}
 
 	// @Override
 	// public void onEntryAdded(int rawId, net.minecraft.util.Identifier id, Item object)

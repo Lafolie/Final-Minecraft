@@ -10,8 +10,8 @@ public abstract class AlBhed
 
 	static
 	{
-		String alBhed =	 "EPSTIWKNUVGCLRYBXHMDOFZQAJ";
-		String english = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String english = "EPSTIWKNUVGCLRYBXHMDOFZQAJ";
+		String alBhed =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		for(int n = 0; n < 26; n++)
 		{
 			ALBHED_CYPHER.put(english.charAt(n), alBhed.charAt(n));

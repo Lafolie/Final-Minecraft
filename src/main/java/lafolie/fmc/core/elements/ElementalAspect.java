@@ -40,9 +40,10 @@ public enum ElementalAspect
 	DARK,
 	GRAVITY;
 
-	private static Map<ElementalAspect, ElementalAspect> WEAK = new EnumMap<>(ElementalAspect.class);
-	private static Map<ElementalAspect, ElementalAspect> STRONG = new EnumMap<>(ElementalAspect.class);
-	private static Map<String, ElementalAspect> NBT_KEYS = new HashMap<>();
+	private static final Map<ElementalAspect, ElementalAspect> WEAK = new EnumMap<>(ElementalAspect.class);
+	private static final Map<ElementalAspect, ElementalAspect> STRONG = new EnumMap<>(ElementalAspect.class);
+	private static final Map<String, ElementalAspect> NBT_KEYS = new HashMap<>();
+	private static final List<ElementalAspect> ORDS = new ArrayList<>();
 	public static final Map<ElementalAspect, String> LANG_KEYS = new EnumMap<>(ElementalAspect.class);
 	
 	static
@@ -98,6 +99,7 @@ public enum ElementalAspect
 		for(ElementalAspect element : ElementalAspect.values())
 		{
 			NBT_KEYS.put(element.toNbtKey(), element);
+			ORDS.add(element);
 		}
 	}
 
@@ -173,4 +175,8 @@ public enum ElementalAspect
 		return NBT_KEYS.containsKey(key) ? NBT_KEYS.get(key) : NONE;
 	}
 
+	public static ElementalAspect fromOrdinal(int ord)
+	{
+		return ORDS.get(ord);
+	}
 }

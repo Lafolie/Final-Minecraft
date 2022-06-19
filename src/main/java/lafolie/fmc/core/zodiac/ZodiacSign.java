@@ -24,18 +24,18 @@ public enum ZodiacSign
 	AQUARIUS,
 	PISCES;
 
-	private static Map<ZodiacSign, ZodiacAlignment> alignment = new EnumMap<>(ZodiacSign.class);
-	private static List<ZodiacSign> ords = new ArrayList<>();
+	private static final Map<ZodiacSign, ZodiacAlignment> ALIGNMENTS = new EnumMap<>(ZodiacSign.class);
+	private static final List<ZodiacSign> ORDS = new ArrayList<>();
 	static
 	{
 		for(ZodiacSign sign : ZodiacSign.values())
 		{
-			ords.add(sign);
+			ORDS.add(sign);
 		}
 
 		for(ZodiacSign sign : ZodiacSign.values())
 		{
-			alignment.put(sign, new ZodiacAlignment(sign));
+			ALIGNMENTS.put(sign, new ZodiacAlignment(sign));
 		}
 	}
 
@@ -46,7 +46,7 @@ public enum ZodiacSign
 	 */
 	public static ZodiacSign from(int ordinal)
 	{
-		return ords.get(ordinal);
+		return ORDS.get(ordinal);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public enum ZodiacSign
 	public ZodiacSign rotate(int offset)
 	{
 		int n = (this.ordinal() + offset) % 12;
-		return ords.get(n);
+		return ORDS.get(n);
 	}
 
 	/**
@@ -68,7 +68,7 @@ public enum ZodiacSign
 	 */
 	public float getCompatibility(ZodiacSign sign)
 	{
-		return alignment.get(this).get(sign);
+		return ALIGNMENTS.get(this).get(sign);
 	}
 
 	/**
@@ -79,6 +79,6 @@ public enum ZodiacSign
 	 */
 	public static float getCompatibility(ZodiacSign signA, ZodiacSign signB)
 	{
-		return alignment.get(signA).get(signB);
+		return ALIGNMENTS.get(signA).get(signB);
 	}
 }

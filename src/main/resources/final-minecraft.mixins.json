@@ -11,6 +11,7 @@
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "MobEntityMixin",
+    "AnimalEntityMixin",
     "InventoryScreenMixin",
     "SplashTextResourceSupplierMixin"
   ],

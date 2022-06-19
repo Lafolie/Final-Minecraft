@@ -4,9 +4,6 @@ import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.internal.Components;
 import net.minecraft.nbt.NbtCompound;
 
-/**
- * This class implements ComponentV3 directly since we are going to abstract the component stuff away.
- */
 public class ElementalStats implements ElementalStatsComponent, AutoSyncedComponent
 {
 	private NbtCompound nbt = new NbtCompound();
