@@ -53,10 +53,9 @@
 
   "custom": {
     "cardinal-components": [
-      "final-minecraft:elemental_stats",
-      "final-minecraft:elemental_stats_item",
-      "final-minecraft:birthsign"
-
+      "final-minecraft:elemental_stats_cmp",
+      "final-minecraft:elemental_stats_item_cmp",
+      "final-minecraft:birthsign_cmp"
     ],
 
     "modmenu": {

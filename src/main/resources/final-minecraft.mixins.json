@@ -13,7 +13,8 @@
     "MobEntityMixin",
     "AnimalEntityMixin",
     "InventoryScreenMixin",
-    "SplashTextResourceSupplierMixin"
+    "SplashTextResourceSupplierMixin",
+    "ServerWorldMixin"
   ],
   "client": [
   ],

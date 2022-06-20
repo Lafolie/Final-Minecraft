@@ -6,7 +6,8 @@ public abstract class FMCIdentifier
 {
 	private static String modid = "final-minecraft";
 	private static String common = "c";
-	private static String packetSuffix = "pkt";
+	private static String packetSuffix = "_pkt";
+	private static String componentSuffix = "_cmp";
 
 	/**
 	 * ID for general content
@@ -31,10 +32,20 @@ public abstract class FMCIdentifier
 	/**
 	 * ID for network packets
 	 * @param name
-	 * @return final-minecraft:[name]pkt
+	 * @return final-minecraft:[name]_pkt
 	 */
 	public static final Identifier packetID(String name)
 	{
 		return new Identifier(modid, name.concat(packetSuffix));
+	}
+
+	/**
+	 * ID for cardinal components
+	 * @param name
+	 * @return final-minecraft:[name]_cmp
+	 */
+	public static final Identifier componentID(String name)
+	{
+		return new Identifier(modid, name.concat(componentSuffix));
 	}
 }

@@ -7,7 +7,9 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
-
+import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
+import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
+// import lafolie.fmc.core.internal.chrono.WorldDate;
 import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStats_Item;
 import lafolie.fmc.core.internal.zodiac.Birthsign;
@@ -20,15 +22,18 @@ import net.minecraft.util.Identifier;
 
 public class Components implements
 	EntityComponentInitializer,
-	ItemComponentInitializer
+	ItemComponentInitializer,
+	WorldComponentInitializer
 {
-	public static final Identifier ELEMENTAL_STATS_ID = FMCIdentifier.contentID("elemental_stats");
-	public static final Identifier ELEMENTAL_STATS_ITEM_ID = FMCIdentifier.contentID("elemental_stats_item");
-	public static final Identifier BIRTHSIGN_ID = FMCIdentifier.contentID("birthsign");
+	public static final Identifier ELEMENTAL_STATS_ID = FMCIdentifier.componentID("elemental_stats");
+	public static final Identifier ELEMENTAL_STATS_ITEM_ID = FMCIdentifier.componentID("elemental_stats_item");
+	public static final Identifier BIRTHSIGN_ID = FMCIdentifier.componentID("birthsign");
+	// public static final Identifier DATETIME_ID = FMCIdentifier.componentID("datetime");
 
 	public static final ComponentKey<ElementalStats> ELEMENTAL_STATS = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ID, ElementalStats.class);
 	public static final ComponentKey<ElementalStats_Item> ELEMENTAL_STATS_ITEM = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ITEM_ID, ElementalStats_Item.class);
 	public static final ComponentKey<Birthsign> BIRTHSIGN = ComponentRegistry.getOrCreate(BIRTHSIGN_ID, Birthsign.class);
+	// public static final ComponentKey<WorldDate> DATETIME = ComponentRegistry.getOrCreate(DATETIME_ID, WorldDate.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry)
@@ -50,5 +55,10 @@ public class Components implements
 		//AGGHHHH THIS TOOK SO LONG TO GET RIGHT!
 		registry.register(i -> true, ELEMENTAL_STATS_ITEM, ElementalStats_Item::new);
 	}
-	
+
+	@Override
+	public void registerWorldComponentFactories(WorldComponentFactoryRegistry registry)
+	{
+		// registry.register(DATETIME, WorldDate.class, WorldDate::new);	
+	}
 }
