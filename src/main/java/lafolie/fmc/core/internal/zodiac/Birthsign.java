@@ -4,15 +4,15 @@ import java.util.UUID;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import lafolie.fmc.core.FinalMinecraft;
+import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.internal.Components;
 import lafolie.fmc.core.util.Maths;
 import lafolie.fmc.core.zodiac.ZodiacSign;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.registry.Registry;
+
 
 public class Birthsign implements ComponentV3, AutoSyncedComponent
 {
@@ -75,11 +75,15 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 		hasInit = true;
 		if(provider.isBaby())
 		{
-			initFromCalendar();
+			initFromDateTime();
+		}
+		else if(provider instanceof MobEntity)
+		{
+			initFromUUID();
 		}
 		else
 		{
-			initFromUUID();
+			initFromBirthday();
 		}
 		Components.BIRTHSIGN.sync(provider);
 	}
@@ -87,7 +91,7 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 	private void initFromUUID()
 	{
 		UUID id = provider.getUuid();
-		byte hash = Maths.hashUUID(id);
+		byte hash = Maths.hashUUIDByte(id);
 
 		element = ElementalAspect.fromOrdinal(((hash & 0x0F) % 6) + 1);
 		sign = ZodiacSign.from((hash >>> 4 & 0x0F) % 12);
@@ -97,12 +101,15 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 		// FinalMinecraft.log.info("\t sign: {}", sign);
 	}
 
-	private void initFromCalendar()
+	private void initFromDateTime()
 	{
-		// FinalMinecraft.log.info("init baby");
-		//For now, use the regular method
-		//TODO: change this when calendar is done
-		initFromUUID();
+		DateTime dt = new DateTime(provider.world);
+		sign = dt.getZodiacSign();
+		element = dt.getElementalAspect();
+	}
+
+	private void initFromBirthday()
+	{
 
 	}
 }

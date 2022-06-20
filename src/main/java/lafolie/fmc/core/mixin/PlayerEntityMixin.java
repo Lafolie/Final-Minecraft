@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.At;
 
 import lafolie.fmc.core.FinalMinecraft;
+import lafolie.fmc.core.entity.AnniversaryEntity;
 import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.zodiac.BirthsignEntity;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin 
-	implements DamageNumbers, BirthsignEntity
+	implements DamageNumbers, BirthsignEntity, AnniversaryEntity
 {
 	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setHealth(F)V", shift = At.Shift.AFTER))
 	private void applyDamage(DamageSource source, float amount, CallbackInfo info)

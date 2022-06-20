@@ -9,7 +9,7 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
-// import lafolie.fmc.core.internal.chrono.WorldDate;
+import lafolie.fmc.core.internal.chrono.Anniversaries;
 import lafolie.fmc.core.internal.elements.ElementalStats;
 import lafolie.fmc.core.internal.elements.ElementalStats_Item;
 import lafolie.fmc.core.internal.zodiac.Birthsign;
@@ -28,12 +28,12 @@ public class Components implements
 	public static final Identifier ELEMENTAL_STATS_ID = FMCIdentifier.componentID("elemental_stats");
 	public static final Identifier ELEMENTAL_STATS_ITEM_ID = FMCIdentifier.componentID("elemental_stats_item");
 	public static final Identifier BIRTHSIGN_ID = FMCIdentifier.componentID("birthsign");
-	// public static final Identifier DATETIME_ID = FMCIdentifier.componentID("datetime");
+	public static final Identifier ANNIVERSARY_ID = FMCIdentifier.componentID("anniversaries");
 
 	public static final ComponentKey<ElementalStats> ELEMENTAL_STATS = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ID, ElementalStats.class);
 	public static final ComponentKey<ElementalStats_Item> ELEMENTAL_STATS_ITEM = ComponentRegistry.getOrCreate(ELEMENTAL_STATS_ITEM_ID, ElementalStats_Item.class);
 	public static final ComponentKey<Birthsign> BIRTHSIGN = ComponentRegistry.getOrCreate(BIRTHSIGN_ID, Birthsign.class);
-	// public static final ComponentKey<WorldDate> DATETIME = ComponentRegistry.getOrCreate(DATETIME_ID, WorldDate.class);
+	public static final ComponentKey<Anniversaries> ANNIVERSARY = ComponentRegistry.getOrCreate(ANNIVERSARY_ID, Anniversaries.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry)
@@ -47,6 +47,7 @@ public class Components implements
 		registry.registerFor(MobEntity.class, BIRTHSIGN, Birthsign::new);
 		registry.registerFor(AnimalEntity.class, BIRTHSIGN, Birthsign::new);
 		registry.registerForPlayers(BIRTHSIGN, Birthsign::new, RespawnCopyStrategy.ALWAYS_COPY);
+		registry.registerForPlayers(ANNIVERSARY, Anniversaries::new, RespawnCopyStrategy.ALWAYS_COPY);
 	}
 
 	@Override

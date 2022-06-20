@@ -41,7 +41,8 @@ public enum Month
 
 	public ZodiacSign getZodiacSign(int dayOfTheMonth)
 	{
-		int n = (dayOfTheMonth - ZODIAC_OFFSET) % 12;
+		// int n = (dayOfTheMonth - ZODIAC_OFFSET) % 12;
+		int n = dayOfTheMonth > ZODIAC_OFFSET ? this.ordinal() : (this.ordinal() + 1) % 12;
 		return ZodiacSign.from(n);
 	}
 }

@@ -27,14 +27,14 @@ public abstract class ServerWorldMixin extends World
 		//Auto-generated constructor stub
 	}
 
-	private DateTime dt = new DateTime();
+	// private DateTime dt = new DateTime();
 
-	@Inject(at = @At("TAIL"), method = "tickTime()V")
-	private void afterTickTime(CallbackInfo info)
-	{
-		dt.setTime(getTimeOfDay());
-		FinalMinecraft.log.info("Time {}", dt.getTicks());
-		FinalMinecraft.log.info("\t{}", dt.getDateString());
-		FinalMinecraft.log.info("\t{}", dt.getTimeString(false));
-	}
+	// @Inject(at = @At("TAIL"), method = "tickTime()V")
+	// private void afterTickTime(CallbackInfo info)
+	// {
+	// 	dt.setTime(getTimeOfDay());
+	// 	FinalMinecraft.log.info("Time {}", dt.getTicks());
+	// 	FinalMinecraft.log.info("\t{}", dt.getDateString());
+	// 	FinalMinecraft.log.info("\t{}", dt.getTimeString(false));
+	// }
 }

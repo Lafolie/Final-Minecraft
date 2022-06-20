@@ -1,6 +1,9 @@
 package lafolie.fmc.core.chrono;
 
+import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 
 /**
  * Represents in-game time. Time is measured in server ticks, not
@@ -50,8 +53,20 @@ public class DateTime
 	}
 
 	/**
+	 * Create a DateTime using the timeOfDay of the given World.
+	 * @param world
+	 */
+	public DateTime(World world)
+	{
+		setTime(world.getTimeOfDay());
+	}
+
+	/**
 	 * Create a DateTime based on the given date.
-	 * Note: the year should be at least 1000
+	 * Note: the year should be at least 1000	 * 
+	 * @param dayOfTheMonth
+	 * @param month
+	 * @param year
 	 */
 	public DateTime(int dayOfTheMonth, int month, int year)
 	{
@@ -64,6 +79,9 @@ public class DateTime
 	/**
 	 * Create a DateTime based on the given date.
 	 * Note: the year should be at least 1000
+	 * @param dayOfTheMonth
+	 * @param month
+	 * @param year
 	 */
 	public DateTime(int dayOfTheMonth, Month month, int year)
 	{
@@ -73,6 +91,8 @@ public class DateTime
 	/**
 	 * Create a DateTime based on the given date,
 	 * with the year set to 1000.
+	 * @param dayOfTheMonth
+	 * @param month
 	 */
 	public DateTime(int dayOfTheMonth, int month)
 	{
@@ -82,10 +102,23 @@ public class DateTime
 	/**
 	 * Create a DateTime based on the given date,
 	 * with the year set to 1000.
+	 * @param dayOfTheMonth
+	 * @param month
 	 */
 	public DateTime(int dayOfTheMonth, Month month)
 	{
 		this(dayOfTheMonth, month.ordinal(), 1000);
+	}
+
+	/**
+	 * Create a DateTime based on the given day of the year.
+	 * It is safe to pass values > 384
+	 * @param dayOfTheYear
+	 * @return
+	 */
+	public  DateTime(int dayOfTheYear)
+	{
+		this(((long)(Math.abs(dayOfTheYear) % DAYS_PER_YEAR)) * TICKS_PER_DAY);
 	}
 
 	/**
@@ -165,7 +198,7 @@ public class DateTime
 
 	public String getDateString()
 	{
-		int date = getDayOfTheMonth();
+		int date = getDayOfTheMonth() + 1;
 		String suffix;
 
 		int mod100 = date % 100;
@@ -196,9 +229,19 @@ public class DateTime
 		return String.format("%s, %d%s of %s %d", day.toString(), date, suffix, month.toString(), year);
 	}
 
+	public int getDayOfTheWeek()
+	{
+		return day.ordinal();
+	}
+
 	public int getDayOfTheMonth()
 	{
-		return (week % 4) * DAYS_PER_WEEK + day.ordinal() + 1;
+		return (week % 4) * DAYS_PER_WEEK + day.ordinal();
+	}
+
+	public int getDayOfTheYear()
+	{
+		return daysPassed % DAYS_PER_YEAR;
 	}
 
 	public int getDaysPassed()
@@ -239,5 +282,15 @@ public class DateTime
 	public Daypart getDaypart()
 	{
 		return Daypart.fromTicks(ticks);
+	}
+
+	public ZodiacSign getZodiacSign()
+	{
+		return month.getZodiacSign(getDayOfTheMonth());
+	}
+
+	public ElementalAspect getElementalAspect()
+	{
+		return day.getElementalAspect();
 	}
 }

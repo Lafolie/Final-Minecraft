@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
@@ -11,7 +12,9 @@ import net.minecraft.server.world.ServerWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.config.FMCConfig;
+import lafolie.fmc.core.entity.AnniversaryEntity;
 import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
@@ -63,6 +66,15 @@ public class FinalMinecraft implements ModInitializer
 
 	private void onEntitySpawned(Entity entity, ServerWorld world)
 	{
+		if(entity instanceof PlayerEntity)
+		{
+			((AnniversaryEntity)entity).tryInit(world);
+			log.info("My birthday is {}", ((AnniversaryEntity)entity).getBirthday().getDateString());
+			log.info("My joinday is {}", ((AnniversaryEntity)entity).getJoinday().getDateString());
+			log.info("Today is {}", (new DateTime(world).getDateString()));
+
+		}
+
 		if(entity instanceof BirthsignEntity)
 		{
 			((BirthsignEntity)entity).init();
