@@ -35,9 +35,9 @@ public enum ElementalAspect
 	WIND,
 	WATER,
 	EARTH,
-	POISON,
 	HOLY,
 	DARK,
+	POISON,
 	GRAVITY;
 
 	private static final Map<ElementalAspect, ElementalAspect> WEAK = new EnumMap<>(ElementalAspect.class);
@@ -67,9 +67,9 @@ public enum ElementalAspect
 		WEAK.put(ElementalAspect.WIND, ElementalAspect.ICE);
 		WEAK.put(ElementalAspect.WATER, ElementalAspect.LIGHTNING);
 		WEAK.put(ElementalAspect.EARTH, ElementalAspect.WIND);
-		WEAK.put(ElementalAspect.POISON, ElementalAspect.NONE);
 		WEAK.put(ElementalAspect.HOLY, ElementalAspect.DARK);
 		WEAK.put(ElementalAspect.DARK, ElementalAspect.HOLY);
+		WEAK.put(ElementalAspect.POISON, ElementalAspect.NONE);
 		WEAK.put(ElementalAspect.GRAVITY, ElementalAspect.NONE);
 
 		STRONG.put(ElementalAspect.NONE, ElementalAspect.NONE);
@@ -79,9 +79,9 @@ public enum ElementalAspect
 		STRONG.put(ElementalAspect.WIND, ElementalAspect.EARTH);
 		STRONG.put(ElementalAspect.WATER, ElementalAspect.ICE);
 		STRONG.put(ElementalAspect.EARTH, ElementalAspect.LIGHTNING);
-		STRONG.put(ElementalAspect.POISON, ElementalAspect.NONE);
 		STRONG.put(ElementalAspect.HOLY, ElementalAspect.DARK);
 		STRONG.put(ElementalAspect.DARK, ElementalAspect.HOLY);
+		STRONG.put(ElementalAspect.POISON, ElementalAspect.NONE);
 		STRONG.put(ElementalAspect.GRAVITY, ElementalAspect.NONE);
 
 		LANG_KEYS.put(ElementalAspect.NONE, "fmc.core.element.tooltip.none");
@@ -91,9 +91,9 @@ public enum ElementalAspect
 		LANG_KEYS.put(ElementalAspect.WIND, "fmc.core.element.tooltip.wind");
 		LANG_KEYS.put(ElementalAspect.WATER, "fmc.core.element.tooltip.water");
 		LANG_KEYS.put(ElementalAspect.EARTH, "fmc.core.element.tooltip.earth");
-		LANG_KEYS.put(ElementalAspect.POISON, "fmc.core.element.tooltip.poison");
 		LANG_KEYS.put(ElementalAspect.HOLY, "fmc.core.element.tooltip.holy");
 		LANG_KEYS.put(ElementalAspect.DARK, "fmc.core.element.tooltip.dark");
+		LANG_KEYS.put(ElementalAspect.POISON, "fmc.core.element.tooltip.poison");
 		LANG_KEYS.put(ElementalAspect.GRAVITY, "fmc.core.element.tooltip.gravity");
 
 		for(ElementalAspect element : ElementalAspect.values())

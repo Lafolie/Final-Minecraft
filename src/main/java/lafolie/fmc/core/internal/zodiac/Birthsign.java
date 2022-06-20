@@ -4,13 +4,16 @@ import java.util.UUID;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.entity.AnniversaryEntity;
 import lafolie.fmc.core.internal.Components;
 import lafolie.fmc.core.util.Maths;
 import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 
 
@@ -77,13 +80,13 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 		{
 			initFromDateTime();
 		}
-		else if(provider instanceof MobEntity)
+		else if(provider instanceof PlayerEntity)
 		{
-			initFromUUID();
+			initFromBirthday();
 		}
 		else
 		{
-			initFromBirthday();
+			initFromUUID();
 		}
 		Components.BIRTHSIGN.sync(provider);
 	}
@@ -110,6 +113,10 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 
 	private void initFromBirthday()
 	{
-
+		DateTime dt = ((AnniversaryEntity)provider).getBirthday();
+		sign = dt.getZodiacSign();
+		element = dt.getElementalAspect();
+		FinalMinecraft.log.info("\t element: {}", element);
+		FinalMinecraft.log.info("\t sign: {}", sign);
 	}
 }

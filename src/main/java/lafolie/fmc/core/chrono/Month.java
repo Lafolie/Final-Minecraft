@@ -3,6 +3,7 @@ package lafolie.fmc.core.chrono;
 import java.util.ArrayList;
 import java.util.List;
 
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.zodiac.ZodiacSign;
 
 /**
@@ -41,8 +42,9 @@ public enum Month
 
 	public ZodiacSign getZodiacSign(int dayOfTheMonth)
 	{
+		FinalMinecraft.log.info("--Day of the month: {}--", dayOfTheMonth);
 		// int n = (dayOfTheMonth - ZODIAC_OFFSET) % 12;
-		int n = dayOfTheMonth > ZODIAC_OFFSET ? this.ordinal() : (this.ordinal() + 1) % 12;
+		int n = dayOfTheMonth < ZODIAC_OFFSET ? this.ordinal() : (this.ordinal() + 1) % 12;
 		return ZodiacSign.from(n);
 	}
 }

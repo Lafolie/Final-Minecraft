@@ -42,6 +42,6 @@ public enum Day
 
 	public ElementalAspect getElementalAspect()
 	{
-		return ElementalAspect.fromOrdinal(this.ordinal());
+		return ElementalAspect.fromOrdinal(this.ordinal() + 1);
 	}
 }

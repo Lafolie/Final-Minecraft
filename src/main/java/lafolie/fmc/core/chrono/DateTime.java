@@ -72,7 +72,7 @@ public class DateTime
 	{
 		long time = dayOfTheMonth * TICKS_PER_DAY;
 		time += month * TICKS_PER_DAY * DAYS_PER_MONTH;
-		time += (year - INITIAL_YEAR) * TICKS_PER_DAY * DAYS_PER_YEAR;
+		time += year * TICKS_PER_DAY * DAYS_PER_YEAR;
 		setTime(time);
 	}
 
@@ -101,13 +101,13 @@ public class DateTime
 
 	/**
 	 * Create a DateTime based on the given date,
-	 * with the year set to 1000.
+	 * with the year set to 0.
 	 * @param dayOfTheMonth
 	 * @param month
 	 */
 	public DateTime(int dayOfTheMonth, Month month)
 	{
-		this(dayOfTheMonth, month.ordinal(), 1000);
+		this(dayOfTheMonth, month.ordinal(), 0);
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class DateTime
 			day = Day.fromOrdinal(daysPassed % DAYS_PER_WEEK);
 			week = MathHelper.floorDiv(daysPassed, DAYS_PER_WEEK) % WEEKS_PER_YEAR;
 			month = Month.fromOrdinal(Math.floorDiv(daysPassed, DAYS_PER_MONTH) % MONTHS_PER_YEAR);
-			year = MathHelper.floorDiv(daysPassed, DAYS_PER_YEAR) + INITIAL_YEAR;
+			year = MathHelper.floorDiv(daysPassed, DAYS_PER_YEAR);
 		}
 
 	}
@@ -226,7 +226,7 @@ public class DateTime
 					suffix = "th";
 			}
 		}
-		return String.format("%s, %d%s of %s %d", day.toString(), date, suffix, month.toString(), year);
+		return String.format("%s, %d%s of %s %d", day.toString(), date, suffix, month.toString(), year + INITIAL_YEAR);
 	}
 
 	public int getDayOfTheWeek()
