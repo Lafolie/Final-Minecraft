@@ -2,6 +2,10 @@ package lafolie.fmc.core.chrono;
 
 import net.minecraft.util.math.MathHelper;
 
+/**
+ * Represents in-game time. Time is measured in server ticks, not
+ * real-world seconds.
+ */
 public class DateTime
 {
 	private static final float TICKS_PER_SECOND = 0.27f;
@@ -27,16 +31,36 @@ public class DateTime
 	private int week;
 	private int year;
 
+	/**
+	 * Create a DateTime initialised to
+	 * 01/01/1000
+	 */
 	public DateTime()
 	{
 		setTime(0);
 	}
 
+	/**
+	 * Create a DateTime with the given number of ticks.
+	 * @param time
+	 */
 	public DateTime(long time)
 	{
 		setTime(time);
 	}
 
+	/**
+	 * Create a copy of a DateTime.
+	 */
+	public DateTime clone(DateTime other)
+	{
+		return new DateTime(ticks);
+	}
+
+	/**
+	 * Set the time, measured in server ticks.
+	 * @param time
+	 */
 	public void setTime(long time)
 	{
 		ticks = time;
@@ -54,21 +78,40 @@ public class DateTime
 
 	}
 
+	/**
+	 * Find the difference between two DateTimes.
+	 * @param other
+	 * @return
+	 */
 	public DateTime differenceBetween(DateTime other)
 	{
 		return new DateTime(Math.abs(ticks - other.getTicks()));
 	}
 
+	/**
+	 * Check whether two DateTimes are equal.
+	 * @param other
+	 * @return
+	 */
 	public boolean areEqual(DateTime other)
 	{
 		return ticks == other.getTicks();
 	}
 
-	public boolean isBirthday(DateTime other)
+	/**
+	 * Check whether the day & month matches. Does not take year into account.
+	 * @param other
+	 * @return
+	 */
+	public boolean dateMatches(DateTime other)
 	{
 		return getDayOfTheMonth() == other.getDayOfTheMonth() && month == other.getMonth();
 	}
 
+	/**
+	 * Get the raw number of ticks passed.
+	 * @return
+	 */
 	public long getTicks()
 	{
 		return ticks;
