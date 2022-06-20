@@ -50,9 +50,48 @@ public class DateTime
 	}
 
 	/**
+	 * Create a DateTime based on the given date.
+	 * Note: the year should be at least 1000
+	 */
+	public DateTime(int dayOfTheMonth, int month, int year)
+	{
+		long time = dayOfTheMonth * TICKS_PER_DAY;
+		time += month * TICKS_PER_DAY * DAYS_PER_MONTH;
+		time += (year - INITIAL_YEAR) * TICKS_PER_DAY * DAYS_PER_YEAR;
+		setTime(time);
+	}
+
+	/**
+	 * Create a DateTime based on the given date.
+	 * Note: the year should be at least 1000
+	 */
+	public DateTime(int dayOfTheMonth, Month month, int year)
+	{
+		this(dayOfTheMonth, month.ordinal(), year);
+	}
+
+	/**
+	 * Create a DateTime based on the given date,
+	 * with the year set to 1000.
+	 */
+	public DateTime(int dayOfTheMonth, int month)
+	{
+		this(dayOfTheMonth, month, 1000);
+	}
+
+	/**
+	 * Create a DateTime based on the given date,
+	 * with the year set to 1000.
+	 */
+	public DateTime(int dayOfTheMonth, Month month)
+	{
+		this(dayOfTheMonth, month.ordinal(), 1000);
+	}
+
+	/**
 	 * Create a copy of a DateTime.
 	 */
-	public DateTime clone(DateTime other)
+	public DateTime clone()
 	{
 		return new DateTime(ticks);
 	}
