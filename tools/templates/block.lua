@@ -18,62 +18,93 @@ function f(config, name, package, isSimple)
 	local displayName = table.concat(words, " ")
 
 	result.isSimple = isSimple
-	result.package = format("%s.item%s", config.basePackage, package)
-	result.importPackage = format("import %s.%sItem;", result.package, name)
-	result.classDir = format("%s/item/%s", config.basePath, package)
-	result.classPath = format("%s%sItem.java", result.classDir, name)
+	result.package = format("%s.block%s", config.basePackage, package)
+	result.importPackage = format("import %s.%sBlock;", result.package, name)
+	result.classDir = format("%s/block/%s", config.basePath, package)
+	result.classPath = format("%s%sBlock.java", result.classDir, name)
 
 	-- Assets -------------------------------------------------
-	result.texturePath = format("%s/textures/item/%s_item.png", config.assetPath, assetName)
-	result.modelPath = format("%s/models/item/%s_item.json", config.assetPath, assetName)
-	result.modelJson = format([[
+	result.texturePath = format("%s/textures/block/%s_block.png", config.assetPath, assetName)
+	result.blockModelPath = format("%s/models/block/%s_block.json", config.assetPath, assetName)
+	result.blockItemModelPath = format("%s/models/item/%s_block.json", config.assetPath, assetName)
+	result.blockstatePath = format("%s/blockstates/%s_block.json", config.assetPath, assetName)
+	result.lootTablePath = format("%s/loot_tables/blocks/%s_block.json", config.dataPath, assetName)
+	result.blockstateJson = format([[
 {
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "%s:item/%s_item"
+	"variants": {
+		"": { "model": "%s:block/%s_block" }
 	}
 }
 	]], config.modid, assetName)
-	result.lang = format('"item.%s.%s": "%s",', config.modid, assetName, displayName)
+
+	result.blockModelJson = format([[
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "modid:block/%s_block"
+	}
+}
+	]], config.modid, assetName)
+
+	result.blockItemModelJson = format([[
+{
+	"parent": "%s:block/%s_block"
+}
+	]], config.modid, assetName)
+
+	result.lootTableJson = format([[
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+		"rolls": 1,
+		"entries": [
+			{
+			"type": "minecraft:item",
+			"name": "%s:%s_block"
+			}
+		],
+		"conditions": [
+			{
+			"condition": "minecraft:survives_explosion"
+			}
+		]
+		}
+	]
+}
+	]], config.modid, assetName)
+	result.lang = format('"block.%s.%s": "%s",', config.modid, assetName, displayName)
 
 	-- Java ---------------------------------------------------
-	result.jInstanceSimple = format("public static final Item %s = new Item(new FabricItemSettings().group(FMC_ITEMS));", constantName)
-	result.jInstance = format("public static final %sItem %s = new %sItem(new FabricItemSettings().group(FMC_ITEMS));", name, constantName, name)
-	result.jRegister = format('Registry.register(Registry.ITEM, FMCIdentifier.contentID("%s_item"), %s);', assetName, constantName)
-	result.jItemGroup = format("stacks.add(new ItemStack(%s));", constantName)
+	result.jInstanceSimple = format("public static final Block %s = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));", constantName)
+	result.jInstance = format("public static final %sBlock %s = new %sBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));", name, constantName, name)
+	result.jRegisterBlock = format('Registry.register(Registry.BLOCK, FMCIdentifier.contentID("%s_block"), %s);', assetName, constantName)
+	result.jRegisterItem = format('Registry.register(Registry.ITEM, FMCIdentifier.contentID("%s_block"), new BlockItem(%s, new FabricItemSettings().group(FMCItems.FMC_ITEMS)));', assetName, constantName)
+	result.jItemGroup = format("stacks.add(new ItemStack(%s));", constantName) --TODO: see if this is required
 	result.jClass = format([[
 package %s;
 
-import java.util.List;
-
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class %sItem extends Item
+public class %sBlock extends Block
 {
-	public %sItem(Settings settings)
+	public %sBlock(Settings settings)
 	{
 		super(settings);
 	}
 
 	@Override
-	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext tooltipContext)
-	{
-		tooltip.add(new TranslatableText(""));
-	}
-
-	@Override
-	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand)
-	{
-		//TODO: Lua-generated method stub :P
-		return TypedActionResult.success(player.getStackInHand(hand));
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
+			BlockHitResult hit) {
+		// TODO Lua-generated method stub ;)
+		return ActionResult.SUCCESS;
 	}
 }
 ]], result.package, name, name)

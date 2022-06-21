@@ -107,7 +107,7 @@ commands["-block"] = function(args)
 	local package = args[3] or ""
 
 	if name and package then
-		-- return "blocks", blockTemplate(config, name, package, isSimple)
+		return "blocks", blockTemplate(config, name, package, isSimple)
 	else
 		print "No name given to -block"
 		print("\tName:", name)
