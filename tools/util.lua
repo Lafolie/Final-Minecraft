@@ -36,6 +36,7 @@ end
 
 function util.splitFile(path, ...)
 	print("Splitting file:", path)
+	assert(path, "no path given to splitFile!")
 	local tags = {...}
 	local result = {}
 	local splitPoints = {}
