@@ -9,7 +9,7 @@ function f(config, name, package, isSimple)
 	end
 
 	local words = {}
-	for str in string.gmatch(name, "%u+%l*") do
+	for str in string.gmatch(name, "%u+[%l%d_%-]*") do
 		table.insert(words, str)
 	end
 
@@ -41,7 +41,7 @@ function f(config, name, package, isSimple)
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "modid:block/%s_block"
+		"all": "%s:block/%s_block"
 	}
 }
 	]], config.modid, assetName)
@@ -79,7 +79,7 @@ function f(config, name, package, isSimple)
 	result.jInstanceSimple = format("public static final Block %s = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));", constantName)
 	result.jInstance = format("public static final %sBlock %s = new %sBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));", name, constantName, name)
 	result.jRegisterBlock = format('Registry.register(Registry.BLOCK, FMCIdentifier.contentID("%s_block"), %s);', assetName, constantName)
-	result.jRegisterItem = format('Registry.register(Registry.ITEM, FMCIdentifier.contentID("%s_block"), new BlockItem(%s, new FabricItemSettings().group(FMCItems.FMC_ITEMS)));', assetName, constantName)
+	result.jRegisterItem = format('Registry.register(Registry.ITEM,  FMCIdentifier.contentID("%s_block"), new BlockItem(%s, new FabricItemSettings().group(FMCItems.FMC_ITEMS)));', assetName, constantName)
 	result.jItemGroup = format("stacks.add(new ItemStack(%s));", constantName) --TODO: see if this is required
 	result.jClass = format([[
 package %s;

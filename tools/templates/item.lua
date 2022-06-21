@@ -9,7 +9,7 @@ function f(config, name, package, isSimple)
 	end
 
 	local words = {}
-	for str in string.gmatch(name, "%u+%l*") do
+	for str in string.gmatch(name, "%u+[%l%d_%-]*") do
 		table.insert(words, str)
 	end
 

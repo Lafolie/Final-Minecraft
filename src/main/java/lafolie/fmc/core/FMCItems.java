@@ -11,7 +11,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.registry.Registry;
 
-public final class Items
+public final class FMCItems
 {
 	// #<item_instance>
 

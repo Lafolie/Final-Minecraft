@@ -64,7 +64,28 @@ function createItem(item)
 end
 
 function createBlock(block)
+	print("Making block:", block.importPackage)
+	-- Assets -------------------------------------------------
+	util.copyFile(config.texture, block.texturePath)
+	util.writeString(block.blockModelPath, block.blockModelJson)
+	util.writeString(block.blockItemModelPath, block.blockItemModelJson)
+	util.writeString(block.blockstatePath, block.blockstateJson)
+	util.writeString(block.lootTablePath, block.lootTableJson)
+	insert(langSplitPoints[langTag], block.lang)
 
+	-- Java ---------------------------------------------------
+	insert(blocksSplitPoints[block_registerTag], block.jRegisterBlock)
+	insert(blocksSplitPoints[block_registerTag], block.jRegisterItem)
+	
+	if block.isSimple then
+		insert(blocksSplitPoints[block_instanceTag], block.jInstanceSimple)
+		return
+	end
+
+	insert(blocksSplitPoints[block_import_packageTag], block.importPackage)
+	insert(blocksSplitPoints[block_instanceTag], block.jInstance)
+	os.execute(format("mkdir %s", block.classDir))
+	util.writeString(block.classPath, block.jClass)
 end
 
 -- Commands -------------------------------------------------------------------
@@ -89,7 +110,7 @@ commands["-item"] = function(args)
 	local isSimple = args[2]
 	local package = args[3] or ""
 
-	if name and package then
+	if name then
 		return "items", itemTemplate(config, name, package, isSimple)
 	else
 		print "No name given to -item"
@@ -106,7 +127,7 @@ commands["-block"] = function(args)
 	local isSimple = args[2]
 	local package = args[3] or ""
 
-	if name and package then
+	if name then
 		return "blocks", blockTemplate(config, name, package, isSimple)
 	else
 		print "No name given to -block"
