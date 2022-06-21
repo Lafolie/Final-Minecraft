@@ -12,7 +12,7 @@ function mkTag(str)
 	return format(config.tagTemplate, str)
 end
 
-local itemsPath = "src/main/java/lafolie/fmc/core/Items.java"
+local itemsPath = "src/main/java/lafolie/fmc/core/FMCItems.java"
 local langPath = "src/main/resources/assets/final-minecraft/lang/en_us.json"
 
 local item_import_packageTag = mkTag("item_import_package")
@@ -25,7 +25,7 @@ local itemsFile, itemsSplitPoints = util.splitFile(itemsPath, item_import_packag
 local langFile, langSplitPoints = util.splitFile(langPath, langTag)
 
 -- Util -----------------------------------------------------------------------
-local addItem = require(path .. "item.addItem")
+local itemTemplate = require(path .. "templates.item")
 
 function createItem(item)
 	print("Making item:", item.importPackage)
@@ -56,16 +56,18 @@ print [=[
 ]=]
 end
 
-commands["-add"] = function(args)
+commands["-item"] = function(args)
 	local name = args[1]
 	local isSimple = args[2]
 	local package = args[3] or ""
 
 	if name and package then
-		return "add", addItem(config, name, package, isSimple)
+		return "item", itemTemplate(config, name, package, isSimple)
 	else
-		print "No name given to -add"
-		print(name, package)
+		print "No name given to -item"
+		print("\tName:", name)
+		print("\tSimple:", isSimple and "yes" or "no")
+		print("\tPackage:", package)
 		print "No changes were made"
 		os.exit()
 	end
@@ -73,7 +75,7 @@ end
 
 --shorthands
 commands["-h"] = commands["-help"]
-commands["-a"] = commands["-add"]
+commands["-i"] = commands["-item"]
 
 -- Args -----------------------------------------------------------------------
 local function processArgs(...)
@@ -117,20 +119,20 @@ end
 
 local function main(...)
 	local commandList = processArgs(...)
-	local toAdd = {}
+	local items = {}
 
 	--generate changelist
 	for _, cmd in ipairs(commandList) do
 		local kind, result = cmd()
 		if result then
-			if kind == "add" then
-				insert(toAdd, result)
+			if kind == "item" then
+				insert(items, result)
 			end
 		end
 	end
 
 	--add the new items
-	for _, item in ipairs(toAdd) do
+	for _, item in ipairs(items) do
 		createItem(item)
 	end
 

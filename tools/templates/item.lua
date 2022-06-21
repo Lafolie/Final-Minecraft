@@ -36,8 +36,8 @@ function f(config, name, package, isSimple)
 	result.lang = format('"item.%s.%s": "%s",', config.modid, assetName, displayName)
 
 	-- Java ---------------------------------------------------
-	result.jInstanceSimple = format("public static final Item %s = new Item(new FabricItemSettings().group(Items.FMC_ITEMS));", constantName)
-	result.jInstance = format("public static final %sItem %s = new %sItem(new FabricItemSettings().group(Items.FMC_ITEMS));", name, constantName, name)
+	result.jInstanceSimple = format("public static final Item %s = new Item(new FabricItemSettings().group(FMC_ITEMS));", constantName)
+	result.jInstance = format("public static final %sItem %s = new %sItem(new FabricItemSettings().group(FMC_ITEMS));", name, constantName, name)
 	result.jRegister = format('Registry.register(Registry.ITEM, FMCIdentifier.contentID("%s_item"), %s);', assetName, constantName)
 	result.jItemGroup = format("stacks.add(new ItemStack(%s));", constantName)
 	result.jClass = format([[
