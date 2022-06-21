@@ -3,7 +3,6 @@ package lafolie.fmc.core;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
-import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;

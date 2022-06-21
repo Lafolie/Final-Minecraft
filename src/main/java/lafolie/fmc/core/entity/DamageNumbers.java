@@ -1,7 +1,7 @@
 package lafolie.fmc.core.entity;
 
+import lafolie.fmc.core.Particles;
 import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket.EventType;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;

@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.entity.AnniversaryEntity;
-import lafolie.fmc.core.internal.Particles;
 import lafolie.fmc.core.internal.elements.ElementalEntityTags;
 import lafolie.fmc.core.internal.elements.ElementalItemTags;
 import lafolie.fmc.core.util.AlBhed;

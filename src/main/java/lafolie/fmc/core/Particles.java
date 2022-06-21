@@ -1,4 +1,4 @@
-package lafolie.fmc.core.internal;
+package lafolie.fmc.core;
 
 import lafolie.fmc.core.particles.TextBillboardParticle;
 import lafolie.fmc.core.util.FMCIdentifier;

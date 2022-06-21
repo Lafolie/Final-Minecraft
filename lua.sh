@@ -1,13 +1,14 @@
 #!/bin/sh
 
-cd lua
+# cd lua
 file=$1
 shift 1
-lua5.2 "$file.lua" "$@"
+# lua5.2 "luaSrc/$file.lua" "$@"
+lua5.2 "$@" -e "require 'luaSrc.$file'"
 
 tagsDir="src/main/resources/data/c/tags"
 outputDir="lua/output"
-cd ..
+# cd ..
 # move genTags files
 if [ $file == "genTags" ]; then
 	echo "Copying files..."
