@@ -131,6 +131,8 @@ public class FinalMinecraft implements ModInitializer
 
 	private void initContent()
 	{
+		FMCItems.init();
+		FMCBlocks.init();
 		Particles.init();
 	}
 
