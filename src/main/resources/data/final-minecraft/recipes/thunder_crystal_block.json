@@ -8,10 +8,10 @@
 	],
 	"key": {
 	  "#": {
-		"item": "final-minecraft:crystal_item"
+		"item": "final-minecraft:thunder_crystal_item"
 	  }
 	},
 	"result": {
-	  "item": "final-minecraft:crystal_block"
+	  "item": "final-minecraft:thunder_crystal_block"
 	}
   }

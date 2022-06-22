@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"group": "",
+	"group": "elemental_crystals",
 	"pattern": [
 	  "DDD",
 	  "D#D",
@@ -11,10 +11,10 @@
 		"item": "final-minecraft:crystal_item"
 	  },
 	  "D": {
-		  "item": "minecraft:black_dye"
+		  "item": "minecraft:gray_dye"
 	  }
 	},
 	"result": {
-	  "item": "final-minecraft:e_crystal_item"
+	  "item": "final-minecraft:gravity_crystal_item"
 	}
   }

@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"group": "",
+	"group": "elemental_crystals",
 	"pattern": [
 	  "DDD",
 	  "D#D",
@@ -15,6 +15,6 @@
 	  }
 	},
 	"result": {
-	  "item": "final-minecraft:e_crystal_item"
+	  "item": "final-minecraft:dark_crystal_item"
 	}
   }

@@ -1,5 +1,6 @@
 {
 	"type": "minecraft:crafting_shaped",
+	"group": "elemental_crystal_blocks",
 	"pattern": [
 	  "###",
 	  "###",
@@ -7,10 +8,10 @@
 	],
 	"key": {
 	  "#": {
-		"item": "final-minecraft:crystal_shard_item"
+		"item": "final-minecraft:holy_crystal_item"
 	  }
 	},
 	"result": {
-	  "item": "final-minecraft:crystal_item"
+	  "item": "final-minecraft:holy_crystal_block"
 	}
   }
