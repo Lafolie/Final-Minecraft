@@ -6,16 +6,6 @@ import java.util.ArrayList;
 
 import lafolie.fmc.core.item.CrystalShardItem;
 import lafolie.fmc.core.item.CrystalItem;
-
-
-
-
-
-
-
-
-
-
 // #<item_import_package>
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;

@@ -21,15 +21,16 @@ function util.mergeSplitFile(file, splitPoints)
 	local numInserts = 0
 	for _, splitPoint in ipairs(splitPoints) do
 		local i = splitPoint.index + numInserts
-		numInserts = numInserts + 1
-
-		local tabs = string.rep("\t", splitPoint.tabs)
-		--prepend tabs to splitpoints
-		for n, str in ipairs(splitPoint) do
-			splitPoint[n] = tabs .. str
+		if #splitPoint > 0 then
+			numInserts = numInserts + 1
+			local tabs = string.rep("\t", splitPoint.tabs)
+			--prepend tabs to splitpoints
+			for n, str in ipairs(splitPoint) do
+				splitPoint[n] = tabs .. str
+			end
+			
+			insert(file, i, concat(splitPoint, "\n"))
 		end
-
-		insert(file, i, concat(splitPoint, "\n"))
 	end
 	return concat(file, "\n")
 end

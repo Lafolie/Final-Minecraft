@@ -4,16 +4,6 @@ import lafolie.fmc.core.util.FMCIdentifier;
 import lafolie.fmc.core.FMCItems;
 
 import lafolie.fmc.core.block.CrystalBlock;
-
-
-
-
-
-
-
-
-
-
 import lafolie.fmc.core.block.HomeCrystalBlock;
 import lafolie.fmc.core.block.CrystalPedestalBlock;
 // #<block_import_package>
