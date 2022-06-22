@@ -73,13 +73,13 @@ function f(config, name, package, isSimple)
 	]
 }
 	]], config.modid, assetName)
-	result.lang = format('"block.%s.%s": "%s",', config.modid, assetName, displayName)
+	result.lang = format('"block.%s.%s_block": "%s",', config.modid, assetName, displayName)
 
 	-- Java ---------------------------------------------------
 	result.jInstanceSimple = format("public static final Block %s = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));", constantName)
 	result.jInstance = format("public static final %sBlock %s = new %sBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));", name, constantName, name)
 	result.jRegisterBlock = format('Registry.register(Registry.BLOCK, FMCIdentifier.contentID("%s_block"), %s);', assetName, constantName)
-	result.jRegisterItem = format('Registry.register(Registry.ITEM,  FMCIdentifier.contentID("%s_block"), new BlockItem(%s, new FabricItemSettings().group(FMCItems.FMC_ITEMS)));', assetName, constantName)
+	result.jRegisterItem = format('Registry.register(Registry.ITEM,  FMCIdentifier.contentID("%s_block"), new BlockItem(%s, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));', assetName, constantName)
 	result.jItemGroup = format("stacks.add(new ItemStack(%s));", constantName) --TODO: see if this is required
 	result.jClass = format([[
 package %s;

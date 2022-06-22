@@ -22,20 +22,21 @@ local itemsPath  = "src/main/java/lafolie/fmc/core/FMCItems.java"
 local blocksPath = "src/main/java/lafolie/fmc/core/FMCBlocks.java"
 local langPath   = "src/main/resources/assets/final-minecraft/lang/en_us.json"
 
-local item_import_packageTag = mkTag("item_import_package")
-local item_instanceTag = mkTag("item_instance")
-local item_groupTag = mkTag("item_group")
-local item_registerTag = mkTag("item_register")
+local item_import_packageTag = mkTag "item_import_package"
+local item_instanceTag = mkTag "item_instance"
+local item_groupTag = mkTag "item_group" 
+local item_registerTag = mkTag "item_register"
 
-local block_import_packageTag = mkTag("block_import_package")
-local block_instanceTag = mkTag("block_instance")
-local block_registerTag = mkTag("block_register")
+local block_import_packageTag = mkTag "block_import_package"
+local block_instanceTag = mkTag "block_instance"
+local block_registerTag = mkTag "block_register"
 
-local langTag = mkTag("items")
+local langBlocksTag = mkTag "blocks"
+local langItemsTag = mkTag "items"
 
 local itemsFile, itemsSplitPoints = util.splitFile(itemsPath, item_import_packageTag, item_instanceTag, item_groupTag, item_registerTag)
 local blocksFile, blocksSplitPoints = util.splitFile(blocksPath, block_import_packageTag, block_instanceTag, block_registerTag)
-local langFile, langSplitPoints = util.splitFile(langPath, langTag)
+local langFile, langSplitPoints = util.splitFile(langPath, langBlocksTag, langItemsTag)
 
 -- Util -----------------------------------------------------------------------
 local itemTemplate = require(path .. "templates.item")
@@ -46,7 +47,7 @@ function createItem(item)
 	-- Assets -------------------------------------------------
 	util.copyFile(config.texture, item.texturePath)
 	util.writeString(item.modelPath, item.modelJson)
-	insert(langSplitPoints[langTag], item.lang)
+	insert(langSplitPoints[langItemsTag], item.lang)
 
 	-- Java ---------------------------------------------------
 	insert(itemsSplitPoints[item_groupTag], item.jItemGroup)
@@ -71,7 +72,7 @@ function createBlock(block)
 	util.writeString(block.blockItemModelPath, block.blockItemModelJson)
 	util.writeString(block.blockstatePath, block.blockstateJson)
 	util.writeString(block.lootTablePath, block.lootTableJson)
-	insert(langSplitPoints[langTag], block.lang)
+	insert(langSplitPoints[langBlocksTag], block.lang)
 
 	-- Java ---------------------------------------------------
 	insert(blocksSplitPoints[block_registerTag], block.jRegisterBlock)
