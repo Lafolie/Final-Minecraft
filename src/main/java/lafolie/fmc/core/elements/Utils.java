@@ -15,7 +15,7 @@ public final class Utils
 		ElementLangKeys.put(ElementalAspect.NONE, "fmc.core.element.tooltip.none");
 		ElementLangKeys.put(ElementalAspect.FIRE, "fmc.core.element.tooltip.fire");
 		ElementLangKeys.put(ElementalAspect.ICE, "fmc.core.element.tooltip.ice");
-		ElementLangKeys.put(ElementalAspect.LIGHTNING, "fmc.core.element.tooltip.lightning");
+		ElementLangKeys.put(ElementalAspect.THUNDER, "fmc.core.element.tooltip.lightning");
 		ElementLangKeys.put(ElementalAspect.WIND, "fmc.core.element.tooltip.wind");
 		ElementLangKeys.put(ElementalAspect.WATER, "fmc.core.element.tooltip.water");
 		ElementLangKeys.put(ElementalAspect.EARTH, "fmc.core.element.tooltip.earth");

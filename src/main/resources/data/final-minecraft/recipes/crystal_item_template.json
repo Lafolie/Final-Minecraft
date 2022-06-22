@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+	  "DDD",
+	  "D#D",
+	  "DDD"
+	],
+	"key": {
+	  "#": {
+		"item": "final-minecraft:crystal_item"
+	  },
+	  "D": {
+		  "item": "minecraft:black_dye"
+	  }
+	},
+	"result": {
+	  "item": "minecraft:e_crystal_item"
+	}
+  }

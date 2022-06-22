@@ -31,7 +31,7 @@ public enum ElementalAspect
 	NONE,
 	FIRE,
 	ICE,
-	LIGHTNING,
+	THUNDER,
 	WIND,
 	WATER,
 	EARTH,
@@ -63,9 +63,9 @@ public enum ElementalAspect
 		WEAK.put(ElementalAspect.NONE, ElementalAspect.NONE);
 		WEAK.put(ElementalAspect.FIRE, ElementalAspect.WATER);
 		WEAK.put(ElementalAspect.ICE, ElementalAspect.FIRE);
-		WEAK.put(ElementalAspect.LIGHTNING, ElementalAspect.EARTH);
+		WEAK.put(ElementalAspect.THUNDER, ElementalAspect.EARTH);
 		WEAK.put(ElementalAspect.WIND, ElementalAspect.ICE);
-		WEAK.put(ElementalAspect.WATER, ElementalAspect.LIGHTNING);
+		WEAK.put(ElementalAspect.WATER, ElementalAspect.THUNDER);
 		WEAK.put(ElementalAspect.EARTH, ElementalAspect.WIND);
 		WEAK.put(ElementalAspect.HOLY, ElementalAspect.DARK);
 		WEAK.put(ElementalAspect.DARK, ElementalAspect.HOLY);
@@ -75,10 +75,10 @@ public enum ElementalAspect
 		STRONG.put(ElementalAspect.NONE, ElementalAspect.NONE);
 		STRONG.put(ElementalAspect.FIRE, ElementalAspect.ICE);
 		STRONG.put(ElementalAspect.ICE, ElementalAspect.WIND);
-		STRONG.put(ElementalAspect.LIGHTNING, ElementalAspect.WATER);
+		STRONG.put(ElementalAspect.THUNDER, ElementalAspect.WATER);
 		STRONG.put(ElementalAspect.WIND, ElementalAspect.EARTH);
 		STRONG.put(ElementalAspect.WATER, ElementalAspect.ICE);
-		STRONG.put(ElementalAspect.EARTH, ElementalAspect.LIGHTNING);
+		STRONG.put(ElementalAspect.EARTH, ElementalAspect.THUNDER);
 		STRONG.put(ElementalAspect.HOLY, ElementalAspect.DARK);
 		STRONG.put(ElementalAspect.DARK, ElementalAspect.HOLY);
 		STRONG.put(ElementalAspect.POISON, ElementalAspect.NONE);
@@ -87,7 +87,7 @@ public enum ElementalAspect
 		LANG_KEYS.put(ElementalAspect.NONE, "fmc.core.element.tooltip.none");
 		LANG_KEYS.put(ElementalAspect.FIRE, "fmc.core.element.tooltip.fire");
 		LANG_KEYS.put(ElementalAspect.ICE, "fmc.core.element.tooltip.ice");
-		LANG_KEYS.put(ElementalAspect.LIGHTNING, "fmc.core.element.tooltip.lightning");
+		LANG_KEYS.put(ElementalAspect.THUNDER, "fmc.core.element.tooltip.lightning");
 		LANG_KEYS.put(ElementalAspect.WIND, "fmc.core.element.tooltip.wind");
 		LANG_KEYS.put(ElementalAspect.WATER, "fmc.core.element.tooltip.water");
 		LANG_KEYS.put(ElementalAspect.EARTH, "fmc.core.element.tooltip.earth");

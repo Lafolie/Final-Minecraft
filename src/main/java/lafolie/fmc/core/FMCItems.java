@@ -1,9 +1,6 @@
 package lafolie.fmc.core;
 
 import lafolie.fmc.core.util.FMCIdentifier;
-
-import java.util.ArrayList;
-
 import lafolie.fmc.core.item.CrystalShardItem;
 import lafolie.fmc.core.item.CrystalItem;
 // #<item_import_package>
@@ -14,7 +11,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
 public final class FMCItems
