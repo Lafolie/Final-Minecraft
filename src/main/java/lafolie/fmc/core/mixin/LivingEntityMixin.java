@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.chrono.DateTime;
+import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
@@ -74,7 +75,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	@Inject(at = @At("HEAD"), method = "onEquipStack(Lnet/minecraft/item/ItemStack;)V")
 	private void euipmentChanged(ItemStack stack, CallbackInfo info)
 	{
-		FinalMinecraft.log.info("Itemstack {}", stack.toString());
+		// FinalMinecraft.log.info("Itemstack {}", stack.toString());
 	}
 	
 	// ------------------------------------------------------------------------
@@ -144,7 +145,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 				bonus += attacker instanceof PlayerEntity ? 0 : 20;
 				bonus += MathHelper.floor(Math.max(0f, (20 - ((LivingEntity)attacker).getHealth()) / 2));
 
-				float alignment = attackerSign.getZodiacSign().getCompatibility(selfSign.getZodiacSign());
+				float alignment = attackerSign.getFullCompatibility(attackerSign);
 				bonus = MathHelper.floor(bonus * alignment);
 			}
 		}
@@ -187,23 +188,46 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			source = null;
 			return amount;
 		}
-
-		if(FinalMinecraft.getConfig().enableElements)
+		FMCConfig config = FinalMinecraft.getConfig();
+		if(config.enableElements)
 		{
-			adjustDamageElemental(source, amount);
+			amount = adjustDamageElemental(source, amount);
 		}
+
+		if(config.combatEnableBirthsign)
+		{
+			amount = adjustDamageBirthsign(source, amount);
+		}
+
 		adjustDamageAttackType(source, amount);
+		
+		// handle healing
+		if(amount < 0 )
+		{
+			heal(amount);
+			amount = 0;
+		}
+		
+		modifiedDamage = amount;
 		source = null; // should probably do this so that it can be GC'd
+		return amount;
+	}
+
+	private float adjustDamageBirthsign(DamageSource source, float amount)
+	{
+		Entity attacker = source.getAttacker();
+		if(this instanceof BirthsignEntity && attacker != null && attacker instanceof BirthsignEntity)
+		{
+			amount *= ((BirthsignEntity)this).getFullCompatibility((BirthsignEntity)attacker);
+		}
 		return amount;
 	}
 
 	private float adjustDamageElemental(DamageSource source, float amount)
 	{
-
 		// FinalMinecraft.log.info("Second inject");
 		Entity attacker = source.getAttacker();
 		ElementalObject self = (ElementalObject)this;
-		self.getComponent();
 		ElementalAttribute modifierAttribute = ElementalAttribute.WEAKNESS;
 		ElementalAspect modifierElement = ElementalAspect.NONE;
 		int modifierAmount = 0;
@@ -272,8 +296,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 					break;
 
 				case ABSORBTION:
-					heal(amount);
-					amount = 0;
+					amount *= -1;
 					break;
 
 				case FATAL:
@@ -281,22 +304,18 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 					break;
 
 				case REVIVE:
-					amount = 0;
-					heal(getMaxHealth());
-					//heal
+					amount = -getMaxHealth();
 					break;
-
-				
 			}
 			// FinalMinecraft.log.info("Using element {}", modifierElement.toString());
 			// FinalMinecraft.log.info("Using attribute {}", modifierAttribute.toString());
 			// FinalMinecraft.log.info("Modified amount {}", amount);
 
 		}
-		modifiedDamage = amount;
 		return amount;
 	}
 
+	// Called check that the amount set by adjustDamageElemental is non-zero
 	@Inject(at = @At("HEAD"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
 	private void cancelDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> info)
 	{
@@ -327,7 +346,10 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	@Inject(at = @At("TAIL"), method="heal(F)V")
 	private void healNumbers(float amount, CallbackInfo info)
 	{
-		sendHealthModifiedPacket(amount, ElementalAttribute.ABSORBTION);
+		if(amount > 0)
+		{
+			sendHealthModifiedPacket(amount, ElementalAttribute.ABSORBTION);
+		}
 	}
 
 }

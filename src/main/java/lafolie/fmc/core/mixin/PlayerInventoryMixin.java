@@ -30,10 +30,10 @@ public abstract class PlayerInventoryMixin
 
 		if(!player.world.isClient && isEquipmentSlot(slot))
 		{
-			FinalMinecraft.log.info("SLOT: {}", slot);
-			FinalMinecraft.log.info("\tequip stack {} {}", slot, stack.toString());
+			// FinalMinecraft.log.info("SLOT: {}", slot);
+			// FinalMinecraft.log.info("\tequip stack {} {}", slot, stack.toString());
 			ItemStack currentEquip = ((PlayerInventory)(Object)this).getStack(slot);
-			FinalMinecraft.log.info("\tReplacing: {}", currentEquip.toString());
+			// FinalMinecraft.log.info("\tReplacing: {}", currentEquip.toString());
 			
 			if(!currentEquip.isEmpty())
 			{
@@ -44,7 +44,7 @@ public abstract class PlayerInventoryMixin
 			{
 				ElementalEquipment.addEffects(player, stack);
 			}
-			FinalMinecraft.log.info("-----------------------------------------------------------");
+			// FinalMinecraft.log.info("-----------------------------------------------------------");
 
 		}
 	}
@@ -96,7 +96,7 @@ public abstract class PlayerInventoryMixin
 		if(!player.world.isClient && isEquipmentSlot(slot))
 		{
 			ItemStack currentEquip = ((PlayerInventory)(Object)this).getStack(slot);
-			FinalMinecraft.log.info("REMOVING {}", currentEquip.toString());
+			// FinalMinecraft.log.info("REMOVING {}", currentEquip.toString());
 			if(!currentEquip.isEmpty())
 			{
 				ElementalEquipment.removeEffects(player, currentEquip);

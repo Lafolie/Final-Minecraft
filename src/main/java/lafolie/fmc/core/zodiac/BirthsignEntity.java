@@ -30,6 +30,23 @@ public interface BirthsignEntity
 	}
 
 	/**
+	 * Get the compatibility with another birthsign based on
+	 * Zodiac & Element
+	 * @param other other birthsign to compare with
+	 * @return compatibility multiplier
+	 */
+	public default float getFullCompatibility(BirthsignEntity other)
+	{
+		Birthsign sign = getComponent();
+		float compatibility = sign.getZodiacSign().getCompatibility(other.getZodiacSign());
+		if(sign.getElementalAspect() == other.getElementalAspect().getStrongTo())
+		{
+			compatibility = 0.5f;
+		}
+		return compatibility;
+	}
+
+	/**
 	 * Initialises the birthsign.
 	 * Called internally.
 	 */
