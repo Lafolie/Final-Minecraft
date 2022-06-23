@@ -12,21 +12,22 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 
 public class FMCBlocks
 {
-	public static final CrystalBlock CRYSTAL = new CrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block FIRE_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block ICE_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block THUNDER_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block WIND_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block WATER_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block EARTH_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block HOLY_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block DARK_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block POISON_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-	public static final Block GRAVITY_CRYSTAL = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static final CrystalBlock CRYSTAL = new CrystalBlock(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block FIRE_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block ICE_CRYSTAL     = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block THUNDER_CRYSTAL = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block WIND_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block WATER_CRYSTAL   = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block EARTH_CRYSTAL   = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block HOLY_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block DARK_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block POISON_CRYSTAL  = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
+	public static final Block GRAVITY_CRYSTAL = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	public static final HomeCrystalBlock HOME_CRYSTAL = new HomeCrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	public static final CrystalPedestalBlock CRYSTAL_PEDESTAL = new CrystalPedestalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	// #<block_instance>

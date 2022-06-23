@@ -5,9 +5,11 @@ import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
@@ -43,6 +45,23 @@ public class FinalMinecraftClient implements ClientModInitializer
 	private void InitContent()
 	{
 		Particles.initClient();
+		initBlocks();
+	}
+
+	private void initBlocks()
+	{
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.FIRE_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.ICE_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.THUNDER_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.WIND_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.WATER_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.EARTH_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.HOLY_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.DARK_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.POISON_CRYSTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.GRAVITY_CRYSTAL, RenderLayer.getTranslucent());
+
 	}
 
 	private void registerNetworkReceivers()
