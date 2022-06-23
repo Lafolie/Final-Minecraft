@@ -95,7 +95,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 		// pseudo-birthday check ()
 		if(!((Entity)this instanceof PlayerEntity || isAnimal) && selfSign.getZodiacSign() == today.getZodiacSign() && selfSign.getElementalAspect() == today.getElementalAspect())
 		{
-			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, today.getDayOfTheMonth() % 10)));
+			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, today.getDayOfTheMonth() % 3 + 1)));
 			FinalMinecraft.log.info("BIRTHDAY SHARDS!!!");
 			return;
 		}
