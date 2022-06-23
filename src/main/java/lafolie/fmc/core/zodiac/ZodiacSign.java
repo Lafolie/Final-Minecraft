@@ -64,7 +64,7 @@ public enum ZodiacSign
 	/**
 	 * Get the compatibility multiplier for the given sign
 	 * @param sign sign to check for
-	 * @return compatibility
+	 * @return compatibility float (1, 2, 4, or 0.5)
 	 */
 	public float getCompatibility(ZodiacSign sign)
 	{

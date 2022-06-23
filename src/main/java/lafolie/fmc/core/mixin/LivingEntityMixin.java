@@ -14,14 +14,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FinalMinecraft;
+import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
+import lafolie.fmc.core.zodiac.BirthsignEntity;
+import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.EntityDamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -74,11 +83,79 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	@Inject(at = @At("TAIL"), method = "drop(Lnet/minecraft/entity/damage/DamageSource;)V")
 	private void onDrop(DamageSource source, CallbackInfo info)
 	{
-		// crystal shard drops
-		int numCrystals = random.nextInt(103);
-		if(numCrystals > 100 && shouldDropLoot() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT))
+		if(!(shouldDropLoot() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)))
 		{
-			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, numCrystals - 100)));
+			return;
+		}
+
+		DateTime today = new DateTime(world.getTimeOfDay());
+		BirthsignEntity selfSign = (BirthsignEntity)this;
+
+		// pseudo-birthday check ()
+		if(!((Entity)this instanceof PlayerEntity) && selfSign.getZodiacSign() == today.getZodiacSign() && selfSign.getElementalAspect() == today.getElementalAspect())
+		{
+			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, today.getDayOfTheMonth() % 10)));
+			FinalMinecraft.log.info("BIRTHDAY SHARDS!!!");
+			return;
+		}
+
+		int chance = random.nextInt(100);
+		if(lastAttributeused != null)
+		{
+			switch(lastAttributeused)
+			{
+				case WEAKNESS:
+					chance += 8;
+					break;
+
+				case RESISTANCE:
+					chance += 12;
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		int bonus = 0;
+		if(source instanceof EntityDamageSource)
+		{
+			Entity attacker = source.getAttacker();
+			if(attacker instanceof BirthsignEntity)
+			{
+				BirthsignEntity attackerSign = (BirthsignEntity)attacker;
+				bonus -= attackerSign.getElementalAspect().getWeakTo() == selfSign.getElementalAspect() ? 15 : 1;
+				bonus += attackerSign.getElementalAspect().getStrongTo() == selfSign.getElementalAspect() ? 15 : 1;
+				bonus += today.getZodiacSign() == attackerSign.getZodiacSign() ? 6 : 0;
+				bonus += today.getElementalAspect() == attackerSign.getElementalAspect() ? 6 : 0;
+				for(ItemStack stack : attacker.getItemsHand())
+				{
+					bonus += stack.hasEnchantments() ? 3 : 0;
+					bonus += EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 2;
+					bonus += EnchantmentHelper.getLevel(Enchantments.LOOTING, stack) * 2;
+					bonus += EnchantmentHelper.getLevel(Enchantments.LUCK_OF_THE_SEA, stack) * 4; // hell yeah fishing rods
+					bonus -= EnchantmentHelper.getLevel(Enchantments.BINDING_CURSE, stack) * 20;
+					bonus -= EnchantmentHelper.getLevel(Enchantments.VANISHING_CURSE, stack) * 20;
+					bonus -= EnchantmentHelper.getLevel(Enchantments.MENDING, stack) * 6;
+					bonus -= stack.getMaxCount() > 1 ? 2 : 0;
+				}
+				
+				bonus += attacker instanceof PlayerEntity ? 0 : 20;
+				bonus += MathHelper.floor(Math.max(0f, (20 - ((LivingEntity)attacker).getHealth()) / 2));
+
+				float alignment = attackerSign.getZodiacSign().getCompatibility(selfSign.getZodiacSign());
+				bonus = MathHelper.floor(bonus * alignment);
+			}
+		}
+
+		FinalMinecraft.log.info("Chance: {}", chance);
+		FinalMinecraft.log.info("Bonus: {}", bonus);
+		chance += bonus;
+
+		// crystal shard drops
+		if(chance > 100)
+		{
+			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, (chance - 100) % 3 + 1)));
 		}
 	}
 
