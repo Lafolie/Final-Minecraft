@@ -24,6 +24,7 @@ import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.EntityDamageSource;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -90,16 +91,16 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 
 		DateTime today = new DateTime(world.getTimeOfDay());
 		BirthsignEntity selfSign = (BirthsignEntity)this;
-
+		boolean isAnimal = (Entity)this instanceof AnimalEntity;
 		// pseudo-birthday check ()
-		if(!((Entity)this instanceof PlayerEntity) && selfSign.getZodiacSign() == today.getZodiacSign() && selfSign.getElementalAspect() == today.getElementalAspect())
+		if(!((Entity)this instanceof PlayerEntity || isAnimal) && selfSign.getZodiacSign() == today.getZodiacSign() && selfSign.getElementalAspect() == today.getElementalAspect())
 		{
 			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, today.getDayOfTheMonth() % 10)));
 			FinalMinecraft.log.info("BIRTHDAY SHARDS!!!");
 			return;
 		}
 
-		int chance = random.nextInt(100);
+		int chance = random.nextInt(103);
 		if(lastAttributeused != null)
 		{
 			switch(lastAttributeused)
@@ -150,6 +151,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 
 		FinalMinecraft.log.info("Chance: {}", chance);
 		FinalMinecraft.log.info("Bonus: {}", bonus);
+		bonus *= isAnimal ? 0.5f : 1;
 		chance += bonus;
 
 		// crystal shard drops
