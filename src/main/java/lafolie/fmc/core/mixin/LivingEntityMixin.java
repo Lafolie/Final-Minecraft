@@ -2,6 +2,7 @@ package lafolie.fmc.core.mixin;
 
 import java.util.Map;
 
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -11,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalAttribute;
@@ -22,6 +24,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 @Mixin(LivingEntity.class)
@@ -37,7 +41,11 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	public abstract float getMaxHealth();
 
 	@Shadow
-    public abstract void heal(float amount);
+	public abstract void heal(float amount);
+
+	@Shadow
+	protected abstract boolean shouldDropLoot();
+
 
 	// @Inject(at = @At("TAIL"), method = "<init>")
 	// public void Constructor(EntityType<? extends LivingEntity> entityType, World world, CallbackInfo info)
@@ -59,7 +67,20 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 		FinalMinecraft.log.info("Itemstack {}", stack.toString());
 	}
 	
+	// ------------------------------------------------------------------------
+	// Death
+	// ------------------------------------------------------------------------
 
+	@Inject(at = @At("TAIL"), method = "drop(Lnet/minecraft/entity/damage/DamageSource;)V")
+	private void onDrop(DamageSource source, CallbackInfo info)
+	{
+		// crystal shard drops
+		int numCrystals = random.nextInt(103);
+		if(numCrystals > 100 && shouldDropLoot() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT))
+		{
+			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, numCrystals - 100)));
+		}
+	}
 
 	// ------------------------------------------------------------------------
 	// Damage Algorithm & Related
