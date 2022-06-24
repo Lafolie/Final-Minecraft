@@ -41,7 +41,7 @@ public interface BirthsignEntity
 		float compatibility = sign.getZodiacSign().getCompatibility(other.getZodiacSign());
 		if(sign.getElementalAspect() == other.getElementalAspect().getStrongTo())
 		{
-			compatibility = 0.5f;
+			compatibility = 0.75f;
 		}
 		return compatibility;
 	}

@@ -12,6 +12,7 @@ Final Minecraft adds a variety of Final Fantasy inspired content to Minecraft.
 **Current features:**
 * [Elemental Aspects](https://github.com/Lafolie/Final-Minecraft/wiki/Elemental-Aspects)
 * [Damage Numbers](https://github.com/Lafolie/Final-Minecraft/wiki/Damage-Numbers)
+* [Calendar System](#)
 * [Crystals](https://github.com/Lafolie/Final-Minecraft/wiki/Crystals)
 * ~~Status effects~~
 
@@ -24,8 +25,8 @@ As the mod is still in alpha, there is no release.
 
 **Version Info**
 * Release date: `00/00/2022`
-* Final Minecraft: `0.0.1 "Biggs"`
-* For Minecraft Java: `1.18.2 "Caves & Cliffs Update Part 2`
+* Final Minecraft: `0.1.0 "Biggs"`
+* For Minecraft Java: `1.18.2 "Caves & Cliffs Update Part 2"`
 * [Changelist](wiki/Version-History)
 
 Final Minecraft is a **Fabric Mod**. A forge version will never be created.
@@ -42,6 +43,7 @@ FMC Core should be installed on both clients and the server.
 |------------------------:|:-------:|:-----------------:|:-----------------:|:-------------:|
 |              Fabric API | 0.55.3+ | [link][fabric_CF] | [link][fabric_GH] | **Both**      |
 | Cardinal Components API | 5.0.0   | [link][cca_CF]    | [link][cca_GH]    | **Both**      |
+|                GeckoLib | 3.0.35+ | [link][gecko_CF]  | [link][gecko_GH]  | **Both**      |
 
 # Optional Integrations
 Final Minecraft features built-in integration for these mods, but they are not required:
@@ -51,15 +53,7 @@ Final Minecraft features built-in integration for these mods, but they are not r
 |                Mod Menu | 4.0.0   | [link][mm_CF]     | [link][mm_GH]     | **Client**    |
 |        Cloth Config API | 7.0.72  | [link][ccfg_CF]   | [link][ccfg_GH]   | **Client**    |
 
-## Final Minecraft
-
-The Final Minecraft project aims to add Final Fantasy inspired content to Minecraft.
-
-You can join the official discord here: [https://discord.gg/Kv6umW2vzy](https://discord.gg/Kv6umW2vzy)
-
 # For Developers
-
-
 
 ## Build Instructions
 
@@ -69,10 +63,12 @@ Clone the repo and run:
 ./gradlew build
 ```
 
-You'll find the compiled jar in `bin/blahblah/blah.jar`
+You can find the compiled jar at: `build/libs/fmc-core-0.1.0.jar`
 
 ## Creating Add-ons
 FMC Core exposes an API for mod developers to create their own FMC add-ons.
+
+* Since the mod is still in alpha and the code is likely to change signifanctly, this sections is just a placeholder
 
 *TODO: modImplementation instructions*
 *TODO: setup maven on repo*
@@ -96,7 +92,7 @@ Lafolie - designer and developer.
 
 # License
 
-FMC Core is licensed under the GNU General Public License v3.
+Final Minecraft is licensed under the GNU General Public License v3.
 
 [fabric_CF]: https://www.curseforge.com/minecraft/mc-mods/fabric-api
 [fabric_GH]: https://github.com/FabricMC/fabric
@@ -106,3 +102,5 @@ FMC Core is licensed under the GNU General Public License v3.
 [ccfg_GH]: https://github.com/shedaniel/cloth-config
 [mm_CF]: https://www.curseforge.com/minecraft/mc-mods/modmenu
 [mm_GH]: https://github.com/TerraformersMC/ModMenu
+[gecko_CF]: https://www.curseforge.com/minecraft/mc-mods/geckolib
+[gecko_GH]: https://github.com/bernie-g/geckolib

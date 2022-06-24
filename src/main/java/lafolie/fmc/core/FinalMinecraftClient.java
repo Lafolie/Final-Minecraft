@@ -1,5 +1,11 @@
 package lafolie.fmc.core;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.elements.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
@@ -8,13 +14,18 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.texture.NativeImage;
+import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
 public class FinalMinecraftClient implements ClientModInitializer
 {
+	private static NativeImageBackedTexture flashLUT;
 
 	@Override
 	public void onInitializeClient()
@@ -42,10 +53,37 @@ public class FinalMinecraftClient implements ClientModInitializer
 		});
 	}
 	
+	public static NativeImageBackedTexture getDamageLUT()
+	{
+		if(flashLUT == null)
+		{
+			loadImages();
+		}
+		return flashLUT;
+	}
+
 	private void InitContent()
 	{
 		Particles.initClient();
 		initBlocks();
+	}
+
+	private static void loadImages()
+	{
+		ModContainer imgSource = FabricLoader.getInstance().getModContainer("final-minecraft").orElseThrow();
+		try
+		{
+			InputStream io = Files.newInputStream(imgSource.findPath("assets/final-minecraft/textures/etc/damageFlash.png").get(), StandardOpenOption.READ);
+			NativeImage img = NativeImage.read(io);
+			flashLUT = new NativeImageBackedTexture(img);
+		}
+		catch (IOException e)
+		{
+			FinalMinecraft.log.error("Could not load file damageFlash.png");
+			e.fillInStackTrace();
+			e.printStackTrace();
+			FinalMinecraft.log.error("{}", e.getMessage());
+		}
 	}
 
 	private void initBlocks()
@@ -61,7 +99,6 @@ public class FinalMinecraftClient implements ClientModInitializer
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.DARK_CRYSTAL, RenderLayer.getTranslucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.POISON_CRYSTAL, RenderLayer.getTranslucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.GRAVITY_CRYSTAL, RenderLayer.getTranslucent());
-
 	}
 
 	private void registerNetworkReceivers()

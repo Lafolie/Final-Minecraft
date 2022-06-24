@@ -7,15 +7,27 @@ util.elementalAspects =
 	none = "none",
 	fire = "fire",
 	ice = "ice",
-	lightning = "lightning",
+	thunder = "thunder",
 	wind = "wind",
 	water = "water",
 	earth = "earth",
-	poison = "poison",
 	holy = "holy",
 	dark = "dark",
+	poison = "poison",
 	gravity = "gravity"
 }
+
+util.elementalAspects[0] = util.elementalAspects.none
+util.elementalAspects[1] = util.elementalAspects.fire
+util.elementalAspects[2] = util.elementalAspects.ice
+util.elementalAspects[3] = util.elementalAspects.thunder
+util.elementalAspects[4] = util.elementalAspects.wind
+util.elementalAspects[5] = util.elementalAspects.water
+util.elementalAspects[6] = util.elementalAspects.earth
+util.elementalAspects[7] = util.elementalAspects.holy
+util.elementalAspects[8] = util.elementalAspects.dark
+util.elementalAspects[9] = util.elementalAspects.poison
+util.elementalAspects[10] = util.elementalAspects.gravity
 
 function util.mergeSplitFile(file, splitPoints)
 	local numInserts = 0
@@ -151,5 +163,12 @@ function util.copyFile(src, dest)
 	print(string.format("Copied file %s to %s", src, dest))
 end
 
+function util.readFile(path)
+	local file = {}
+	for line in io.lines(path) do
+		insert(file, line)
+	end
+	return concat(file, "\n")
+end
 
 return util

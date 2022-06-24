@@ -22,6 +22,7 @@ repositories {
 		 name = "Ladysnake Mods"
 		 url = "https://ladysnake.jfrog.io/artifactory/mods"
 	}
+	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 
 }
 
@@ -43,6 +44,9 @@ dependencies {
 	modApi("com.terraformersmc:modmenu:${modmenu_version}"){
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+
+	// Gecko Lib
+	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.geckolib_version}"
 
 	// Cardinal Components
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${project.cardinal_components_version}"

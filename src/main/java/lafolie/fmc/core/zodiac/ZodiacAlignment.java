@@ -9,11 +9,11 @@ public class ZodiacAlignment
 
 	public ZodiacAlignment(ZodiacSign sign)
 	{
-		alignment.put(sign.rotate(6), 1.5f);
-		alignment.put(sign.rotate(4), 1.25f);
-		alignment.put(sign.rotate(8), 1.25f);
-		alignment.put(sign.rotate(3), .75f);
-		alignment.put(sign.rotate(9), .75f);
+		alignment.put(sign.rotate(6), 1.3f);
+		alignment.put(sign.rotate(4), 1.15f);
+		alignment.put(sign.rotate(8), 1.15f);
+		alignment.put(sign.rotate(3), .85f);
+		alignment.put(sign.rotate(9), .85f);
 
 		for(ZodiacSign zs : ZodiacSign.values())
 		{

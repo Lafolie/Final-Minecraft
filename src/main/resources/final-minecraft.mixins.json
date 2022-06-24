@@ -14,6 +14,7 @@
     "AnimalEntityMixin",
     "InventoryScreenMixin",
     "SplashTextResourceSupplierMixin",
+    "LivingEntityRendererMixin",
     "ServerWorldMixin"
   ],
   "client": [

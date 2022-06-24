@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.util.FMCIdentifier;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -22,7 +23,7 @@ public class ElementalItemTags
 		for(ElementalAspect element : ElementalAspect.values())
 		{
 			String id = element.toString().toLowerCase().concat("_elemental_items");
-			TAGS.put(element, TagKey.of(Registry.ITEM_KEY, new Identifier("c", id)));
+			TAGS.put(element, TagKey.of(Registry.ITEM_KEY, FMCIdentifier.commonTagID(id)));
 		}
 	}
 
