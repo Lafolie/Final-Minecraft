@@ -16,6 +16,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable
 {
 	private AnimationFactory animFactory = new AnimationFactory(this);
+	public boolean isDummy = false;
 
 	public HomeCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state)
 	{

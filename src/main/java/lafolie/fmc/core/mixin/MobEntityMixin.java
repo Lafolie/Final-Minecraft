@@ -43,13 +43,13 @@ public abstract class MobEntityMixin extends LivingEntity implements BirthsignEn
 		ItemStack currentEquip = armorItems.get(slot.getEntitySlotId());
 		if(!currentEquip.isEmpty())
 		{
-			FinalMinecraft.log.info("Removing effects from broken mob item");
+			FinalMinecraft.LOG.info("Removing effects from broken mob item");
 			ElementalEquipment.removeEffects(this, currentEquip);
 		}
 		
 		if(!stack.isEmpty())
 		{
-			FinalMinecraft.log.info("Adding effects from equipped mob item");
+			FinalMinecraft.LOG.info("Adding effects from equipped mob item");
 			ElementalEquipment.addEffects(this, stack);
 		}
 	}

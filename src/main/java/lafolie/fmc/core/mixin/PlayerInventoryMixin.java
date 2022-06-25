@@ -64,7 +64,7 @@ public abstract class PlayerInventoryMixin
 	{
 		if(!player.world.isClient && stack.isEmpty())
 		{
-			FinalMinecraft.log.info("DESTROYED ARMOR {}", stack);
+			FinalMinecraft.LOG.info("DESTROYED ARMOR {}", stack);
 			/*
 			 * The stack currently has a count of 0 as it was destroyed. This
 			 * means that when the ElementalObject called getItem, it will

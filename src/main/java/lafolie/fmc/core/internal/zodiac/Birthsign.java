@@ -116,7 +116,7 @@ public class Birthsign implements ComponentV3, AutoSyncedComponent
 		DateTime dt = ((AnniversaryEntity)provider).getBirthday();
 		sign = dt.getZodiacSign();
 		element = dt.getElementalAspect();
-		FinalMinecraft.log.info("\t element: {}", element);
-		FinalMinecraft.log.info("\t sign: {}", sign);
+		FinalMinecraft.LOG.info("\t element: {}", element);
+		FinalMinecraft.LOG.info("\t sign: {}", sign);
 	}
 }

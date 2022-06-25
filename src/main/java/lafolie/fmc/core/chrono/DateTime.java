@@ -78,7 +78,6 @@ public class DateTime
 
 	/**
 	 * Create a DateTime based on the given date.
-	 * Note: the year should be at least 1000
 	 * @param dayOfTheMonth
 	 * @param month
 	 * @param year
@@ -90,13 +89,13 @@ public class DateTime
 
 	/**
 	 * Create a DateTime based on the given date,
-	 * with the year set to 1000.
+	 * with the year set to 0.
 	 * @param dayOfTheMonth
 	 * @param month
 	 */
 	public DateTime(int dayOfTheMonth, int month)
 	{
-		this(dayOfTheMonth, month, 1000);
+		this(dayOfTheMonth, month, 0);
 	}
 
 	/**

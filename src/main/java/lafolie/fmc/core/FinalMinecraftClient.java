@@ -81,10 +81,10 @@ public class FinalMinecraftClient implements ClientModInitializer
 		}
 		catch (IOException e)
 		{
-			FinalMinecraft.log.error("Could not load file damageFlash.png");
+			FinalMinecraft.LOG.error("Could not load file damageFlash.png");
 			e.fillInStackTrace();
 			e.printStackTrace();
-			FinalMinecraft.log.error("{}", e.getMessage());
+			FinalMinecraft.LOG.error("{}", e.getMessage());
 		}
 	}
 
@@ -121,7 +121,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 				}
 				else
 				{
-					FinalMinecraft.log.info("dmgEntity was null");
+					FinalMinecraft.LOG.info("dmgEntity was null");
 				}
 			});
 		});

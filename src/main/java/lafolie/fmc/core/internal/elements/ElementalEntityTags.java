@@ -62,7 +62,7 @@ public class ElementalEntityTags
 				}
 				TagKey<EntityType<?>> tag = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier("c", id));
 				TAGS.put(attribute, new ElementTagEntry(element, tag));
-				FinalMinecraft.log.info("Registered element tag {}", id);
+				FinalMinecraft.LOG.info("Registered element tag {}", id);
 			}
 		}
 	}

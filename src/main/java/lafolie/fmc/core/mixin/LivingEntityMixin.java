@@ -100,7 +100,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			&& random.nextBoolean())
 		{
 			world.spawnEntity(new ItemEntity(world, getX(), getY(), getZ(), new ItemStack(FMCItems.CRYSTAL_SHARD, 1)));
-			FinalMinecraft.log.info("BIRTHDAY SHARDS!!!");
+			FinalMinecraft.LOG.info("BIRTHDAY SHARDS!!!");
 			return;
 		}
 
@@ -153,8 +153,8 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			}
 		}
 
-		FinalMinecraft.log.info("Chance: {}", chance);
-		FinalMinecraft.log.info("Bonus: {}", bonus);
+		FinalMinecraft.LOG.info("Chance: {}", chance);
+		FinalMinecraft.LOG.info("Bonus: {}", bonus);
 		bonus *= isAnimal ? 0.5f : 1;
 		chance += bonus;
 
@@ -192,20 +192,20 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 			return amount;
 		}
 		FMCConfig config = FinalMinecraft.getConfig();
-		FinalMinecraft.log.info("-- COMBAT REPORT ------------------");
-		FinalMinecraft.log.info("\tBase damage: {}", amount);
+		FinalMinecraft.LOG.info("-- COMBAT REPORT ------------------");
+		FinalMinecraft.LOG.info("\tBase damage: {}", amount);
 
 		if(config.enableElements)
 		{
 			amount = adjustDamageElemental(source, amount);
 		}
-		FinalMinecraft.log.info("\tAfter element: {}", amount);
+		FinalMinecraft.LOG.info("\tAfter element: {}", amount);
 
 		if(config.combatEnableBirthsign)
 		{
 			amount = adjustDamageBirthsign(source, amount);
 		}
-		FinalMinecraft.log.info("\tAfter birthsign: {}", amount);
+		FinalMinecraft.LOG.info("\tAfter birthsign: {}", amount);
 
 		adjustDamageAttackType(source, amount);
 		
@@ -227,7 +227,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 		if(this instanceof BirthsignEntity && attacker != null && attacker instanceof BirthsignEntity)
 		{
 			amount *= ((BirthsignEntity)this).getFullCompatibility((BirthsignEntity)attacker);
-			FinalMinecraft.log.info("\tBirthsign Compatibility: {}", ((BirthsignEntity)this).getFullCompatibility((BirthsignEntity)attacker));
+			FinalMinecraft.LOG.info("\tBirthsign Compatibility: {}", ((BirthsignEntity)this).getFullCompatibility((BirthsignEntity)attacker));
 		}
 		return amount;
 	}
@@ -349,7 +349,7 @@ public abstract class LivingEntityMixin extends Entity implements DamageNumbers
 	@Inject(method = "applyDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setHealth(F)V", shift = At.Shift.AFTER))
 	private void applyDamageNumbers(DamageSource source, float amount, CallbackInfo info)
 	{
-		FinalMinecraft.log.info("Took damage: {}", amount);
+		FinalMinecraft.LOG.info("Took damage: {}", amount);
 		sendHealthModifiedPacket(amount, getLastAttributeUsed());
 	}
 

@@ -23,8 +23,8 @@ public abstract class PlayerEntityMixin
 	{
 		sendHealthModifiedPacket(amount, getLastAttributeUsed());
 		PlayerEntity p1 = ((PlayerEntity)(Object)this);
-		FinalMinecraft.log.info("MY UUID: {}", p1.getUuidAsString(), PlayerEntity.getUuidFromProfile(p1.getGameProfile()));
-		FinalMinecraft.log.info("\tPROFILE UUID: {}", PlayerEntity.getUuidFromProfile(p1.getGameProfile()));
+		FinalMinecraft.LOG.info("MY UUID: {}", p1.getUuidAsString(), PlayerEntity.getUuidFromProfile(p1.getGameProfile()));
+		FinalMinecraft.LOG.info("\tPROFILE UUID: {}", PlayerEntity.getUuidFromProfile(p1.getGameProfile()));
 	}
 
 	// @Inject(at = @At("HEAD"), method = "equipStack(Lnet/minecraft/entity/EquipmentSlot;Lnet/minecraft/item/ItemStack;)V")

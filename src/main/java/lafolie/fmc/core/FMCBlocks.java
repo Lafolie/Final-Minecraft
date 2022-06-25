@@ -34,7 +34,7 @@ public class FMCBlocks
 	public static final Block POISON_CRYSTAL  = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	public static final Block GRAVITY_CRYSTAL = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	
-	public static final HomeCrystalBlock HOME_CRYSTAL = new HomeCrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f).nonOpaque());
+	public static final HomeCrystalBlock HOME_CRYSTAL = new HomeCrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK).luminance((state) -> 15));
 	public static BlockEntityType<HomeCrystalBlockEntity> HOME_CRYSTAL_ENTITY;
 	public static final CrystalPedestalBlock CRYSTAL_PEDESTAL = new CrystalPedestalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	// #<block_instance>

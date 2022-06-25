@@ -9,9 +9,12 @@ import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 
+import java.util.logging.LogManager;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.netty.util.internal.logging.Log4J2LoggerFactory;
 import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.entity.AnniversaryEntity;
@@ -30,7 +33,7 @@ public class FinalMinecraft implements ModInitializer
 	public static final byte VERSION_REVISION = 0;
 	public static final String VERSION_CODENAME = "Biggs"; //convention = FFVI characters in order of appearance
 
-	public static final Logger log = LoggerFactory.getLogger("FMC Core");
+	public static final Logger LOG = LoggerFactory.getLogger("Final Minecraft");
 
 	private static FMCConfig config;
 
@@ -44,11 +47,12 @@ public class FinalMinecraft implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		log.info("Loaded FMC Core version {}", getVersionString());
-		log.info(AlBhed.toAlBhed("Welcome to Final Minecraft!"));
+		LOG.info("Loaded FMC Core version {}", getVersionString());
+		LOG.info(AlBhed.toAlBhed("Welcome to Final Minecraft!"));
 		initConfig();
 		initContent();
 
+		
 		// RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
 		ServerLifecycleEvents.SERVER_STARTING.register(server -> onServerStarting(server));
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> onServerStarted(server));
@@ -68,9 +72,9 @@ public class FinalMinecraft implements ModInitializer
 		if(entity instanceof PlayerEntity)
 		{
 			((AnniversaryEntity)entity).tryInit(world);
-			log.info("My birthday is {}", ((AnniversaryEntity)entity).getBirthday().getDateString());
-			log.info("My joinday is {}", ((AnniversaryEntity)entity).getJoinday().getDateString());
-			log.info("Today is {}", (new DateTime(world).getDateString()));
+			LOG.info("My birthday is {}", ((AnniversaryEntity)entity).getBirthday().getDateString());
+			LOG.info("My joinday is {}", ((AnniversaryEntity)entity).getJoinday().getDateString());
+			LOG.info("Today is {}", (new DateTime(world).getDateString()));
 
 		}
 
