@@ -8,6 +8,8 @@ public abstract class FMCIdentifier
 	private static String common = "c";
 	private static String packetSuffix = "_pkt";
 	private static String componentSuffix = "_cmp";
+	private static String animPrefix = "animations/";
+	private static String geoPrefix = "geo/";
 
 	/**
 	 * ID for general content
@@ -47,5 +49,25 @@ public abstract class FMCIdentifier
 	public static final Identifier componentID(String name)
 	{
 		return new Identifier(modid, name.concat(componentSuffix));
+	}
+
+	/**
+	 * ID for GeckoLib animations
+	 * @param name
+	 * @return final-minecraft:animation/[name]
+	 */
+	public static final Identifier animationID(String name)
+	{
+		return new Identifier(modid, animPrefix + name);
+	}
+
+	/**
+	 * ID for GeckoLib models
+	 * @param name
+	 * @return final-minecraft:geo/[name]
+	 */
+	public static final Identifier geometryID(String name)
+	{
+		return new Identifier(modid, geoPrefix + name);
 	}
 }

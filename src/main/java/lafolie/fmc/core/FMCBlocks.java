@@ -4,13 +4,18 @@ import lafolie.fmc.core.util.FMCIdentifier;
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.block.CrystalBlock;
 import lafolie.fmc.core.block.HomeCrystalBlock;
+import lafolie.fmc.core.block.HomeCrystalBlockEntity;
+import lafolie.fmc.core.block.HomeCrystalRenderer;
 import lafolie.fmc.core.block.CrystalPedestalBlock;
 // #<block_import_package>
-
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.item.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
@@ -28,7 +33,9 @@ public class FMCBlocks
 	public static final Block DARK_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	public static final Block POISON_CRYSTAL  = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	public static final Block GRAVITY_CRYSTAL = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
-	public static final HomeCrystalBlock HOME_CRYSTAL = new HomeCrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	
+	public static final HomeCrystalBlock HOME_CRYSTAL = new HomeCrystalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f).nonOpaque());
+	public static BlockEntityType<HomeCrystalBlockEntity> HOME_CRYSTAL_ENTITY;
 	public static final CrystalPedestalBlock CRYSTAL_PEDESTAL = new CrystalPedestalBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	// #<block_instance>
 
@@ -56,10 +63,18 @@ public class FMCBlocks
 		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("poison_crystal_block"), new BlockItem(POISON_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
 		Registry.register(Registry.BLOCK, FMCIdentifier.contentID("gravity_crystal_block"), GRAVITY_CRYSTAL);
 		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("gravity_crystal_block"), new BlockItem(GRAVITY_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
+		
 		Registry.register(Registry.BLOCK, FMCIdentifier.contentID("home_crystal_block"), HOME_CRYSTAL);
 		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("home_crystal_block"), new BlockItem(HOME_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
+		HOME_CRYSTAL_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, FMCIdentifier.contentID("home_crystal_block_entity"), FabricBlockEntityTypeBuilder.create(HomeCrystalBlockEntity::new, HOME_CRYSTAL).build(null));
+		
 		Registry.register(Registry.BLOCK, FMCIdentifier.contentID("crystal_pedestal_block"), CRYSTAL_PEDESTAL);
 		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("crystal_pedestal_block"), new BlockItem(CRYSTAL_PEDESTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
 		// #<block_register>
+	}
+
+	public static void initClient()
+	{
+		BlockEntityRendererRegistry.register(HOME_CRYSTAL_ENTITY, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> {return new HomeCrystalRenderer();});
 	}
 }

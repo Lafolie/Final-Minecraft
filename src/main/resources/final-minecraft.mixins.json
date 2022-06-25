@@ -6,6 +6,7 @@
   "mixins": [
     "ItemMixin",
     "ItemStackMixin",
+    "ItemEntityMixin",
     "PlayerInventoryMixin",
     "EntityMixin",
     "LivingEntityMixin",
@@ -14,7 +15,6 @@
     "AnimalEntityMixin",
     "InventoryScreenMixin",
     "SplashTextResourceSupplierMixin",
-    "LivingEntityRendererMixin",
     "ServerWorldMixin"
   ],
   "client": [

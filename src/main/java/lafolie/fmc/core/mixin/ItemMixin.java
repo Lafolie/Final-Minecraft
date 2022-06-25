@@ -31,11 +31,11 @@ public abstract class ItemMixin implements InnateElemental
 	@Shadow
 	private RegistryEntry.Reference<Item> registryEntry;
 
-	@Inject(at = @At("TAIL"), method = "<init>")
-	private void constructor(Settings settings, CallbackInfo info)
-	{
+	// @Inject(at = @At("TAIL"), method = "<init>")
+	// private void constructor(Settings settings, CallbackInfo info)
+	// {
 
-	}
+	// }
 
 	@Override
 	public EnumMap<ElementalAspect, Integer> getInnateElements(ElementalAttribute attribute)

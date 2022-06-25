@@ -30,6 +30,8 @@ public class FinalMinecraftClient implements ClientModInitializer
 	@Override
 	public void onInitializeClient()
 	{
+		FMCBlocks.initClient();
+
 		InitContent();
 		registerNetworkReceivers();
 
@@ -88,6 +90,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 
 	private void initBlocks()
 	{
+
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.CRYSTAL, RenderLayer.getTranslucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.FIRE_CRYSTAL, RenderLayer.getTranslucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.ICE_CRYSTAL, RenderLayer.getTranslucent());
