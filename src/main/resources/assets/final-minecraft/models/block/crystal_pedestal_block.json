@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "final-minecraft:block/crystal_pedestal_block",
@@ -140,6 +141,5 @@
 				"down": {"uv": [1, 8, 8, 7], "rotation": 90, "texture": "#0"}
 			}
 		}
-	],
-	"display": {}
+	]
 }

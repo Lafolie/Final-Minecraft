@@ -7,7 +7,9 @@ import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FinalMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -21,6 +23,15 @@ public class CrystalPedestalBlock extends Block
 	public CrystalPedestalBlock(Settings settings)
 	{
 		super(settings);
+	}
+
+	@Override
+	public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack)
+	{
+		if(!world.isClient)
+		{
+			detectCrystalShape(world, pos);
+		}
 	}
 
 	public boolean detectCrystalShape(World world, BlockPos pos)
