@@ -1,5 +1,8 @@
 package lafolie.fmc.core.block;
 
+import lafolie.fmc.core.FMCBlocks;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -14,6 +17,7 @@ public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity
 	{
 		super(new HomeCrystalModel());
 	}
+
 	
 	@Override
 	public RenderLayer getRenderType(HomeCrystalBlockEntity animatable, float partialTicks, MatrixStack stack,
@@ -21,5 +25,16 @@ public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity
 			Identifier textureLocation)
 	{
 		return RenderLayer.getEntityTranslucent(HomeCrystalModel.TEXTURE_ID);
+	}
+
+	@Override
+	public void render(BlockEntity tile, float partialTicks, MatrixStack matrixStackIn, VertexConsumerProvider bufferIn,
+			int combinedLightIn, int combinedOverlayIn) {
+		
+		BlockState state = tile.getWorld().getBlockState(tile.getPos());
+		if(state.getBlock() == FMCBlocks.HOME_CRYSTAL && !state.get(HomeCrystalBlock.IS_DUMMY))
+		{
+			super.render(tile, partialTicks, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+		}
 	}
 }

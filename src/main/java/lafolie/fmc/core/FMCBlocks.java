@@ -65,7 +65,7 @@ public class FMCBlocks
 		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("gravity_crystal_block"), new BlockItem(GRAVITY_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
 		
 		Registry.register(Registry.BLOCK, FMCIdentifier.contentID("home_crystal_block"), HOME_CRYSTAL);
-		Registry.register(Registry.ITEM,  FMCIdentifier.contentID("home_crystal_block"), new BlockItem(HOME_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
+		// Registry.register(Registry.ITEM,  FMCIdentifier.contentID("home_crystal_block"), new BlockItem(HOME_CRYSTAL, new FabricItemSettings().group(FMCItems.FMC_BLOCKS)));
 		HOME_CRYSTAL_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, FMCIdentifier.contentID("home_crystal_block_entity"), FabricBlockEntityTypeBuilder.create(HomeCrystalBlockEntity::new, HOME_CRYSTAL).build(null));
 		
 		Registry.register(Registry.BLOCK, FMCIdentifier.contentID("crystal_pedestal_block"), CRYSTAL_PEDESTAL);

@@ -58,12 +58,26 @@ public class CrystalPedestalBlock extends Block
 		if(closedList.size() == CRYSTAL_STRUCTURE_SIZE)
 		{
 			FinalMinecraft.LOG.info("DETECTED STRUCTURE!!!!");
+			buildHomeCrystal(closedList, world, pos.up(4));
 			return true;
 		}
 
 		return false;
 	}
 
+	private void buildHomeCrystal(List<BlockPos> crystalBlocks, World world, BlockPos masterCrystalPos)
+	{
+		// BlockState state = FMCBlocks.FIRE_CRYSTAL.getDefaultState();
+		for(BlockPos pos : crystalBlocks)
+		{
+			BlockState state = FMCBlocks.HOME_CRYSTAL.getDefaultState().with(HomeCrystalBlock.IS_DUMMY, !pos.equals(masterCrystalPos));
+			world.setBlockState(pos, state, Block.NOTIFY_ALL);
+			// FinalMinecraft.LOG.info("Replacing {}, isDummy = {} ({})", pos.toShortString(), pos.equals(masterCrystalPos), masterCrystalPos.toShortString());
+			world.addBlockEntity(new HomeCrystalBlockEntity(pos, state, masterCrystalPos));
+			world.updateNeighbors(pos, state.getBlock());
+			state.updateNeighbors(world, pos, NOTIFY_ALL);
+		}
+	}
 	// @Override
 	// public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
 	// 		BlockHitResult hit) {

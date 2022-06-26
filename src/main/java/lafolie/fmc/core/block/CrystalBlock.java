@@ -108,7 +108,9 @@ public class CrystalBlock extends Block
 		// not found, so check surroundings
 		List<BlockPos> surroundingCrystals = new ArrayList<>();
 		getSurroundingCrystalPos(surroundingCrystals, world, pos, false);
-		if(surroundingCrystals.size() == 0)
+
+		// if we found less than 3 crystals, this structure must be incomplete
+		if(surroundingCrystals.size() < 3)
 		{
 			return result;
 		}
