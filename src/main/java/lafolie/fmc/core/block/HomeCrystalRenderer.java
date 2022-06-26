@@ -24,6 +24,7 @@ public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity
 			VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
 			Identifier textureLocation)
 	{
+		// return RenderLayer.getEntityCutoutNoCull(HomeCrystalModel.TEXTURE_ID);
 		return RenderLayer.getEntityTranslucent(HomeCrystalModel.TEXTURE_ID);
 	}
 

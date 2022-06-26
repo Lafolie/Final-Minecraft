@@ -5,11 +5,15 @@ import java.util.function.Supplier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.FinalMinecraft;
+import lafolie.fmc.core.block.MultiBlockEntity;
 import lafolie.fmc.core.chrono.DateTime;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
@@ -26,6 +30,20 @@ public abstract class ServerWorldMixin extends World
 		super(properties, registryRef, registryEntry, profiler, isClient, debugWorld, seed);
 		//Auto-generated constructor stub
 	}
+
+	@ModifyVariable(at = @At("HEAD"), method = "setBlockBreakingInfo(ILnet/minecraft/util/math/BlockPos;I)V")
+	private BlockPos changeMultiblockDamageInfoPos(BlockPos pos)
+	{
+		BlockEntity entity =  getBlockEntity(pos);
+		if(entity != null && entity instanceof MultiBlockEntity)
+		{
+			FinalMinecraft.LOG.info("Redirecting from {} to {}", pos, ((MultiBlockEntity)entity).getMasterBlockEntityPos());
+			pos = ((MultiBlockEntity)entity).getMasterBlockEntityPos();
+		}
+
+		return pos;
+	}
+
 
 	// private DateTime dt = new DateTime();
 

@@ -2,8 +2,12 @@ package lafolie.fmc.core.block;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.spongepowered.asm.mixin.Final;
 
 import lafolie.fmc.core.FMCBlocks;
+import lafolie.fmc.core.FinalMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,11 +31,18 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable
+public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, MultiBlockEntity
 {
+	private static final String POS_KEY = "masterPos";
+	private static final String CHARGE_KEY = "charge";
+	private static final int MAX_CHARGE = 9999;
+	private static final int JOB_CHARGE = 5000;
+
 	private AnimationFactory animFactory = new AnimationFactory(this);
 	private BlockPos masterCrystalPos;
-	private static final String POS_KEY = "masterPos";
+	private int charge = 1000;
+	private boolean exploding = false;
+
 
 	public HomeCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state)
 	{
@@ -67,39 +78,77 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable
 		return this.animFactory;
 	}
 
+	@Override
+	public BlockPos getMasterBlockEntityPos()
+	{
+		return masterCrystalPos != null ? masterCrystalPos : getPos();
+	}
+
+	@Override
+	public BlockEntity getMasterBlockEntity(World world)
+	{
+		if(masterCrystalPos != null)
+		{
+			Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(masterCrystalPos, FMCBlocks.HOME_CRYSTAL_ENTITY);
+			if(entity.isPresent())
+			{
+				return entity.get();
+			}
+
+		}
+		return null;
+	}
+
+	public boolean isExploding()
+	{
+		return exploding;
+	}
+
 	public void breakCrystal(World world, BlockPos originalPos)
 	{
+		exploding = true;
 		BlockPos origin = getPos();
-		for(int y = -1; y <= 2; y++)
+		// FinalMinecraft.LOG.info("Destroying crystal. Master: {}", origin);
+		// int count = 0;
+		for(int y = -2; y <= 1; y++)
 		{
 			for(int x = -1; x <= 1; x++)
 			{
 				for(int z = -1; z <= 1; z++)
 				{
 					BlockPos pos = origin.add(x, y, z);
-					destroyDummy(world, pos, originalPos);
-					
+					destroyDummy(world, pos);
+					// count ++;
 				}
 			}
 		}
 
-		destroyDummy(world, origin.up(2), originalPos);
-		destroyDummy(world, origin.down(3), originalPos);
+		destroyDummy(world, origin.up(2));
+		destroyDummy(world, origin.down(3));
+		// count +=2;
 
+		// FinalMinecraft.LOG.info("Destroyed {} blocks", count);
 		world.createExplosion(null, origin.getX(), origin.getY(), origin.getZ(), 8, Explosion.DestructionType.BREAK);
 	}
 
-	private void destroyDummy(World world, BlockPos pos, BlockPos originalPos)
+	private void destroyDummy(World world, BlockPos pos)
 	{
 		BlockState state = world.getBlockState(pos);
 		if(state.getBlock() == FMCBlocks.HOME_CRYSTAL)
 		{
-			if(!pos.equals(originalPos))
-			{
-				world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, HomeCrystalBlock.getRawIdFromState(state));
-				world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
-			}
+			world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
+			// world.removeBlock(pos, false);
+			world.removeBlockEntity(pos);
+			world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, HomeCrystalBlock.getRawIdFromState(state));
+			// else
+			// {
+			// 	FinalMinecraft.LOG.info("Skipping block: {} original: {}", pos, originalPos);
+			// }
 		}
+		// else
+		// {
+		// 	FinalMinecraft.LOG.info("Did not find crystal: {}", pos);
+		// }
 	}
 
 	// ------------------------------------------------------------------------
@@ -113,6 +162,12 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable
 		if(masterCrystalPos != null)
 		{
 			nbt.putIntArray(POS_KEY, new int[] {masterCrystalPos.getX(), masterCrystalPos.getY(), masterCrystalPos.getZ()});
+			
+			// only store charge for the master
+			if(masterCrystalPos.equals(getPos()))
+			{
+				nbt.putInt(CHARGE_KEY, charge);
+			}
 		}
 	}
 
@@ -124,6 +179,11 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable
 		{
 			int[] arr = nbt.getIntArray(POS_KEY);
 			masterCrystalPos = new BlockPos(arr[0], arr[1], arr[2]);
+
+			if(masterCrystalPos.equals(getPos()))
+			{
+				charge = nbt.getInt(CHARGE_KEY);
+			}
 		}
 	}
 
