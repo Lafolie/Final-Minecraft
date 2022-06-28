@@ -2,8 +2,18 @@ package lafolie.fmc.core.util;
 
 import java.util.UUID;
 
+import com.eliotlash.mclib.utils.MathHelper;
+
+import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
+import net.minecraft.util.math.Vec2f;
+
 public final class Maths
 {
+	public static Vec2f indexToUV(double index, int gridSize)
+	{
+		return new Vec2f((float)(index % gridSize), (float)Math.floor(index / gridSize));
+	}
+
 	public static byte hashUUIDByte(UUID id)
 	{
 		short s_xor = hashUUIDShort(id);

@@ -7,6 +7,8 @@ import lafolie.fmc.core.block.HomeCrystalBlock;
 import lafolie.fmc.core.block.HomeCrystalBlockEntity;
 import lafolie.fmc.core.block.HomeCrystalRenderer;
 import lafolie.fmc.core.block.CrystalPedestalBlock;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 // #<block_import_package>
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -73,6 +75,7 @@ public class FMCBlocks
 		// #<block_register>
 	}
 
+	@Environment(EnvType.CLIENT)
 	public static void initClient()
 	{
 		BlockEntityRendererRegistry.register(HOME_CRYSTAL_ENTITY, (BlockEntityRendererFactory.Context rendererDispatcherIn) -> {return new HomeCrystalRenderer();});

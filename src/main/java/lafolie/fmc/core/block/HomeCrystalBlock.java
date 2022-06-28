@@ -2,13 +2,18 @@ package lafolie.fmc.core.block;
 
 import java.util.Optional;
 
+import com.mojang.datafixers.types.templates.Check.CheckType;
+
 import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FinalMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
@@ -20,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.explosion.Explosion;
 
-public class HomeCrystalBlock extends Block implements BlockEntityProvider
+public class HomeCrystalBlock extends BlockWithEntity
 {
 	public static final BooleanProperty IS_DUMMY = BooleanProperty.of("is_dummy");
 
@@ -45,10 +50,20 @@ public class HomeCrystalBlock extends Block implements BlockEntityProvider
 	}
 
 	@Override
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-			BlockHitResult hit)
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
 	{
-		// TODO Lua-generated method stub ;)
+		BlockPos masterPos;
+		Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos, FMCBlocks.HOME_CRYSTAL_ENTITY);
+		if(entity.isPresent())
+		{
+			masterPos = ((MultiBlockEntity)entity.get()).getMasterBlockEntityPos();
+		}
+		Block master = world.getBlockState(pos).getBlock();
+		return master instanceof HomeCrystalBlock ? ((HomeCrystalBlock)master).useCrystal(state, world, pos, player, hand, hit) : ActionResult.FAIL;
+	}
+
+	public ActionResult useCrystal(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
+	{
 		return ActionResult.SUCCESS;
 	}
 
@@ -79,27 +94,39 @@ public class HomeCrystalBlock extends Block implements BlockEntityProvider
 		FinalMinecraft.LOG.info("Explosion call");
 	}
 
-	// @Override
-	// public void onDestroyedByExplosion(World world, BlockPos pos, Explosion explosion)
-	// {
-	// 	breakAll(world, pos);
-	// }
+	private HomeCrystalBlockEntity getMasterCrystal(World world, BlockPos pos)
+	{
+		Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos, FMCBlocks.HOME_CRYSTAL_ENTITY);
+		if(entity.isPresent())
+		{
+			return (HomeCrystalBlockEntity)((MultiBlockEntity)entity.get()).getMasterBlockEntity(world);
+		}
+		return null;
+	}
+
+	/**
+	 * Ensures that only the master home crystal block will tick
+	 */
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
+	{
+		if(!world.isClient && !state.get(IS_DUMMY))
+		{
+			return HomeCrystalBlock.checkType(type, FMCBlocks.HOME_CRYSTAL_ENTITY, HomeCrystalBlockEntity::tick);
+		}
+
+		return null;
+	}
 
 	private void breakAll(World world, BlockPos pos)
 	{
 		if(!world.isClient)
 		{
-			Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos, FMCBlocks.HOME_CRYSTAL_ENTITY);
-			if(entity.isPresent())
+			HomeCrystalBlockEntity masterCrystal = getMasterCrystal(world, pos);
+			if(masterCrystal != null && !masterCrystal.isExploding())
 			{
-				FinalMinecraft.LOG.info("Destroying all");
-				HomeCrystalBlockEntity masterCrystal = (HomeCrystalBlockEntity)((MultiBlockEntity)entity.get()).getMasterBlockEntity(world);
-				if(masterCrystal != null && !masterCrystal.isExploding())
-				{
-					masterCrystal.breakCrystal(world, pos);
-				}
+				masterCrystal.breakCrystal(world);
 			}
-			world.removeBlockEntity(pos);
 		}
 	}
 }
