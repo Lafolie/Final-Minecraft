@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import lafolie.fmc.core.FMCBlocks;
-
+import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,6 +13,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -34,10 +37,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, MultiBlockEntity
+public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IAnimatable, MultiBlockEntity
 {
 	private static final String POS_KEY = "masterPos";
 	private static final String CHARGE_KEY = "charge";
+	private static final String INVENTORY_KEY = "inventory";
+
 	private static final int CHARGE_PER_HOUR = 72000;
 	private static final int MAX_CHARGE = CHARGE_PER_HOUR * 24;
 	private static final int JOB_CHARGE = CHARGE_PER_HOUR * 12;
@@ -46,6 +51,7 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 	public final Box effectArea;
 
 	private static final TargetPredicate TARGET_PREDICATE = TargetPredicate.createNonAttackable();
+	private HomeCrystalBlockEntity masterCrystal;
 	private AnimationFactory animFactory = new AnimationFactory(this);
 	private BlockPos masterCrystalPos;
 	private int charge = 0;
@@ -54,6 +60,7 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 	private int tickCounter = 0;
 	private ChargeStatus chargeStatus = ChargeStatus.LOW;
 	private int battery = 0;
+	private SimpleInventory sharedInventory = null;
 
 	public static enum ChargeStatus
 	{
@@ -69,6 +76,21 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 
 		boolean isDummy = state.get(HomeCrystalBlock.IS_DUMMY);
 		effectArea = isDummy ? null : Box.of(Vec3d.of(pos), EFFECT_SIZE, EFFECT_SIZE, EFFECT_SIZE);
+		if(sharedInventory == null)
+		{
+			if(isDummy)
+			{
+				BlockEntity master = getMasterBlockEntity(world);
+				if(master != null)
+				{
+					sharedInventory = ((HomeCrystalBlockEntity)master).getSharedInventory();
+				}
+			}
+			else
+			{
+				sharedInventory = new SimpleInventory(1);
+			}
+		}
 
 		if(!state.get(HomeCrystalBlock.IS_DUMMY))
 		{
@@ -81,7 +103,7 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 		this(FMCBlocks.HOME_CRYSTAL_ENTITY, pos, state);
 	}
 
-	public HomeCrystalBlockEntity(BlockPos pos, BlockState state, BlockPos masterPos)
+	public HomeCrystalBlockEntity(BlockPos pos, BlockState state, BlockPos masterPos, SimpleInventory sharedInventory)
 	{
 		this(pos, state);
 		masterCrystalPos = masterPos;
@@ -214,8 +236,7 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 	{
 		exploding = true;
 		BlockPos origin = getPos();
-		// FinalMinecraft.LOG.info("Destroying crystal. Master: {}", origin);
-		// int count = 0;
+
 		for(int y = -2; y <= 1; y++)
 		{
 			for(int x = -1; x <= 1; x++)
@@ -224,16 +245,13 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 				{
 					BlockPos pos = origin.add(x, y, z);
 					destroyDummy(world, pos);
-					// count ++;
 				}
 			}
 		}
 
 		destroyDummy(world, origin.up(2));
 		destroyDummy(world, origin.down(3));
-		// count +=2;
 
-		// FinalMinecraft.LOG.info("Destroyed {} blocks", count);
 		world.createExplosion(null, origin.getX(), origin.getY(), origin.getZ(), 8, Explosion.DestructionType.BREAK);
 	}
 
@@ -243,18 +261,9 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 		if(state.getBlock() == FMCBlocks.HOME_CRYSTAL)
 		{
 			world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
-			// world.removeBlock(pos, false);
 			world.removeBlockEntity(pos);
 			world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, HomeCrystalBlock.getRawIdFromState(state));
-			// else
-			// {
-			// 	FinalMinecraft.LOG.info("Skipping block: {} original: {}", pos, originalPos);
-			// }
 		}
-		// else
-		// {
-		// 	FinalMinecraft.LOG.info("Did not find crystal: {}", pos);
-		// }
 	}
 
 	// ------------------------------------------------------------------------
@@ -269,10 +278,11 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 		{
 			nbt.putIntArray(POS_KEY, new int[] {masterCrystalPos.getX(), masterCrystalPos.getY(), masterCrystalPos.getZ()});
 			
-			// only store charge for the master
+			// only store these for the master
 			if(masterCrystalPos.equals(getPos()))
 			{
 				nbt.putInt(CHARGE_KEY, charge);
+				nbt.put(INVENTORY_KEY, sharedInventory.toNbtList());
 			}
 		}
 	}
@@ -286,9 +296,11 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 			int[] arr = nbt.getIntArray(POS_KEY);
 			masterCrystalPos = new BlockPos(arr[0], arr[1], arr[2]);
 
+			// only retrieve these for the master
 			if(masterCrystalPos.equals(getPos()))
 			{
 				charge = nbt.getInt(CHARGE_KEY);
+				sharedInventory.readNbtList(nbt.getList(INVENTORY_KEY, NbtType.COMPOUND));
 			}
 		}
 	}
@@ -303,5 +315,62 @@ public class HomeCrystalBlockEntity extends BlockEntity implements IAnimatable, 
 	public NbtCompound toInitialChunkDataNbt()
 	{
 		return createNbt();
+	}
+
+	// ------------------------------------------------------------------------
+	// Inventory
+	// ------------------------------------------------------------------------
+	
+	protected SimpleInventory getSharedInventory()
+	{
+		return sharedInventory;
+	}
+
+	@Override
+	public void clear()
+	{
+		sharedInventory.clear();
+	}
+
+	@Override
+	public int size()
+	{
+		return sharedInventory.size();
+	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		return sharedInventory.isEmpty();
+	}
+
+	@Override
+	public ItemStack getStack(int slot)
+	{
+		return sharedInventory.getStack(slot);
+	}
+
+	@Override
+	public ItemStack removeStack(int slot, int amount)
+	{
+		return sharedInventory.removeStack(slot, amount);
+	}
+
+	@Override
+	public ItemStack removeStack(int slot)
+	{
+		return sharedInventory.removeStack(slot);
+	}
+
+	@Override
+	public void setStack(int slot, ItemStack stack)
+	{
+		sharedInventory.setStack(slot, stack);
+	}
+
+	@Override
+	public boolean canPlayerUse(PlayerEntity player)
+	{
+		return sharedInventory.canPlayerUse(player);
 	}
 }

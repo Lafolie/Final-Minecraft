@@ -31,18 +31,18 @@ public abstract class ServerWorldMixin extends World
 		//Auto-generated constructor stub
 	}
 
-	@ModifyVariable(at = @At("HEAD"), method = "setBlockBreakingInfo(ILnet/minecraft/util/math/BlockPos;I)V")
-	private BlockPos changeMultiblockDamageInfoPos(BlockPos pos)
-	{
-		BlockEntity entity =  getBlockEntity(pos);
-		if(entity != null && entity instanceof MultiBlockEntity)
-		{
-			FinalMinecraft.LOG.info("Redirecting from {} to {}", pos, ((MultiBlockEntity)entity).getMasterBlockEntityPos());
-			pos = ((MultiBlockEntity)entity).getMasterBlockEntityPos();
-		}
+	// @ModifyVariable(at = @At("HEAD"), method = "setBlockBreakingInfo(ILnet/minecraft/util/math/BlockPos;I)V")
+	// private BlockPos changeMultiblockDamageInfoPos(BlockPos pos)
+	// {
+		// BlockEntity entity =  getBlockEntity(pos);
+		// if(entity != null && entity instanceof MultiBlockEntity)
+		// {
+		// 	FinalMinecraft.LOG.info("Redirecting from {} to {}", pos, ((MultiBlockEntity)entity).getMasterBlockEntityPos());
+		// 	pos = ((MultiBlockEntity)entity).getMasterBlockEntityPos();
+		// }
 
-		return pos;
-	}
+	// 	return pos;
+	// }
 
 
 	// private DateTime dt = new DateTime();

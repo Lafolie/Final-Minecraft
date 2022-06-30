@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -79,12 +80,13 @@ public class CrystalPedestalBlock extends Block
 	private void buildHomeCrystal(List<BlockPos> crystalBlocks, World world, BlockPos masterCrystalPos)
 	{
 		// BlockState state = FMCBlocks.FIRE_CRYSTAL.getDefaultState();
+		SimpleInventory sharedInventory = new SimpleInventory(1);
 		for(BlockPos pos : crystalBlocks)
 		{
 			BlockState state = FMCBlocks.HOME_CRYSTAL.getDefaultState().with(HomeCrystalBlock.IS_DUMMY, !pos.equals(masterCrystalPos));
 			world.setBlockState(pos, state, Block.NOTIFY_ALL);
 			// FinalMinecraft.LOG.info("Replacing {}, isDummy = {} ({})", pos.toShortString(), pos.equals(masterCrystalPos), masterCrystalPos.toShortString());
-			world.addBlockEntity(new HomeCrystalBlockEntity(pos, state, masterCrystalPos));
+			world.addBlockEntity(new HomeCrystalBlockEntity(pos, state, masterCrystalPos, sharedInventory));
 			world.updateNeighbors(pos, state.getBlock());
 			state.updateNeighbors(world, pos, NOTIFY_ALL);
 		}

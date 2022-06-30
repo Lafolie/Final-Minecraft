@@ -45,8 +45,8 @@ public class HomeCrystalBlock extends BlockWithEntity
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
-		// return state.get(IS_DUMMY).booleanValue() ? BlockRenderType.INVISIBLE : BlockRenderType.ENTITYBLOCK_ANIMATED;
-		return state.get(IS_DUMMY).booleanValue() ? BlockRenderType.MODEL : BlockRenderType.ENTITYBLOCK_ANIMATED;
+		return state.get(IS_DUMMY).booleanValue() ? BlockRenderType.INVISIBLE : BlockRenderType.ENTITYBLOCK_ANIMATED;
+		// return state.get(IS_DUMMY).booleanValue() ? BlockRenderType.MODEL : BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Override

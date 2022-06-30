@@ -28,7 +28,7 @@ public abstract class Particles
 	{
 		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlastTexture, registry) -> 
 		{
-			registry.register(FMCIdentifier.componentID("particle/crystal_sparkles"));
+			registry.register(FMCIdentifier.contentID("particle/crystal_sparkles"));
 		});
 
 		ParticleFactoryRegistry.getInstance().register(TEXT, TextBillboardParticle.Factory::new);

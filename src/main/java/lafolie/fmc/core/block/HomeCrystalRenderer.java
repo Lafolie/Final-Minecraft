@@ -18,7 +18,12 @@ public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity
 		super(new HomeCrystalModel());
 	}
 
-	
+	@Override
+	public int getRenderDistance()
+	{
+		return 256;
+	}
+
 	@Override
 	public RenderLayer getRenderType(HomeCrystalBlockEntity animatable, float partialTicks, MatrixStack stack,
 			VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
