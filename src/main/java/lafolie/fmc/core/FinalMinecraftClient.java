@@ -66,6 +66,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 
 	private void InitContent()
 	{
+		FMCScreens.initClient();
 		Particles.initClient();
 		initBlocks();
 	}

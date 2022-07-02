@@ -2,6 +2,7 @@ package lafolie.fmc.core.internal.elements;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
@@ -54,11 +55,11 @@ public class ElementalEntityTags
 				String id;
 				if(attribute == ElementalAttribute.RESISTANCE)
 				{
-					id = String.format("%s_elemental_entities", element.toString().toLowerCase());
+					id = String.format(Locale.ROOT, "%s_elemental_entities", element.toString().toLowerCase(Locale.ROOT));
 				}
 				else
 				{
-					id = String.format("%s_%s_elemental_entities", attributeID, element.toString().toLowerCase());
+					id = String.format(Locale.ROOT, "%s_%s_elemental_entities", attributeID, element.toString().toLowerCase(Locale.ROOT));
 				}
 				TagKey<EntityType<?>> tag = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier("c", id));
 				TAGS.put(attribute, new ElementTagEntry(element, tag));

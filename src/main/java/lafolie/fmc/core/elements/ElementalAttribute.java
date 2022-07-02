@@ -8,27 +8,27 @@ public enum ElementalAttribute
 	/**
 	 * Increases damage.
 	 */
-	WEAKNESS("FMC_ElementalWeakness"),
+	WEAKNESS("weak"),
 	/**
 	 * Reduces damage.
 	 */
-	RESISTANCE("FMC_ElementalResistance"),
+	RESISTANCE("res"),
 	/**
 	 * Damage will be nullified (0).
 	 */
-	IMMUNITY("FMC_ElementalImmunity"),
+	IMMUNITY("immune"),
 	/**
 	 * Damage becomes healing.
 	 */
-	ABSORBTION("FMC_ElementalAbsorbtion"),
+	ABSORBTION("absorb"),
 	/**
 	 * Damage will instantly kill.
 	 */
-	FATAL("FMC_ElementalFatal"),
+	FATAL("fatal"),
 	/**
 	 * Damage will fully heal.
 	 */
-	REVIVE("FMC_ElementalRevive");
+	REVIVE("revive");
 
 	private String key;
 

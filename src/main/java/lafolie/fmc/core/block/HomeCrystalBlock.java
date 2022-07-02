@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.mojang.datafixers.types.templates.Check.CheckType;
 
 import lafolie.fmc.core.FMCBlocks;
+import lafolie.fmc.core.FMCScreens;
 import lafolie.fmc.core.FinalMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
@@ -14,7 +15,10 @@ import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.ActionResult;
@@ -52,21 +56,32 @@ public class HomeCrystalBlock extends BlockWithEntity
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
 	{
-		BlockPos masterPos;
-		Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos, FMCBlocks.HOME_CRYSTAL_ENTITY);
-		if(entity.isPresent())
-		{
-			masterPos = ((MultiBlockEntity)entity.get()).getMasterBlockEntityPos();
+		if(!world.isClient)
+		{	
+			BlockPos masterPos;
+			Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos, FMCBlocks.HOME_CRYSTAL_ENTITY);
+			if(entity.isPresent())
+			{
+				masterPos = ((MultiBlockEntity)entity.get()).getMasterBlockEntityPos();
+				BlockState masterState = world.getBlockState(pos);
+				Block master = masterState.getBlock();
+				return master instanceof HomeCrystalBlock ? ((HomeCrystalBlock)master).useCrystal(masterState, world, masterPos, player, hand, hit) : ActionResult.FAIL;
+			}
 		}
-		Block master = world.getBlockState(pos).getBlock();
-		return master instanceof HomeCrystalBlock ? ((HomeCrystalBlock)master).useCrystal(state, world, pos, player, hand, hit) : ActionResult.FAIL;
+		return ActionResult.SUCCESS;
 	}
 
 	public ActionResult useCrystal(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
 	{
+		NamedScreenHandlerFactory factory = state.createScreenHandlerFactory(world, pos);
+		if(factory != null)
+		{
+			player.openHandledScreen(factory);
+		}
 		return ActionResult.SUCCESS;
 	}
-
+	
+	// HandledScreens.open(FMCScreens.HOME_CRYSTAL_SCREEN_HANDLER, player, id, title);
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state)
 	{
@@ -90,6 +105,9 @@ public class HomeCrystalBlock extends BlockWithEntity
 	@Override
 	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved)
 	{
+		// no need to call super as breakAll destroys the block entities
+		// item scattering and such is also done there since it is only called once when the multiblock
+		// is destroyed
 		breakAll(world, pos);
 		FinalMinecraft.LOG.info("Explosion call");
 	}
@@ -128,5 +146,23 @@ public class HomeCrystalBlock extends BlockWithEntity
 				masterCrystal.breakCrystal(world);
 			}
 		}
+	}
+
+	@Override
+	public boolean hasComparatorOutput(BlockState state)
+	{
+		return true;
+	}
+
+	@Override
+	public int getComparatorOutput(BlockState state, World world, BlockPos pos)
+	{
+		BlockEntity master = getMasterCrystal(world, pos);
+		if(master != null)
+		{
+			return ScreenHandler.calculateComparatorOutput(master);
+
+		}
+		return 0;
 	}
 }

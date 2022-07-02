@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import lafolie.fmc.core.FMCBlocks;
+import lafolie.fmc.core.screen.HomeCrystalScreen;
+import lafolie.fmc.core.screen.HomeCrystalScreenHandler;
 import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,6 +15,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -20,6 +23,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
@@ -37,7 +45,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IAnimatable, MultiBlockEntity
+public class HomeCrystalBlockEntity extends BlockEntity 
+	implements Inventory, IAnimatable, MultiBlockEntity, NamedScreenHandlerFactory
 {
 	private static final String POS_KEY = "masterPos";
 	private static final String CHARGE_KEY = "charge";
@@ -47,13 +56,14 @@ public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IA
 	private static final int MAX_CHARGE = CHARGE_PER_HOUR * 24;
 	private static final int JOB_CHARGE = CHARGE_PER_HOUR * 12;
 	private static final double EFFECT_SIZE = 2048d;
+	private static final TargetPredicate TARGET_PREDICATE = TargetPredicate.createNonAttackable();
 
 	public final Box effectArea;
-
-	private static final TargetPredicate TARGET_PREDICATE = TargetPredicate.createNonAttackable();
+	
 	private HomeCrystalBlockEntity masterCrystal;
 	private AnimationFactory animFactory = new AnimationFactory(this);
 	private BlockPos masterCrystalPos;
+	private boolean hasPedestal = true;
 	private int charge = 0;
 	private int explosionCountdown = 0;
 	private boolean exploding = false;
@@ -96,6 +106,11 @@ public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IA
 		{
 			charge = CHARGE_PER_HOUR;
 		}
+	}
+
+	public void setHasPedestal(boolean hasPedestal)
+	{
+		this.hasPedestal = hasPedestal;
 	}
 
 	public HomeCrystalBlockEntity(BlockPos pos, BlockState state)
@@ -236,6 +251,7 @@ public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IA
 	{
 		exploding = true;
 		BlockPos origin = getPos();
+		ItemScatterer.spawn(world, origin, this);
 
 		for(int y = -2; y <= 1; y++)
 		{
@@ -372,5 +388,21 @@ public class HomeCrystalBlockEntity extends BlockEntity implements Inventory, IA
 	public boolean canPlayerUse(PlayerEntity player)
 	{
 		return sharedInventory.canPlayerUse(player);
+	}
+
+	// ------------------------------------------------------------------------
+	// ScreenHandler
+	// ------------------------------------------------------------------------
+
+	@Override
+	public ScreenHandler createMenu(int syncID, PlayerInventory playerInventory, PlayerEntity player)
+	{
+		return new HomeCrystalScreenHandler(syncID, playerInventory, this);
+	}
+
+	@Override
+	public Text getDisplayName()
+	{
+		return new TranslatableText(getCachedState().getBlock().getTranslationKey());
 	}
 }

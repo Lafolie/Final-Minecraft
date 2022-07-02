@@ -2,11 +2,14 @@ package lafolie.fmc.core.block;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FinalMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
@@ -31,8 +34,43 @@ public class CrystalPedestalBlock extends Block
 	{
 		if(!world.isClient)
 		{
-			detectCrystalShape(world, pos);
+			HomeCrystalBlockEntity master = findHomeCrystalAbove(world, pos);
+			if(master != null)
+			{
+				master.setHasPedestal(true);
+			}
+			else
+			{
+				detectCrystalShape(world, pos);
+			}
 		}
+	}
+
+	@Override
+	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved)
+	{
+		if(!world.isClient)
+		{
+			HomeCrystalBlockEntity master = findHomeCrystalAbove(world, pos);
+			if(master != null && !master.isExploding())
+			{
+				master.setHasPedestal(false);
+			}
+		}
+	}
+
+	private HomeCrystalBlockEntity findHomeCrystalAbove(World world, BlockPos pos)
+	{
+		Optional<HomeCrystalBlockEntity> entity = world.getBlockEntity(pos.up(), FMCBlocks.HOME_CRYSTAL_ENTITY);
+		if(entity.isPresent())
+		{
+			BlockEntity master = entity.get().getMasterBlockEntity(world);
+			if(master != null)
+			{
+				return (HomeCrystalBlockEntity)master;
+			}
+		}
+		return null;
 	}
 
 	public boolean detectCrystalShape(World world, BlockPos pos)

@@ -12,7 +12,7 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.registry.Registry;
 
-public abstract class Particles
+public final class Particles
 {
 	public static final DefaultParticleType TEXT = FabricParticleTypes.simple(true);
 	public static final DefaultParticleType CRYSTAL_SPARKLES = FabricParticleTypes.simple();

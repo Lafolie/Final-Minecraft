@@ -2,6 +2,7 @@ package lafolie.fmc.core.internal.elements;
 
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class ElementalItemTags
 	{
 		for(ElementalAspect element : ElementalAspect.values())
 		{
-			String id = element.toString().toLowerCase().concat("_elemental_items");
+			String id = element.toString().toLowerCase(Locale.ROOT).concat("_elemental_items");
 			TAGS.put(element, TagKey.of(Registry.ITEM_KEY, FMCIdentifier.commonTagID(id)));
 		}
 	}

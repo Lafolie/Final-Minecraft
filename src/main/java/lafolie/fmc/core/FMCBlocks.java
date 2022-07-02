@@ -22,7 +22,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 
-public class FMCBlocks
+public final class FMCBlocks
 {
 	public static final CrystalBlock CRYSTAL = new CrystalBlock(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	public static final Block FIRE_CRYSTAL    = new Block(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK));

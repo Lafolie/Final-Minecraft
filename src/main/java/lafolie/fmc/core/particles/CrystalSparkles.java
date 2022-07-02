@@ -22,7 +22,7 @@ import net.minecraft.util.math.Vec3f;
 public class CrystalSparkles extends BillboardParticle
 {
 	private Vec2f uv;
-	private Vec3f scale = Vec3f.POSITIVE_Z;
+	private Vec3f scaleVec = Vec3f.POSITIVE_Z;
 	private Vec3f prevScale;
 	private boolean rescale;
 
@@ -36,20 +36,20 @@ public class CrystalSparkles extends BillboardParticle
 		if(spr == 0)
 		{
 			rescale = true;
-			scale.add(4.5f, 0.5f, 0f);
+			scaleVec.add(4.5f, 0.5f, 0f);
 		}
 		else if(spr == 3)
 		{
 			velocityMultiplier = 0;
 			maxAge = 10;
-			scale.add(1f, 10f, 0f);
+			scaleVec.add(1f, 10f, 0f);
 		}
 		else
 		{
-			scale.add(1f, 1f, 0f);
+			scaleVec.add(1f, 1f, 0f);
 		}
 
-		prevScale = scale;
+		prevScale = scaleVec;
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class CrystalSparkles extends BillboardParticle
 			float life = age / maxAge;
 			if(rescale)
 			{
-				scale.set((1f - life) * 4f + 0.5f, life * 4f + 0.5f, 1f);
+				scaleVec.set((1f - life) * 4f + 0.5f, life * 4f + 0.5f, 1f);
 			}
 			setAlpha(life);
 		}

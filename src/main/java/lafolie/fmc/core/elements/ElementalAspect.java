@@ -28,17 +28,19 @@ import java.util.Map;
  */
 public enum ElementalAspect
 {
-	NONE,
-	FIRE,
-	ICE,
-	THUNDER,
-	WIND,
-	WATER,
-	EARTH,
-	HOLY,
-	DARK,
-	POISON,
-	GRAVITY;
+	NONE("n"),
+	FIRE("f"),
+	ICE("i"),
+	THUNDER("t"),
+	WIND("w"),
+	WATER("u"),
+	EARTH("e"),
+	HOLY("h"),
+	DARK("d"),
+	POISON("p"),
+	GRAVITY("g");
+
+	private String key;
 
 	private static final Map<ElementalAspect, ElementalAspect> WEAK = new EnumMap<>(ElementalAspect.class);
 	private static final Map<ElementalAspect, ElementalAspect> STRONG = new EnumMap<>(ElementalAspect.class);
@@ -103,6 +105,11 @@ public enum ElementalAspect
 		}
 	}
 
+	private ElementalAspect(String key)
+	{
+		this.key = key;
+	}
+
 	/**
 	 * Get a random element (excludes NONE)
 	 * @return a random element
@@ -162,12 +169,12 @@ public enum ElementalAspect
 
 	public String toNbtKey()
 	{
-		return this.toString();
+		return key;
 	}
 
 	public static String toNbtKey(ElementalAspect aspect)
 	{
-		return aspect.toString();
+		return aspect.key;
 	}
 
 	public static ElementalAspect fromNbtKey(String key)

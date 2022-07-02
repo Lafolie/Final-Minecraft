@@ -1,5 +1,7 @@
 package lafolie.fmc.core.chrono;
 
+import java.util.Locale;
+
 import lafolie.fmc.core.elements.ElementalAspect;
 import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.util.math.MathHelper;
@@ -225,7 +227,7 @@ public class DateTime
 					suffix = "th";
 			}
 		}
-		return String.format("%s, %d%s of %s %d", day.toString(), date, suffix, month.toString(), year + INITIAL_YEAR);
+		return String.format(Locale.ROOT, "%s, %d%s of %s %d", day.toString(), date, suffix, month.toString(), year + INITIAL_YEAR);
 	}
 
 	public int getDayOfTheWeek()
