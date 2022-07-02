@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
+
 import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FMCTags;
@@ -91,6 +93,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private int batteryMax = 1;
 	public static final Map<Item, Integer> FUEL = new HashMap<>();
 	private SimpleInventory sharedInventory = null;
+	private double animSpeedTime = 0d;
 
 	private final PropertyDelegate propertyDelegate = new PropertyDelegate()
 	{
@@ -303,24 +306,6 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		return false;
 	}
 
-	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
-	{
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.final-minecraft:home_crystal.rot", true));
-		return PlayState.CONTINUE;
-	}
-
-	@Override
-	public void registerControllers(AnimationData data)
-	{
-		data.addAnimationController(new AnimationController<HomeCrystalBlockEntity>(this, "controller", 0, this::predicate));
-	}
-
-	@Override
-	public AnimationFactory getFactory()
-	{
-		return this.animFactory;
-	}
-
 	@Override
 	public BlockPos getMasterBlockEntityPos()
 	{
@@ -380,6 +365,42 @@ public class HomeCrystalBlockEntity extends BlockEntity
 			world.removeBlockEntity(pos);
 			world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, HomeCrystalBlock.getRawIdFromState(state));
 		}
+	}
+
+	// ------------------------------------------------------------------------
+	// Animatable
+	// ------------------------------------------------------------------------
+
+	private double getAnimationSpeed(double delta)
+	{
+		double direction = charge == 0 || !hasPedestal ? 1d : -1d;
+		animSpeedTime = MathHelper.clamp(animSpeedTime + direction * delta, 0d, 1d);
+		FinalMinecraft.LOG.info("ANim speed: {} dt: {}", MathHelper.lerp(animSpeedTime, 1d, 20d), delta);
+		
+		return MathHelper.lerp(animSpeedTime, 1d, 20d);
+	}
+
+	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
+	{
+		AnimationController<?> controller = event.getController();
+		if(controller.getCurrentAnimation() == null)
+		{
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.final-minecraft:home_crystal.rot", true));
+		}
+		controller.setAnimationSpeed(getAnimationSpeed(event.getPartialTick()));
+		return PlayState.CONTINUE;
+	}
+
+	@Override
+	public void registerControllers(AnimationData data)
+	{
+		data.addAnimationController(new AnimationController<HomeCrystalBlockEntity>(this, "controller", 0, this::predicate));
+	}
+
+	@Override
+	public AnimationFactory getFactory()
+	{
+		return this.animFactory;
 	}
 
 	// ------------------------------------------------------------------------
