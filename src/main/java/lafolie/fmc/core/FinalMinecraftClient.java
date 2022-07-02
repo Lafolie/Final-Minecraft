@@ -23,7 +23,7 @@ import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
-public class FinalMinecraftClient implements ClientModInitializer
+public final class FinalMinecraftClient implements ClientModInitializer
 {
 	private static NativeImageBackedTexture flashLUT;
 
@@ -35,6 +35,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 		InitContent();
 		registerNetworkReceivers();
 
+		//TODO: remove lambda, make function
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
 		{
 			//read NBT and stuff
@@ -64,13 +65,14 @@ public class FinalMinecraftClient implements ClientModInitializer
 		return flashLUT;
 	}
 
-	private void InitContent()
+	private static void InitContent()
 	{
 		FMCScreens.initClient();
 		Particles.initClient();
 		initBlocks();
 	}
 
+	//TODO: remove this or reattempt the damage flash stuff
 	private static void loadImages()
 	{
 		ModContainer imgSource = FabricLoader.getInstance().getModContainer("final-minecraft").orElseThrow();
@@ -89,7 +91,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 		}
 	}
 
-	private void initBlocks()
+	private static void initBlocks()
 	{
 
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.CRYSTAL, RenderLayer.getTranslucent());
@@ -105,7 +107,7 @@ public class FinalMinecraftClient implements ClientModInitializer
 		BlockRenderLayerMap.INSTANCE.putBlock(FMCBlocks.GRAVITY_CRYSTAL, RenderLayer.getTranslucent());
 	}
 
-	private void registerNetworkReceivers()
+	private static void registerNetworkReceivers()
 	{
 		// HealthModifiedPacket
 		ClientPlayNetworking.registerGlobalReceiver(HealthModifiedPacket.ID, (client, handler, buf, responseSender) ->

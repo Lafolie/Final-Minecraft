@@ -35,9 +35,9 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 		//26,8		74, 77
 		int minX = x + 26;
 		int minY = y + 8;
-		int maxX = x + 74;
-		int maxY = y + 77;
-		if(mouseX >= minX && mouseX <= maxX && mouseY >= minY && mouseY <= maxY)
+		// int maxX = x + 74;
+		// int maxY = y + 77;
+		if(isPointWithinBounds(minX, minY, 74, 77, mouseX, mouseY))
 		{
 			renderElementalAffinityTooltip(matrices, mouseX, mouseY);
 		}

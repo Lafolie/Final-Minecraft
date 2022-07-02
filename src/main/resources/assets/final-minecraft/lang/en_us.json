@@ -20,6 +20,17 @@
 	"fmc.core.attributes.tooltip.fatal": "Fatal",
 	"fmc.core.attributes.tooltip.revive": "Revive",
 
+	"final-minecraft.charge.charged": "%d%% charged",
+	"final-minecraft.charge.charging": "Charging",
+	"final-minecraft.charge.nominal": "Nominal",
+	"final-minecraft.charge.low": "Low",
+	"final-minecraft.charge.danger": "Danger!",
+	"final-minecraft.charge.explode": "Explosion in %s",
+	"final-minecraft.charge.no_pedestal": "No pedestal!",
+	"final-minecraft.charge.yes_pedestal": "Stabilized by pedestal",
+	"final-minecraft.charge.mp": "MP restoration active",
+	"final-minecraft.charge.job": "Free Job Change active",
+
 	"block.final-minecraft.crystal_block": "Block of Crystal",
 	"block.final-minecraft.fire_crystal_block": "Block of Fire Crystal",
 	"block.final-minecraft.ice_crystal_block": "Block of Ice Crystal",

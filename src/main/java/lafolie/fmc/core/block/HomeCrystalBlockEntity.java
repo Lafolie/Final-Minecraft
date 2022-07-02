@@ -1,12 +1,18 @@
 package lafolie.fmc.core.block;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import lafolie.fmc.core.FMCBlocks;
+import lafolie.fmc.core.FMCItems;
+import lafolie.fmc.core.FMCTags;
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.screen.HomeCrystalScreen;
 import lafolie.fmc.core.screen.HomeCrystalScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -18,13 +24,19 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ItemScatterer;
@@ -32,6 +44,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
@@ -50,10 +64,15 @@ public class HomeCrystalBlockEntity extends BlockEntity
 {
 	private static final String POS_KEY = "masterPos";
 	private static final String CHARGE_KEY = "charge";
+	private static final String BATTERY_KEY = "battery";
+	private static final String BATTERY_MAX_KEY = "battery_max";
+	private static final String PEDESTAL_KEY = "pedestal";
+	private static final String COUNTDOWN_KEY = "countdown";
 	private static final String INVENTORY_KEY = "inventory";
 
-	private static final int CHARGE_PER_HOUR = 72000;
-	private static final int MAX_CHARGE = CHARGE_PER_HOUR * 24;
+	private static final int CHARGE_RATE = 5;
+	private static final int CHARGE_PER_HOUR = 3600;
+	public static final int MAX_CHARGE = CHARGE_PER_HOUR * 24;
 	private static final int JOB_CHARGE = CHARGE_PER_HOUR * 12;
 	private static final double EFFECT_SIZE = 2048d;
 	private static final TargetPredicate TARGET_PREDICATE = TargetPredicate.createNonAttackable();
@@ -68,16 +87,89 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private int explosionCountdown = 0;
 	private boolean exploding = false;
 	private int tickCounter = 0;
-	private ChargeStatus chargeStatus = ChargeStatus.LOW;
 	private int battery = 0;
+	private int batteryMax = 1;
+	public static final Map<Item, Integer> FUEL = new HashMap<>();
 	private SimpleInventory sharedInventory = null;
 
-	public static enum ChargeStatus
+	private final PropertyDelegate propertyDelegate = new PropertyDelegate()
 	{
-		EMPTY,
-		LOW,
-		NOMINAL,
-		CHARGING;
+		@Override
+		public int get(int index)
+		{
+			switch(index)
+			{
+				case 0:
+					return charge;
+
+				case 1:
+					return battery;
+
+				case 2:
+					return batteryMax;
+				
+				case 3:
+					return hasPedestal ? 1 : 0;
+				
+				case 4:
+					return explosionCountdown;
+			}
+			return 0;
+		}
+
+		@Override
+		public void set(int index, int value)
+		{
+			switch(index)
+			{
+				case 0:
+					charge = value;
+					break;
+
+				case 1:
+					battery = value;
+					break;
+
+				case 2:
+					batteryMax = value;
+					break;
+
+				case 3:
+					hasPedestal = value == 1;
+					break;
+
+				case 4:
+					explosionCountdown = value;
+					break;
+			}
+		}
+
+		@Override
+		public int size()
+		{
+			return 5;
+		}
+	};
+	static
+	{
+		FUEL.put(FMCItems.CRYSTAL_SHARD, 60);
+		addFuel(FMCTags.CRYSTAL_ITEMS, 600);
+		addFuel(FMCTags.CRYSTAL_BLOCK_ITEMS, 6000);
+	}
+
+	private static void addFuel(TagKey<Item> tag, int amount)
+	{
+		for(RegistryEntry<Item> entry : Registry.ITEM.iterateEntries(tag))
+		{
+			FUEL.put(entry.value(), amount);
+		}
+	}
+
+	public static List<Item> getFuelList()
+	{
+		List<Item> list = new ArrayList<>();
+		list.addAll(FUEL.keySet());
+		return list;
 	}
 
 	public HomeCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state)
@@ -124,10 +216,16 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		masterCrystalPos = masterPos;
 	}
 
+	public boolean incTickCounter()
+	{
+		tickCounter = (tickCounter + 1) % 20;
+		return tickCounter == 0;
+	}
+
 	public static void tick(World world, BlockPos pos, BlockState state, HomeCrystalBlockEntity entity)
 	{
 		// incur a tick once a second
-		if(entity.incTickCounter())
+		if(!world.isClient && entity.incTickCounter())
 		{
 			entity.consumeCharge();
 			if(entity.shouldExplode())
@@ -146,61 +244,63 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		}
 	}
 
-	public boolean shouldExplode()
+	private int getChargeDrain()
 	{
+		return hasPedestal ? 1 : 288;
+	}
+
+	private boolean shouldExplode()
+	{
+		// FinalMinecraft.LOG.info("Explosion check: {}/{} {}", explosionCountdown, CHARGE_PER_HOUR, charge);
 		return explosionCountdown >= CHARGE_PER_HOUR;
 	}
 
 	private void updateCharge(int charge)
 	{
-		this.charge = MathHelper.clamp(charge, 0, MAX_CHARGE);
+		/*
+		 * Allow a slight overcharge. This prevents rapid
+		 * battery consumption when the max charge falls 1 point
+		 * below max and the battery is drained
+		 */
+		this.charge = MathHelper.clamp(charge, 0, MAX_CHARGE + CHARGE_RATE);
 		if(battery > 0)
 		{
-			chargeStatus = ChargeStatus.CHARGING;
 			explosionCountdown = 0;
 		}
-		else
+		else if(this.charge == 0)
 		{
-			if(charge == 0)
-			{
-				chargeStatus = ChargeStatus.EMPTY;
-				explosionCountdown += 1;
-			}
-			else if(charge < CHARGE_PER_HOUR)
-			{
-				chargeStatus = ChargeStatus.LOW;
-			}
-			else
-			{
-				chargeStatus = ChargeStatus.NOMINAL;
-			}
-
+			explosionCountdown += getChargeDrain();
 		}
 
 	}
 
-	public void consumeCharge()
+	private void consumeCharge()
 	{
-		if(battery > 0)
+		if(charge < MAX_CHARGE && battery > 0 && hasPedestal)
 		{
-			battery -= 1;
-			updateCharge(charge + 1);
+			battery = Math.max(0, battery - 1);
+			updateCharge(charge + CHARGE_RATE);
 		}
-		else
+		else if(battery == 0)
 		{
-			updateCharge(charge - 1);
+			if(!consumeFuel())
+			{
+				updateCharge(charge - getChargeDrain());
+			}
 		}
 	}
 
-	public void setBattery(int battery)
+	private boolean consumeFuel()
 	{
-		this.battery = battery;
-	}
-
-	public boolean incTickCounter()
-	{
-		tickCounter = (tickCounter + 1) % 20;
-		return tickCounter == 0;
+		ItemStack stack = sharedInventory.getStack(0);
+		if(!stack.isEmpty())
+		{
+			batteryMax = FUEL.get(stack.getItem());
+			battery = batteryMax;
+			stack.decrement(1);
+			return true;
+		}
+		return false;
 	}
 
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
@@ -298,6 +398,10 @@ public class HomeCrystalBlockEntity extends BlockEntity
 			if(masterCrystalPos.equals(getPos()))
 			{
 				nbt.putInt(CHARGE_KEY, charge);
+				nbt.putInt(BATTERY_KEY, battery);
+				nbt.putInt(BATTERY_MAX_KEY, batteryMax);
+				nbt.putInt(COUNTDOWN_KEY, explosionCountdown);
+				nbt.putBoolean(PEDESTAL_KEY, hasPedestal);
 				nbt.put(INVENTORY_KEY, sharedInventory.toNbtList());
 			}
 		}
@@ -316,6 +420,10 @@ public class HomeCrystalBlockEntity extends BlockEntity
 			if(masterCrystalPos.equals(getPos()))
 			{
 				charge = nbt.getInt(CHARGE_KEY);
+				battery = nbt.getInt(BATTERY_KEY);
+				batteryMax = nbt.getInt(BATTERY_MAX_KEY);
+				explosionCountdown = nbt.getInt(COUNTDOWN_KEY);
+				hasPedestal = nbt.getBoolean(PEDESTAL_KEY);
 				sharedInventory.readNbtList(nbt.getList(INVENTORY_KEY, NbtType.COMPOUND));
 			}
 		}
@@ -397,7 +505,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	@Override
 	public ScreenHandler createMenu(int syncID, PlayerInventory playerInventory, PlayerEntity player)
 	{
-		return new HomeCrystalScreenHandler(syncID, playerInventory, this);
+		return new HomeCrystalScreenHandler(syncID, playerInventory, this, propertyDelegate);
 	}
 
 	@Override

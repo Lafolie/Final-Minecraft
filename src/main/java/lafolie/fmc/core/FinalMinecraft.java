@@ -9,6 +9,7 @@ import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 
+import java.util.Locale;
 import java.util.logging.LogManager;
 
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ import lafolie.fmc.core.zodiac.BirthsignEntity;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-public class FinalMinecraft implements ModInitializer
+public final class FinalMinecraft implements ModInitializer
 {
 	public static final byte VERSION_MAJOR = 0;
 	public static final byte VERSION_MINOR = 1;
@@ -41,7 +42,7 @@ public class FinalMinecraft implements ModInitializer
 
 	public static String getVersionString()
 	{
-		return String.format("%d.%d.%d \"%s\"", VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_CODENAME);
+		return String.format(Locale.ROOT, "%d.%d.%d \"%s\"", VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_CODENAME);
 	}
 
 	@Override
@@ -54,20 +55,20 @@ public class FinalMinecraft implements ModInitializer
 
 		
 		// RegistryEntryAddedCallback.event(Registry.BLOCK).register((rawId, id, block) -> {log.info("hello");});
-		ServerLifecycleEvents.SERVER_STARTING.register(server -> onServerStarting(server));
-		ServerLifecycleEvents.SERVER_STARTED.register(server -> onServerStarted(server));
-		ServerLifecycleEvents.SERVER_STOPPING.register(server -> onServerStopping(server));
-		ServerLifecycleEvents.SERVER_STOPPED.register(server -> onServerStopped(server));
-		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, res, succ) -> onEndDataPackReload(server, res, succ));
+		ServerLifecycleEvents.SERVER_STARTING.register(FinalMinecraft::onServerStarting);
+		ServerLifecycleEvents.SERVER_STARTED.register(FinalMinecraft::onServerStarted);
+		ServerLifecycleEvents.SERVER_STOPPING.register(FinalMinecraft::onServerStopping);
+		ServerLifecycleEvents.SERVER_STOPPED.register(FinalMinecraft::onServerStopped);
+		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register(FinalMinecraft::onEndDataPackReload);
 
-		ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> onEntitySpawned(entity, world));
+		ServerEntityEvents.ENTITY_LOAD.register(FinalMinecraft::onEntitySpawned);
 	}
 
 	// ------------------------------------------------------------------------
 	// Entity Callbacks
 	// ------------------------------------------------------------------------
 
-	private void onEntitySpawned(Entity entity, ServerWorld world)
+	private static void onEntitySpawned(Entity entity, ServerWorld world)
 	{
 		if(entity instanceof PlayerEntity)
 		{
@@ -88,11 +89,11 @@ public class FinalMinecraft implements ModInitializer
 	// Server Callbacks
 	// ------------------------------------------------------------------------
 
-	private void onServerStarting(MinecraftServer server)
+	private static void onServerStarting(MinecraftServer server)
 	{
 		serverStatus = ServerStatus.STARTING;
 	}
-	private void onServerStarted(MinecraftServer server)
+	private static void onServerStarted(MinecraftServer server)
 
 	{
 		serverStatus = ServerStatus.STARTED;
@@ -100,19 +101,19 @@ public class FinalMinecraft implements ModInitializer
 		ElementalEntityTags.clearCache();
 	}
 
-	private void onServerStopping(MinecraftServer server)
+	private static void onServerStopping(MinecraftServer server)
 	{
 		serverStatus = ServerStatus.STOPPING;
 	}
 
-	private void onServerStopped(MinecraftServer server)
+	private static void onServerStopped(MinecraftServer server)
 	{
 		serverStatus = ServerStatus.STOPPED;
 		ElementalItemTags.clearCache();
 		ElementalEntityTags.clearCache();
 	}
 
-	private void onEndDataPackReload(MinecraftServer server, ResourceManager resourceManager, boolean success)
+	private static void onEndDataPackReload(MinecraftServer server, ResourceManager resourceManager, boolean success)
 	{
 		ElementalItemTags.clearCache();
 		ElementalEntityTags.clearCache();
@@ -122,7 +123,7 @@ public class FinalMinecraft implements ModInitializer
 	// INITS
 	// ------------------------------------------------------------------------
 
-	private void initConfig()
+	private static void initConfig()
 	{
 		AutoConfig.register(FMCConfig.class, JanksonConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(FMCConfig.class).getConfig();
@@ -133,7 +134,7 @@ public class FinalMinecraft implements ModInitializer
 		return config;
 	}
 
-	private void initContent()
+	private static void initContent()
 	{
 		FMCScreens.init();
 		FMCItems.init();

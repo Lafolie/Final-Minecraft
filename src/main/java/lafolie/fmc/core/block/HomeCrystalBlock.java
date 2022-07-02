@@ -109,7 +109,6 @@ public class HomeCrystalBlock extends BlockWithEntity
 		// item scattering and such is also done there since it is only called once when the multiblock
 		// is destroyed
 		breakAll(world, pos);
-		FinalMinecraft.LOG.info("Explosion call");
 	}
 
 	private HomeCrystalBlockEntity getMasterCrystal(World world, BlockPos pos)

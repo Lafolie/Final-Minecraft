@@ -1,0 +1,17 @@
+{
+	"replace": false,
+	"values": [
+		"final-minecraft:crystal_item",
+		"final-minecraft:fire_crystal_item",
+		"final-minecraft:ice_crystal_item",
+		"final-minecraft:thunder_crystal_item",
+		"final-minecraft:wind_crystal_item",
+		"final-minecraft:water_crystal_item",
+		"final-minecraft:earth_crystal_item",
+		"final-minecraft:earth_crystal_item",
+		"final-minecraft:holy_crystal_item",
+		"final-minecraft:dark_crystal_item",
+		"final-minecraft:poison_crystal_item",
+		"final-minecraft:gravity_crystal_item"
+	]
+}

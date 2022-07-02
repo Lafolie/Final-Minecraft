@@ -1,0 +1,17 @@
+{
+	"replace": false,
+	"values": [
+		"final-minecraft:crystal_block",
+		"final-minecraft:fire_crystal_block",
+		"final-minecraft:ice_crystal_block",
+		"final-minecraft:thunder_crystal_block",
+		"final-minecraft:wind_crystal_block",
+		"final-minecraft:water_crystal_block",
+		"final-minecraft:earth_crystal_block",
+		"final-minecraft:earth_crystal_block",
+		"final-minecraft:holy_crystal_block",
+		"final-minecraft:dark_crystal_block",
+		"final-minecraft:poison_crystal_block",
+		"final-minecraft:gravity_crystal_block"
+	]
+}
