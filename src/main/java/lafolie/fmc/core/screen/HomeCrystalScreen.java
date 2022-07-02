@@ -126,7 +126,11 @@ public class HomeCrystalScreen extends HandledScreen<HomeCrystalScreenHandler>
 			}
 
 			list.add(LANG.getText(handler.getHasPedestal() ? "yes_pedestal" : "no_pedestal"));
-			list.add(LANG.getText("mp"));
+			
+			if(charge > 0)
+			{
+				list.add(LANG.getText("mp"));
+			}
 
 			if(charge > 0.5)
 			{

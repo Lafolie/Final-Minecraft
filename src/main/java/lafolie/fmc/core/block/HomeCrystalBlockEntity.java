@@ -232,15 +232,15 @@ public class HomeCrystalBlockEntity extends BlockEntity
 			{
 				entity.breakCrystal(world);
 			}
-			else
+			else if(entity.charge > 0)
 			{
 				List<PlayerEntity> players = world.getPlayers(TARGET_PREDICATE, null, entity.effectArea);
 				for(PlayerEntity player : players)
 				{
 					// restore MP
 				}
-				entity.markDirty();
 			}
+			entity.markDirty();
 		}
 	}
 
