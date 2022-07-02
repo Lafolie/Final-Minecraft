@@ -2,6 +2,7 @@ package lafolie.fmc.core.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import lafolie.fmc.core.util.FMCIdentifier;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -11,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class HomeCrystalScreen extends HandledScreen<HomeCrystalScreenHandler>
 {
-	private static final Identifier TEXTURE = new Identifier("minecraft", "textures/gui/container/dispenser.png");
+	private static final Identifier TEXTURE = FMCIdentifier.contentID("textures/gui/home_crystal.png");
 
 	public HomeCrystalScreen(HomeCrystalScreenHandler handler, PlayerInventory inventory, Text title)
 	{
@@ -41,6 +42,6 @@ public class HomeCrystalScreen extends HandledScreen<HomeCrystalScreenHandler>
 	protected void init()
 	{
 		super.init();
-		titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
+		titleX = (backgroundWidth - textRenderer.getWidth(title)) / 8;
 	}
 }

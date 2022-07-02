@@ -23,7 +23,7 @@ public class HomeCrystalScreenHandler extends FMCScreenHandler
 		super(FMCScreens.HOME_CRYSTAL_SCREEN_HANDLER, syncID);
 		checkSize(inventory, 1);
 		this.inventory = inventory;
-		addSlot(new Slot(inventory, 0, 16, 16));
+		addSlot(new Slot(inventory, 0, 27, 29));
 		createPlayerInventorySlots(playerInventory);
 	}
 
