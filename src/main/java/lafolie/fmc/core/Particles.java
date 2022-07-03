@@ -26,10 +26,10 @@ public final class Particles
 	@Environment(EnvType.CLIENT)
 	public static void initClient()
 	{
-		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlastTexture, registry) -> 
-		{
-			registry.register(FMCIdentifier.contentID("particle/crystal_sparkles"));
-		});
+		// ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlastTexture, registry) -> 
+		// {
+		// 	registry.register(FMCIdentifier.contentID("particle/crystal_sparkles"));
+		// });
 
 		ParticleFactoryRegistry.getInstance().register(TEXT, TextBillboardParticle.Factory::new);
 		ParticleFactoryRegistry.getInstance().register(CRYSTAL_SPARKLES, CrystalSparkles.Factory::new);

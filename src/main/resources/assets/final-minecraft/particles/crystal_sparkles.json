@@ -1,5 +1,8 @@
 {
 	"textures": [
-		"final-minecraft:crystal_sparkles"
+		"final-minecraft:crystal_sparkles_1",
+		"final-minecraft:crystal_sparkles_2",
+		"final-minecraft:crystal_sparkles_3",
+		"final-minecraft:crystal_sparkles_4"
 	]
 }
