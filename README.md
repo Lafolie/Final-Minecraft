@@ -92,7 +92,7 @@ Lafolie - designer and developer.
 
 # License
 
-Final Minecraft is licensed under the GNU General Public License v3.
+Final Minecraft is licensed under the GNU Lesser General Public License v3.
 
 [fabric_CF]: https://www.curseforge.com/minecraft/mc-mods/fabric-api
 [fabric_GH]: https://github.com/FabricMC/fabric
