@@ -1,11 +1,27 @@
 package lafolie.fmc.core.util;
 
+import java.util.Random;
 import java.util.UUID;
 
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec2f;
+import net.minecraft.util.math.Vec3d;
 
 public final class Maths
 {
+	public static final Random random = new Random();
+
+	public static BlockPos getRandomPosInBox(Box box)
+	{
+		return getRandomPosInBox(box, random);
+	}
+
+	public static BlockPos getRandomPosInBox(Box box, Random random)
+	{
+		return new BlockPos(random.nextDouble(box.minX, box.maxX), random.nextDouble(box.minY, box.maxY), random.nextDouble(box.minZ, box.maxZ));
+	}
+
 	public static boolean isPointInRect(int pointX, int pointY, int x, int y, int w, int h)
 	{
 		return !(pointX < x || pointX > x + w || pointY < y || pointY > y + h);

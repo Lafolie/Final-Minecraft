@@ -8,7 +8,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 
 import lafolie.fmc.core.util.FMCIdentifier;
 import lafolie.fmc.core.util.LangTable;
-import lafolie.fmc.core.util.Time;
+import lafolie.fmc.core.util.RealTime;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -121,8 +121,8 @@ public class HomeCrystalScreen extends HandledScreen<HomeCrystalScreenHandler>
 
 			if(countDown > 0)
 			{
-				int time = (Time.SECONDS_PER_HOUR - countDown) / (handler.getHasPedestal() ? 1 : 288);
-				list.add(LANG.getText("explode", Time.formatSeconds(time)));
+				int time = (RealTime.SECONDS_PER_HOUR - countDown) / (handler.getHasPedestal() ? 1 : 288);
+				list.add(LANG.getText("explode", RealTime.formatSeconds(time)));
 			}
 
 			list.add(LANG.getText(handler.getHasPedestal() ? "yes_pedestal" : "no_pedestal"));

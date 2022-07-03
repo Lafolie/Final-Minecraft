@@ -2,7 +2,7 @@ package lafolie.fmc.core.util;
 
 import java.util.Locale;
 
-public final class Time
+public final class RealTime
 {
 	public static final int SECONDS_PER_HOUR = 3600;
 

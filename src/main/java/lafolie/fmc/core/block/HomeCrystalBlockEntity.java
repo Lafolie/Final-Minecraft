@@ -6,29 +6,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-
 import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FMCTags;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.screen.HomeCrystalScreen;
 import lafolie.fmc.core.screen.HomeCrystalScreenHandler;
+import lafolie.fmc.core.util.Maths;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.BlockTagProvider;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.VineBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.MinecraftClientGame;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
@@ -38,12 +44,16 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
@@ -76,11 +86,14 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private static final int CHARGE_PER_HOUR = 3600;
 	public static final int MAX_CHARGE = CHARGE_PER_HOUR * 24;
 	private static final int JOB_CHARGE = CHARGE_PER_HOUR * 12;
-	private static final double EFFECT_SIZE = 2048d;
+	private static final double EFFECT_SIZE = 128d;
+	private static final double NEARBY_SIZE = 32d;
 	private static final TargetPredicate TARGET_PREDICATE = TargetPredicate.createNonAttackable();
+	private static final ItemStack BONEMEAL = new ItemStack(Items.BONE_MEAL, 64);
 
-	public final Box effectArea;
-	
+	private final Box effectArea;
+	private final Box nearbyArea;
+
 	private HomeCrystalBlockEntity masterCrystal;
 	private AnimationFactory animFactory = new AnimationFactory(this);
 	private BlockPos masterCrystalPos;
@@ -91,7 +104,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private int tickCounter = 0;
 	private int battery = 0;
 	private int batteryMax = 1;
-	public static final Map<Item, Integer> FUEL = new HashMap<>();
+	private static final Map<Item, Integer> FUEL = new HashMap<>();
 	private SimpleInventory sharedInventory = null;
 	private double animSpeedTime = 0d;
 
@@ -181,6 +194,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 
 		boolean isDummy = state.get(HomeCrystalBlock.IS_DUMMY);
 		effectArea = isDummy ? null : Box.of(Vec3d.of(pos), EFFECT_SIZE, EFFECT_SIZE, EFFECT_SIZE);
+		nearbyArea = isDummy ? null : Box.of(Vec3d.of(pos), NEARBY_SIZE, NEARBY_SIZE, NEARBY_SIZE);
 		if(sharedInventory == null)
 		{
 			if(isDummy)
@@ -230,6 +244,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		// incur a tick once a second
 		if(!world.isClient && entity.incTickCounter())
 		{
+			boolean tickGrowth = world.getRandom().nextBoolean();
 			entity.consumeCharge();
 			if(entity.shouldExplode())
 			{
@@ -242,9 +257,61 @@ public class HomeCrystalBlockEntity extends BlockEntity
 				{
 					// restore MP
 				}
+
+				if(tickGrowth)
+				{
+					entity.spreadGrowth();
+				}
 			}
+			else if(tickGrowth)
+			{
+				entity.spreadDecay();
+			}
+			//TODO: updateListeners doesn't need to be called while the anim speed bug is present
+			// world.updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
 			entity.markDirty();
 		}
+	}
+
+	private void spreadGrowth()
+	{
+		BONEMEAL.setCount(64);
+		BlockPos pos = Maths.getRandomPosInBox(nearbyArea, world.random);
+		BlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
+		if(state.isAir())
+		{
+			for(BooleanProperty prop : VineBlock.FACING_PROPERTIES.values())
+			{
+				BlockState vineState = Blocks.VINE.getDefaultState().with(prop, true);
+				if(Blocks.VINE.canPlaceAt(vineState, world, pos))
+				{
+					world.setBlockState(pos, vineState, Block.NOTIFY_ALL);
+					return;
+				}
+			}
+		}
+
+		if(block == Blocks.DIRT && world.getBlockState(pos.up()).isAir())
+		{
+			world.setBlockState(pos, Blocks.GRASS_BLOCK.getDefaultState(), Block.NOTIFY_ALL);
+			return;
+		}
+
+		if(BoneMealItem.useOnFertilizable(BONEMEAL, world, pos))
+		{
+			return;
+		}
+
+		if(BoneMealItem.useOnGround(BONEMEAL, world, pos, Direction.DOWN))
+		{
+			return;
+		}
+	}
+
+	private void spreadDecay()
+	{
+		// not sure what to do here...
 	}
 
 	private int getChargeDrain()
@@ -373,21 +440,29 @@ public class HomeCrystalBlockEntity extends BlockEntity
 
 	private double getAnimationSpeed(double delta)
 	{
-		double direction = charge == 0 || !hasPedestal ? 1d : -1d;
+		double direction = (hasPedestal && charge > 0) ? -0.001d : 0.001d;
 		animSpeedTime = MathHelper.clamp(animSpeedTime + direction * delta, 0d, 1d);
-		FinalMinecraft.LOG.info("ANim speed: {} dt: {}", MathHelper.lerp(animSpeedTime, 1d, 20d), delta);
-		
-		return MathHelper.lerp(animSpeedTime, 1d, 20d);
+		FinalMinecraft.LOG.info("ANim speed: {} dir: {} dt: {}", animSpeedTime, direction, delta);
+		FinalMinecraft.LOG.info("\tPedestal: {} Charge: {}", hasPedestal, charge);
+		FinalMinecraft.LOG.info("\tFinal Speed: {}", MathHelper.lerp(animSpeedTime, 1d, 10d));
+		return MathHelper.lerp(animSpeedTime, 1d, 10d);
 	}
 
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
 	{
+		if(getCachedState().get(HomeCrystalBlock.IS_DUMMY))
+		{
+		FinalMinecraft.LOG.info("DUMMY");
+		}
 		AnimationController<?> controller = event.getController();
 		if(controller.getCurrentAnimation() == null)
 		{
 			controller.setAnimation(new AnimationBuilder().addAnimation("animation.final-minecraft:home_crystal.rot", true));
 		}
-		controller.setAnimationSpeed(getAnimationSpeed(event.getPartialTick()));
+		//TODO: update geckolib when the bug is fixed
+		// controller.setAnimationSpeed(getAnimationSpeed(event.getPartialTick()));
+		// controller.setAnimationSpeed(getAnimationSpeed(MinecraftClient.getInstance().getTickDelta()));
+		
 		return PlayState.CONTINUE;
 	}
 
