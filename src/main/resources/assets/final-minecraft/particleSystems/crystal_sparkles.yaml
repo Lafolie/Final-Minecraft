@@ -1,0 +1,16 @@
+--- # crystal blinks
+particle: "final-minecraft:crystal_sparkles"
+delay:
+  constant: 0.0
+rate:
+  constant: 2.0
+position:
+  box:
+    x: [-24.0, 24.0]
+    y: [-48.0, 24.0]
+    z: [-24.0, 24.0]
+
+--- # anime lines
+particle: "final-minecraft:crystal_sparkles"
+delay:
+  constant: 0.0

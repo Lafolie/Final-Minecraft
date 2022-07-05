@@ -1,4 +1,4 @@
-package lafolie.fmc.core.internal.elements;
+package lafolie.fmc.core.internal.element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;

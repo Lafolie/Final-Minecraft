@@ -1,4 +1,4 @@
-package lafolie.fmc.core.internal.elements;
+package lafolie.fmc.core.internal.element;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
-import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAspect;
 import lafolie.fmc.core.util.FMCIdentifier;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;

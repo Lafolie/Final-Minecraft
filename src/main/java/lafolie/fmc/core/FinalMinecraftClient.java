@@ -6,12 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalObject;
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
+import lafolie.fmc.core.particle.system.ParticleSystemTicker;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
@@ -20,8 +23,10 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.world.World;
 
 public final class FinalMinecraftClient implements ClientModInitializer
 {
@@ -34,6 +39,9 @@ public final class FinalMinecraftClient implements ClientModInitializer
 
 		InitContent();
 		registerNetworkReceivers();
+
+		ClientLifecycleEvents.CLIENT_STARTED.register(FinalMinecraftClient::onClientStarted);
+		ClientTickEvents.END_WORLD_TICK.register(FinalMinecraftClient::onEndWorldTick);
 
 		//TODO: remove lambda, make function
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
@@ -55,7 +63,17 @@ public final class FinalMinecraftClient implements ClientModInitializer
 			}
 		});
 	}
+
+	private static void onClientStarted(MinecraftClient client)
+	{
+		Particles.loadParticleSystems();
+	}
 	
+	private static void onEndWorldTick(ClientWorld world)
+	{
+		ParticleSystemTicker.tick(world);
+	}
+
 	public static NativeImageBackedTexture getDamageLUT()
 	{
 		if(flashLUT == null)

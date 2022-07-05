@@ -1,6 +1,6 @@
 package lafolie.fmc.core.zodiac;
 
-import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAspect;
 import lafolie.fmc.core.internal.Components;
 import lafolie.fmc.core.internal.zodiac.Birthsign;
 

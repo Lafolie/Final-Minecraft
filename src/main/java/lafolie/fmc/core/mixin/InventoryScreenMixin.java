@@ -10,9 +10,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalObject;
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
+import lafolie.fmc.core.element.ElementalObject;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.util.math.MatrixStack;

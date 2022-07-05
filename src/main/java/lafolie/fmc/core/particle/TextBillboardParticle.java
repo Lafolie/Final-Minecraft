@@ -1,4 +1,4 @@
-package lafolie.fmc.core.particles;
+package lafolie.fmc.core.particle;
 
 import java.util.ArrayList;
 import java.util.List;

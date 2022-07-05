@@ -13,14 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalEquipment;
-import lafolie.fmc.core.elements.ElementalObject;
-
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
+import lafolie.fmc.core.element.ElementalEquipment;
+import lafolie.fmc.core.element.ElementalObject;
 import lafolie.fmc.core.internal.Components;
-import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
-import lafolie.fmc.core.internal.elements.InnateElemental;
+import lafolie.fmc.core.internal.element.ElementalStatsComponent;
+import lafolie.fmc.core.internal.element.InnateElemental;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;

@@ -8,10 +8,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.internal.elements.ElementalItemTags;
-import lafolie.fmc.core.internal.elements.InnateElemental;
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
+import lafolie.fmc.core.internal.element.ElementalItemTags;
+import lafolie.fmc.core.internal.element.InnateElemental;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Settings;
 import net.minecraft.util.registry.RegistryEntry;

@@ -6,7 +6,7 @@ import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.chrono.DateTime;
-import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAspect;
 import lafolie.fmc.core.entity.AnniversaryEntity;
 import lafolie.fmc.core.internal.Components;
 import lafolie.fmc.core.util.Maths;

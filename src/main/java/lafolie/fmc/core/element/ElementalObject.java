@@ -1,10 +1,10 @@
-package lafolie.fmc.core.elements;
+package lafolie.fmc.core.element;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
+import lafolie.fmc.core.internal.element.ElementalStatsComponent;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 

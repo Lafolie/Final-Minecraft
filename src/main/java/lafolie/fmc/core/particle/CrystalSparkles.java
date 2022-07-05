@@ -1,4 +1,4 @@
-package lafolie.fmc.core.particles;
+package lafolie.fmc.core.particle;
 
 
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -33,7 +33,7 @@ import net.minecraft.util.math.Vec3f;
 public class CrystalSparkles extends SpriteBillboardParticle
 {
 	private final SpriteProvider provider;
-	private Vec3f scaleVec = Vec3f.POSITIVE_Z;
+	private Vec3f scaleVec = new Vec3f();
 	private Vec3f prevScale;
 	private boolean rescale;
 
@@ -43,11 +43,12 @@ public class CrystalSparkles extends SpriteBillboardParticle
 		this.provider = provider;
 		maxAge = 10;
 		velocityY = 0.001;
-
+		spr=3d;
 		if(spr == 0d)
 		{
+			maxAge = 6;
 			rescale = true;
-			scaleVec.add(4.5f, 0.5f, 1f);
+			scaleVec.add(1.3f, 0.1f, 1f);
 		}
 		else if(spr == 3d)
 		{
@@ -61,7 +62,7 @@ public class CrystalSparkles extends SpriteBillboardParticle
 		}
 
 		prevScale = scaleVec;
-		setSprite(provider.getSprite((int)spr, 3));;
+		setSprite(provider.getSprite((int)spr, 3));
 	}
 
 	@Override
@@ -74,13 +75,13 @@ public class CrystalSparkles extends SpriteBillboardParticle
 			if(rescale)
 			{
 				prevScale = scaleVec;
-				scaleVec.set((1f - life) * 4f + 0.5f, life * 4f + 0.5f, 1f);
+				scaleVec.set((1f - life) * 1.2f + 0.1f, life * 1.2f + 0.1f, 1f);
 			}
 			setAlpha(1f - life);
 		}
 	}
 
-	// @Override
+	@Override
 	public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta)
 	{
 		Quaternion quaternion;
@@ -95,8 +96,8 @@ public class CrystalSparkles extends SpriteBillboardParticle
 			float i = MathHelper.lerp(tickDelta, this.prevAngle, this.angle);
 			quaternion.hamiltonProduct(Vec3f.POSITIVE_Z.getRadialQuaternion(i));
 		}
-		float sx = (float)(MathHelper.lerp((double)tickDelta, prevScale.getX(), scaleVec.getX()));
-		float sy = (float)(MathHelper.lerp((double)tickDelta, prevScale.getY(), scaleVec.getY()));
+		float sx = MathHelper.lerp(tickDelta, prevScale.getX(), scaleVec.getX());
+		float sy = MathHelper.lerp(tickDelta, prevScale.getY(), scaleVec.getY());
 		Vec3f vec3f = new Vec3f(-1.0f, -1.0f, 0.0f);
 		vec3f.rotate(quaternion);
 		Vec3f[] vec3fs = new Vec3f[]{new Vec3f(-1.0f, -1.0f, 0.0f), new Vec3f(-1.0f, 1.0f, 0.0f), new Vec3f(1.0f, 1.0f, 0.0f), new Vec3f(1.0f, -1.0f, 0.0f)};

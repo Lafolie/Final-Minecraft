@@ -1,4 +1,4 @@
-package lafolie.fmc.core.internal.elements;
+package lafolie.fmc.core.internal.element;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import lafolie.fmc.core.internal.Components;

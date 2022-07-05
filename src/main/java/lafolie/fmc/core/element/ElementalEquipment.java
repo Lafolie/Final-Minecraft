@@ -1,4 +1,4 @@
-package lafolie.fmc.core.elements;
+package lafolie.fmc.core.element;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

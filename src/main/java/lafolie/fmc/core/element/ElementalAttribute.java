@@ -1,4 +1,4 @@
-package lafolie.fmc.core.elements;
+package lafolie.fmc.core.element;
 
 /**
  * Attributes define how ElementalAspects modify incoming damage.

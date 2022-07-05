@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalEquipment;
-import lafolie.fmc.core.elements.ElementalObject;
+import lafolie.fmc.core.element.ElementalEquipment;
+import lafolie.fmc.core.element.ElementalObject;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

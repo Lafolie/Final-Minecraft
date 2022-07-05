@@ -1,4 +1,4 @@
-package lafolie.fmc.core.elements;
+package lafolie.fmc.core.element;
 
 import java.util.ArrayList;
 import java.util.Collections;

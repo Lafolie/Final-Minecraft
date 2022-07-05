@@ -1,12 +1,10 @@
-package lafolie.fmc.core.internal.elements;
+package lafolie.fmc.core.internal.element;
 
 import net.fabricmc.fabric.api.util.NbtType;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
-
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
 import net.minecraft.nbt.NbtCompound;
 
 public interface ElementalStatsComponent extends ComponentV3

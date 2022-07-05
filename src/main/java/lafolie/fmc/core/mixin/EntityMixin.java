@@ -8,13 +8,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalAspect;
-import lafolie.fmc.core.elements.ElementalAttribute;
-import lafolie.fmc.core.elements.ElementalObject;
+import lafolie.fmc.core.element.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAttribute;
+import lafolie.fmc.core.element.ElementalObject;
 import lafolie.fmc.core.internal.Components;
-import lafolie.fmc.core.internal.elements.ElementalEntityTags;
-import lafolie.fmc.core.internal.elements.ElementalStatsComponent;
-import lafolie.fmc.core.internal.elements.InnateElemental;
+import lafolie.fmc.core.internal.element.ElementalEntityTags;
+import lafolie.fmc.core.internal.element.ElementalStatsComponent;
+import lafolie.fmc.core.internal.element.InnateElemental;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 

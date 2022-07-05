@@ -1,4 +1,4 @@
-package lafolie.fmc.core.elements;
+package lafolie.fmc.core.element;
 
 public enum DamageTypes
 {

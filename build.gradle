@@ -23,6 +23,7 @@ repositories {
 		 url = "https://ladysnake.jfrog.io/artifactory/mods"
 	}
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+	maven { url "https://oss.sonatype.org/content/groups/public/" }
 
 }
 
@@ -34,6 +35,9 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// YAML
+ 	implementation("org.yaml:snakeyaml:${snakeyaml_version}")
 
 	// Cloth Config
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}") {

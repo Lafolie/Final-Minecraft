@@ -3,6 +3,8 @@ package lafolie.fmc.core;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.resource.ResourceManager;
@@ -19,8 +21,8 @@ import io.netty.util.internal.logging.Log4J2LoggerFactory;
 import lafolie.fmc.core.chrono.DateTime;
 import lafolie.fmc.core.config.FMCConfig;
 import lafolie.fmc.core.entity.AnniversaryEntity;
-import lafolie.fmc.core.internal.elements.ElementalEntityTags;
-import lafolie.fmc.core.internal.elements.ElementalItemTags;
+import lafolie.fmc.core.internal.element.ElementalEntityTags;
+import lafolie.fmc.core.internal.element.ElementalItemTags;
 import lafolie.fmc.core.util.AlBhed;
 import lafolie.fmc.core.util.ServerStatus;
 import lafolie.fmc.core.zodiac.BirthsignEntity;
@@ -29,6 +31,8 @@ import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
 public final class FinalMinecraft implements ModInitializer
 {
+	protected static final ModContainer MOD = FabricLoader.getInstance().getModContainer("final-minecraft").get();
+
 	public static final byte VERSION_MAJOR = 0;
 	public static final byte VERSION_MINOR = 1;
 	public static final byte VERSION_REVISION = 0;

@@ -10,8 +10,8 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.world.WorldComponentInitializer;
 import lafolie.fmc.core.internal.chrono.Anniversaries;
-import lafolie.fmc.core.internal.elements.ElementalStats;
-import lafolie.fmc.core.internal.elements.ElementalStats_Item;
+import lafolie.fmc.core.internal.element.ElementalStats;
+import lafolie.fmc.core.internal.element.ElementalStats_Item;
 import lafolie.fmc.core.internal.zodiac.Birthsign;
 import lafolie.fmc.core.util.FMCIdentifier;
 

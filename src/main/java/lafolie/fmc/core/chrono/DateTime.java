@@ -2,7 +2,7 @@ package lafolie.fmc.core.chrono;
 
 import java.util.Locale;
 
-import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAspect;
 import lafolie.fmc.core.zodiac.ZodiacSign;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;

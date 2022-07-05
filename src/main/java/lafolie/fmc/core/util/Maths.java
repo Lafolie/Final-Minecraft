@@ -10,7 +10,7 @@ import net.minecraft.util.math.Vec3d;
 
 public final class Maths
 {
-	public static final Random random = new Random();
+	public static final Random random = new Random((long)Math.random());
 
 	public static BlockPos getRandomPosInBox(Box box)
 	{

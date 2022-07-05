@@ -3,7 +3,7 @@ package lafolie.fmc.core.chrono;
 import java.util.ArrayList;
 import java.util.List;
 
-import lafolie.fmc.core.elements.ElementalAspect;
+import lafolie.fmc.core.element.ElementalAspect;
 
 /**
  * Days of the week.

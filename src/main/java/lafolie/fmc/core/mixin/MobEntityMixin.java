@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import lafolie.fmc.core.FinalMinecraft;
-import lafolie.fmc.core.elements.ElementalEquipment;
+import lafolie.fmc.core.element.ElementalEquipment;
 import lafolie.fmc.core.zodiac.BirthsignEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
