@@ -10,9 +10,15 @@ import lafolie.fmc.core.FMCBlocks;
 import lafolie.fmc.core.FMCItems;
 import lafolie.fmc.core.FMCTags;
 import lafolie.fmc.core.FinalMinecraft;
+import lafolie.fmc.core.Particles;
+import lafolie.fmc.core.particle.system.ParticleAgent;
+import lafolie.fmc.core.particle.system.ParticleAgentInitializer;
 import lafolie.fmc.core.screen.HomeCrystalScreen;
 import lafolie.fmc.core.screen.HomeCrystalScreenHandler;
 import lafolie.fmc.core.util.Maths;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvironmentInterface;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.BlockTagProvider;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.util.NbtType;
@@ -60,7 +66,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
-import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 
 import software.bernie.geckolib3.core.IAnimatable;
@@ -71,8 +76,9 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+@EnvironmentInterface(value = EnvType.CLIENT, itf = ParticleAgentInitializer.class)
 public class HomeCrystalBlockEntity extends BlockEntity 
-	implements Inventory, IAnimatable, MultiBlockEntity, NamedScreenHandlerFactory
+	implements Inventory, IAnimatable, MultiBlockEntity, NamedScreenHandlerFactory, ParticleAgentInitializer
 {
 	private static final String POS_KEY = "masterPos";
 	private static final String CHARGE_KEY = "charge";
@@ -107,6 +113,9 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private static final Map<Item, Integer> FUEL = new HashMap<>();
 	private SimpleInventory sharedInventory = null;
 	private double animSpeedTime = 0d;
+	
+	@Environment(EnvType.CLIENT)
+	private ParticleAgent sparkles;
 
 	private final PropertyDelegate propertyDelegate = new PropertyDelegate()
 	{
@@ -215,6 +224,22 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		{
 			charge = CHARGE_PER_HOUR;
 		}
+
+		if(!isDummy && this instanceof ParticleAgentInitializer)
+		{
+			initAgents();
+			sparkles.play();
+		}
+	}
+
+	// @Environment(EnvType.SERVER)
+	// public void initAgents() {}
+
+	@Environment(EnvType.CLIENT)
+	@Override
+	public void initAgents()
+	{
+		sparkles = Particles.createAgent("crystal_sparkles", pos);
 	}
 
 	public void setHasPedestal(boolean hasPedestal)

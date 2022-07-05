@@ -17,7 +17,7 @@ public class BlockParticleAgent extends ParticleAgent
 	{
 		super(system);
 		blockPos = pos;
-		position = Vec3d.ofCenter(pos);
+		position = Vec3d.of(pos);
 	}
 
 	@Override

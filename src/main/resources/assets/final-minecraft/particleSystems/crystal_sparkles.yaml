@@ -3,14 +3,18 @@ particle: "final-minecraft:crystal_sparkles"
 delay:
   constant: 0.0
 rate:
-  constant: 2.0
+  uniform: [20.0, 40.0]
+count:
+  uniform: [1.0, 3.0]
 position:
   box:
-    x: [-24.0, 24.0]
-    y: [-48.0, 24.0]
-    z: [-24.0, 24.0]
+    x: [-1.2, 1.2]
+    y: [-1.2, 2.2]
+    z: [-1.2, 2.2]
+paramA:
+  uniform: [0.0, 4.0]
 
 --- # anime lines
 particle: "final-minecraft:crystal_sparkles"
 delay:
-  constant: 0.0
+  constant: 999999.0

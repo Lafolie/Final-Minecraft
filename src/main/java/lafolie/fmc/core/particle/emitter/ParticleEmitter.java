@@ -3,6 +3,9 @@ package lafolie.fmc.core.particle.emitter;
 import java.util.List;
 import java.util.Map;
 
+import org.spongepowered.asm.mixin.Final;
+
+import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.Particles;
 import lafolie.fmc.core.particle.emitter.property.ConstantEmitterFloat;
 import lafolie.fmc.core.particle.emitter.property.ConstantEmitterVector;
@@ -11,14 +14,12 @@ import lafolie.fmc.core.particle.emitter.property.EmitterVector;
 import lafolie.fmc.core.particle.emitter.property.UniformBoxEmitterVector;
 import lafolie.fmc.core.particle.emitter.property.UniformEmitterFloat;
 import lafolie.fmc.core.particle.emitter.property.UniformEmitterVector;
-import lafolie.fmc.core.util.FMCIdentifier;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.particle.DefaultParticleType;
+
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 @Environment(EnvType.CLIENT)
@@ -26,29 +27,41 @@ public class ParticleEmitter
 {
 	public final ParticleEffect particle;
 	public final boolean alwaysSpawn = false;
-	public final double defaultA = 0d;
-	public final double defaultB = 0d;
-	public final double defaultC = 0d;
+
+	/**
+	 * Generic particle spawn parameter
+	 */
+	public final EmitterFloat paramA;
+
+	/**
+	 * Generic particle spawn parameter
+	 */
+	public final EmitterFloat paramB;
+
+	/**
+	 * Generic particle spawn parameter
+	 */
+	public final EmitterFloat paramC;
 
 	/**
 	 * Ticks to delay before first emission
 	 */
-	private final EmitterFloat delay;
+	public final EmitterFloat delay;
 
 	/**
 	 * Ticks per emission
 	 */
-	private final EmitterFloat emissionRate;
+	public final EmitterFloat emissionRate;
 
 	/**
 	 * Particles per emission
 	 */
-	private final EmitterFloat emissionCount;
+	public final EmitterFloat emissionCount;
 
 	/**
 	 * Initial location relative to the agent
 	 */
-	private final EmitterVector initialLocation;
+	public final EmitterVector initialLocation;
 
 	@SuppressWarnings("unchecked")
 	public ParticleEmitter(Object settings)
@@ -60,6 +73,9 @@ public class ParticleEmitter
 		emissionRate = parseFloat(settingsMap, "rate", 1f);
 		emissionCount = parseFloat(settingsMap, "count", 1f);
 		initialLocation = parseVector(settingsMap, "position");
+		paramA = parseFloat(settingsMap, "paramA", 0f);
+		paramB = parseFloat(settingsMap, "paramB", 0f);
+		paramC = parseFloat(settingsMap, "paramC", 0f);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -109,21 +125,12 @@ public class ParticleEmitter
 		return new ConstantEmitterVector(0f, 0f, 0f);
 	}
 
-	public void emit(World world, Vec3d position)
+	public void emit(World world, Vec3d position, Vec3d params)
 	{
-		emit(world, position, defaultA, defaultB, defaultC);
-	}
-
-	public void emit(World world, Vec3d position, double... args)
-	{
-		double a = args.length > 0 ? args[0] : defaultA;
-		double b = args.length > 1 ? args[1] : defaultB;
-		double c = args.length > 2 ? args[2] : defaultC;
-		emit(world, position, a, b, c);
-	}
-
-	public void emit(World world, Vec3d position, double a, double b, double c)
-	{
+		double a = params.x >= 0 ? params.x : paramA.get();
+		double b = params.y >= 0 ? params.y : paramB.get();
+		double c = params.z >= 0 ? params.z : paramC.get();
+		FinalMinecraft.LOG.info("Spawing particle! {} {} {} {}", position, a, b, c);
 		world.addParticle(particle, alwaysSpawn, position.x, position.y, position.z, a, b, c);
 	}
 }

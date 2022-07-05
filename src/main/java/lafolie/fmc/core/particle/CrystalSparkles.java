@@ -43,7 +43,7 @@ public class CrystalSparkles extends SpriteBillboardParticle
 		this.provider = provider;
 		maxAge = 10;
 		velocityY = 0.001;
-		spr=3d;
+		spr = Math.floor(spr);
 		if(spr == 0d)
 		{
 			maxAge = 6;

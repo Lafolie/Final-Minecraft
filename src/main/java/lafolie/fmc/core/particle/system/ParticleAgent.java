@@ -3,6 +3,7 @@ package lafolie.fmc.core.particle.system;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 
 @Environment(EnvType.CLIENT)
 public abstract class ParticleAgent
@@ -19,7 +20,7 @@ public abstract class ParticleAgent
 	 */
 	public void play()
 	{
-
+		system.play(this, new Vec3f(0f, 0f, 0f));
 	}
 
 	/**

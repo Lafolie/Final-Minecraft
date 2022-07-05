@@ -38,7 +38,7 @@ public class UniformBoxEmitterVector implements EmitterVector
 		{
 			x::getExtreme,
 			y::get,
-			y::get,
+			z::get,
 
 			x::get,
 			y::getExtreme,

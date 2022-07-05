@@ -50,7 +50,7 @@ public final class Particles
 	{
 		Identifier id = FMCIdentifier.contentID(name);
 		Registry.register(Registry.PARTICLE_TYPE, id, type);
-		particleIDs.put(name, id);
+		particleIDs.put(id.toString(), id);
 	}
 
 	public static ParticleType<?> getParticleType(String name)
@@ -71,13 +71,13 @@ public final class Particles
 	}
 
 	@Environment(EnvType.CLIENT)
-	public ParticleAgent createAgent(String name, Entity entity)
+	public static ParticleAgent createAgent(String name, Entity entity)
 	{
 		return PARTICLE_SYSTEMS.get(name).createAgent(entity);
 	}
 
 	@Environment(EnvType.CLIENT)
-	public ParticleAgent createAgent(String name, BlockPos pos)
+	public static ParticleAgent createAgent(String name, BlockPos pos)
 	{
 		return PARTICLE_SYSTEMS.get(name).createAgent(pos);
 	}
