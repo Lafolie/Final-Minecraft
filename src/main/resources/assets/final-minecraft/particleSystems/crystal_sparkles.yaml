@@ -18,3 +18,6 @@ paramA:
 particle: "final-minecraft:crystal_sparkles"
 delay:
   constant: 999999.0
+params:
+  length:
+    uniform: [0.0, 10.0]

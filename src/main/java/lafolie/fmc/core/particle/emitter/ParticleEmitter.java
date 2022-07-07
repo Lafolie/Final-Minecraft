@@ -3,8 +3,6 @@ package lafolie.fmc.core.particle.emitter;
 import java.util.List;
 import java.util.Map;
 
-import org.spongepowered.asm.mixin.Final;
-
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.Particles;
 import lafolie.fmc.core.particle.emitter.property.ConstantEmitterFloat;
@@ -17,10 +15,10 @@ import lafolie.fmc.core.particle.emitter.property.UniformEmitterVector;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+
 
 @Environment(EnvType.CLIENT)
 public class ParticleEmitter
@@ -29,19 +27,14 @@ public class ParticleEmitter
 	public final boolean alwaysSpawn = false;
 
 	/**
-	 * Generic particle spawn parameter
+	 * Generic particle spawn parameter names
 	 */
-	public final EmitterFloat paramA;
+	public final String[] paramNames = new String[3];
 
 	/**
-	 * Generic particle spawn parameter
+	 * Generic particle spawn parameter values
 	 */
-	public final EmitterFloat paramB;
-
-	/**
-	 * Generic particle spawn parameter
-	 */
-	public final EmitterFloat paramC;
+	public final EmitterFloat[] paramValues = new EmitterFloat[3];
 
 	/**
 	 * Ticks to delay before first emission
@@ -73,9 +66,25 @@ public class ParticleEmitter
 		emissionRate = parseFloat(settingsMap, "rate", 1f);
 		emissionCount = parseFloat(settingsMap, "count", 1f);
 		initialLocation = parseVector(settingsMap, "position");
-		paramA = parseFloat(settingsMap, "paramA", 0f);
-		paramB = parseFloat(settingsMap, "paramB", 0f);
-		paramC = parseFloat(settingsMap, "paramC", 0f);
+		parseNamedParams(settingsMap);
+	}
+
+	@SuppressWarnings("unchecked")
+	private void parseNamedParams(Map<String, Object> settingsMap)
+	{
+		if(settingsMap.containsKey("params"))
+		{
+			int n = 0;
+			Map<String, Object> params = (Map<String, Object>)settingsMap.get("params");
+			for(Map.Entry<String, Object> param : params.entrySet())
+			{
+				assert n < 3 : "Only 3 particle parameters are supported!";
+				String name = param.getKey();
+				EmitterFloat paramDefault = parseFloat(params, name, 0f);
+				paramNames[n] = name;
+				paramValues[n] = paramDefault;
+			}
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -125,12 +134,9 @@ public class ParticleEmitter
 		return new ConstantEmitterVector(0f, 0f, 0f);
 	}
 
-	public void emit(World world, Vec3d position, Vec3d params)
+	public void emit(ClientWorld world, Vec3d position, Map<String, Double> params)
 	{
-		double a = params.x >= 0 ? params.x : paramA.get();
-		double b = params.y >= 0 ? params.y : paramB.get();
-		double c = params.z >= 0 ? params.z : paramC.get();
-		FinalMinecraft.LOG.info("Spawing particle! {} {} {} {}", position, a, b, c);
-		world.addParticle(particle, alwaysSpawn, position.x, position.y, position.z, a, b, c);
+		// FinalMinecraft.LOG.info("Spawning particle {} @ {}", particle, position);
+		world.addParticle(particle, alwaysSpawn, position.x, position.y, position.z, 0d, 0d, 0d);
 	}
 }

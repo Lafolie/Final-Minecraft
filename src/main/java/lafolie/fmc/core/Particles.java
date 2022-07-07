@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FilenameUtils;
-import org.yaml.snakeyaml.Yaml;
 
 import lafolie.fmc.core.particle.CrystalSparkles;
 import lafolie.fmc.core.particle.TextBillboardParticle;

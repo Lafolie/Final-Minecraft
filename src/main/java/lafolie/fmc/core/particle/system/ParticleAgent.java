@@ -1,18 +1,32 @@
 package lafolie.fmc.core.particle.system;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public abstract class ParticleAgent
 {
 	private final ParticleSystem system;
+	private final Map<String, Double> namedParameters = new HashMap<>();
 
 	public ParticleAgent(ParticleSystem system)
 	{
 		this.system = system;
+	}
+
+	public void setNamedParameter(String name, double i)
+	{
+		namedParameters.put(name, i);
+	}
+
+	public double getNamedParameter(String name)
+	{
+		return namedParameters.get(name);
 	}
 
 	/*
@@ -27,28 +41,9 @@ public abstract class ParticleAgent
 	 * Starts the particle system with an offset
 	 * @param offset spawn offset
 	 */
-	public void play(Vec3d offset)
+	public void play(Vec3f offset)
 	{
-		
-	}
-
-		/**
-		 * Starts the particle system
-		 * @param args particle system parameters
-		 */
-		public void play(double... params)
-		{
-	
-		}
-
-	/**
-	 * Starts the particle system with an offset
-	 * @param offset spawn offset
-	 * @param params particle system parameters
-	 */
-	public void play(Vec3d offset, double... params)
-	{
-		
+		system.play(this, offset);
 	}
 
 	/*
@@ -56,58 +51,45 @@ public abstract class ParticleAgent
 	 */
 	public void stop()
 	{
-
+		system.stop(this);
 	}
 
-
-	
-	/*
+	/**
 	* Play the particle system without looping
+	* (1-shot effect)
 	*/
 	public void burst()
 	{
-		burst(0d, 0d, 0d);
+		system.burst(this, new Vec3f(0f, 0f, 0f));
 	}
 	
 	/**
 	 * Play the particle system without looping
 	 * with an offset
+	 * (1-shot effect)
 	 * @param offset spawn offset
 	 */
-	public void burst(Vec3d offset)
+	public void burst(Vec3f offset)
 	{
-		burst(offset, 0d, 0d, 0d);
+		system.burst(this, offset);
 	}
 
-	
-	/**
-	 * Play the particle system without looping
-	 * with an offset
-	 * @param params particle system parameters
-	 */
-	public void burst(double... params)
-	{
-		
-	}
-
-	/**
-	 * Play the particle system without looping
-	 * with an offset
-	 * @param offset spawn offset
-	 * @param params particle system parameters
-	 */
-	public void burst(Vec3d offset, double... params)
-	{
-		Vec3d pos = getPosition().add(offset);
-	}
-	
 	/**
 	 * Called internally to get the position of the
 	 * agent owner
 	 * @return position of the owner
 	 */
-	public Vec3d getPosition()
+	protected Vec3d getPosition()
 	{
 		return null;
+	}
+
+	/**
+	 * Called internally to get the named parameters
+	 * @return named parameters
+	 */
+	protected Map<String, Double> getNamedParams()
+	{
+		return namedParameters;
 	}
 }

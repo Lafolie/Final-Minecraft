@@ -12,7 +12,7 @@ import lafolie.fmc.core.FMCTags;
 import lafolie.fmc.core.FinalMinecraft;
 import lafolie.fmc.core.Particles;
 import lafolie.fmc.core.particle.system.ParticleAgent;
-import lafolie.fmc.core.particle.system.ParticleAgentInitializer;
+import lafolie.fmc.core.particle.system.ParticleAgentProvider;
 import lafolie.fmc.core.screen.HomeCrystalScreen;
 import lafolie.fmc.core.screen.HomeCrystalScreenHandler;
 import lafolie.fmc.core.util.Maths;
@@ -76,9 +76,9 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-@EnvironmentInterface(value = EnvType.CLIENT, itf = ParticleAgentInitializer.class)
+@EnvironmentInterface(value = EnvType.CLIENT, itf = ParticleAgentProvider.class)
 public class HomeCrystalBlockEntity extends BlockEntity 
-	implements Inventory, IAnimatable, MultiBlockEntity, NamedScreenHandlerFactory, ParticleAgentInitializer
+	implements Inventory, IAnimatable, MultiBlockEntity, NamedScreenHandlerFactory, ParticleAgentProvider
 {
 	private static final String POS_KEY = "masterPos";
 	private static final String CHARGE_KEY = "charge";
@@ -113,6 +113,7 @@ public class HomeCrystalBlockEntity extends BlockEntity
 	private static final Map<Item, Integer> FUEL = new HashMap<>();
 	private SimpleInventory sharedInventory = null;
 	private double animSpeedTime = 0d;
+	private boolean areParticlesPlaying = false;
 	
 	@Environment(EnvType.CLIENT)
 	private ParticleAgent sparkles;
@@ -224,22 +225,6 @@ public class HomeCrystalBlockEntity extends BlockEntity
 		{
 			charge = CHARGE_PER_HOUR;
 		}
-
-		if(!isDummy && this instanceof ParticleAgentInitializer)
-		{
-			initAgents();
-			sparkles.play();
-		}
-	}
-
-	// @Environment(EnvType.SERVER)
-	// public void initAgents() {}
-
-	@Environment(EnvType.CLIENT)
-	@Override
-	public void initAgents()
-	{
-		sparkles = Particles.createAgent("crystal_sparkles", pos);
 	}
 
 	public void setHasPedestal(boolean hasPedestal)
@@ -456,6 +441,53 @@ public class HomeCrystalBlockEntity extends BlockEntity
 			world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
 			world.removeBlockEntity(pos);
 			world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, HomeCrystalBlock.getRawIdFromState(state));
+		}
+	}
+
+	// ------------------------------------------------------------------------
+	// Particle Agents
+	// ------------------------------------------------------------------------
+
+	@Environment(EnvType.CLIENT)
+	@Override
+	public void initParticleAgents()
+	{
+		if(!getCachedState().get(HomeCrystalBlock.IS_DUMMY))
+		{
+			sparkles = Particles.createAgent("crystal_sparkles", pos);
+		}
+	}
+
+	@Environment(EnvType.CLIENT)
+	@Override
+	public void stopParticleAgents()
+	{
+		if(!getCachedState().get(HomeCrystalBlock.IS_DUMMY))
+		{
+			sparkles.stop();
+		}
+	}
+
+	@Environment(EnvType.CLIENT)
+	@Override
+	public void autoStopParticleAgents()
+	{
+		if(!getCachedState().get(HomeCrystalBlock.IS_DUMMY) && areParticlesPlaying)
+		{
+			// FinalMinecraft.LOG.info("Pausing particles!");
+			sparkles.stop();
+			areParticlesPlaying = false;
+		}
+	}
+
+	@Environment(EnvType.CLIENT)
+	@Override
+	public void autoPlayParticleAgents()
+	{
+		if(!getCachedState().get(HomeCrystalBlock.IS_DUMMY) && !areParticlesPlaying)
+		{
+			sparkles.play();
+			areParticlesPlaying = true;
 		}
 	}
 

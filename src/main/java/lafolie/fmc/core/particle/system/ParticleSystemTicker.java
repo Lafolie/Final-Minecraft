@@ -33,4 +33,14 @@ public final class ParticleSystemTicker
 	{
 		systems.remove(system);
 	}
+
+	public static void clearParticleSystems()
+	{
+		for(ParticleSystem system : systems)
+		{
+			system.clearAll();
+		}
+
+		systems.clear();
+	}
 }

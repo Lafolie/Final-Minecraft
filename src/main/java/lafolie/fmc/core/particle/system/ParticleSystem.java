@@ -2,10 +2,14 @@ package lafolie.fmc.core.particle.system;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 import lafolie.fmc.core.particle.emitter.ParticleEmitter;
 import net.fabricmc.api.EnvType;
@@ -21,8 +25,17 @@ import net.minecraft.util.math.Vec3f;
 public class ParticleSystem
 {
 	private final List<ParticleEmitter> emitters = new ArrayList<>();
-	private final Map<ParticleAgent, Burst> bursts = new WeakHashMap<>();
 	private final int numEmitters;
+
+	/**
+	 * playBursts loop and can last indefinitely. One per agent
+	 */
+	private final Map<ParticleAgent, Burst> playBursts = new WeakHashMap<>();
+
+	/**
+	 * bursts are 1-shot effects, can have many per agent
+	 */
+	private final Multimap<ParticleAgent, Burst> bursts = HashMultimap.create();
 
 	/*
 	 * Keeps the particle system in the ticker list for a short
@@ -40,14 +53,15 @@ public class ParticleSystem
 		public float time = 0;
 		public final float[] delays;
 		public final float[] rates;
-		public final Vec3d params;
 		public float loopTime = 0;
+		public final Map<String, Double> namedParams;
 
-		protected Burst(Vec3f offset, boolean loop, Vec3d params)
+		protected Burst(Vec3f offset, boolean loop, Map<String, Double> params)
 		{
 			this.offset = offset;
 			this.loop = loop;
-			this.params = params;
+			namedParams = new HashMap<>(params);
+
 			delays = new float[numEmitters];
 			rates = new float[numEmitters];
 			for(int n = 0; n < numEmitters; n++)
@@ -74,39 +88,54 @@ public class ParticleSystem
 
 	public int tick(ClientWorld world)
 	{
-		for(Iterator<Map.Entry<ParticleAgent,Burst>> iter = bursts.entrySet().iterator(); iter.hasNext();)
+		tickAll(world, playBursts.entrySet().iterator());
+		tickAll(world, bursts.entries().iterator());
+
+		removeTime -= playBursts.size() + bursts.size() == 0 ? 1 : 0;
+		return removeTime;
+	}
+
+	private void tickAll(ClientWorld world, Iterator<Map.Entry<ParticleAgent, Burst>> iter)
+	{
+		while(iter.hasNext())
 		{
 			Map.Entry<ParticleAgent, Burst> entry = iter.next();
 			ParticleAgent agent = entry.getKey();
 			Burst burst = entry.getValue();
-			burst.time += 1;
-			float time = burst.time;
-
-			for(int n = 0; n < numEmitters; n++)
-			{
-				float adjustedTime = time - burst.delays[n];
-				if(adjustedTime > 0 && adjustedTime % burst.rates[n] < 1)
-				{
-					ParticleEmitter emitter = emitters.get(n);
-					burst.rates[n] = emitter.emissionRate.get();
-					Vec3f offset = emitter.initialLocation.get();
-					offset.add(burst.offset);
-					for(int i = 0; i < emitter.emissionCount.get(); i++)
-					{
-						Vec3d position = agent.getPosition().add(offset.getX(), offset.getY(), offset.getZ());
-						emitter.emit(world, position, burst.params);
-					}
-				}
-			}
-
-			if(time >= burst.loopTime && !burst.loop)
+			tickBurst(world, agent, burst);
+			if(burst.time >= burst.loopTime && !burst.loop)
 			{
 				iter.remove();
 			}
 		}
+	}
 
-		removeTime -= bursts.size() == 0 ? 1 : 0;
-		return removeTime;
+	private void tickBurst(ClientWorld world, ParticleAgent agent, Burst burst)
+	{
+		burst.time += 1;
+
+		for(int n = 0; n < numEmitters; n++)
+		{
+			float adjustedTime = burst.time - burst.delays[n];
+			if(adjustedTime > 0 && adjustedTime % burst.rates[n] < 1)
+			{
+				ParticleEmitter emitter = emitters.get(n);
+				burst.rates[n] = emitter.emissionRate.get();
+				Vec3f offset = emitter.initialLocation.get();
+				offset.add(burst.offset);
+				for(int i = 0; i < emitter.emissionCount.get(); i++)
+				{
+					Vec3d position = agent.getPosition().add(offset.getX(), offset.getY(), offset.getZ());
+					emitter.emit(world, position, burst.namedParams);
+				}
+			}
+		}
+	}
+
+	private void activateSystem()
+	{
+		removeTime = 20;
+		ParticleSystemTicker.addParticleSystem(this);
 	}
 
 	public ParticleAgent createAgent(Entity entity)
@@ -121,11 +150,27 @@ public class ParticleSystem
 
 	public void play(ParticleAgent agent, Vec3f offset)
 	{
-		if(!bursts.containsKey(agent))
+		if(!playBursts.containsKey(agent))
 		{
-			removeTime = 20;
-			bursts.put(agent, new Burst(offset, true, new Vec3d(0d, 0d, 0d)));
-			ParticleSystemTicker.addParticleSystem(this);
+			playBursts.put(agent, new Burst(offset, true, agent.getNamedParams()));
+			activateSystem();
 		}
+	}
+
+	public void stop(ParticleAgent agent)
+	{
+		playBursts.remove(agent);
+	}
+
+	public void burst(ParticleAgent agent, Vec3f offset)
+	{
+		bursts.put(agent, new Burst(offset, false, agent.getNamedParams()));
+		activateSystem();
+	}
+
+	public void clearAll()
+	{
+		playBursts.clear();
+		bursts.clear();
 	}
 }

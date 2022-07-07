@@ -3,30 +3,33 @@ package lafolie.fmc.core;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 import lafolie.fmc.core.element.ElementalAspect;
 import lafolie.fmc.core.element.ElementalObject;
 import lafolie.fmc.core.entity.DamageNumbers;
 import lafolie.fmc.core.internal.network.HealthModifiedPacket;
+import lafolie.fmc.core.particle.system.ParticleAgentProvider;
 import lafolie.fmc.core.particle.system.ParticleSystemTicker;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientBlockEntityEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.world.World;
 
 public final class FinalMinecraftClient implements ClientModInitializer
 {
@@ -41,7 +44,12 @@ public final class FinalMinecraftClient implements ClientModInitializer
 		registerNetworkReceivers();
 
 		ClientLifecycleEvents.CLIENT_STARTED.register(FinalMinecraftClient::onClientStarted);
+		ClientLifecycleEvents.CLIENT_STOPPING.register(FinalMinecraftClient::onClientStopping);
 		ClientTickEvents.END_WORLD_TICK.register(FinalMinecraftClient::onEndWorldTick);
+		ClientPlayConnectionEvents.DISCONNECT.register(FinalMinecraftClient::onClientDisconnect);
+
+		ClientBlockEntityEvents.BLOCK_ENTITY_LOAD.register(FinalMinecraftClient::onBlockEntityLoaded);
+		ClientBlockEntityEvents.BLOCK_ENTITY_UNLOAD.register(FinalMinecraftClient::onBlockEntityUnloaded);
 
 		//TODO: remove lambda, make function
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
@@ -69,9 +77,35 @@ public final class FinalMinecraftClient implements ClientModInitializer
 		Particles.loadParticleSystems();
 	}
 	
+	private static void onClientStopping(MinecraftClient client)
+	{
+		FinalMinecraft.LOG.info("STOPPING CLIENT");
+	}
+
+	private static void onClientDisconnect(ClientPlayNetworkHandler handler, MinecraftClient client)
+	{
+		ParticleSystemTicker.clearParticleSystems();
+	}
+
 	private static void onEndWorldTick(ClientWorld world)
 	{
 		ParticleSystemTicker.tick(world);
+	}
+
+	private static void onBlockEntityLoaded(BlockEntity blockEntity, ClientWorld world)
+	{
+		if(blockEntity instanceof ParticleAgentProvider)
+		{
+			((ParticleAgentProvider)blockEntity).initParticleAgents();
+		}
+	}
+
+	private static void onBlockEntityUnloaded(BlockEntity blockEntity, ClientWorld world)
+	{
+		if(blockEntity instanceof ParticleAgentProvider)
+		{
+			((ParticleAgentProvider)blockEntity).stopParticleAgents();
+		}
 	}
 
 	public static NativeImageBackedTexture getDamageLUT()

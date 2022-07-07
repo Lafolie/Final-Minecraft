@@ -1,14 +1,15 @@
 package lafolie.fmc.core.block;
 
 import lafolie.fmc.core.FMCBlocks;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.scoreboard.ScoreboardCriterion.RenderType;
 import net.minecraft.util.Identifier;
+
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 
 public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity>
@@ -21,7 +22,7 @@ public class HomeCrystalRenderer extends GeoBlockRenderer<HomeCrystalBlockEntity
 	@Override
 	public int getRenderDistance()
 	{
-		return 256;
+		return 128;
 	}
 
 	@Override

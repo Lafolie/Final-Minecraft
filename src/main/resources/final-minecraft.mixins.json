@@ -19,6 +19,7 @@
     "ServerWorldMixin"
   ],
   "client": [
+    "BlockEntityRenderDispatcherMixin"
   ],
   "injectors": {
     "defaultRequire": 1
