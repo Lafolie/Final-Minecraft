@@ -1,4 +1,4 @@
-package lafolie.fmc.core.mixin;
+package lafolie.fmc.core.mixin.client;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

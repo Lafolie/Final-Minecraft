@@ -1,4 +1,4 @@
-package lafolie.fmc.core.mixin;
+package lafolie.fmc.core.mixin.client;
 
 import java.util.Calendar;
 import java.util.List;

@@ -14,12 +14,13 @@
     "MobEntityMixin",
     "AnimalEntityMixin",
     "InventoryScreenMixin",
-    "SplashTextResourceSupplierMixin",
-    "ClientPlayerInteractionManagerMixin",
     "ServerWorldMixin"
   ],
   "client": [
-    "BlockEntityRenderDispatcherMixin"
+    "client.ClientPlayerInteractionManagerMixin",
+    "client.SplashTextResourceSupplierMixin",
+    "client.BlockEntityRenderDispatcherMixin",
+    "client.EntityRenderDispatcherMixin"
   ],
   "injectors": {
     "defaultRequire": 1

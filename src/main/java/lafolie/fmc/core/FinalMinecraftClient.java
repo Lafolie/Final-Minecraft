@@ -14,6 +14,7 @@ import lafolie.fmc.core.particle.system.ParticleSystemTicker;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientBlockEntityEvents;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
@@ -28,6 +29,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.entity.Entity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
@@ -50,6 +52,9 @@ public final class FinalMinecraftClient implements ClientModInitializer
 
 		ClientBlockEntityEvents.BLOCK_ENTITY_LOAD.register(FinalMinecraftClient::onBlockEntityLoaded);
 		ClientBlockEntityEvents.BLOCK_ENTITY_UNLOAD.register(FinalMinecraftClient::onBlockEntityUnloaded);
+
+		ClientEntityEvents.ENTITY_LOAD.register(FinalMinecraftClient::onEntityLoaded);
+		ClientEntityEvents.ENTITY_UNLOAD.register(FinalMinecraftClient::onEntityUnLoaded);
 
 		//TODO: remove lambda, make function
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> 
@@ -90,6 +95,22 @@ public final class FinalMinecraftClient implements ClientModInitializer
 	private static void onEndWorldTick(ClientWorld world)
 	{
 		ParticleSystemTicker.tick(world);
+	}
+
+	private static void onEntityLoaded(Entity entity, ClientWorld world)
+	{
+		if(entity instanceof ParticleAgentProvider)
+		{
+			((ParticleAgentProvider)entity).initParticleAgents();
+		}
+	}
+
+	private static void onEntityUnLoaded(Entity entity, ClientWorld world)
+	{
+		if(entity instanceof ParticleAgentProvider)
+		{
+			((ParticleAgentProvider)entity).stopParticleAgents();
+		}
 	}
 
 	private static void onBlockEntityLoaded(BlockEntity blockEntity, ClientWorld world)
