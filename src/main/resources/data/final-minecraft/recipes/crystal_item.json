@@ -1,16 +1,16 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
-	  "###",
-	  "###",
-	  "###"
+		"###",
+		"###",
+		"###"
 	],
 	"key": {
-	  "#": {
+		"#": {
 		"item": "final-minecraft:crystal_shard_item"
-	  }
+		}
 	},
 	"result": {
-	  "item": "final-minecraft:crystal_item"
+		"item": "final-minecraft:crystal_item"
 	}
   }

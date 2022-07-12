@@ -255,7 +255,7 @@ public interface ElementalObject
 		NbtCompound elements = getComponent().getElementalNbt(attribute);
 		if(elements != null)
 		{
-			return elements.contains(element.toString());
+			return elements.contains(element.toNbtKey());
 		}
 		return false;
 	}
@@ -273,7 +273,7 @@ public interface ElementalObject
 		NbtCompound nbt = stats.getElementalNbt(attribute);
 		if(nbt != null)
 		{
-			String key = element.toString();
+			String key = element.toNbtKey();
 			return nbt.contains(key) ? (int)nbt.getByte(key) : 0;
 		}
 		return 0;

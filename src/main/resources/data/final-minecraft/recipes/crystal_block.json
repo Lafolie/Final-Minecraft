@@ -1,17 +1,16 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"group": "elemental_crystal_blocks",
 	"pattern": [
-	  "###",
-	  "###",
-	  "###"
+		"###",
+		"###",
+		"###"
 	],
 	"key": {
-	  "#": {
-		"item": "final-minecraft:crystal_item"
-	  }
+		"#": {
+			"item": "final-minecraft:crystal_item"
+		}
 	},
 	"result": {
-	  "item": "final-minecraft:crystal_block"
+		"item": "final-minecraft:crystal_block"
 	}
   }

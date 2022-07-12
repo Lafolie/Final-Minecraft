@@ -1,0 +1,34 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+	  "recipes": [
+		"final-minecraft:wind_crystal_item"
+	  ]
+	},
+	"criteria": {
+	  "has_crystal": {
+		"trigger": "minecraft:inventory_changed",
+		"conditions": {
+		  "items": [
+			{
+			  "items": [
+				"final-minecraft:crystal_item"
+			  ]
+			}
+		  ]
+		}
+	  },
+	  "has_the_recipe": {
+		"trigger": "minecraft:recipe_unlocked",
+		"conditions": {
+		  "recipe": "final-minecraft:wind_crystal_item"
+		}
+	  }
+	},
+	"requirements": [
+	  [
+		"has_crystal",
+		"has_the_recipe"
+	  ]
+	]
+  }

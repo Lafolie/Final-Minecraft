@@ -2,17 +2,17 @@
 	"type": "minecraft:crafting_shaped",
 	"group": "elemental_crystals",
 	"pattern": [
-	  "DDD",
-	  "D#D",
-	  "DDD"
+		"###",
+		"#D#",
+		"###"
 	],
 	"key": {
-	  "#": {
+		"#": {
 		"item": "final-minecraft:crystal_item"
-	  },
-	  "D": {
+		},
+		"D": {
 		  "item": "minecraft:brown_dye"
-	  }
+		}
 	},
 	"result": {
 	  "item": "final-minecraft:earth_crystal_item"

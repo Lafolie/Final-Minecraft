@@ -2,9 +2,9 @@
 	"type": "minecraft:crafting_shaped",
 	"group": "elemental_crystals",
 	"pattern": [
-	  "DDD",
-	  "D#D",
-	  "DDD"
+		"###",
+		"#D#",
+		"###"
 	],
 	"key": {
 	  "#": {
